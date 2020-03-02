@@ -12,5 +12,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="首页"/>
+        android:text="干货集中营"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

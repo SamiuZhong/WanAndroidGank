@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/wanHomeFragment"
+        android:id="@+id/wanNavFragment"
         android:icon="@drawable/ic_wan_home_24dp"
         android:title="@string/title_wan_home" />
 
     <item
-        android:id="@+id/gankHomeFragment"
+        android:id="@+id/gankNavFragment"
         android:icon="@drawable/ic_gank_home_24dp"
         android:title="@string/title_gank_home" />
 

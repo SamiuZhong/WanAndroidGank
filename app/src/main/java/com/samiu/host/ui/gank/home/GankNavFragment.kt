@@ -6,8 +6,8 @@ import com.samiu.host.R
 /**
  * @author Samiu 2020/3/2
  */
-class GankHomeFragment:BaseFragment() {
-    override fun getLayoutResId() = R.layout.fragment_gank_home
+class GankNavFragment:BaseFragment() {
+    override fun getLayoutResId() = R.layout.fragment_gank_nav
 
     override fun initView()=Unit
 

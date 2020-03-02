@@ -1,7 +1,6 @@
-package com.samiu.host.ui.wan.home
+package com.samiu.host.ui.wan.nav.fragment
 
 import com.samiu.base.ui.BaseFragment
-import com.samiu.base.ui.BaseVMFragment
 import com.samiu.host.R
 
 /**
