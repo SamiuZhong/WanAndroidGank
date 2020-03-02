@@ -1,4 +1,4 @@
-package com.samiu.host
+package com.samiu.base
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.samiu.host", appContext.packageName)
+        assertEquals("com.samiu.base.test", appContext.packageName)
     }
 }

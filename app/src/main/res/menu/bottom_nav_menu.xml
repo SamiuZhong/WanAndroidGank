@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/wanHomeFragment"
+        android:icon="@drawable/ic_wan_home_24dp"
+        android:title="@string/title_wan_home" />
+
+    <item
+        android:id="@+id/gankHomeFragment"
+        android:icon="@drawable/ic_gank_home_24dp"
+        android:title="@string/title_gank_home" />
+
+    <item
+        android:id="@+id/wanSearchFragment"
+        android:icon="@drawable/ic_wan_search_24dp"
+        android:title="@string/title_wan_search" />
+
+    <item
+        android:id="@+id/wanProjectFragment"
+        android:icon="@drawable/ic_wan_project_24dp"
+        android:title="@string/title_wan_project" />
+
+    <item
+        android:id="@+id/mineFragment"
+        android:icon="@drawable/ic_mine_24dp"
+        android:title="@string/title_mine" />
+
+</menu>

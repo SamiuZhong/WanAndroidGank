@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/wanHomeFragment">
+
+
+    <fragment
+        android:id="@+id/wanHomeFragment"
+        android:name="com.samiu.host.ui.wan.home.WanHomeFragment"
+        android:label="WanHomeFragment" />
+    <fragment
+        android:id="@+id/wanProjectFragment"
+        android:name="com.samiu.host.ui.wan.project.WanProjectFragment"
+        android:label="WanProjectFragment" />
+    <fragment
+        android:id="@+id/wanSearchFragment"
+        android:name="com.samiu.host.ui.wan.search.WanSearchFragment"
+        android:label="WanSearchFragment" />
+    <fragment
+        android:id="@+id/gankHomeFragment"
+        android:name="com.samiu.host.ui.gank.home.GankHomeFragment"
+        android:label="GankHomeFragment" />
+    <fragment
+        android:id="@+id/mineFragment"
+        android:name="com.samiu.host.ui.mine.MineFragment"
+        android:label="MineFragment" />
+</navigation>
