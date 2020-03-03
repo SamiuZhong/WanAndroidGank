@@ -40,4 +40,5 @@ dependencies {
     api 'com.squareup.retrofit2:retrofit:2.6.2'
     api 'com.squareup.retrofit2:converter-gson:2.6.2'
     api 'com.squareup.okhttp3:logging-interceptor:4.0.0'
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
 }
