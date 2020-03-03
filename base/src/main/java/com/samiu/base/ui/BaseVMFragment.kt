@@ -11,8 +11,6 @@ import androidx.fragment.app.Fragment
  */
 abstract class BaseVMFragment<VM: BaseViewModel> :Fragment(){
 
-    protected lateinit var mViewModel: VM
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -22,7 +20,6 @@ abstract class BaseVMFragment<VM: BaseViewModel> :Fragment(){
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        mViewModel = initVM()
         initView()
         initData()
         startObserve()
@@ -30,7 +27,6 @@ abstract class BaseVMFragment<VM: BaseViewModel> :Fragment(){
     }
 
     abstract fun getLayoutResId(): Int
-    abstract fun initVM():VM
     abstract fun initView()
     abstract fun initData()
     abstract fun startObserve()

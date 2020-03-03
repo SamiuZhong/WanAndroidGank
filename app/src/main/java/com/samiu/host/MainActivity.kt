@@ -9,14 +9,12 @@ import com.samiu.base.ui.BaseActivity
  * @author Samiu 2020/3/2
  */
 class MainActivity : BaseActivity() {
-
     override fun getLayoutResId()=R.layout.activity_main
+    override fun initData()=Unit
 
     override fun initView(){
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
         navView.setupWithNavController(navController)
     }
-
-    override fun initData()=Unit
 }
