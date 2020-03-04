@@ -11,4 +11,10 @@
     <color name="text_gray">#2f2f2f</color>
     <color name="scrim">#99323232</color>
     <color name="dark_icon">#99000000</color>
+    <color name="color_B9CDDA">#B9CDDA</color>
+    <color name="color_A6D8D4">#A6D8D4</color>
+    <color name="color_6B7D7D">#6B7D7D</color>
+    <color name="color_3066BE">#3066BE</color>
+    <color name="color_119DA4">#119DA4</color>
+    <color name="color_80DED9">#80DED9</color>
 </resources>
