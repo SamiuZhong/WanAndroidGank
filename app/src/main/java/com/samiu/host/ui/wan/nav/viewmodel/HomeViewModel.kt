@@ -12,15 +12,12 @@ import com.samiu.host.model.repository.HomeRepository
  */
 class HomeViewModel(
     private val homeRepository: HomeRepository
-):BaseViewModel() {
+) : BaseViewModel() {
 
-    private var currentPage = 0
-
-    val mBanners:LiveData<List<Banner>> = liveData {
+    val mBanners: LiveData<List<Banner>> = liveData {
         kotlin.runCatching {
             val data = homeRepository.getBanners()
-            if (data is WanResult.Success)emit(data.data)
+            if (data is WanResult.Success) emit(data.data)
         }
     }
-
 }
