@@ -7,6 +7,7 @@ import com.samiu.base.ui.BaseVMFragment
 import com.samiu.base.view.SpaceItemDecoration
 import com.samiu.host.MainActivity
 import com.samiu.host.R
+import com.samiu.host.global.HOME_PAGE
 import com.samiu.host.global.toBrowser
 import com.samiu.host.ui.adapter.ImageBannerAdapter
 import com.samiu.host.model.bean.wan.Banner
@@ -24,7 +25,6 @@ import kotlin.properties.Delegates
 class WanHomeFragment : BaseVMFragment<HomeViewModel>() {
     override fun getLayoutResId() = R.layout.fragment_wan_home
 
-    private var currentTitle = "首页"
     private var currentPage by Delegates.notNull<Int>()
     private val mViewModel: HomeViewModel by viewModel()
     private lateinit var adapter: WanHomeAdapter
@@ -32,15 +32,12 @@ class WanHomeFragment : BaseVMFragment<HomeViewModel>() {
     override fun initView() {
         initRecyclerView()
         LiveEventBus
-            .get(currentTitle, Int::class.java)
+            .get(HOME_PAGE, Int::class.java)
             .observe(this, Observer<Int> { refreshData(it) })
     }
 
     override fun initData() = refreshData(-1)
 
-    /**
-     * 加载数据
-     */
     private fun refreshData(type: Int) {
         when (type) {
             -1 -> { //onRefresh
@@ -55,9 +52,6 @@ class WanHomeFragment : BaseVMFragment<HomeViewModel>() {
         }
     }
 
-    /**
-     * 订阅LiveData
-     */
     override fun startObserve() {
         mViewModel.run {
             mBanners.observe(this@WanHomeFragment, Observer { setBanner(it) })
@@ -73,9 +67,6 @@ class WanHomeFragment : BaseVMFragment<HomeViewModel>() {
         recyclerView.adapter = adapter
     }
 
-    /**
-     * 首页轮播Banner
-     */
     private fun setBanner(bannerList: List<Banner>) {
         banner.adapter = ImageBannerAdapter(bannerList)
         banner.setOnBannerListener(object : OnBannerListener<Banner> {

@@ -1,5 +1,7 @@
 package com.samiu.host.ui.fragment.wan
 
+import android.util.Log
+import androidx.core.view.marginTop
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -9,6 +11,7 @@ import com.jeremyliao.liveeventbus.LiveEventBus
 import com.samiu.base.interactive.ZoomOutPageTransformer
 import com.samiu.base.ui.BaseFragment
 import com.samiu.host.R
+import com.samiu.host.global.*
 import kotlinx.android.synthetic.main.fragment_wan_nav.*
 
 /**
@@ -25,7 +28,7 @@ class WanNavFragment : BaseFragment() {
     private val systemFragment by lazy { WanSystemFragment() }
     private val navigationFragment by lazy { WanNavigationFragment() }
     private val fragmentList = ArrayList<Fragment>()
-    private val titleList = arrayOf("首页", "广场", "公众号", "体系", "导航")
+    private val titleList = arrayOf(HOME_PAGE, SQUARE, WX_ARTICLE, SYSTEM, NAVIGATION)
     private var currentTitle = titleList[0]
 
     init {
@@ -36,7 +39,7 @@ class WanNavFragment : BaseFragment() {
         fragmentList.add(navigationFragment)
     }
 
-    override fun initView(){
+    override fun initView() {
         //viewPager2
         pager.adapter = ScreenPagerAdapter(this)
         pager.setPageTransformer(ZoomOutPageTransformer())
@@ -46,17 +49,20 @@ class WanNavFragment : BaseFragment() {
             }
         })
         //tabLayout
-        TabLayoutMediator(tab,pager){tab, position ->  tab.text = titleList[position]}.attach()
+        TabLayoutMediator(tab, pager) { tab, position -> tab.text = titleList[position] }.attach()
+//        tab.post {
+//            homeRefreshLayout.marginTop = tab.measuredHeight
+//        }
         //smartRefreshLayout
         homeRefreshLayout.setOnRefreshListener {
             LiveEventBus
-                .get(currentTitle,Int::class.java)
+                .get(currentTitle, Int::class.java)
                 .post(-1)
             it.finishRefresh(1500)
         }
         homeRefreshLayout.setOnLoadMoreListener {
             LiveEventBus
-                .get(currentTitle,Int::class.java)
+                .get(currentTitle, Int::class.java)
                 .post(1)
             it.finishLoadMore(1500)
         }
