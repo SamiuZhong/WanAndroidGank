@@ -1,8 +1,7 @@
-package com.samiu.host
+package com.samiu.host.base
 
 import android.app.Application
 import android.content.Context
-import com.samiu.host.module.wanModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import kotlin.properties.Delegates

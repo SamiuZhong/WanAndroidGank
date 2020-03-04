@@ -1,4 +1,4 @@
-package com.samiu.host.ui.mine
+package com.samiu.host.ui.fragment
 
 import com.samiu.base.ui.BaseFragment
 import com.samiu.host.R

@@ -1,11 +1,11 @@
-package com.samiu.host.ui.wan.nav.fragment
+package com.samiu.host.ui.fragment.wan
 
 import androidx.lifecycle.Observer
 import com.samiu.base.ui.BaseVMFragment
 import com.samiu.host.R
-import com.samiu.host.adapter.ImageBannerAdapter
+import com.samiu.host.ui.adapter.ImageBannerAdapter
 import com.samiu.host.model.bean.wan.Banner
-import com.samiu.host.ui.wan.nav.viewmodel.HomeViewModel
+import com.samiu.host.ui.viewmodel.wan.HomeViewModel
 import kotlinx.android.synthetic.main.fragment_wan_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

@@ -1,4 +1,4 @@
-package com.samiu.host
+package com.samiu.host.base
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers.Default

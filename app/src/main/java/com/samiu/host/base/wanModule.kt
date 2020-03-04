@@ -1,9 +1,8 @@
-package com.samiu.host.module
+package com.samiu.host.base
 
-import com.samiu.host.CoroutineDispatcherProvider
-import com.samiu.host.model.api.WanClient
-import com.samiu.host.model.repository.HomeRepository
-import com.samiu.host.ui.wan.nav.viewmodel.HomeViewModel
+import com.samiu.host.model.http.WanClient
+import com.samiu.host.model.repository.wan.HomeRepository
+import com.samiu.host.ui.viewmodel.wan.HomeViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -21,4 +20,7 @@ val wanRepositoryModule = module {
     single { HomeRepository() }
 }
 
-val wanModule = listOf(wanViewModelModule, wanRepositoryModule)
+val wanModule = listOf(
+    wanViewModelModule,
+    wanRepositoryModule
+)

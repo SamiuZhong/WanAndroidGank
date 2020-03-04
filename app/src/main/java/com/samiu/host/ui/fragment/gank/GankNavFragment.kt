@@ -1,4 +1,4 @@
-package com.samiu.host.ui.gank.home
+package com.samiu.host.ui.fragment.gank
 
 import com.samiu.base.ui.BaseFragment
 import com.samiu.host.R

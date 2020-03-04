@@ -1,4 +1,4 @@
-package com.samiu.host.model.api
+package com.samiu.host.model.http
 
 import com.samiu.host.model.bean.wan.WanResponse
 import kotlinx.coroutines.CoroutineScope

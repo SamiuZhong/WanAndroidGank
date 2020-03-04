@@ -1,7 +1,7 @@
-package com.samiu.host.model.api
+package com.samiu.host.model.http
 
 import com.samiu.base.http.BaseRetrofitClient
-import com.samiu.host.AppApplication
+import com.samiu.host.base.AppApplication
 
 /**
  * @author Samiu 2020/3/3

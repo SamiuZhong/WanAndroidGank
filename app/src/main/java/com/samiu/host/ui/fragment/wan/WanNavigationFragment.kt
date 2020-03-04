@@ -1,4 +1,4 @@
-package com.samiu.host.ui.wan.nav.fragment
+package com.samiu.host.ui.fragment.wan
 
 import com.samiu.base.ui.BaseFragment
 import com.samiu.host.R

@@ -1,4 +1,4 @@
-package com.samiu.host.adapter
+package com.samiu.host.ui.adapter
 
 import android.content.Context
 import android.view.ViewGroup

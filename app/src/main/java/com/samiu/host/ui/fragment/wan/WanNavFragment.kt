@@ -1,4 +1,4 @@
-package com.samiu.host.ui.wan.nav
+package com.samiu.host.ui.fragment.wan
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -6,7 +6,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.samiu.base.interactive.ZoomOutPageTransformer
 import com.samiu.base.ui.BaseFragment
 import com.samiu.host.R
-import com.samiu.host.ui.wan.nav.fragment.*
 import kotlinx.android.synthetic.main.fragment_wan_nav.*
 
 /**

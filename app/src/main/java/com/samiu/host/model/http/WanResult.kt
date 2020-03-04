@@ -1,4 +1,4 @@
-package com.samiu.host.model.api
+package com.samiu.host.model.http
 
 /**
  * @author Samiu 2020/3/3

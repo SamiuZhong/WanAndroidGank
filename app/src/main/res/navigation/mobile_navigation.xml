@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/wanNavFragment"
-        android:name="com.samiu.host.ui.wan.nav.WanNavFragment"
+        android:name="com.samiu.host.ui.fragment.wan.WanNavFragment"
         android:label="WanHomeFragment" />
     <fragment
         android:id="@+id/wanProjectFragment"
@@ -20,10 +20,10 @@
         android:label="WanSearchFragment" />
     <fragment
         android:id="@+id/gankNavFragment"
-        android:name="com.samiu.host.ui.gank.home.GankNavFragment"
+        android:name="com.samiu.host.ui.fragment.gank.GankNavFragment"
         android:label="GankHomeFragment" />
     <fragment
         android:id="@+id/mineFragment"
-        android:name="com.samiu.host.ui.mine.MineFragment"
+        android:name="com.samiu.host.ui.fragment.MineFragment"
         android:label="MineFragment" />
 </navigation>

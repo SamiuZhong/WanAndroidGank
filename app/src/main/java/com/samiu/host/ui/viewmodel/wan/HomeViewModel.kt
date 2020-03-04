@@ -1,11 +1,11 @@
-package com.samiu.host.ui.wan.nav.viewmodel
+package com.samiu.host.ui.viewmodel.wan
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.samiu.base.ui.BaseViewModel
-import com.samiu.host.model.api.WanResult
+import com.samiu.host.model.http.WanResult
 import com.samiu.host.model.bean.wan.Banner
-import com.samiu.host.model.repository.HomeRepository
+import com.samiu.host.model.repository.wan.HomeRepository
 
 /**
  * @author Samiu 2020/3/3
