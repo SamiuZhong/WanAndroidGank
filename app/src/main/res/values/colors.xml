@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="default_text_color_252F3B">#252F3B</color>
+    <color name="default_prompt_text_color_9496A4">#9496A4</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
@@ -17,4 +19,5 @@
     <color name="color_3066BE">#3066BE</color>
     <color name="color_119DA4">#119DA4</color>
     <color name="color_80DED9">#80DED9</color>
+    <color name="color_29E7CD">#29E7CD</color>
 </resources>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingStart="@dimen/space_20"
+    android:paddingEnd="@dimen/space_20"
+    android:paddingTop="@dimen/space_20">
+
+    <TextView
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="测试数据测试数据"
+        android:textSize="@dimen/text_size_18"
+        android:id="@+id/itemTitle"/>
+
+    <TextView
+        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_12"
+        android:textColor="@color/default_prompt_text_color_9496A4"
+        tools:text="4小时前"
+        android:id="@+id/itemNiceData"
+        app:layout_constraintTop_toBottomOf="@id/itemTitle"
+        app:layout_constraintStart_toStartOf="@id/itemTitle"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Samiu"
+        android:layout_marginStart="@dimen/space_10"
+        android:textSize="@dimen/text_size_12"
+        android:textColor="@color/default_prompt_text_color_9496A4"
+        app:layout_constraintBaseline_toBaselineOf="@id/itemNiceData"
+        app:layout_constraintStart_toEndOf="@id/itemNiceData"
+        android:id="@+id/itemAuthor"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
