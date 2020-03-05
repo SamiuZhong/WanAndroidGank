@@ -4,7 +4,6 @@ import com.samiu.base.ui.BaseFragment
 import com.samiu.host.R
 
 /**
- * 玩安卓 广场
  * @author Samiu 2020/3/2
  */
 class WanSquareFragment:BaseFragment() {

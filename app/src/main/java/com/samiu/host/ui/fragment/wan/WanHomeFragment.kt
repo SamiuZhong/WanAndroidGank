@@ -8,6 +8,7 @@ import com.samiu.base.view.SpaceItemDecoration
 import com.samiu.host.MainActivity
 import com.samiu.host.R
 import com.samiu.host.global.HOME_PAGE
+import com.samiu.host.global.TAB_HEIGHT
 import com.samiu.host.global.toBrowser
 import com.samiu.host.ui.adapter.ImageBannerAdapter
 import com.samiu.host.model.bean.wan.Banner
@@ -19,7 +20,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.properties.Delegates
 
 /**
- * 玩安卓 首页
  * @author Samiu 2020/3/2
  */
 class WanHomeFragment : BaseVMFragment<HomeViewModel>() {
@@ -31,9 +31,9 @@ class WanHomeFragment : BaseVMFragment<HomeViewModel>() {
 
     override fun initView() {
         initRecyclerView()
-        LiveEventBus
+        LiveEventBus    //refresh data
             .get(HOME_PAGE, Int::class.java)
-            .observe(this, Observer<Int> { refreshData(it) })
+            .observe(this, Observer { refreshData(it) })
     }
 
     override fun initData() = refreshData(-1)

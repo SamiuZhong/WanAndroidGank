@@ -4,7 +4,6 @@ import com.samiu.base.ui.BaseFragment
 import com.samiu.host.R
 
 /**
- * 玩安卓 导航页
  * @author Samiu 2020/3/2
  */
 class WanNavigationFragment:BaseFragment() {

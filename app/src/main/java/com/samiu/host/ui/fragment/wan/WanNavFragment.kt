@@ -1,9 +1,6 @@
 package com.samiu.host.ui.fragment.wan
 
-import android.util.Log
-import androidx.core.view.marginTop
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
@@ -15,7 +12,6 @@ import com.samiu.host.global.*
 import kotlinx.android.synthetic.main.fragment_wan_nav.*
 
 /**
- * 玩安卓 底部导航栏的首页
  * @author Samiu 2020/3/2
  */
 class WanNavFragment : BaseFragment() {
@@ -50,9 +46,6 @@ class WanNavFragment : BaseFragment() {
         })
         //tabLayout
         TabLayoutMediator(tab, pager) { tab, position -> tab.text = titleList[position] }.attach()
-//        tab.post {
-//            homeRefreshLayout.marginTop = tab.measuredHeight
-//        }
         //smartRefreshLayout
         homeRefreshLayout.setOnRefreshListener {
             LiveEventBus
@@ -64,7 +57,7 @@ class WanNavFragment : BaseFragment() {
             LiveEventBus
                 .get(currentTitle, Int::class.java)
                 .post(1)
-            it.finishLoadMore(1500)
+            it.finishLoadMore(2000)
         }
     }
 
