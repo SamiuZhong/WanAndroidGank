@@ -24,8 +24,14 @@ class WanHomeAdapter(context: Context?) : BaseSingleRecyclerAdapter<Article>(con
                 itemTitle.text = data.title
                 itemNiceData.text = data.niceDate
                 itemAuthor.text = data.shareUser
+                setOnClickListener { listener(data.link) }
             }
         }
+    }
+
+    private lateinit var listener: (String) -> Unit
+    fun setOnItemClick(listener: (String) -> Unit) {
+        this.listener = listener
     }
 }
 

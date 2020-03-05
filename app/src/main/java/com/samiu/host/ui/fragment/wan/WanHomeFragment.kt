@@ -4,11 +4,8 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.samiu.base.ui.BaseVMFragment
-import com.samiu.base.view.SpaceItemDecoration
-import com.samiu.host.MainActivity
 import com.samiu.host.R
 import com.samiu.host.global.HOME_PAGE
-import com.samiu.host.global.TAB_HEIGHT
 import com.samiu.host.global.toBrowser
 import com.samiu.host.ui.adapter.ImageBannerAdapter
 import com.samiu.host.model.bean.wan.Banner
@@ -36,7 +33,12 @@ class WanHomeFragment : BaseVMFragment<HomeViewModel>() {
             .observe(this, Observer { refreshData(it) })
     }
 
-    override fun initData() = refreshData(-1)
+    override fun initData() {
+        mViewModel.run {
+            getBanners()
+            refreshData(-1)
+        }
+    }
 
     private fun refreshData(type: Int) {
         when (type) {
@@ -55,16 +57,15 @@ class WanHomeFragment : BaseVMFragment<HomeViewModel>() {
     override fun startObserve() {
         mViewModel.run {
             mBanners.observe(this@WanHomeFragment, Observer { setBanner(it) })
-            mArticles.observe(this@WanHomeFragment, Observer {
-                adapter.addAll(it)
-            })
+            mArticles.observe(this@WanHomeFragment, Observer { adapter.addAll(it) })
         }
     }
 
     private fun initRecyclerView() {
         adapter = WanHomeAdapter(context)
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = adapter
+        homeRecyclerView.layoutManager = LinearLayoutManager(context)
+        homeRecyclerView.adapter = adapter
+        adapter.setOnItemClick { url -> toBrowser(this, url) }
     }
 
     private fun setBanner(bannerList: List<Banner>) {

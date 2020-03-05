@@ -22,7 +22,8 @@ open class BaseWanRepository {
     }
 
     suspend fun <T : Any> executeResponse(
-        response: WanResponse<T>, successBlock: (suspend CoroutineScope.() -> Unit)? = null,
+        response: WanResponse<T>,
+        successBlock: (suspend CoroutineScope.() -> Unit)? = null,
         errorBlock: (suspend CoroutineScope.() -> Unit)? = null
     ): WanResult<T> {
         return coroutineScope {

@@ -1,13 +1,11 @@
 package com.samiu.host.ui.viewmodel.wan
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.samiu.base.ui.BaseViewModel
 import com.samiu.host.model.bean.wan.Article
-import com.samiu.host.model.http.WanResult
 import com.samiu.host.model.bean.wan.Banner
+import com.samiu.host.model.http.WanResult
 import com.samiu.host.model.repository.wan.HomeRepository
 import kotlinx.coroutines.launch
 
@@ -19,11 +17,13 @@ class HomeViewModel(
 ) : BaseViewModel() {
 
     val mArticles = MutableLiveData<List<Article>>()
+    val mBanners = MutableLiveData<List<Banner>>()
 
-    val mBanners: LiveData<List<Banner>> = liveData {
-        kotlin.runCatching {
+    fun getBanners(){
+        viewModelScope.launch {
             val data = homeRepository.getBanners()
-            if (data is WanResult.Success) emit(data.data)
+            if (data is WanResult.Success)
+                mBanners.value = data.data
         }
     }
 
