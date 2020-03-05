@@ -14,7 +14,7 @@
     <item
         android:id="@+id/wanSearchFragment"
         android:icon="@drawable/ic_wan_search_24dp"
-        android:title="@string/title_wan_search" />
+        android:title="@string/wx_article" />
 
     <item
         android:id="@+id/wanProjectFragment"

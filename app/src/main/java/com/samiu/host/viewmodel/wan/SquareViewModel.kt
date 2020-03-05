@@ -1,4 +1,4 @@
-package com.samiu.host.ui.viewmodel.wan
+package com.samiu.host.viewmodel.wan
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -13,16 +13,13 @@ import kotlinx.coroutines.launch
  */
 class SquareViewModel(
     private val squareRepository: SquareRepository
-) :BaseViewModel(){
+) : BaseViewModel() {
 
     val mArticles = MutableLiveData<List<Article>>()
 
-    fun getArticles(page:Int){
-        viewModelScope.launch {
-            val articleList = squareRepository.getSquareArticle(page)
-            if (articleList is WanResult.Success){
-                mArticles.value = articleList.data.datas
-            }
-        }
+    fun getArticles(page: Int) = viewModelScope.launch {
+        val articleList = squareRepository.getSquareArticle(page)
+        if (articleList is WanResult.Success)
+            mArticles.value = articleList.data.datas
     }
 }

@@ -18,7 +18,7 @@ class MainActivity : BaseActivity() {
 
     override fun initView() {
         val navController = findNavController(R.id.nav_host_fragment)
-        bottomNav.setupWithNavController(navController)
+        bottom_nav.setupWithNavController(navController)
     }
 
     private var y1 = 0f
@@ -39,20 +39,20 @@ class MainActivity : BaseActivity() {
     }
 
     private fun showBottomNav(show: Boolean) {
-        if (show && !bottomNav.isShown) {        //show
+        if (show && !bottom_nav.isShown) {        //show
             val inAnim = AnimationUtils.loadAnimation(this, R.anim.in_bottom)
-            bottomNav.startAnimation(inAnim)
+            bottom_nav.startAnimation(inAnim)
             inAnim.setAnimationListener(object : Animation.AnimationListener {
                 override fun onAnimationRepeat(animation: Animation?) = Unit
                 override fun onAnimationEnd(animation: Animation?) = Unit
                 override fun onAnimationStart(animation: Animation?) {
-                    bottomNav.visibility = View.VISIBLE
+                    bottom_nav.visibility = View.VISIBLE
                 }
             })
-        } else if (!show && bottomNav.isShown) {  //hide
+        } else if (!show && bottom_nav.isShown) {  //hide
             val outAnim = AnimationUtils.loadAnimation(this, R.anim.out_bottom)
-            bottomNav.startAnimation(outAnim)
-            bottomNav.visibility = View.GONE
+            bottom_nav.startAnimation(outAnim)
+            bottom_nav.visibility = View.GONE
         }
     }
 }

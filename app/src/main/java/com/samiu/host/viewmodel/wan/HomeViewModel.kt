@@ -1,4 +1,4 @@
-package com.samiu.host.ui.viewmodel.wan
+package com.samiu.host.viewmodel.wan
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -19,20 +19,15 @@ class HomeViewModel(
     val mArticles = MutableLiveData<List<Article>>()
     val mBanners = MutableLiveData<List<Banner>>()
 
-    fun getBanners(){
-        viewModelScope.launch {
-            val data = homeRepository.getBanners()
-            if (data is WanResult.Success)
-                mBanners.value = data.data
-        }
+    fun getBanners() = viewModelScope.launch {
+        val data = homeRepository.getBanners()
+        if (data is WanResult.Success)
+            mBanners.value = data.data
     }
 
-    fun getArticles(page: Int) {
-        viewModelScope.launch {
-            val articleList = homeRepository.getArticlesList(page)
-            if (articleList is WanResult.Success) {
-                mArticles.value = articleList.data.datas
-            }
-        }
+    fun getArticles(page: Int) = viewModelScope.launch {
+        val articleList = homeRepository.getArticlesList(page)
+        if (articleList is WanResult.Success)
+            mArticles.value = articleList.data.datas
     }
 }

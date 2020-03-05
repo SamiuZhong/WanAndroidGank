@@ -20,19 +20,23 @@ class WanNavFragment : BaseFragment() {
 
     private val homeFragment by lazy { WanHomeFragment() }
     private val squareFragment by lazy { WanSquareFragment() }
-    private val articleFragment by lazy { WanArticleFragment() }
+    private val recentProjectFragment by lazy { RecentProjectFragment() }
     private val systemFragment by lazy { WanSystemFragment() }
     private val navigationFragment by lazy { WanNavigationFragment() }
+    private val wxArticleFragment by lazy { WanWxArticleFragment() }
     private val fragmentList = ArrayList<Fragment>()
-    private val titleList = arrayOf(HOME_PAGE, SQUARE, WX_ARTICLE, SYSTEM, NAVIGATION)
+    private val titleList = arrayOf(
+        HOME_PAGE, SQUARE, RECENT_PROJECT, SYSTEM, NAVIGATION, WX_ARTICLE
+    )
     private var currentTitle = titleList[0]
 
     init {
         fragmentList.add(homeFragment)
         fragmentList.add(squareFragment)
-        fragmentList.add(articleFragment)
+        fragmentList.add(recentProjectFragment)
         fragmentList.add(systemFragment)
         fragmentList.add(navigationFragment)
+        fragmentList.add(wxArticleFragment)
     }
 
     override fun initView() {
@@ -47,13 +51,13 @@ class WanNavFragment : BaseFragment() {
         //tabLayout
         TabLayoutMediator(tab, pager) { tab, position -> tab.text = titleList[position] }.attach()
         //smartRefreshLayout
-        homeRefreshLayout.setOnRefreshListener {
+        home_refresh_layout.setOnRefreshListener {
             LiveEventBus
                 .get(currentTitle, Int::class.java)
                 .post(-1)
             it.finishRefresh(1500)
         }
-        homeRefreshLayout.setOnLoadMoreListener {
+        home_refresh_layout.setOnLoadMoreListener {
             LiveEventBus
                 .get(currentTitle, Int::class.java)
                 .post(1)

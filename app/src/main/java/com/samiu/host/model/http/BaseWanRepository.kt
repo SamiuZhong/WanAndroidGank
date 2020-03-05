@@ -10,7 +10,7 @@ import java.io.IOException
  */
 open class BaseWanRepository {
 
-    suspend fun <T : Any> safeApiCall(
+    suspend fun <T : Any> readyCall(
         call: suspend () -> WanResult<T>,
         errorMessage: String
     ): WanResult<T> {
@@ -21,7 +21,7 @@ open class BaseWanRepository {
         }
     }
 
-    suspend fun <T : Any> executeResponse(
+    suspend fun <T : Any> call(
         response: WanResponse<T>,
         successBlock: (suspend CoroutineScope.() -> Unit)? = null,
         errorBlock: (suspend CoroutineScope.() -> Unit)? = null

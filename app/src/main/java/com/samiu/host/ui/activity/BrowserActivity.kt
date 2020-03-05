@@ -19,43 +19,43 @@ class BrowserActivity : BaseActivity() {
     override fun getLayoutResId() = R.layout.activity_browser
 
     override fun initView() {
-        toolBar.title = getString(R.string.is_loading)
-        toolBar.navigationIcon = getDrawable(R.drawable.arrow_back)
+        tool_bar.title = getString(R.string.is_loading)
+        tool_bar.navigationIcon = getDrawable(R.drawable.arrow_back)
         initWebView()
     }
 
     override fun initData() {
-        toolBar.setNavigationOnClickListener { onBackPressed() }
+        tool_bar.setNavigationOnClickListener { onBackPressed() }
         intent.getStringExtra(URL)?.let {
-            webView.loadUrl(it)
+            web_view.loadUrl(it)
         }
     }
 
     private fun initWebView() {
-        progressBar.progressDrawable = getDrawable(R.drawable.color_progressbar)
-        webView.run {
+        progress_bar.progressDrawable = getDrawable(R.drawable.color_progressbar)
+        web_view.run {
             webViewClient = object : WebViewClient() {
 
                 override fun onPageStarted(p0: WebView?, p1: String?, p2: Bitmap?) {
                     super.onPageStarted(p0, p1, p2)
-                    progressBar.visibility = View.VISIBLE
+                    progress_bar.visibility = View.VISIBLE
                 }
 
                 override fun onPageFinished(p0: WebView?, p1: String?) {
                     super.onPageFinished(p0, p1)
-                    progressBar.visibility = View.GONE
+                    progress_bar.visibility = View.GONE
                 }
             }
             webChromeClient = object : WebChromeClient() {
                 override fun onProgressChanged(p0: WebView?, p1: Int) {
                     super.onProgressChanged(p0, p1)
-                    progressBar.progress = p1
+                    progress_bar.progress = p1
                     Log.e("browser", p1.toString())
                 }
 
                 override fun onReceivedTitle(p0: WebView?, p1: String?) {
                     super.onReceivedTitle(p0, p1)
-                    p1?.let { toolBar.title = p1 }
+                    p1?.let { tool_bar.title = p1 }
                 }
 
             }
@@ -63,7 +63,7 @@ class BrowserActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        if (webView.canGoBack()) webView.goBack()
+        if (web_view.canGoBack()) web_view.goBack()
         super.onBackPressed()
     }
 }

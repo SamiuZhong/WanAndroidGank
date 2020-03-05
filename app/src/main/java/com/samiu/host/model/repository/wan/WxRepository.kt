@@ -1,29 +1,29 @@
 package com.samiu.host.model.repository.wan
 
 import com.samiu.host.global.NETWORK_ERROR
+import com.samiu.host.model.bean.wan.ArticleList
+import com.samiu.host.model.bean.wan.SystemParent
 import com.samiu.host.model.http.BaseWanRepository
 import com.samiu.host.model.http.WanClient
 import com.samiu.host.model.http.WanResult
-import com.samiu.host.model.bean.wan.ArticleList
-import com.samiu.host.model.bean.wan.Banner
 
 /**
- * @author Samiu 2020/3/3
+ * @author Samiu 2020/3/5
  */
-class HomeRepository : BaseWanRepository() {
+class WxRepository : BaseWanRepository() {
 
-    suspend fun getBanners(): WanResult<List<Banner>> {
+    suspend fun getWxAccount(): WanResult<List<SystemParent>> {
         return readyCall(
             call = {
-                call(WanClient.service.getBanner())
+                call(WanClient.service.getBlogType())
             }, errorMessage = NETWORK_ERROR
         )
     }
 
-    suspend fun getArticlesList(page: Int): WanResult<ArticleList> {
+    suspend fun getWxArticle(id: Int, page: Int): WanResult<ArticleList> {
         return readyCall(
             call = {
-                call(WanClient.service.getHomeArticles(page))
+                call(WanClient.service.getBlogArticle(id, page))
             }, errorMessage = NETWORK_ERROR
         )
     }

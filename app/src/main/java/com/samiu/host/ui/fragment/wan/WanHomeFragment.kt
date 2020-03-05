@@ -10,7 +10,7 @@ import com.samiu.host.global.toBrowser
 import com.samiu.host.ui.adapter.ImageBannerAdapter
 import com.samiu.host.model.bean.wan.Banner
 import com.samiu.host.ui.adapter.WanHomeAdapter
-import com.samiu.host.ui.viewmodel.wan.HomeViewModel
+import com.samiu.host.viewmodel.wan.HomeViewModel
 import com.youth.banner.listener.OnBannerListener
 import kotlinx.android.synthetic.main.fragment_wan_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -36,8 +36,8 @@ class WanHomeFragment : BaseVMFragment<HomeViewModel>() {
     override fun initData() {
         mViewModel.run {
             getBanners()
-            refreshData(-1)
         }
+        refreshData(-1)
     }
 
     private fun refreshData(type: Int) {
@@ -63,8 +63,8 @@ class WanHomeFragment : BaseVMFragment<HomeViewModel>() {
 
     private fun initRecyclerView() {
         adapter = WanHomeAdapter(context)
-        homeRecyclerView.layoutManager = LinearLayoutManager(context)
-        homeRecyclerView.adapter = adapter
+        home_ecycler_view.layoutManager = LinearLayoutManager(context)
+        home_ecycler_view.adapter = adapter
         adapter.setOnItemClick { url -> toBrowser(this, url) }
     }
 

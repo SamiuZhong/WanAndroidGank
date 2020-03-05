@@ -18,15 +18,14 @@ class WanHomeAdapter(context: Context?) : BaseSingleRecyclerAdapter<Article>(con
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is WanHomeHolder) {
+        if (holder is WanHomeHolder)
             with(holder.itemView) {
                 val data = list[position]
-                itemTitle.text = data.title
-                itemNiceData.text = data.niceDate
-                itemAuthor.text = data.shareUser
+                item_title.text = data.title
+                item_nice_data.text = data.niceDate
+                item_author.text = data.shareUser
                 setOnClickListener { listener(data.link) }
             }
-        }
     }
 
     private lateinit var listener: (String) -> Unit
