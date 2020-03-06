@@ -1,4 +1,4 @@
-package com.samiu.host
+package com.samiu.host.ui.activity
 
 import android.view.MotionEvent
 import android.view.View
@@ -7,6 +7,7 @@ import android.view.animation.AnimationUtils
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.samiu.base.ui.BaseActivity
+import com.samiu.host.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -40,7 +41,9 @@ class MainActivity : BaseActivity() {
 
     private fun showBottomNav(show: Boolean) {
         if (show && !bottom_nav.isShown) {        //show
-            val inAnim = AnimationUtils.loadAnimation(this, R.anim.in_bottom)
+            val inAnim = AnimationUtils.loadAnimation(this,
+                R.anim.in_bottom
+            )
             bottom_nav.startAnimation(inAnim)
             inAnim.setAnimationListener(object : Animation.AnimationListener {
                 override fun onAnimationRepeat(animation: Animation?) = Unit
@@ -50,7 +53,9 @@ class MainActivity : BaseActivity() {
                 }
             })
         } else if (!show && bottom_nav.isShown) {  //hide
-            val outAnim = AnimationUtils.loadAnimation(this, R.anim.out_bottom)
+            val outAnim = AnimationUtils.loadAnimation(this,
+                R.anim.out_bottom
+            )
             bottom_nav.startAnimation(outAnim)
             bottom_nav.visibility = View.GONE
         }

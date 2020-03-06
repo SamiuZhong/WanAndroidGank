@@ -26,7 +26,7 @@ class WanNavFragment : BaseFragment() {
     private val wxArticleFragment by lazy { WanWxArticleFragment() }
     private val fragmentList = ArrayList<Fragment>()
     private val titleList = arrayOf(
-        HOME_PAGE, SQUARE, RECENT_PROJECT, SYSTEM, NAVIGATION, WX_ARTICLE
+        HOME_PAGE, SQUARE, RECENT_PROJECT, SYSTEM, WX_ARTICLE, NAVIGATION
     )
     private var currentTitle = titleList[0]
 
@@ -35,8 +35,8 @@ class WanNavFragment : BaseFragment() {
         fragmentList.add(squareFragment)
         fragmentList.add(recentProjectFragment)
         fragmentList.add(systemFragment)
-        fragmentList.add(navigationFragment)
         fragmentList.add(wxArticleFragment)
+        fragmentList.add(navigationFragment)
     }
 
     override fun initView() {

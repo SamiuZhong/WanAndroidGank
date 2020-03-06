@@ -7,7 +7,7 @@ import com.samiu.base.ui.BaseVMFragment
 import com.samiu.host.R
 import com.samiu.host.global.SQUARE
 import com.samiu.host.global.toBrowser
-import com.samiu.host.ui.adapter.WanHomeAdapter
+import com.samiu.host.ui.adapter.WanArticleAdapter
 import com.samiu.host.viewmodel.wan.WanSquareViewModel
 import kotlinx.android.synthetic.main.fragment_wan_square.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -21,7 +21,7 @@ class WanSquareFragment : BaseVMFragment<WanSquareViewModel>() {
 
     private var currentPage by Delegates.notNull<Int>()
     private val mViewModel: WanSquareViewModel by viewModel()
-    private lateinit var adapter: WanHomeAdapter
+    private lateinit var adapter: WanArticleAdapter
 
     override fun initView() {
         initRecyclerView()
@@ -51,7 +51,7 @@ class WanSquareFragment : BaseVMFragment<WanSquareViewModel>() {
     }
 
     private fun initRecyclerView() {
-        adapter = WanHomeAdapter(context)
+        adapter = WanArticleAdapter(context)
         square_recycler_view.layoutManager = LinearLayoutManager(context)
         square_recycler_view.adapter = adapter
         adapter.setOnItemClick { url -> toBrowser(this, url) }

@@ -9,14 +9,14 @@ import androidx.fragment.app.Fragment
 /**
  * @author Samiu 2020/3/2
  */
-abstract class BaseVMFragment<VM: BaseViewModel> :Fragment(){
+abstract class BaseVMFragment<VM : BaseViewModel> : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(getLayoutResId(),container,false)
+        return inflater.inflate(getLayoutResId(), container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -4,6 +4,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.samiu.base.ui.BaseVMFragment
 import com.samiu.host.R
+import com.samiu.host.global.toRecycler
 import com.samiu.host.ui.adapter.WanSystemAdapter
 import com.samiu.host.viewmodel.wan.WanSystemViewModel
 import kotlinx.android.synthetic.main.fragment_wan_system.*
@@ -31,5 +32,6 @@ class WanSystemFragment : BaseVMFragment<WanSystemViewModel>() {
         adapter = WanSystemAdapter(context)
         system_rv.layoutManager = LinearLayoutManager(context)
         system_rv.adapter = adapter
+        adapter.setOnItemClick { cid,title -> toRecycler(this, cid,title) }
     }
 }

@@ -10,9 +10,10 @@ abstract class BaseVMActivity<VM : BaseViewModel> : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        startObserve()
         setContentView(getLayoutResId())
+        initView()
         initData()
+        startObserve()
     }
 
     open fun getLayoutResId(): Int = 0

@@ -7,9 +7,9 @@ import com.samiu.base.ui.BaseVMFragment
 import com.samiu.host.R
 import com.samiu.host.global.HOME_PAGE
 import com.samiu.host.global.toBrowser
-import com.samiu.host.ui.adapter.ImageBannerAdapter
+import com.samiu.host.ui.adapter.WanBannerAdapter
 import com.samiu.host.model.bean.wan.Banner
-import com.samiu.host.ui.adapter.WanHomeAdapter
+import com.samiu.host.ui.adapter.WanArticleAdapter
 import com.samiu.host.viewmodel.wan.WanHomeViewModel
 import com.youth.banner.listener.OnBannerListener
 import kotlinx.android.synthetic.main.fragment_wan_home.*
@@ -24,7 +24,7 @@ class WanHomeFragment : BaseVMFragment<WanHomeViewModel>() {
 
     private var currentPage by Delegates.notNull<Int>()
     private val mViewModelWan: WanHomeViewModel by viewModel()
-    private lateinit var adapter: WanHomeAdapter
+    private lateinit var adapter: WanArticleAdapter
 
     override fun initView() {
         initRecyclerView()
@@ -60,14 +60,14 @@ class WanHomeFragment : BaseVMFragment<WanHomeViewModel>() {
     }
 
     private fun initRecyclerView() {
-        adapter = WanHomeAdapter(context)
+        adapter = WanArticleAdapter(context)
         home_recycler_view.layoutManager = LinearLayoutManager(context)
         home_recycler_view.adapter = adapter
         adapter.setOnItemClick { url -> toBrowser(this, url) }
     }
 
     private fun setBanner(bannerList: List<Banner>) {
-        banner.adapter = ImageBannerAdapter(bannerList)
+        banner.adapter = WanBannerAdapter(bannerList)
         banner.setOnBannerListener(object : OnBannerListener<Banner> {
             override fun onBannerChanged(position: Int) = Unit
             override fun OnBannerClick(data: Banner?, position: Int) {

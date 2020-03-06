@@ -11,7 +11,7 @@ import com.youth.banner.adapter.BannerAdapter
 /**
  * @author Samiu 2020/3/3
  */
-class ImageBannerAdapter(var list: List<Banner>) : BannerAdapter<Banner, ImageBannerHolder>(list) {
+class WanBannerAdapter(var list: List<Banner>) : BannerAdapter<Banner, ImageBannerHolder>(list) {
     private lateinit var context: Context
 
     override fun onCreateHolder(parent: ViewGroup?, viewType: Int): ImageBannerHolder {

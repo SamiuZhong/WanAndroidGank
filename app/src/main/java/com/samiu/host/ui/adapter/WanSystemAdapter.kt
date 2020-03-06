@@ -34,11 +34,17 @@ class WanSystemAdapter(context: Context?) : BaseSingleRecyclerAdapter<SystemPare
                         background =
                             context?.resources?.getDrawable(R.drawable.shape_10_line_3066be, null)
                         text = item.name
+                        setOnClickListener { listener(item.id, item.name) }
                     }
                     system_flow_layout.addView(textView)
                 }
             }
         }
+    }
+
+    private lateinit var listener: (Int, String) -> Unit
+    fun setOnItemClick(listener: (Int, String) -> Unit) {
+        this.listener = listener
     }
 }
 

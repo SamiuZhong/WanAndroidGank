@@ -7,7 +7,7 @@ import com.samiu.base.ui.BaseVMFragment
 import com.samiu.host.R
 import com.samiu.host.global.RECENT_PROJECT
 import com.samiu.host.global.toBrowser
-import com.samiu.host.ui.adapter.ProjectAdapter
+import com.samiu.host.ui.adapter.WanProjectAdapter
 import com.samiu.host.viewmodel.wan.WanProjectViewModel
 import kotlinx.android.synthetic.main.fragment_wan_recent_project.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -20,7 +20,7 @@ class WanRecentProjectFragment : BaseVMFragment<WanProjectViewModel>() {
     override fun getLayoutResId() = R.layout.fragment_wan_recent_project
 
     private val mViewModelWan: WanProjectViewModel by viewModel()
-    private lateinit var adapter: ProjectAdapter
+    private lateinit var adapterWan: WanProjectAdapter
     private var currentPage by Delegates.notNull<Int>()
 
     override fun initView() {
@@ -38,7 +38,7 @@ class WanRecentProjectFragment : BaseVMFragment<WanProjectViewModel>() {
         when (type) {
             -1 -> { //onRefresh
                 currentPage = 0
-                adapter.clearAll()
+                adapterWan.clearAll()
                 mViewModelWan.getRecentProjects(currentPage)
             }
             1 -> {  //onLoadMore
@@ -49,14 +49,14 @@ class WanRecentProjectFragment : BaseVMFragment<WanProjectViewModel>() {
     }
 
     override fun startObserve() = mViewModelWan.run {
-        recentProjects.observe(this@WanRecentProjectFragment, Observer { adapter.addAll(it) })
+        recentProjects.observe(this@WanRecentProjectFragment, Observer { adapterWan.addAll(it) })
     }
 
     private fun initRecyclerView() {
-        adapter = ProjectAdapter(context)
+        adapterWan = WanProjectAdapter(context)
         recent_project_rv.layoutManager = LinearLayoutManager(context)
-        recent_project_rv.adapter = adapter
-        adapter.setOnItemClick { url -> toBrowser(this, url) }
+        recent_project_rv.adapter = adapterWan
+        adapterWan.setOnItemClick { url -> toBrowser(this, url) }
     }
 }
 
