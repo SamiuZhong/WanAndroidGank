@@ -1,7 +1,5 @@
 package com.samiu.host.model.bean.wan
 
-import com.samiu.host.model.bean.wan.SystemChild
-
 /**
  * @author Samiu 2020/3/3
  */

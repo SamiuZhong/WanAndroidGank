@@ -10,28 +10,20 @@ import com.samiu.host.model.http.WanResult
 /**
  * @author Samiu 2020/3/5
  */
-class ProjectRepository : BaseWanRepository() {
+class WanWxRepository : BaseWanRepository() {
 
-    suspend fun getRecentProjects(page: Int): WanResult<ArticleList> {
+    suspend fun getWxAccount(): WanResult<List<SystemParent>> {
         return readyCall(
             call = {
-                call(WanClient.service.getLastedProject(page))
+                call(WanClient.service.getBlogType())
             }, errorMessage = NETWORK_ERROR
         )
     }
 
-    suspend fun getProjectType(): WanResult<List<SystemParent>> {
+    suspend fun getWxArticle(id: Int, page: Int): WanResult<ArticleList> {
         return readyCall(
             call = {
-                call(WanClient.service.getProjectType())
-            }, errorMessage = NETWORK_ERROR
-        )
-    }
-
-    suspend fun getAllProjects(page: Int, cid: Int): WanResult<ArticleList> {
-        return readyCall(
-            call = {
-                call(WanClient.service.getProjectTypeDetail(page, cid))
+                call(WanClient.service.getBlogArticle(id, page))
             }, errorMessage = NETWORK_ERROR
         )
     }

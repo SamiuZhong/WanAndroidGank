@@ -8,7 +8,7 @@ import com.samiu.host.R
 import com.samiu.host.global.RECENT_PROJECT
 import com.samiu.host.global.toBrowser
 import com.samiu.host.ui.adapter.ProjectAdapter
-import com.samiu.host.viewmodel.wan.ProjectViewModel
+import com.samiu.host.viewmodel.wan.WanProjectViewModel
 import kotlinx.android.synthetic.main.fragment_wan_recent_project.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.properties.Delegates
@@ -16,10 +16,10 @@ import kotlin.properties.Delegates
 /**
  * @author Samiu 2020/3/5
  */
-class RecentProjectFragment : BaseVMFragment<ProjectViewModel>() {
+class WanRecentProjectFragment : BaseVMFragment<WanProjectViewModel>() {
     override fun getLayoutResId() = R.layout.fragment_wan_recent_project
 
-    private val mViewModel: ProjectViewModel by viewModel()
+    private val mViewModelWan: WanProjectViewModel by viewModel()
     private lateinit var adapter: ProjectAdapter
     private var currentPage by Delegates.notNull<Int>()
 
@@ -39,19 +39,17 @@ class RecentProjectFragment : BaseVMFragment<ProjectViewModel>() {
             -1 -> { //onRefresh
                 currentPage = 0
                 adapter.clearAll()
-                mViewModel.getRecentProjects(currentPage)
+                mViewModelWan.getRecentProjects(currentPage)
             }
             1 -> {  //onLoadMore
                 currentPage += 1
-                mViewModel.getRecentProjects(currentPage)
+                mViewModelWan.getRecentProjects(currentPage)
             }
         }
     }
 
-    override fun startObserve() {
-        mViewModel.run {
-            recentProjects.observe(this@RecentProjectFragment, Observer { adapter.addAll(it) })
-        }
+    override fun startObserve() = mViewModelWan.run {
+        recentProjects.observe(this@WanRecentProjectFragment, Observer { adapter.addAll(it) })
     }
 
     private fun initRecyclerView() {

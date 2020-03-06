@@ -10,7 +10,7 @@ import com.samiu.host.model.bean.wan.Banner
 /**
  * @author Samiu 2020/3/3
  */
-class HomeRepository : BaseWanRepository() {
+class WanHomeRepository : BaseWanRepository() {
 
     suspend fun getBanners(): WanResult<List<Banner>> {
         return readyCall(

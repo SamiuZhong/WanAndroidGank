@@ -7,7 +7,7 @@ import com.samiu.host.model.http.WanClient
 /**
  * @author Samiu 2020/3/5
  */
-class SquareRepository : BaseWanRepository() {
+class WanSquareRepository : BaseWanRepository() {
 
     suspend fun getSquareArticle(page: Int) = readyCall(
         call = {

@@ -10,7 +10,7 @@ import com.samiu.host.global.toBrowser
 import com.samiu.host.ui.adapter.ImageBannerAdapter
 import com.samiu.host.model.bean.wan.Banner
 import com.samiu.host.ui.adapter.WanHomeAdapter
-import com.samiu.host.viewmodel.wan.HomeViewModel
+import com.samiu.host.viewmodel.wan.WanHomeViewModel
 import com.youth.banner.listener.OnBannerListener
 import kotlinx.android.synthetic.main.fragment_wan_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -19,11 +19,11 @@ import kotlin.properties.Delegates
 /**
  * @author Samiu 2020/3/2
  */
-class WanHomeFragment : BaseVMFragment<HomeViewModel>() {
+class WanHomeFragment : BaseVMFragment<WanHomeViewModel>() {
     override fun getLayoutResId() = R.layout.fragment_wan_home
 
     private var currentPage by Delegates.notNull<Int>()
-    private val mViewModel: HomeViewModel by viewModel()
+    private val mViewModelWan: WanHomeViewModel by viewModel()
     private lateinit var adapter: WanHomeAdapter
 
     override fun initView() {
@@ -34,7 +34,7 @@ class WanHomeFragment : BaseVMFragment<HomeViewModel>() {
     }
 
     override fun initData() {
-        mViewModel.run {
+        mViewModelWan.run {
             getBanners()
         }
         refreshData(-1)
@@ -45,20 +45,18 @@ class WanHomeFragment : BaseVMFragment<HomeViewModel>() {
             -1 -> { //onRefresh
                 currentPage = 0
                 adapter.clearAll()
-                mViewModel.getArticles(currentPage)
+                mViewModelWan.getArticles(currentPage)
             }
             1 -> {  //onLoadMore
                 currentPage += 1
-                mViewModel.getArticles(currentPage)
+                mViewModelWan.getArticles(currentPage)
             }
         }
     }
 
-    override fun startObserve() {
-        mViewModel.run {
-            mBanners.observe(this@WanHomeFragment, Observer { setBanner(it) })
-            mArticles.observe(this@WanHomeFragment, Observer { adapter.addAll(it) })
-        }
+    override fun startObserve() = mViewModelWan.run {
+        mBanners.observe(this@WanHomeFragment, Observer { setBanner(it) })
+        mArticles.observe(this@WanHomeFragment, Observer { adapter.addAll(it) })
     }
 
     private fun initRecyclerView() {

@@ -20,7 +20,7 @@ class WanNavFragment : BaseFragment() {
 
     private val homeFragment by lazy { WanHomeFragment() }
     private val squareFragment by lazy { WanSquareFragment() }
-    private val recentProjectFragment by lazy { RecentProjectFragment() }
+    private val recentProjectFragment by lazy { WanRecentProjectFragment() }
     private val systemFragment by lazy { WanSystemFragment() }
     private val navigationFragment by lazy { WanNavigationFragment() }
     private val wxArticleFragment by lazy { WanWxArticleFragment() }
@@ -46,6 +46,7 @@ class WanNavFragment : BaseFragment() {
         pager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 currentTitle = titleList[position]
+                home_refresh_layout.isEnabled = position != 3
             }
         })
         //tabLayout
