@@ -63,8 +63,8 @@ class WanHomeFragment : BaseVMFragment<HomeViewModel>() {
 
     private fun initRecyclerView() {
         adapter = WanHomeAdapter(context)
-        home_ecycler_view.layoutManager = LinearLayoutManager(context)
-        home_ecycler_view.adapter = adapter
+        home_recycler_view.layoutManager = LinearLayoutManager(context)
+        home_recycler_view.adapter = adapter
         adapter.setOnItemClick { url -> toBrowser(this, url) }
     }
 
