@@ -28,13 +28,15 @@ class WanWxArticleFragment : BaseVMFragment<WanWxViewModel>() {
 
     override fun initView() {
         initRecycler()
-        wx_refresh.setOnRefreshListener {
-            refreshData(REFRESH)
-            wx_refresh.finishRefresh(1500)
-        }
-        wx_refresh.setOnLoadMoreListener {
-            refreshData(LOAD_MORE)
-            wx_refresh.finishLoadMore(2000)
+        with(wx_refresh){
+            setOnRefreshListener {
+                refreshData(REFRESH)
+                finishRefresh(1500)
+            }
+            setOnLoadMoreListener {
+                refreshData(LOAD_MORE)
+                finishLoadMore(2000)
+            }
         }
     }
 

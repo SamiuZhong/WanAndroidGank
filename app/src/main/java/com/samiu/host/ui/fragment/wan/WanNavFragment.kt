@@ -50,17 +50,19 @@ class WanNavFragment : BaseFragment() {
         //tabLayout
         TabLayoutMediator(tab, pager) { tab, position -> tab.text = titleList[position] }.attach()
         //smartRefreshLayout
-        home_refresh_layout.setOnRefreshListener {
-            LiveEventBus
-                .get(currentTitle, Int::class.java)
-                .post(REFRESH)
-            it.finishRefresh(1500)
-        }
-        home_refresh_layout.setOnLoadMoreListener {
-            LiveEventBus
-                .get(currentTitle, Int::class.java)
-                .post(LOAD_MORE)
-            it.finishLoadMore(2000)
+        with(home_refresh_layout) {
+            setOnRefreshListener {
+                LiveEventBus
+                    .get(currentTitle, Int::class.java)
+                    .post(REFRESH)
+                finishRefresh(1500)
+            }
+            setOnLoadMoreListener {
+                LiveEventBus
+                    .get(currentTitle, Int::class.java)
+                    .post(LOAD_MORE)
+                finishLoadMore(2000)
+            }
         }
     }
 

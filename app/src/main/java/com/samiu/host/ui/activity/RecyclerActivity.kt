@@ -33,16 +33,18 @@ class RecyclerActivity : BaseVMActivity<RecyclerViewModel>() {
         //recycler
         initRecyclerView()
         //refresh
-        recycler_refresh.setOnRefreshListener {
-            currentPage = 0
-            adapter.clearAll()
-            mViewModel.getSystemArticles(currentPage, cid)
-            it.finishRefresh(1500)
-        }
-        recycler_refresh.setOnLoadMoreListener {
-            currentPage += 1
-            mViewModel.getSystemArticles(currentPage, cid)
-            it.finishLoadMore(2000)
+        with(recycler_refresh) {
+            setOnRefreshListener {
+                currentPage = 0
+                adapter.clearAll()
+                mViewModel.getSystemArticles(currentPage, cid)
+                finishRefresh(1500)
+            }
+            setOnLoadMoreListener {
+                currentPage += 1
+                mViewModel.getSystemArticles(currentPage, cid)
+                finishLoadMore(2000)
+            }
         }
     }
 
@@ -58,7 +60,7 @@ class RecyclerActivity : BaseVMActivity<RecyclerViewModel>() {
         adapter.setOnItemClick { url -> toBrowser(this, url) }
     }
 
-    override fun startObserve()=mViewModel.run {
+    override fun startObserve() = mViewModel.run {
         mSystemArticles.observe(this@RecyclerActivity, Observer { adapter.addAll(it) })
     }
 }

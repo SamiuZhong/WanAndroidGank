@@ -49,7 +49,7 @@ class WanRecentProjectFragment : BaseVMFragment<WanProjectViewModel>() {
     }
 
     override fun startObserve() = mViewModelWan.run {
-        recentProjects.observe(this@WanRecentProjectFragment, Observer { adapterWan.addAll(it) })
+        mRecentProjects.observe(this@WanRecentProjectFragment, Observer { adapterWan.addAll(it) })
     }
 
     private fun initRecyclerView() {

@@ -39,13 +39,15 @@ class WanSearchFragment : BaseVMFragment<WanSearchViewModel>() {
             refreshData(REFRESH)
         }
         //refresh layout
-        search_refresh.setOnRefreshListener {
-            refreshData(REFRESH)
-            search_refresh.finishRefresh(1500)
-        }
-        search_refresh.setOnLoadMoreListener {
-            refreshData(LOAD_MORE)
-            search_refresh.finishLoadMore(2000)
+        with(search_refresh) {
+            setOnRefreshListener {
+                refreshData(REFRESH)
+                finishRefresh(1500)
+            }
+            setOnLoadMoreListener {
+                refreshData(LOAD_MORE)
+                finishLoadMore(2000)
+            }
         }
         //clear
         search_back_icon.setOnClickListener { adapter.clearAll() }
