@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.samiu.base.ui.BaseVMFragment
 import com.samiu.host.R
+import com.samiu.host.global.LOAD_MORE
+import com.samiu.host.global.REFRESH
 import com.samiu.host.global.SQUARE
 import com.samiu.host.global.toBrowser
 import com.samiu.host.ui.adapter.WanArticleAdapter
@@ -33,12 +35,12 @@ class WanSquareFragment : BaseVMFragment<WanSquareViewModel>() {
 
     private fun refreshData(type: Int) {
         when (type) {
-            -1 -> { //onRefresh
+            REFRESH -> {
                 currentPage = 0
                 adapter.clearAll()
                 mViewModel.getArticles(currentPage)
             }
-            1 -> {  //onLoadMore
+            LOAD_MORE -> {
                 currentPage += 1
                 mViewModel.getArticles(currentPage)
             }

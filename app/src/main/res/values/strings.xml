@@ -11,4 +11,7 @@
     <string name="system">体系</string>
     <string name="navigation">导航</string>
     <string name="is_loading">正在加载</string>
+    <string name="input_search_key_words">请输入搜索关键字</string>
+    <string name="no_search_resut">没有搜到东西哦~</string>
+    <string name="hang_out">随便看看</string>
 </resources>

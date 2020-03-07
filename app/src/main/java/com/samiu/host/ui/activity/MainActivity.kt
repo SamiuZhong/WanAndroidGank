@@ -32,32 +32,40 @@ class MainActivity : BaseActivity() {
         if (event?.action == MotionEvent.ACTION_UP) {
             y2 = event.rawY
             if (y2 - y1 > 100)
-                showBottomNav(true)
+                showBottomNav(show = true, atOnce = true)
             else if (y1 - y2 > 100)
-                showBottomNav(false)
+                showBottomNav(show = false, atOnce = true)
         }
         return super.dispatchTouchEvent(event)
     }
 
-    private fun showBottomNav(show: Boolean) {
-        if (show && !bottom_nav.isShown) {        //show
-            val inAnim = AnimationUtils.loadAnimation(this,
-                R.anim.in_bottom
-            )
-            bottom_nav.startAnimation(inAnim)
-            inAnim.setAnimationListener(object : Animation.AnimationListener {
-                override fun onAnimationRepeat(animation: Animation?) = Unit
-                override fun onAnimationEnd(animation: Animation?) = Unit
-                override fun onAnimationStart(animation: Animation?) {
-                    bottom_nav.visibility = View.VISIBLE
-                }
-            })
-        } else if (!show && bottom_nav.isShown) {  //hide
-            val outAnim = AnimationUtils.loadAnimation(this,
-                R.anim.out_bottom
-            )
-            bottom_nav.startAnimation(outAnim)
-            bottom_nav.visibility = View.GONE
-        }
+    fun showBottomNav(show: Boolean, atOnce: Boolean) {
+        if (atOnce) {   //no animation
+            if (show && !bottom_nav.isShown)
+                bottom_nav.visibility = View.VISIBLE
+            else if (!show && bottom_nav.isShown)
+                bottom_nav.visibility = View.GONE
+        } else  //with animation
+            if (show && !bottom_nav.isShown) {        //show
+                val inAnim = AnimationUtils.loadAnimation(
+                    this,
+                    R.anim.in_bottom
+                )
+                bottom_nav.startAnimation(inAnim)
+                inAnim.setAnimationListener(object : Animation.AnimationListener {
+                    override fun onAnimationRepeat(animation: Animation?) = Unit
+                    override fun onAnimationEnd(animation: Animation?) = Unit
+                    override fun onAnimationStart(animation: Animation?) {
+                        bottom_nav.visibility = View.VISIBLE
+                    }
+                })
+            } else if (!show && bottom_nav.isShown) {  //hide
+                val outAnim = AnimationUtils.loadAnimation(
+                    this,
+                    R.anim.out_bottom
+                )
+                bottom_nav.startAnimation(outAnim)
+                bottom_nav.visibility = View.GONE
+            }
     }
 }

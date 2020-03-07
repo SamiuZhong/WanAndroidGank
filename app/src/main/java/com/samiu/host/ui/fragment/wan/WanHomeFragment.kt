@@ -39,7 +39,7 @@ class WanHomeFragment : BaseVMFragment<WanHomeViewModel>() {
         mViewModel.run {
             getBanners()
         }
-        refreshData(-1)
+        refreshData(REFRESH)
     }
 
     private fun refreshData(type: Int) {

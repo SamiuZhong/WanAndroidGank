@@ -22,7 +22,6 @@ class WanNavFragment : BaseFragment() {
     private val squareFragment by lazy { WanSquareFragment() }
     private val recentProjectFragment by lazy { WanRecentProjectFragment() }
     private val systemFragment by lazy { WanSystemFragment() }
-    private val navigationFragment by lazy { WanNavigationFragment() }
     private val wxArticleFragment by lazy { WanWxArticleFragment() }
     private val fragmentList = ArrayList<Fragment>()
     private val titleList = arrayOf(
@@ -36,7 +35,6 @@ class WanNavFragment : BaseFragment() {
         fragmentList.add(recentProjectFragment)
         fragmentList.add(systemFragment)
         fragmentList.add(wxArticleFragment)
-        fragmentList.add(navigationFragment)
     }
 
     override fun initView() {
@@ -55,13 +53,13 @@ class WanNavFragment : BaseFragment() {
         home_refresh_layout.setOnRefreshListener {
             LiveEventBus
                 .get(currentTitle, Int::class.java)
-                .post(-1)
+                .post(REFRESH)
             it.finishRefresh(1500)
         }
         home_refresh_layout.setOnLoadMoreListener {
             LiveEventBus
                 .get(currentTitle, Int::class.java)
-                .post(1)
+                .post(LOAD_MORE)
             it.finishLoadMore(2000)
         }
     }

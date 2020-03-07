@@ -32,7 +32,7 @@ class WanSystemAdapter(context: Context?) : BaseSingleRecyclerAdapter<SystemPare
                         )
                         setPadding(10, 4, 10, 4)
                         background =
-                            context?.resources?.getDrawable(R.drawable.shape_10_line_3066be, null)
+                            context?.resources?.getDrawable(R.drawable.shape_100_line_3066be, null)
                         text = item.name
                         setOnClickListener { listener(item.id, item.name) }
                     }

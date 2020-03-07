@@ -17,6 +17,7 @@ val wanViewModelModule = module {
     viewModel { WanSystemViewModel(get()) }
     viewModel { RecyclerViewModel(get()) }
     viewModel { WanWxViewModel(get()) }
+    viewModel { WanSearchViewModel(get()) }
 }
 
 val wanRepositoryModule = module {
@@ -27,6 +28,7 @@ val wanRepositoryModule = module {
     single { WanProjectRepository() }
     single { WanSystemRepository() }
     single { WanWxRepository() }
+    single { WanSearchRepository() }
 }
 
 val wanModule = listOf(

@@ -2,6 +2,7 @@
 <resources>
     <color name="default_text_color_252F3B">#252F3B</color>
     <color name="default_prompt_text_color_9496A4">#9496A4</color>
+    <color name="default_hint_text_color">#87918F</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
