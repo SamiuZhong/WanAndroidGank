@@ -13,3 +13,5 @@ const val SYSTEM = "体系"
 const val NAVIGATION = "导航"
 const val RECENT_PROJECT = "最新项目"
 const val NETWORK_ERROR = "请检查网络"
+const val REFRESH = -1
+const val LOAD_MORE = 1

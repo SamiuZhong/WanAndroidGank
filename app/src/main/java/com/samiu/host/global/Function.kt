@@ -24,9 +24,3 @@ fun toRecycler(fragment: Fragment, cid: Int, title: String) =
         putExtra(CID, cid)
         putExtra(TITLE, title)
     })
-
-
-
-
-
-

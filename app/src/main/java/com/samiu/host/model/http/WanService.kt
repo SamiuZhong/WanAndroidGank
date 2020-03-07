@@ -30,7 +30,7 @@ interface WanService {
     suspend fun getBlogType(): WanResponse<List<SystemParent>>
 
     @GET("/wxarticle/list/{id}/{page}/json")
-    fun getBlogArticle(@Path("id") id: Int, @Path("page") page: Int): WanResponse<ArticleList>
+    suspend fun getBlogArticle(@Path("id") id: Int, @Path("page") page: Int): WanResponse<ArticleList>
 
     @GET("/project/list/{page}/json")
     suspend fun getProjectTypeDetail(@Path("page") page: Int, @Query("cid") cid: Int): WanResponse<ArticleList>

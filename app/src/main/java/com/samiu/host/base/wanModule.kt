@@ -1,10 +1,7 @@
 package com.samiu.host.base
 
 import com.samiu.host.model.http.WanClient
-import com.samiu.host.model.repository.wan.WanHomeRepository
-import com.samiu.host.model.repository.wan.WanProjectRepository
-import com.samiu.host.model.repository.wan.WanSquareRepository
-import com.samiu.host.model.repository.wan.WanSystemRepository
+import com.samiu.host.model.repository.wan.*
 import com.samiu.host.viewmodel.wan.*
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -19,6 +16,7 @@ val wanViewModelModule = module {
     viewModel { WanProjectViewModel(get()) }
     viewModel { WanSystemViewModel(get()) }
     viewModel { RecyclerViewModel(get()) }
+    viewModel { WanWxViewModel(get()) }
 }
 
 val wanRepositoryModule = module {
@@ -28,6 +26,7 @@ val wanRepositoryModule = module {
     single { WanSquareRepository() }
     single { WanProjectRepository() }
     single { WanSystemRepository() }
+    single { WanWxRepository() }
 }
 
 val wanModule = listOf(

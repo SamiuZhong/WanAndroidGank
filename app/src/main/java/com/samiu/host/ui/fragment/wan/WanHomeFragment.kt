@@ -6,6 +6,8 @@ import com.jeremyliao.liveeventbus.LiveEventBus
 import com.samiu.base.ui.BaseVMFragment
 import com.samiu.host.R
 import com.samiu.host.global.HOME_PAGE
+import com.samiu.host.global.LOAD_MORE
+import com.samiu.host.global.REFRESH
 import com.samiu.host.global.toBrowser
 import com.samiu.host.ui.adapter.WanBannerAdapter
 import com.samiu.host.model.bean.wan.Banner
@@ -23,8 +25,8 @@ class WanHomeFragment : BaseVMFragment<WanHomeViewModel>() {
     override fun getLayoutResId() = R.layout.fragment_wan_home
 
     private var currentPage by Delegates.notNull<Int>()
-    private val mViewModelWan: WanHomeViewModel by viewModel()
-    private lateinit var adapter: WanArticleAdapter
+    private val mViewModel: WanHomeViewModel by viewModel()
+    private lateinit var mAdapter: WanArticleAdapter
 
     override fun initView() {
         initRecyclerView()
@@ -34,7 +36,7 @@ class WanHomeFragment : BaseVMFragment<WanHomeViewModel>() {
     }
 
     override fun initData() {
-        mViewModelWan.run {
+        mViewModel.run {
             getBanners()
         }
         refreshData(-1)
@@ -42,28 +44,28 @@ class WanHomeFragment : BaseVMFragment<WanHomeViewModel>() {
 
     private fun refreshData(type: Int) {
         when (type) {
-            -1 -> { //onRefresh
+            REFRESH -> { //onRefresh
                 currentPage = 0
-                adapter.clearAll()
-                mViewModelWan.getArticles(currentPage)
+                mAdapter.clearAll()
+                mViewModel.getArticles(currentPage)
             }
-            1 -> {  //onLoadMore
+            LOAD_MORE -> {  //onLoadMore
                 currentPage += 1
-                mViewModelWan.getArticles(currentPage)
+                mViewModel.getArticles(currentPage)
             }
         }
     }
 
-    override fun startObserve() = mViewModelWan.run {
+    override fun startObserve() = mViewModel.run {
         mBanners.observe(this@WanHomeFragment, Observer { setBanner(it) })
-        mArticles.observe(this@WanHomeFragment, Observer { adapter.addAll(it) })
+        mArticles.observe(this@WanHomeFragment, Observer { mAdapter.addAll(it) })
     }
 
     private fun initRecyclerView() {
-        adapter = WanArticleAdapter(context)
+        mAdapter = WanArticleAdapter(context)
         home_recycler_view.layoutManager = LinearLayoutManager(context)
-        home_recycler_view.adapter = adapter
-        adapter.setOnItemClick { url -> toBrowser(this, url) }
+        home_recycler_view.adapter = mAdapter
+        mAdapter.setOnItemClick { url -> toBrowser(this, url) }
     }
 
     private fun setBanner(bannerList: List<Banner>) {

@@ -18,6 +18,7 @@ import kotlin.properties.Delegates
  */
 class WanSquareFragment : BaseVMFragment<WanSquareViewModel>() {
     override fun getLayoutResId() = R.layout.fragment_wan_square
+    override fun initData() = refreshData(-1)
 
     private var currentPage by Delegates.notNull<Int>()
     private val mViewModel: WanSquareViewModel by viewModel()
@@ -29,8 +30,6 @@ class WanSquareFragment : BaseVMFragment<WanSquareViewModel>() {
             .get(SQUARE, Int::class.java)
             .observe(this, Observer { refreshData(it) })
     }
-
-    override fun initData() = refreshData(-1)
 
     private fun refreshData(type: Int) {
         when (type) {

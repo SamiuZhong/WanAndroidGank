@@ -59,7 +59,7 @@ public abstract class BaseSingleRecyclerAdapter<T> extends RecyclerView.Adapter 
      * @param list
      */
     public void replaceAll(List<T> list) {
-        list.clear();
+        this.list.clear();
         addAll(list);
     }
 

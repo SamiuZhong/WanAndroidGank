@@ -46,7 +46,7 @@ class WanNavFragment : BaseFragment() {
         pager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 currentTitle = titleList[position]
-                home_refresh_layout.isEnabled = position != 3
+                home_refresh_layout.isEnabled = ((position != 3) && (position != 4))
             }
         })
         //tabLayout
