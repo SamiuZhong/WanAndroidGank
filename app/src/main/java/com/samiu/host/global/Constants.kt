@@ -15,3 +15,7 @@ const val RECENT_PROJECT = "最新项目"
 const val NETWORK_ERROR = "请检查网络"
 const val REFRESH = -1
 const val LOAD_MORE = 1
+const val ANDROID = "安卓"
+const val IOS = "IOS"
+const val FRONT = "前端"
+const val EXPAND = "拓展资源"

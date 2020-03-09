@@ -39,18 +39,18 @@ class WanNavFragment : BaseFragment() {
 
     override fun initView() {
         //viewPager2
-        pager.adapter = ScreenPagerAdapter(this)
-        pager.setPageTransformer(ZoomOutPageTransformer())
-        pager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+        wan_nav_pager.adapter = ScreenPagerAdapter(this)
+        wan_nav_pager.setPageTransformer(ZoomOutPageTransformer())
+        wan_nav_pager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 currentTitle = titleList[position]
-                home_refresh_layout.isEnabled = ((position != 3) && (position != 4))
+                wan_nav_refresh_layout.isEnabled = ((position != 3) && (position != 4))
             }
         })
         //tabLayout
-        TabLayoutMediator(tab, pager) { tab, position -> tab.text = titleList[position] }.attach()
+        TabLayoutMediator(wan_nav_tab, wan_nav_pager) { tab, position -> tab.text = titleList[position] }.attach()
         //smartRefreshLayout
-        with(home_refresh_layout) {
+        with(wan_nav_refresh_layout) {
             setOnRefreshListener {
                 LiveEventBus
                     .get(currentTitle, Int::class.java)
