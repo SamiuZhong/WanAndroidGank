@@ -20,7 +20,7 @@ import kotlin.properties.Delegates
  */
 class WanSquareFragment : BaseVMFragment<WanSquareViewModel>() {
     override fun getLayoutResId() = R.layout.fragment_wan_square
-    override fun initData() = refreshData(-1)
+    override fun initData() = refreshData(REFRESH)
 
     private var currentPage by Delegates.notNull<Int>()
     private val mViewModel: WanSquareViewModel by viewModel()
@@ -28,7 +28,7 @@ class WanSquareFragment : BaseVMFragment<WanSquareViewModel>() {
 
     override fun initView() {
         initRecyclerView()
-        LiveEventBus    //refresh data
+        LiveEventBus
             .get(SQUARE, Int::class.java)
             .observe(this, Observer { refreshData(it) })
     }
