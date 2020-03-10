@@ -13,7 +13,7 @@ interface GankService {
     @GET("data/Android/20/{page}")
     suspend fun getAndroid(@Path("page") page: Int): GankResponse<List<GankBean>>
 
-    @GET("data/IOS/20/{page}")
+    @GET("data/iOS/20/{page}")
     suspend fun getIos(@Path("page") page: Int): GankResponse<List<GankBean>>
 
     @GET("data/前端/20/{page}")
