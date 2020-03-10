@@ -52,17 +52,18 @@ class WanSearchFragment : BaseVMFragment<WanSearchViewModel>() {
         //clear
         search_back_icon.setOnClickListener { adapter.clearAll() }
         //listen keyBoard
-        KeyboardStateObserver.getKeyboardStateObserver(activity)
-            .setKeyboardVisibilityListener(object :
-                KeyboardStateObserver.OnKeyboardVisibilityListener {
-                override fun onKeyboardShow() {
-                    (activity as MainActivity).showBottomNav(show = false, atOnce = true)
-                }
+        if (activity is MainActivity)
+            KeyboardStateObserver.getKeyboardStateObserver(activity)
+                .setKeyboardVisibilityListener(object :
+                    KeyboardStateObserver.OnKeyboardVisibilityListener {
+                    override fun onKeyboardShow() {
+                        (activity as MainActivity).showBottomNav(show = false, atOnce = true)
+                    }
 
-                override fun onKeyboardHide() {
-                    (activity as MainActivity).showBottomNav(show = true, atOnce = false)
-                }
-            })
+                    override fun onKeyboardHide() {
+                        (activity as MainActivity).showBottomNav(show = true, atOnce = false)
+                    }
+                })
     }
 
     override fun initData() {
