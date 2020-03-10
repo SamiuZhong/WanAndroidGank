@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 /**
  * @author Samiu 2020/3/3
  */
-abstract class BaseRetrofitClient(var context: Context, var baseUrl: String) {
+abstract class BaseRetrofitClient(var context: Context, private var baseUrl: String) {
     companion object {
         private const val DEFAULT_TIMEOUT = 20L
     }
