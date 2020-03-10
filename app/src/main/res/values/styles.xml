@@ -5,11 +5,8 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/color_3066BE</item>
         <item name="colorPrimaryDark">@color/color_3066BE</item>
-        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
         <item name="android:textColor">@color/default_text_color_252F3B</item>
+        <item name="android:windowBackground">@drawable/splash</item>
     </style>
 
-    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
-        <item name="color">@color/white</item>
-    </style>
 </resources>
