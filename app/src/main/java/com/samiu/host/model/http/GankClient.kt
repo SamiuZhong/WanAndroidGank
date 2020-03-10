@@ -6,7 +6,7 @@ import com.samiu.host.base.AppApplication
 /**
  * @author Samiu 2020/3/9
  */
-const val GANK_BASE_URL = "http://gank.io/api"
+const val GANK_BASE_URL = "http://gank.io/api/"
 
 object GankClient :BaseRetrofitClient(AppApplication.context, GANK_BASE_URL){
     val service by lazy { getService(GankService::class.java) }

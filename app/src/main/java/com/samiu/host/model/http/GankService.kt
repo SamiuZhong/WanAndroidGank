@@ -10,16 +10,16 @@ import retrofit2.http.Path
  */
 interface GankService {
 
-    @GET("/data/Android/20/{page}")
+    @GET("data/Android/20/{page}")
     suspend fun getAndroid(@Path("page") page: Int): GankResponse<List<GankBean>>
 
-    @GET("/data/IOS/20/{page}")
+    @GET("data/IOS/20/{page}")
     suspend fun getIos(@Path("page") page: Int): GankResponse<List<GankBean>>
 
-    @GET("/data/前端/20/{page}")
+    @GET("data/前端/20/{page}")
     suspend fun getFront(@Path("page") page: Int): GankResponse<List<GankBean>>
 
-    @GET("/data/拓展资源/20/{page}")
+    @GET("data/拓展资源/20/{page}")
     suspend fun getExpand(@Path("page") page: Int): GankResponse<List<GankBean>>
 
 }
