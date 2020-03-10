@@ -19,3 +19,6 @@ const val ANDROID = "安卓"
 const val IOS = "IOS"
 const val FRONT = "前端"
 const val EXPAND = "拓展资源"
+
+const val GITHUB_PAGE = "https://github.com/SamiuZhong/WanAndroid_Gank"
+const val MY_BLOG = "https://samiu.top/"

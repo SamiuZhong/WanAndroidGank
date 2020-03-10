@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<notices>
+    <notice>
+        <name>kotlinx.coroutines</name>
+        <url>https://github.com/Kotlin/kotlinx.coroutines</url>
+        <copyright/>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>koin</name>
+        <url>https://github.com/InsertKoinIO/koin</url>
+        <copyright/>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>Retrofit</name>
+        <url>https://github.com/square/retrofit</url>
+        <copyright>Copyright 2013 Square, Inc.</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>OkHttp</name>
+        <url>https://github.com/square/okhttp</url>
+        <copyright>Square, Inc</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>AndroidAutoSize</name>
+        <url>https://github.com/JessYanCoding/AndroidAutoSize</url>
+        <copyright/>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>SmartRefreshLayout</name>
+        <url>https://github.com/scwang90/SmartRefreshLayout</url>
+        <copyright/>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>LiveEventBus</name>
+        <url>https://github.com/JeremyLiao/LiveEventBus</url>
+        <copyright/>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>FlowLayout</name>
+        <url>https://github.com/nex3z/FlowLayout</url>
+        <copyright/>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>banner</name>
+        <url>https://github.com/youth5201314/banner</url>
+        <copyright/>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>material-dialogs</name>
+        <url>https://af.codes/</url>
+        <copyright/>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>LicensesDialog</name>
+        <url>http://psdev.de/LicensesDialog</url>
+        <copyright>Copyright 2013 Philip Schiffer</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+</notices>

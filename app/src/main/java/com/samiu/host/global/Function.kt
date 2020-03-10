@@ -1,7 +1,9 @@
 package com.samiu.host.global
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import androidx.fragment.app.Fragment
 import com.samiu.host.ui.activity.BrowserActivity
 import com.samiu.host.ui.activity.RecyclerActivity
@@ -24,3 +26,7 @@ fun toRecycler(fragment: Fragment, cid: Int, title: String) =
         putExtra(CID, cid)
         putExtra(TITLE, title)
     })
+
+fun Context.openNativeBrowser(url:String){
+    Intent(Intent.ACTION_VIEW, Uri.parse(url)).run { startActivity(this) }
+}
