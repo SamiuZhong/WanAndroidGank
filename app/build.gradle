@@ -77,4 +77,6 @@ dependencies {
     //dialog
     implementation 'com.afollestad.material-dialogs:input:3.3.0'
     implementation 'de.psdev.licensesdialog:licensesdialog:2.1.0'
+    //Anko
+    implementation "org.jetbrains.anko:anko:0.10.8"
 }
