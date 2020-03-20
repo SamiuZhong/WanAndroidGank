@@ -1,4 +1,4 @@
-package com.samiu.host.model.http
+package com.samiu.host.model.http.gank
 
 import com.samiu.host.model.bean.gank.GankBean
 import com.samiu.host.model.bean.gank.GankResponse

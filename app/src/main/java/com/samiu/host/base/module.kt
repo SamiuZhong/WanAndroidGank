@@ -1,7 +1,7 @@
 package com.samiu.host.base
 
-import com.samiu.host.model.http.GankClient
-import com.samiu.host.model.http.WanClient
+import com.samiu.host.model.http.gank.GankClient
+import com.samiu.host.model.http.wan.WanClient
 import com.samiu.host.model.repository.gank.GankRepository
 import com.samiu.host.model.repository.wan.*
 import com.samiu.host.viewmodel.gank.GankAndroidViewModel

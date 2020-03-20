@@ -1,11 +1,12 @@
-package com.samiu.host.model.http
+package com.samiu.host.model.http.gank
 
 /**
  * @author Samiu 2020/3/9
  */
 sealed class GankResult<out T:Any> {
 
-    data class Success<out T:Any>(val data:T):GankResult<T>()
+    data class Success<out T:Any>(val data:T):
+        GankResult<T>()
     data class Error(val exception: Exception) : GankResult<Nothing>()
 
 

@@ -1,4 +1,4 @@
-package com.samiu.host.model.http
+package com.samiu.host.model.http.gank
 
 import com.samiu.base.http.BaseRetrofitClient
 import com.samiu.host.base.AppApplication
@@ -8,6 +8,8 @@ import com.samiu.host.base.AppApplication
  */
 const val GANK_BASE_URL = "http://gank.io/api/"
 
-object GankClient :BaseRetrofitClient(AppApplication.context, GANK_BASE_URL){
+object GankClient :BaseRetrofitClient(AppApplication.context,
+    GANK_BASE_URL
+){
     val service by lazy { getService(GankService::class.java) }
 }

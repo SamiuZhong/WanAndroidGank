@@ -1,7 +1,7 @@
 package com.samiu.host.model.repository.gank
 
-import com.samiu.host.model.http.BaseGankRepository
-import com.samiu.host.model.http.GankClient
+import com.samiu.host.model.http.gank.BaseGankRepository
+import com.samiu.host.model.http.gank.GankClient
 
 /**
  * @author Samiu 2020/3/9

@@ -1,9 +1,9 @@
 package com.samiu.host.model.repository.wan
 
 import com.samiu.host.global.NETWORK_ERROR
-import com.samiu.host.model.http.BaseWanRepository
-import com.samiu.host.model.http.WanClient
-import com.samiu.host.model.http.WanResult
+import com.samiu.host.model.http.wan.BaseWanRepository
+import com.samiu.host.model.http.wan.WanClient
+import com.samiu.host.model.http.wan.WanResult
 import com.samiu.host.model.bean.wan.ArticleList
 import com.samiu.host.model.bean.wan.Banner
 

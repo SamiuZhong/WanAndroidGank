@@ -1,4 +1,4 @@
-package com.samiu.host.model.http
+package com.samiu.host.model.http.wan
 
 import com.samiu.host.model.bean.wan.*
 import retrofit2.http.*

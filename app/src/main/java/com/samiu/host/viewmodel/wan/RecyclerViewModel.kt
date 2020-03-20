@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.samiu.base.ui.BaseViewModel
 import com.samiu.host.model.bean.wan.Article
-import com.samiu.host.model.http.WanResult
+import com.samiu.host.model.http.wan.WanResult
 import com.samiu.host.model.repository.wan.WanSystemRepository
 import kotlinx.coroutines.launch
 

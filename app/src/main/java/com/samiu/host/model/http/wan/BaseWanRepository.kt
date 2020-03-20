@@ -1,38 +1,43 @@
-package com.samiu.host.model.http
+package com.samiu.host.model.http.wan
 
-import com.samiu.host.model.bean.gank.GankResponse
+import com.samiu.host.model.bean.wan.WanResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.coroutineScope
 import java.io.IOException
 
 /**
- * @author Samiu 2020/3/9
+ * @author Samiu 2020/3/3
  */
-open class BaseGankRepository {
+open class BaseWanRepository {
 
     suspend fun <T : Any> readyCall(
-        call: suspend () -> GankResult<T>,
+        call: suspend () -> WanResult<T>,
         errorMessage: String
-    ): GankResult<T> {
+    ): WanResult<T> {
         return try {
             call()
         } catch (e: Exception) {
-            GankResult.Error(IOException(errorMessage, e))
+            WanResult.Error(
+                IOException(
+                    errorMessage,
+                    e
+                )
+            )
         }
     }
 
     suspend fun <T : Any> call(
-        response: GankResponse<T>,
+        response: WanResponse<T>,
         successBlock: (suspend CoroutineScope.() -> Unit)? = null,
         errorBlock: (suspend CoroutineScope.() -> Unit)? = null
-    ): GankResult<T> {
+    ): WanResult<T> {
         return coroutineScope {
-            if (response.error) {
+            if (response.errorCode == -1) {
                 errorBlock?.let { it() }
-                GankResult.Error(IOException(response.error.toString()))
+                WanResult.Error(IOException(response.errorMsg))
             } else {
                 successBlock?.let { it() }
-                GankResult.Success(response.results)
+                WanResult.Success(response.data)
             }
         }
     }

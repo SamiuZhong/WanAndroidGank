@@ -1,8 +1,8 @@
 package com.samiu.host.model.repository.wan
 
 import com.samiu.host.global.NETWORK_ERROR
-import com.samiu.host.model.http.BaseWanRepository
-import com.samiu.host.model.http.WanClient
+import com.samiu.host.model.http.wan.BaseWanRepository
+import com.samiu.host.model.http.wan.WanClient
 
 /**
  * @author Samiu 2020/3/7

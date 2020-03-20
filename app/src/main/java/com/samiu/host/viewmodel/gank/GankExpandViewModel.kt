@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.samiu.base.ui.BaseViewModel
 import com.samiu.host.model.bean.gank.GankBean
-import com.samiu.host.model.http.GankResult
+import com.samiu.host.model.http.gank.GankResult
 import com.samiu.host.model.repository.gank.GankRepository
 import kotlinx.coroutines.launch
 
