@@ -55,13 +55,15 @@ dependencies {
 
 
     implementation project(':base')
+    implementation project(':res')
+
     //屏幕适配
     implementation 'me.jessyan:autosize:1.2.0'
     //Banner
     implementation 'com.youth.banner:banner:2.0.0-alpha02'
     //Glide图片框架
     implementation 'com.github.bumptech.glide:glide:4.11.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    kapt 'com.github.bumptech.glide:compiler:4.11.0'
     //Koin注入框架
     implementation "org.koin:koin-androidx-scope:$koin_version"
     implementation "org.koin:koin-androidx-viewmodel:$koin_version"
@@ -77,6 +79,4 @@ dependencies {
     //dialog
     implementation 'com.afollestad.material-dialogs:input:3.3.0'
     implementation 'de.psdev.licensesdialog:licensesdialog:2.1.0'
-    //Anko
-    implementation "org.jetbrains.anko:anko:0.10.8"
 }

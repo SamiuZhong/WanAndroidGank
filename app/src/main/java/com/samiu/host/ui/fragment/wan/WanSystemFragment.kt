@@ -4,6 +4,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.samiu.base.ui.BaseVMFragment
 import com.samiu.host.R
+import com.samiu.host.databinding.FragmentWanSystemBinding
 import com.samiu.host.global.toRecycler
 import com.samiu.host.ui.adapter.WanSystemAdapter
 import com.samiu.host.viewmodel.wan.WanSystemViewModel
@@ -14,7 +15,7 @@ import kotlin.properties.Delegates
 /**
  * @author Samiu 2020/3/2
  */
-class WanSystemFragment : BaseVMFragment<WanSystemViewModel>() {
+class WanSystemFragment : BaseVMFragment<FragmentWanSystemBinding,WanSystemViewModel>() {
     override fun getLayoutResId() = R.layout.fragment_wan_system
     override fun initView() = initRecyclerView()
     override fun initData() = mViewModel.getSystem()

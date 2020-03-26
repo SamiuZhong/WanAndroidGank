@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayoutMediator
 import com.samiu.base.ui.BaseVMFragment
 import com.samiu.host.R
+import com.samiu.host.databinding.FragmentWanProjectBinding
 import com.samiu.host.global.LOAD_MORE
 import com.samiu.host.global.REFRESH
 import com.samiu.host.global.toBrowser
@@ -21,7 +22,7 @@ import kotlin.properties.Delegates
 /**
  * @author Samiu 2020/3/4
  */
-class WanProjectFragment : BaseVMFragment<WanProjectViewModel>() {
+class WanProjectFragment : BaseVMFragment<FragmentWanProjectBinding,WanProjectViewModel>() {
     override fun getLayoutResId() = R.layout.fragment_wan_project
 
     private val mViewModel: WanProjectViewModel by viewModel()

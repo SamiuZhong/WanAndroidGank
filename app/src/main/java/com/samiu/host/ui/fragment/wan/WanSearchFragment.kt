@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.samiu.base.ui.BaseVMFragment
 import com.samiu.base.utils.KeyboardStateObserver
 import com.samiu.host.R
+import com.samiu.host.databinding.FragmentWanSearchBinding
 import com.samiu.host.global.LOAD_MORE
 import com.samiu.host.global.REFRESH
 import com.samiu.host.global.toBrowser
@@ -23,7 +24,7 @@ import kotlin.properties.Delegates
 /**
  * @author Samiu 2020/3/4
  */
-class WanSearchFragment : BaseVMFragment<WanSearchViewModel>() {
+class WanSearchFragment : BaseVMFragment<FragmentWanSearchBinding,WanSearchViewModel>() {
     override fun getLayoutResId() = R.layout.fragment_wan_search
 
     private var currentPage by Delegates.notNull<Int>()

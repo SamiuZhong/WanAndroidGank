@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.samiu.base.ui.BaseVMFragment
 import com.samiu.host.R
+import com.samiu.host.databinding.FragmentWanProjectBinding
 import com.samiu.host.global.RECENT_PROJECT
 import com.samiu.host.global.toBrowser
 import com.samiu.host.ui.adapter.WanProjectAdapter
@@ -16,7 +17,7 @@ import kotlin.properties.Delegates
 /**
  * @author Samiu 2020/3/5
  */
-class WanRecentProjectFragment : BaseVMFragment<WanProjectViewModel>() {
+class WanRecentProjectFragment : BaseVMFragment<FragmentWanProjectBinding,WanProjectViewModel>() {
     override fun getLayoutResId() = R.layout.fragment_wan_recent_project
 
     private val mViewModelWan: WanProjectViewModel by viewModel()

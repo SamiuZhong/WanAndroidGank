@@ -4,6 +4,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.samiu.base.ui.BaseVMFragment
 import com.samiu.host.R
+import com.samiu.host.databinding.FragmentWanWxArticleBinding
 import com.samiu.host.global.LOAD_MORE
 import com.samiu.host.global.REFRESH
 import com.samiu.host.global.toBrowser
@@ -17,7 +18,7 @@ import kotlin.properties.Delegates
 /**
  * @author Samiu 2020/3/2
  */
-class WanWxArticleFragment : BaseVMFragment<WanWxViewModel>() {
+class WanWxArticleFragment : BaseVMFragment<FragmentWanWxArticleBinding,WanWxViewModel>() {
     override fun getLayoutResId() = R.layout.fragment_wan_wx_article
 
     private var currentPage by Delegates.notNull<Int>()

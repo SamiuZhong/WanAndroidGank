@@ -6,6 +6,7 @@ import com.jeremyliao.liveeventbus.LiveEventBus
 import com.samiu.base.ui.BaseFragment
 import com.samiu.base.ui.BaseVMFragment
 import com.samiu.host.R
+import com.samiu.host.databinding.FragmentGankExpandBinding
 import com.samiu.host.global.*
 import com.samiu.host.ui.adapter.GankAdapter
 import com.samiu.host.viewmodel.gank.GankAndroidViewModel
@@ -18,7 +19,7 @@ import kotlin.properties.Delegates
 /**
  * @author Samiu 2020/3/2
  */
-class GankExpandFragment:BaseVMFragment<GankExpandViewModel>() {
+class GankExpandFragment:BaseVMFragment<FragmentGankExpandBinding,GankExpandViewModel>() {
     override fun getLayoutResId() = R.layout.fragment_gank_expand
     override fun initData() = refreshData(REFRESH)
 

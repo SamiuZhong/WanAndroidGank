@@ -8,12 +8,13 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.samiu.base.ui.BaseActivity
 import com.samiu.host.R
+import com.samiu.host.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * @author Samiu 2020/3/2
  */
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun getLayoutResId() = R.layout.activity_main
     override fun initData() = Unit
 

@@ -8,13 +8,14 @@ import com.jeremyliao.liveeventbus.LiveEventBus
 import com.samiu.base.interactive.ZoomOutPageTransformer
 import com.samiu.base.ui.BaseFragment
 import com.samiu.host.R
+import com.samiu.host.databinding.FragmentGankNavBinding
 import com.samiu.host.global.*
 import kotlinx.android.synthetic.main.fragment_gank_nav.*
 
 /**
  * @author Samiu 2020/3/2
  */
-class GankNavFragment:BaseFragment() {
+class GankNavFragment:BaseFragment<FragmentGankNavBinding>() {
     override fun getLayoutResId() = R.layout.fragment_gank_nav
     override fun initData()=Unit
 

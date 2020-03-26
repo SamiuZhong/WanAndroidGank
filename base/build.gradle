@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -23,6 +24,17 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -42,6 +54,4 @@ dependencies {
     api 'com.squareup.retrofit2:converter-gson:2.7.2'
     api 'com.squareup.okhttp3:okhttp:4.4.0'
     api "com.tencent.tbs.tbssdk:sdk:43697"
-    api 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:3.2.0'
-    api 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:3.2.0'
 }

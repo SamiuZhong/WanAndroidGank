@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import com.samiu.base.ui.BaseActivity
 import com.samiu.host.R
+import com.samiu.host.databinding.ActivityBrowserBinding
 import com.samiu.host.global.URL
 import com.tencent.smtt.sdk.WebChromeClient
 import com.tencent.smtt.sdk.WebView
@@ -14,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_browser.*
 /**
  * @author Samiu 2020/3/4
  */
-class BrowserActivity : BaseActivity() {
+class BrowserActivity : BaseActivity<ActivityBrowserBinding>() {
 
     override fun getLayoutResId() = R.layout.activity_browser
 

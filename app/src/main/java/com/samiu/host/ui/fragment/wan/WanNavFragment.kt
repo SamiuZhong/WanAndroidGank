@@ -8,13 +8,14 @@ import com.jeremyliao.liveeventbus.LiveEventBus
 import com.samiu.base.interactive.ZoomOutPageTransformer
 import com.samiu.base.ui.BaseFragment
 import com.samiu.host.R
+import com.samiu.host.databinding.FragmentWanNavBinding
 import com.samiu.host.global.*
 import kotlinx.android.synthetic.main.fragment_wan_nav.*
 
 /**
  * @author Samiu 2020/3/2
  */
-class WanNavFragment : BaseFragment() {
+class WanNavFragment : BaseFragment<FragmentWanNavBinding>() {
     override fun getLayoutResId() = R.layout.fragment_wan_nav
     override fun initData() = Unit
 
