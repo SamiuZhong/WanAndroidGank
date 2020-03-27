@@ -3,6 +3,7 @@ package com.samiu.host.ui.fragment.wan
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.samiu.base.ui.BaseVMFragment
+import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
 import com.samiu.host.databinding.FragmentWanWxArticleBinding
 import com.samiu.host.global.LOAD_MORE
@@ -18,8 +19,8 @@ import kotlin.properties.Delegates
 /**
  * @author Samiu 2020/3/2
  */
-class WanWxArticleFragment : BaseVMFragment<FragmentWanWxArticleBinding,WanWxViewModel>() {
-    override fun getLayoutResId() = R.layout.fragment_wan_wx_article
+class WanWxArticleFragment : BaseVMFragment<WanWxViewModel>(R.layout.fragment_wan_wx_article) {
+    private val binding by viewBinding(FragmentWanWxArticleBinding::bind)
 
     private var currentPage by Delegates.notNull<Int>()
     private var mId by Delegates.notNull<Int>()
@@ -29,7 +30,7 @@ class WanWxArticleFragment : BaseVMFragment<FragmentWanWxArticleBinding,WanWxVie
 
     override fun initView() {
         initRecycler()
-        with(wx_refresh){
+        with(wx_refresh) {
             setOnRefreshListener {
                 refreshData(REFRESH)
                 finishRefresh(1500)

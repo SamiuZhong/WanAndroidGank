@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.samiu.base.ui.BaseFragment
 import com.samiu.base.ui.BaseVMFragment
+import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
 import com.samiu.host.databinding.FragmentGankExpandBinding
 import com.samiu.host.global.*
@@ -19,8 +20,8 @@ import kotlin.properties.Delegates
 /**
  * @author Samiu 2020/3/2
  */
-class GankExpandFragment:BaseVMFragment<FragmentGankExpandBinding,GankExpandViewModel>() {
-    override fun getLayoutResId() = R.layout.fragment_gank_expand
+class GankExpandFragment:BaseVMFragment<GankExpandViewModel>(R.layout.fragment_gank_expand) {
+    private val binding by viewBinding(FragmentGankExpandBinding::bind)
     override fun initData() = refreshData(REFRESH)
 
     private var currentPage by Delegates.notNull<Int>()

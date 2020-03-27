@@ -4,6 +4,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.samiu.base.ui.BaseVMFragment
+import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
 import com.samiu.host.databinding.FragmentWanHomeBinding
 import com.samiu.host.global.HOME_PAGE
@@ -22,8 +23,8 @@ import kotlin.properties.Delegates
 /**
  * @author Samiu 2020/3/2
  */
-class WanHomeFragment : BaseVMFragment<FragmentWanHomeBinding,WanHomeViewModel>() {
-    override fun getLayoutResId() = R.layout.fragment_wan_home
+class WanHomeFragment : BaseVMFragment<WanHomeViewModel>(R.layout.fragment_wan_home) {
+    private val binding by viewBinding(FragmentWanHomeBinding::bind)
 
     private var currentPage by Delegates.notNull<Int>()
     private val mViewModel: WanHomeViewModel by viewModel()

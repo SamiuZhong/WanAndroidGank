@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import android.util.Log
 import android.view.View
 import com.samiu.base.ui.BaseActivity
+import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
 import com.samiu.host.databinding.ActivityBrowserBinding
 import com.samiu.host.global.URL
@@ -15,9 +16,9 @@ import kotlinx.android.synthetic.main.activity_browser.*
 /**
  * @author Samiu 2020/3/4
  */
-class BrowserActivity : BaseActivity<ActivityBrowserBinding>() {
-
-    override fun getLayoutResId() = R.layout.activity_browser
+class BrowserActivity : BaseActivity() {
+    private val binding by viewBinding (ActivityBrowserBinding::inflate)
+    override fun getBindingRoot()= binding.root
 
     override fun initView() {
         tool_bar.title = getString(R.string.is_loading)

@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.samiu.base.ui.BaseVMFragment
+import com.samiu.base.ui.viewBinding
 import com.samiu.base.utils.KeyboardStateObserver
 import com.samiu.host.R
 import com.samiu.host.databinding.FragmentWanSearchBinding
@@ -24,8 +25,8 @@ import kotlin.properties.Delegates
 /**
  * @author Samiu 2020/3/4
  */
-class WanSearchFragment : BaseVMFragment<FragmentWanSearchBinding,WanSearchViewModel>() {
-    override fun getLayoutResId() = R.layout.fragment_wan_search
+class WanSearchFragment : BaseVMFragment<WanSearchViewModel>(R.layout.fragment_wan_search) {
+    private val binding by viewBinding(FragmentWanSearchBinding::bind)
 
     private var currentPage by Delegates.notNull<Int>()
     private val mViewModel: WanSearchViewModel by viewModel()

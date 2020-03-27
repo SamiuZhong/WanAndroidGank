@@ -3,6 +3,7 @@ package com.samiu.host.ui.fragment
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.customview.customView
 import com.samiu.base.ui.BaseFragment
+import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
 import com.samiu.host.databinding.FragmentMineBinding
 import com.samiu.host.global.GITHUB_PAGE
@@ -16,10 +17,9 @@ import kotlinx.android.synthetic.main.fragment_mine.*
 /**
  * @author Samiu 2020/3/2
  */
-class MineFragment : BaseFragment<FragmentMineBinding>() {
-    override fun getLayoutResId() = R.layout.fragment_mine
+class MineFragment : BaseFragment(R.layout.fragment_mine) {
+    private val binding by viewBinding (FragmentMineBinding::bind)
     override fun initData() = Unit
-
 
     override fun initView() {
         text_1.setOnClickListener {

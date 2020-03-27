@@ -4,6 +4,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.samiu.base.ui.BaseVMFragment
+import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
 import com.samiu.host.databinding.FragmentWanSquareBinding
 import com.samiu.host.global.LOAD_MORE
@@ -19,8 +20,8 @@ import kotlin.properties.Delegates
 /**
  * @author Samiu 2020/3/2
  */
-class WanSquareFragment : BaseVMFragment<FragmentWanSquareBinding,WanSquareViewModel>() {
-    override fun getLayoutResId() = R.layout.fragment_wan_square
+class WanSquareFragment : BaseVMFragment<WanSquareViewModel>(R.layout.fragment_wan_square) {
+    private val binding by viewBinding(FragmentWanSquareBinding::bind)
     override fun initData() = refreshData(REFRESH)
 
     private var currentPage by Delegates.notNull<Int>()

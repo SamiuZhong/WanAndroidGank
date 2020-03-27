@@ -3,7 +3,7 @@ package com.samiu.host.ui.activity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.samiu.base.ui.BaseVMActivity
-import com.samiu.host.R
+import com.samiu.base.ui.viewBinding
 import com.samiu.host.databinding.ActivityRecyclerBinding
 import com.samiu.host.global.CID
 import com.samiu.host.global.TITLE
@@ -18,8 +18,9 @@ import kotlin.properties.Delegates
 /**
  * @author Samiu 2020/3/6
  */
-class RecyclerActivity : BaseVMActivity<ActivityRecyclerBinding,RecyclerViewModel>() {
-    override fun getLayoutResId() = R.layout.activity_recycler
+class RecyclerActivity : BaseVMActivity<RecyclerViewModel>() {
+    private val binding by viewBinding (ActivityRecyclerBinding::inflate)
+    override fun getBindingRoot() = binding.root
 
     private var currentPage by Delegates.notNull<Int>()
     private var cid by Delegates.notNull<Int>()

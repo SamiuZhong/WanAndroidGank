@@ -1,26 +1,23 @@
 package com.samiu.base.ui
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 
 /**
- * @author Samiu ${DATE}
+ * @author Samiu 2020/3/2
  */
-abstract class BaseVMActivity<V:ViewDataBinding,VM : BaseViewModel> : AppCompatActivity() {
-
-    lateinit var binding:V
+abstract class BaseVMActivity<VM : BaseViewModel> : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, getLayoutResId())
+        setContentView(getBindingRoot())
         initView()
         initData()
         startObserve()
     }
 
-    open fun getLayoutResId(): Int = 0
+    abstract fun getBindingRoot(): View
     abstract fun initView()
     abstract fun initData()
     abstract fun startObserve()

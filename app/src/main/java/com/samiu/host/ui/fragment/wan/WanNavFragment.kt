@@ -7,6 +7,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.samiu.base.interactive.ZoomOutPageTransformer
 import com.samiu.base.ui.BaseFragment
+import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
 import com.samiu.host.databinding.FragmentWanNavBinding
 import com.samiu.host.global.*
@@ -15,8 +16,8 @@ import kotlinx.android.synthetic.main.fragment_wan_nav.*
 /**
  * @author Samiu 2020/3/2
  */
-class WanNavFragment : BaseFragment<FragmentWanNavBinding>() {
-    override fun getLayoutResId() = R.layout.fragment_wan_nav
+class WanNavFragment : BaseFragment(R.layout.fragment_wan_nav) {
+    private val binding by viewBinding(FragmentWanNavBinding::bind)
     override fun initData() = Unit
 
     private val homeFragment by lazy { WanHomeFragment() }
@@ -49,7 +50,9 @@ class WanNavFragment : BaseFragment<FragmentWanNavBinding>() {
             }
         })
         //tabLayout
-        TabLayoutMediator(wan_nav_tab, wan_nav_pager) { tab, position -> tab.text = titleList[position] }.attach()
+        TabLayoutMediator(wan_nav_tab, wan_nav_pager) { tab, position ->
+            tab.text = titleList[position]
+        }.attach()
         //smartRefreshLayout
         with(wan_nav_refresh_layout) {
             setOnRefreshListener {

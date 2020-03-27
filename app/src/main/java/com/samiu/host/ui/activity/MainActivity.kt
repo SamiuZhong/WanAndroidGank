@@ -7,15 +7,18 @@ import android.view.animation.AnimationUtils
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.samiu.base.ui.BaseActivity
+import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
 import com.samiu.host.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.properties.Delegates
 
 /**
  * @author Samiu 2020/3/2
  */
-class MainActivity : BaseActivity<ActivityMainBinding>() {
-    override fun getLayoutResId() = R.layout.activity_main
+class MainActivity : BaseActivity() {
+    private val binding by viewBinding(ActivityMainBinding::inflate)
+    override fun getBindingRoot() = binding.root
     override fun initData() = Unit
 
     override fun initView() {

@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <include layout="@layout/layout_toolbar" />
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/recycler_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <include layout="@layout/layout_toolbar" />
-
-        <com.scwang.smartrefresh.layout.SmartRefreshLayout
-            android:id="@+id/recycler_refresh"
+        <com.scwang.smartrefresh.header.MaterialHeader
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content" />
 
-            <com.scwang.smartrefresh.header.MaterialHeader
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
-    </LinearLayout>
-</layout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+</LinearLayout>
