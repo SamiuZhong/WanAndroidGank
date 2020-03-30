@@ -1,5 +1,6 @@
 <resources>
     <dimen name="space_10">10dp</dimen>
+    <dimen name="space_16">10dp</dimen>
     <dimen name="space_20">20dp</dimen>
     <dimen name="space_30">30dp</dimen>
     <dimen name="space_40">40dp</dimen>

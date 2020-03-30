@@ -32,30 +32,24 @@ class WanHomeFragment : BaseVMFragment<WanHomeViewModel>(R.layout.fragment_wan_h
 
     override fun initView() {
         initRecyclerView()
-        LiveEventBus    //refresh data
-            .get(HOME_PAGE, Int::class.java)
-            .observe(this, Observer { refreshData(it) })
-    }
-
-    override fun initData() {
-        mViewModel.run {
-            getBanners()
-        }
-        refreshData(REFRESH)
-    }
-
-    private fun refreshData(type: Int) {
-        when (type) {
-            REFRESH -> { //onRefresh
+        with(binding.refreshLayout) {
+            setOnRefreshListener {
                 currentPage = 0
                 mAdapter.clearAll()
                 mViewModel.getArticles(currentPage)
+                finishRefresh(1000)
             }
-            LOAD_MORE -> {  //onLoadMore
+            setOnLoadMoreListener {
                 currentPage += 1
                 mViewModel.getArticles(currentPage)
+                finishLoadMore(1000)
             }
         }
+    }
+
+    override fun initData() {
+        mViewModel.run { getBanners() }
+        binding.refreshLayout.autoRefresh()
     }
 
     override fun startObserve() = mViewModel.run {
@@ -65,8 +59,10 @@ class WanHomeFragment : BaseVMFragment<WanHomeViewModel>(R.layout.fragment_wan_h
 
     private fun initRecyclerView() {
         mAdapter = WanArticleAdapter(context)
-        home_recycler_view.layoutManager = LinearLayoutManager(context)
-        home_recycler_view.adapter = mAdapter
+        with(binding.homeRecyclerView) {
+            layoutManager = LinearLayoutManager(context)
+            adapter = mAdapter
+        }
         mAdapter.setOnItemClick { url -> toBrowser(this, url) }
     }
 

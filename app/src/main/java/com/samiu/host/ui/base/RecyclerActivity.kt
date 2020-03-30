@@ -1,4 +1,4 @@
-package com.samiu.host.ui.activity
+package com.samiu.host.ui.base
 
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager

@@ -7,18 +7,15 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.samiu.base.ui.BaseVMFragment
 import com.samiu.base.ui.viewBinding
-import com.samiu.base.utils.KeyboardStateObserver
 import com.samiu.host.R
 import com.samiu.host.databinding.FragmentWanSearchBinding
 import com.samiu.host.global.LOAD_MORE
 import com.samiu.host.global.REFRESH
 import com.samiu.host.global.toBrowser
 import com.samiu.host.model.bean.wan.Hot
-import com.samiu.host.ui.activity.MainActivity
 import com.samiu.host.ui.adapter.WanArticleAdapter
 import com.samiu.host.viewmodel.wan.WanSearchViewModel
 import kotlinx.android.synthetic.main.fragment_wan_search.*
-import kotlinx.android.synthetic.main.fragment_wan_square.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.properties.Delegates
 
@@ -54,18 +51,18 @@ class WanSearchFragment : BaseVMFragment<WanSearchViewModel>(R.layout.fragment_w
         //clear
         search_back_icon.setOnClickListener { adapter.clearAll() }
         //listen keyBoard
-        if (activity is MainActivity)
-            KeyboardStateObserver.getKeyboardStateObserver(activity)
-                .setKeyboardVisibilityListener(object :
-                    KeyboardStateObserver.OnKeyboardVisibilityListener {
-                    override fun onKeyboardShow() {
-                        (activity as MainActivity).showBottomNav(show = false, atOnce = true)
-                    }
-
-                    override fun onKeyboardHide() {
-                        (activity as MainActivity).showBottomNav(show = true, atOnce = false)
-                    }
-                })
+//        if (activity is MainActivity)
+//            KeyboardStateObserver.getKeyboardStateObserver(activity)
+//                .setKeyboardVisibilityListener(object :
+//                    KeyboardStateObserver.OnKeyboardVisibilityListener {
+//                    override fun onKeyboardShow() {
+//                        (activity as MainActivity).showBottomNav(show = false, atOnce = true)
+//                    }
+//
+//                    override fun onKeyboardHide() {
+//                        (activity as MainActivity).showBottomNav(show = true, atOnce = false)
+//                    }
+//                })
     }
 
     override fun initData() {

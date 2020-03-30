@@ -5,8 +5,8 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.fragment.app.Fragment
-import com.samiu.host.ui.activity.BrowserActivity
-import com.samiu.host.ui.activity.RecyclerActivity
+import com.samiu.host.ui.base.BrowserActivity
+import com.samiu.host.ui.base.RecyclerActivity
 
 /**
  * @author Samiu 2020/3/4

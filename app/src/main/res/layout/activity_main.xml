@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <fragment
         android:id="@+id/nav_host_fragment"
@@ -11,18 +10,58 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/mobile_navigation" />
+        app:navGraph="@navigation/main_navigation" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_nav"
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottom_app_bar"
         android:layout_width="match_parent"
-        android:layout_marginStart="@dimen/space_20"
-        android:layout_marginEnd="@dimen/space_20"
-        android:layout_height="70dp"
-        android:background="@drawable/shape_100_fff"
-        android:layout_marginBottom="14dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:fabAlignmentMode="center"
+        app:fabCradleMargin="@dimen/bottom_app_bar_fab_cradle_margin"
+        app:fabCradleRoundedCornerRadius="@dimen/bottom_app_bar_fab_cradle_corner_radius"
+        app:hideOnScroll="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/min_touch_target_size"
+            android:layout_marginVertical="@dimen/grid_0_5"
+            android:layout_marginEnd="@dimen/space_20"
+            android:foreground="@drawable/bottom_app_bar_title_foreground"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/grid_0_5">
+
+            <ImageView
+                android:id="@+id/bottom_app_bar_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_menu_white" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/bottom_app_bar_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/space_20"
+                android:src="@drawable/ic_search_white" />
+
+            <ImageView
+                android:id="@+id/bottom_app_bar_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_more_white" />
+        </LinearLayout>
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/bottom_app_bar"
+        app:srcCompat="@drawable/asl_edit_reply" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

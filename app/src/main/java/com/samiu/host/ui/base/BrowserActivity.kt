@@ -1,4 +1,4 @@
-package com.samiu.host.ui.activity
+package com.samiu.host.ui.base
 
 import android.graphics.Bitmap
 import android.util.Log
