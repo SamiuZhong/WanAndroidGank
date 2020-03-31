@@ -9,7 +9,7 @@ import com.samiu.host.global.CID
 import com.samiu.host.global.TITLE
 import com.samiu.host.global.toBrowser
 import com.samiu.host.ui.adapter.WanArticleAdapter
-import com.samiu.host.viewmodel.wan.RecyclerViewModel
+import com.samiu.host.viewmodel.RecyclerViewModel
 import kotlinx.android.synthetic.main.activity_recycler.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import org.koin.androidx.viewmodel.ext.android.viewModel

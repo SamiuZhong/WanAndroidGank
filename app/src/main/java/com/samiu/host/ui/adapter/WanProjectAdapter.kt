@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.samiu.base.adapter.BaseSingleRecyclerAdapter
 import com.samiu.host.R
-import com.samiu.host.model.bean.wan.Article
+import com.samiu.host.model.bean.Article
 import kotlinx.android.synthetic.main.item_wan_project.view.*
 
 /**

@@ -1,6 +1,8 @@
 package com.samiu.host.ui.base
 
 import android.os.Bundle
+import android.view.MenuItem
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
@@ -12,7 +14,11 @@ import com.samiu.host.databinding.ActivityMainBinding
 /**
  * @author Samiu 2020/3/2
  */
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity()
+//    , Toolbar.OnMenuItemClickListener,
+//    NavController.OnDestinationChangedListener
+{
+
     private val binding by viewBinding(ActivityMainBinding::inflate)
     override fun getBindingRoot() = binding.root
     override fun initData() = Unit
@@ -32,12 +38,16 @@ class MainActivity : BaseActivity() {
         }
 
         binding.bottomAppBar.apply {
-            setNavigationOnClickListener{
+            setNavigationOnClickListener {
 
             }
         }
     }
 
+//    override fun onMenuItemClick(item: MenuItem?): Boolean {
+//        TODO("Not yet implemented")
+//    }
+//
 //    override fun onDestinationChanged(
 //        controller: NavController,
 //        destination: NavDestination,

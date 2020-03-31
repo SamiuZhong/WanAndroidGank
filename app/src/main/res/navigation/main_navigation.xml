@@ -5,6 +5,6 @@
 
     <fragment
         android:id="@+id/wanHomeFragment"
-        android:name="com.samiu.host.ui.fragment.wan.WanHomeFragment"
+        android:name="com.samiu.host.ui.fragment.WanHomeFragment"
         android:label="WanHomeFragment" />
 </navigation>

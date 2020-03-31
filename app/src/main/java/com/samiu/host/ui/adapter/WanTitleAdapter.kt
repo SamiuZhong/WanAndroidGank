@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.samiu.base.adapter.BaseSingleRecyclerAdapter
 import com.samiu.host.R
-import com.samiu.host.model.bean.wan.SystemParent
+import com.samiu.host.model.bean.SystemParent
 import kotlinx.android.synthetic.main.item_wan_verti_title.view.*
 
 /**

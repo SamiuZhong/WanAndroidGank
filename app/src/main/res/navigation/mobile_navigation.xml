@@ -6,17 +6,17 @@
 
     <fragment
         android:id="@+id/wanNavFragment"
-        android:name="com.samiu.host.ui.fragment.wan.WanNavFragment"
+        android:name="com.samiu.host.ui.fragment.WanNavFragment"
         android:label="WanHomeFragment" />
 
     <fragment
         android:id="@+id/wanProjectFragment"
-        android:name="com.samiu.host.ui.fragment.wan.WanProjectFragment"
+        android:name="com.samiu.host.ui.fragment.WanProjectFragment"
         android:label="WanProjectFragment" />
 
     <fragment
         android:id="@+id/wanSearchFragment"
-        android:name="com.samiu.host.ui.fragment.wan.WanSearchFragment"
+        android:name="com.samiu.host.ui.fragment.WanSearchFragment"
         android:label="WanSearchFragment" />
 
     <fragment

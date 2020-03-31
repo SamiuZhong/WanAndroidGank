@@ -12,6 +12,11 @@
         app:defaultNavHost="true"
         app:navGraph="@navigation/main_navigation" />
 
+<!--    <fragment-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:id="@+id/bottom_nav_drawer"/>-->
+
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottom_app_bar"
         android:layout_width="match_parent"

@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.samiu.host.model.bean.wan.Banner
+import com.samiu.host.model.bean.Banner
 import com.youth.banner.adapter.BannerAdapter
 
 /**

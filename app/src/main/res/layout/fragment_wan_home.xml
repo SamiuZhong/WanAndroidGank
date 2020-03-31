@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/refresh_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -24,10 +25,11 @@
                 android:layout_height="232dp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/home_recycler_view"
+                android:id="@+id/recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:overScrollMode="never" />
+                android:overScrollMode="never"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </com.scwang.smartrefresh.layout.SmartRefreshLayout>
