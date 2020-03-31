@@ -14,10 +14,9 @@ import com.samiu.host.databinding.ActivityMainBinding
 /**
  * @author Samiu 2020/3/2
  */
-class MainActivity : BaseActivity()
-//    , Toolbar.OnMenuItemClickListener,
-//    NavController.OnDestinationChangedListener
-{
+class MainActivity : BaseActivity(),
+    Toolbar.OnMenuItemClickListener,
+    NavController.OnDestinationChangedListener {
 
     private val binding by viewBinding(ActivityMainBinding::inflate)
     override fun getBindingRoot() = binding.root
@@ -25,11 +24,11 @@ class MainActivity : BaseActivity()
     override fun initView() = setUpBottomNavigationAndFab()
 
     private fun setUpBottomNavigationAndFab() {
-//        binding.run {
-//            findNavController(R.id.nav_host_fragment).addOnDestinationChangedListener(
-//                this@MainActivity
-//            )
-//        }
+        binding.run {
+            findNavController(R.id.nav_host_fragment).addOnDestinationChangedListener(
+                this@MainActivity
+            )
+        }
 
         binding.fab.apply {
             setShowMotionSpecResource(R.animator.fab_show)
@@ -44,15 +43,15 @@ class MainActivity : BaseActivity()
         }
     }
 
-//    override fun onMenuItemClick(item: MenuItem?): Boolean {
-//        TODO("Not yet implemented")
-//    }
-//
-//    override fun onDestinationChanged(
-//        controller: NavController,
-//        destination: NavDestination,
-//        arguments: Bundle?
-//    ) {
-//        TODO("Not yet implemented")
-//    }
+    override fun onMenuItemClick(item: MenuItem?): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDestinationChanged(
+        controller: NavController,
+        destination: NavDestination,
+        arguments: Bundle?
+    ) {
+        TODO("Not yet implemented")
+    }
 }

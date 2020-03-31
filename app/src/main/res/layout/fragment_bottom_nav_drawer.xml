@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/scrim_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0"
+        android:background="?attr/scrimBackground"
+        android:visibility="gone" />
+
+    <FrameLayout
+        android:id="@+id/background_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:behavior_halfExpandedRatio="0.6"
+        app:behavior_hideable="true"
+        app:behavior_skipCollapsed="true"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/account_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alpha="0.0"
+            android:clipToPadding="false"
+            android:nestedScrollingEnabled="false"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/grid_3"
+            android:paddingBottom="@dimen/grid_3"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:paddingBottomSystemWindowInsets="true" />
+
+        <ImageView
+            android:id="@+id/profile_image_view"
+            android:layout_width="@dimen/navigation_drawer_profile_image_size"
+            android:layout_height="@dimen/navigation_drawer_profile_image_size"
+            android:layout_gravity="center|top"
+            android:foreground="?attr/actionBarItemBackground"
+            android:paddingTop="@dimen/grid_1" />
+
+        <LinearLayout
+            android:id="@+id/foreground_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/grid_3"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/grid_3"
+            android:paddingBottom="@dimen/grid_4">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/nav_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/grid_3"
+                android:paddingBottom="@dimen/bottom_app_bar_height"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        </LinearLayout>
+    </FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
