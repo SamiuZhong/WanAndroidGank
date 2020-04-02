@@ -3,20 +3,25 @@ package com.samiu.host.ui.base.nav
 import android.accounts.Account
 import android.animation.ValueAnimator
 import android.content.res.ColorStateList
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.activity.OnBackPressedCallback
+import androidx.lifecycle.observe
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetBehavior.*
 import com.samiu.base.ui.BaseFragment
 import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
 import com.samiu.host.databinding.FragmentBottomNavDrawerBinding
 import kotlin.LazyThreadSafetyMode.NONE
-import com.google.android.material.bottomsheet.BottomSheetBehavior.from
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.samiu.host.util.lerp
 import com.samiu.host.util.themeColor
 import com.samiu.host.util.themeInterpolator
+import kotlin.math.abs
 
 /**
  * @author Samiu 2020/3/31
@@ -27,14 +32,14 @@ class BottomNavDrawerFragment :
     AccountAdapter.AccountAdapterListener {
 
     private val binding by viewBinding(FragmentBottomNavDrawerBinding::bind)
-    override fun initView() = Unit
     override fun initData() = Unit
 
     /**
-     * 枚举账户选择器的状态
+     * 枚举sandwich的状态
      */
     enum class SandwichState {
-        //选择器处于隐藏状态，navigation drawer初始状态
+        //TODO 不做成多账户，直接没有账户选择器，点头像未登录的话就是登录界面，登录了就是我的收藏，登录之后头像变成刘德华
+        //选择器处于隐藏，navigation drawer为初始弹出状态
         CLOSED,
 
         //选择器处于可见状态
@@ -48,12 +53,244 @@ class BottomNavDrawerFragment :
     private val behavior: BottomSheetBehavior<FrameLayout> by lazy(NONE) {
         from(binding.backgroundContainer)
     }
+
     //抽屉栏的callback
     private val bottomSheetCallback = BottomNavigationDrawerCallback()
+
+    //底部栏那个三角形在滑动时要旋转
     private val sandwichSlideAction = mutableListOf<OnSandwichSlideAction>()
+
+    //抽屉栏下面那层的backgroundDrawable
+    private val backgroundShapeDrawable: MaterialShapeDrawable by lazy(NONE) {
+        val backgroundContext = binding.backgroundContainer.context
+        MaterialShapeDrawable(
+            backgroundContext,
+            null,
+            R.attr.bottomSheetStyle,
+            0
+        ).apply {
+            fillColor = ColorStateList.valueOf(
+                backgroundContext.themeColor(R.attr.colorPrimarySurfaceVariant)
+            )
+            elevation = resources.getDimension(R.dimen.plane_08)
+            initializeElevationOverlay(requireContext())
+        }
+    }
+
+    //抽屉栏上面那层的backgroundDrawable
+    private val foregroundShapeDrawable: MaterialShapeDrawable by lazy(NONE) {
+        val foregroundContext = binding.foregroundContainer.context
+        MaterialShapeDrawable(
+            foregroundContext,
+            null,
+            R.attr.bottomSheetStyle,
+            0
+        ).apply {
+            fillColor = ColorStateList.valueOf(
+                foregroundContext.themeColor(R.attr.colorPrimarySurface)
+            )
+            elevation = resources.getDimension(R.dimen.plane_16)
+            shadowCompatibilityMode = MaterialShapeDrawable.SHADOW_COMPAT_MODE_NEVER
+            initializeElevationOverlay(requireContext())
+            shapeAppearanceModel = shapeAppearanceModel.toBuilder()
+                .setTopEdge(    //绘制顶部的凹槽
+                    SemiCircleEdgeCutoutTreatment(
+                        resources.getDimension(R.dimen.grid_1),
+                        resources.getDimension(R.dimen.grid_3),
+                        0F,
+                        resources.getDimension(R.dimen.navigation_drawer_profile_image_size_padded)
+                    )
+                )
+                .build()
+        }
+    }
+
+    //sandwich默认CLOSED
+    private var sandwichState: SandwichState = SandwichState.CLOSED
+
+    //sandwich的动画
+    private var sandwichAnim: ValueAnimator? = null
+
+    //这是一个动画的插值器
+    private val sandwichInterp by lazy(NONE) {
+        requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
+    }
+
+    //sandwich动画的进度，根据这个进度来更新一些东西
+    private var sandwichProgress: Float = 0F
+        set(value) {
+            if (field != value) {    //如果set了一个新的值过来
+                onSandwichProgressChanged(value)
+                //这里根据传过来的value值确定sandwich的状态
+                val newState = when (value) {
+                    0F -> SandwichState.CLOSED
+                    1F -> SandwichState.OPEN
+                    else -> SandwichState.SETTLING
+                }
+                //当状态发生改变时，那么显然我们需要做一些操作
+                if (sandwichState != newState)
+
+                    field = value
+            }
+        }
+
+    /**
+     * 拦截返回键
+     */
+    private val closeDrawerOnBackPressed = object : OnBackPressedCallback(false) {
+        override fun handleOnBackPressed() {
+            close()
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().onBackPressedDispatcher.addCallback(this, closeDrawerOnBackPressed)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding.foregroundContainer.setOnApplyWindowInsetsListener { v, insets ->
+            v.setTag(
+                R.id.tag_system_window_inset_top,
+                insets.systemWindowInsetTop
+            )
+            insets
+        }
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
+    override fun initView() {
+        binding.run {
+            //设置上下两层的背景
+            backgroundContainer.background = backgroundShapeDrawable
+            foregroundContainer.background = foregroundShapeDrawable
+            //全屏位置点击返回
+            scrimView.setOnClickListener { close() }
+
+            //现在设置抽屉栏的callback回调
+            bottomSheetCallback.apply {
+                //首先给全屏的这个view添加一个滑动透明度变化的action
+                addOnSlideAction(AlphaSlideAction(scrimView))
+                //再给这个全屏的view添加一个根据状态改变调整visible的action
+                addOnStateChangedAction(VisibilityStateAction(scrimView))
+                //抽屉页上层根据滑动来平移
+                addOnSlideAction(
+                    ForegroundSheetTransformSlideAction(
+                        binding.foregroundContainer,
+                        foregroundShapeDrawable,
+                        binding.profileImageView
+                    )
+                )
+                //根据状态来确定recyclerView的滚动
+                addOnStateChangedAction(ScrollToTopStateAction(navRecyclerView))
+                //关闭sandwich（如果当前它正处于打开状态）
+                addOnStateChangedAction(object : OnStateChangedAction {
+                    override fun onStateChanged(sheet: View, newState: Int) {
+                        sandwichAnim?.cancel()
+                        sandwichProgress = 0F
+                    }
+                })
+                //让drawer接收系统返回键
+                addOnStateChangedAction(object : OnStateChangedAction {
+                    override fun onStateChanged(sheet: View, newState: Int) {
+                        closeDrawerOnBackPressed.isEnabled = newState != STATE_HIDDEN
+                    }
+                })
+                //点击头像
+                profileImageView.setOnClickListener { toggleSandwich() }
+
+                behavior.addBottomSheetCallback(bottomSheetCallback)
+                behavior.state = STATE_HIDDEN
+
+                //给recyclerView设置adapter
+                val adapter = NavigationAdapter(this@BottomNavDrawerFragment)
+                navRecyclerView.adapter = adapter
+
+                //liveDate订阅数据的变化
+                NavigationModel.navigationList.observe(this@BottomNavDrawerFragment){
+                    adapter.submitList(it)
+                }
+                //默认选中第一项
+                NavigationModel.setNavigationMenuItemChecked(0)
+            }
+        }
+    }
+
+    fun open() {
+        behavior.state = STATE_HALF_EXPANDED
+    }
+
+    fun close() {
+        behavior.state = STATE_HIDDEN
+    }
+
+    /**
+     * 每一次sandwich的动画进度发生变化时调用
+     * @param progress sandwich当前的状态，0是CLOSED,1是OPEN
+     */
+    private fun onSandwichProgressChanged(progress: Float) {
+        binding.run {
+            val navProgress = lerp(0F, 1F, 0F, 0.5F, progress)
+            val accProgress = lerp(0F, 1F, 0.5F, 1F, progress)
+
+            foregroundContainer.translationY =
+                (binding.foregroundContainer.height * 0.15F) * navProgress
+            profileImageView.scaleX = 1F - navProgress
+            profileImageView.scaleY = 1F - navProgress
+            profileImageView.alpha = 1F - navProgress
+            foregroundContainer.alpha = 1F - navProgress
+            accountRecyclerView.alpha = accProgress
+
+            foregroundShapeDrawable.interpolation = 1F - navProgress
+
+            backgroundContainer.translationY =
+                progress * ((scrimView.bottom - accountRecyclerView.height -
+                        resources.getDimension(R.dimen.bottom_app_bar_height)) -
+                        (backgroundContainer.getTag(R.id.tag_view_top_snapshot) as Int))
+        }
+    }
 
     override fun onAccountClicked(account: Account) {
         TODO("Not yet implemented")
     }
 
+    /**
+     * 打开或者关闭账户选择器
+     * 这里我们给这个选择器取了个名字叫做"sandwich"
+     */
+    private fun toggleSandwich() {
+        //初始化进度
+        val initialProgress = sandwichProgress
+        val newProgress = when (sandwichState) {
+            SandwichState.CLOSED -> {
+                //存一下sandwich处于CLOSED状态的原始位置
+                //方便我们在sandwich打开和关闭时能找准位置
+                binding.backgroundContainer.setTag(
+                    R.id.tag_view_top_snapshot,
+                    binding.backgroundContainer.top
+                )
+                1F
+            }
+            SandwichState.OPEN -> 0F
+            SandwichState.SETTLING -> return
+        }
+        sandwichAnim?.cancel()
+        //属性动画
+        sandwichAnim = ValueAnimator.ofFloat(initialProgress, newProgress).apply {
+            addUpdateListener { sandwichProgress = animatedValue as Float }
+            interpolator = sandwichInterp
+            duration = (abs(newProgress - initialProgress) *
+                    resources.getInteger(R.integer.reply_motion_duration_medium)).toLong()
+        }
+        //播放动画
+        sandwichAnim?.start()
+    }
+
+    override fun onNavMenuItemClicked(item: NavigationModelItem.NavMenuItem) {
+        TODO("Not yet implemented")
+    }
 }

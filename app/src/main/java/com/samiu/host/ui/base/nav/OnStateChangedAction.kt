@@ -68,7 +68,8 @@ class VisibilityStateAction(
 }
 
 /**
- * 抽屉页滚动到Top时
+ * 当抽屉页处于STATE_HIDDEN状态时，我们就来滚动recyclerView
+ * @param recyclerView
  */
 class ScrollToTopStateAction(
     private val recyclerView: RecyclerView

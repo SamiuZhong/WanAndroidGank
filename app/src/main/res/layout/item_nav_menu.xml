@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_item_title"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/navigation_drawer_menu_item_height"
+    android:background="?attr/selectableItemBackground"
+    android:drawablePadding="@dimen/grid_4"
+    android:ellipsize="end"
+    android:gravity="center_vertical|start"
+    android:lines="1"
+    android:paddingLeft="@dimen/grid_4"
+    android:paddingRight="@dimen/grid_4"
+    android:textAppearance="?attr/textAppearanceSubtitle1"
+    android:textColor="@color/color_navigation_drawer_menu_item"
+    app:drawableTint="@color/color_navigation_drawer_menu_item"
+    tools:text="Inbox" />

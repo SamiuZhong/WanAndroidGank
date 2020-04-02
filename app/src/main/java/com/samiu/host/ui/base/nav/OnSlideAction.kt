@@ -26,7 +26,7 @@ interface OnSlideAction {
 }
 
 /**
- * View旋转180度
+ * 将给过来的view逆时针旋转180度
  */
 class HalfClockwiseRotateSlideAction(
     private val view: View

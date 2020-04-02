@@ -13,11 +13,10 @@ import kotlin.math.max
  */
 class BottomNavigationDrawerCallback : BottomSheetBehavior.BottomSheetCallback() {
 
-    //滑动的action
+    //先整个List来保存滑动的actions
     private val onSlideActions: MutableList<OnSlideAction> = mutableListOf()
-
-    //状态改变的action
-    private val onStateChangeActions: MutableList<OnStateChangedAction> = mutableListOf()
+    //再整个List来保存状态发生改变的actions
+    private val onStateChangedActions:MutableList<OnStateChangedAction> = mutableListOf()
 
     private var lastSlideOffset = -1.0F
     private var halfExpandedSlideOffset = Float.MAX_VALUE
@@ -79,5 +78,21 @@ class BottomNavigationDrawerCallback : BottomSheetBehavior.BottomSheetCallback()
         )
         halfExpandedSlideOffset =
             (collapsedOffset - halfExpandedOffset) / (parent.height - collapsedOffset)
+    }
+
+    fun addOnSlideAction(action: OnSlideAction): Boolean {
+        return onSlideActions.add(action)
+    }
+
+    fun removeOnSlideAction(action: OnSlideAction): Boolean {
+        return onSlideActions.remove(action)
+    }
+
+    fun addOnStateChangedAction(action: OnStateChangedAction): Boolean {
+        return onStateChangedActions.add(action)
+    }
+
+    fun removeOnStateChangedAction(action: OnStateChangedAction): Boolean {
+        return onStateChangedActions.remove(action)
     }
 }

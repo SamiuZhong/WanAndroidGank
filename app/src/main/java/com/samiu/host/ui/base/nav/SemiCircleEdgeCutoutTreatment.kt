@@ -13,11 +13,15 @@ private const val ANGLE_LEFT = 180
 /**
  * @author Samiu 2020/3/31
  */
+
+/**
+ * 在边缘绘制半圆形的凹槽
+ */
 class SemiCircleEdgeCutoutTreatment(
-    private var cutoutMargin: Float = 0F,
-    private var cutoutRoundedCornerRadius: Float = 0F,
-    private var cutoutVerticalOffset: Float = 0F,
-    private var cutoutDiameter: Float = 0F,
+    private var cutoutMargin: Float = 0F,   //上面的头像离这个凹槽的间隔距离
+    private var cutoutRoundedCornerRadius: Float = 0F,  //凹槽两边那个反向的圆角
+    private var cutoutVerticalOffset: Float = 0F,   //凹槽的竖直偏移量，为0刚好是个半圆
+    private var cutoutDiameter: Float = 0F, //凹槽的直径
     private var cutoutHorizontalOffset: Float = 0F
 ) : EdgeTreatment() {
 
@@ -48,6 +52,7 @@ class SemiCircleEdgeCutoutTreatment(
         interpolation: Float,
         shapePath: ShapePath
     ) {
+        //直径为0，那就没啥好画的了，整条直线吧
         if (cutoutDiameter == 0f) {
             shapePath.lineTo(length, 0f)
             return

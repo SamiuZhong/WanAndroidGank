@@ -8,6 +8,12 @@ import kotlin.math.roundToInt
 /**
  * @author Samiu 2020/3/31
  */
+
+/**
+ * 在start和end两个值之间线性插值
+ * @param startValue
+ * @param endValue
+ */
 fun lerp(
     startValue: Float,
     endValue: Float,
@@ -16,6 +22,11 @@ fun lerp(
     return startValue + fraction * (endValue - startValue)
 }
 
+/**
+ * 在start和end两个值之间线性插值
+ * @param startValue
+ * @param endValue
+ */
 fun lerp(
     startValue: Int,
     endValue: Int,
@@ -24,6 +35,9 @@ fun lerp(
     return (startValue + fraction * (endValue - startValue)).roundToInt()
 }
 
+/**
+ * 当传入的值在给定的范围之内，我们才进行线性的插值
+ */
 fun lerp(
     startValue: Float,
     endValue: Float,
@@ -42,6 +56,9 @@ fun lerp(
     return lerp(startValue, endValue, (fraction - startFraction) / (endFraction - startFraction))
 }
 
+/**
+ * 当传入的值在给定的范围之内，我们才进行线性的插值
+ */
 fun lerp(
     startValue: Int,
     endValue: Int,
@@ -60,6 +77,11 @@ fun lerp(
     return lerp(startValue, endValue, (fraction - startFraction) / (endFraction - startFraction))
 }
 
+/**
+ * 当传入的值在给定的范围之内，我们在两种颜色之间进行线性的插值
+ * @param startColor
+ * @param endColor
+ */
 @ColorInt
 fun lerpArgb(
     @ColorInt startColor: Int,
@@ -83,6 +105,10 @@ fun lerpArgb(
     )
 }
 
+/**
+ * 我们为Float写的一个扩展方法
+ * 作用是把这个Float值变成我们想要的Float值
+ */
 fun Float.normalize(
     inputMin: Float,
     inputMax: Float,
@@ -96,5 +122,5 @@ fun Float.normalize(
     }
 
     return outputMin * (1 - (this - inputMin) / (inputMax - inputMin)) +
-        outputMax * ((this - inputMin) / (inputMax - inputMin))
+            outputMax * ((this - inputMin) / (inputMax - inputMin))
 }
