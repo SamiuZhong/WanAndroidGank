@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
  */
 class AccountAdapter(
     private val listener:AccountAdapterListener
-): ListAdapter<Account,AccountV> {
+) {
 
     interface AccountAdapterListener{
         fun onAccountClicked(account:Account)

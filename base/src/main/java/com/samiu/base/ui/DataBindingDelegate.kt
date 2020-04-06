@@ -13,7 +13,7 @@ import kotlin.reflect.KProperty
 /**
  * Activity DataBinding Delegate
  */
-fun <R : AppCompatActivity, T : ViewDataBinding> contentView(
+fun <R : AppCompatActivity, T : ViewDataBinding> dataBinding(
     @LayoutRes layoutRes: Int
 ): ContentViewBindingDelegate<R, T> = ContentViewBindingDelegate(layoutRes)
 

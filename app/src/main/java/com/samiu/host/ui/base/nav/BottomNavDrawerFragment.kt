@@ -58,7 +58,7 @@ class BottomNavDrawerFragment :
     private val bottomSheetCallback = BottomNavigationDrawerCallback()
 
     //底部栏那个三角形在滑动时要旋转
-    private val sandwichSlideAction = mutableListOf<OnSandwichSlideAction>()
+    private val sandwichSlideActions = mutableListOf<OnSandwichSlideAction>()
 
     //抽屉栏下面那层的backgroundDrawable
     private val backgroundShapeDrawable: MaterialShapeDrawable by lazy(NONE) {
@@ -211,12 +211,23 @@ class BottomNavDrawerFragment :
                 navRecyclerView.adapter = adapter
 
                 //liveDate订阅数据的变化
-                NavigationModel.navigationList.observe(this@BottomNavDrawerFragment){
+                NavigationModel.navigationList.observe(this@BottomNavDrawerFragment) {
                     adapter.submitList(it)
                 }
                 //默认选中第一项
                 NavigationModel.setNavigationMenuItemChecked(0)
             }
+        }
+    }
+
+    fun toggle() {
+        when {
+            sandwichState == SandwichState.OPEN -> toggleSandwich()
+            behavior.state == STATE_HIDDEN -> open()
+            behavior.state == STATE_HIDDEN
+                    || behavior.state == STATE_HALF_EXPANDED
+                    || behavior.state == STATE_EXPANDED
+                    || behavior.state == STATE_COLLAPSED -> close()
         }
     }
 
@@ -226,6 +237,18 @@ class BottomNavDrawerFragment :
 
     fun close() {
         behavior.state = STATE_HIDDEN
+    }
+
+    fun addOnSlideAction(action: OnSlideAction) {
+        bottomSheetCallback.addOnSlideAction(action)
+    }
+
+    fun addOnStateChangedAction(action: OnStateChangedAction) {
+        bottomSheetCallback.addOnStateChangedAction(action)
+    }
+
+    fun addOnSandwichSlideAction(action: OnSandwichSlideAction) {
+        sandwichSlideActions.add(action)
     }
 
     /**
