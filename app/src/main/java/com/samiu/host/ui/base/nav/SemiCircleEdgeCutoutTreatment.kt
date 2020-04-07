@@ -22,7 +22,7 @@ class SemiCircleEdgeCutoutTreatment(
     private var cutoutRoundedCornerRadius: Float = 0F,  //凹槽两边那个反向的圆角
     private var cutoutVerticalOffset: Float = 0F,   //凹槽的竖直偏移量，为0刚好是个半圆
     private var cutoutDiameter: Float = 0F, //凹槽的直径
-    private var cutoutHorizontalOffset: Float = 0F
+    private var cutoutHorizontalOffset: Float = 0F  //凹槽的水平 偏移量，为0刚好是个半圆
 ) : EdgeTreatment() {
 
     private var cradleDiameter = 0F

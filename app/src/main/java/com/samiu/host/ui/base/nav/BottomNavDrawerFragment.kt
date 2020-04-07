@@ -36,16 +36,17 @@ class BottomNavDrawerFragment :
 
     /**
      * 枚举sandwich的状态
+     * （这里的账户选择器我们给它取了个名字叫sandwich）
      */
     enum class SandwichState {
-        //TODO 不做成多账户，直接没有账户选择器，点头像未登录的话就是登录界面，登录了就是我的收藏，登录之后头像变成刘德华
-        //选择器处于隐藏，navigation drawer为初始弹出状态
+        //TODO 登录/注销、我的收藏
+        //sandwich处于隐藏，navigation drawer为初始弹出状态
         CLOSED,
 
-        //选择器处于可见状态
+        //sandwich处于可见状态
         OPEN,
 
-        //切换动画正在播放，这个状态既不是OPEN也不是CLOSED
+        //sandwich正处于切换中，这个状态既不是OPEN也不是CLOSED
         SETTLING
     }
 
@@ -57,10 +58,10 @@ class BottomNavDrawerFragment :
     //抽屉栏的callback
     private val bottomSheetCallback = BottomNavigationDrawerCallback()
 
-    //底部栏那个三角形在滑动时要旋转
+    //整个list来存放sandwich滑动的actions
     private val sandwichSlideActions = mutableListOf<OnSandwichSlideAction>()
 
-    //抽屉栏下面那层的backgroundDrawable
+    //抽屉栏下面那层的Drawable
     private val backgroundShapeDrawable: MaterialShapeDrawable by lazy(NONE) {
         val backgroundContext = binding.backgroundContainer.context
         MaterialShapeDrawable(
@@ -77,7 +78,7 @@ class BottomNavDrawerFragment :
         }
     }
 
-    //抽屉栏上面那层的backgroundDrawable
+    //抽屉栏上面那层的Drawable
     private val foregroundShapeDrawable: MaterialShapeDrawable by lazy(NONE) {
         val foregroundContext = binding.foregroundContainer.context
         MaterialShapeDrawable(
@@ -92,7 +93,8 @@ class BottomNavDrawerFragment :
             elevation = resources.getDimension(R.dimen.plane_16)
             shadowCompatibilityMode = MaterialShapeDrawable.SHADOW_COMPAT_MODE_NEVER
             initializeElevationOverlay(requireContext())
-            shapeAppearanceModel = shapeAppearanceModel.toBuilder()
+            shapeAppearanceModel = shapeAppearanceModel
+                .toBuilder()
                 .setTopEdge(    //绘制顶部的凹槽
                     SemiCircleEdgeCutoutTreatment(
                         resources.getDimension(R.dimen.grid_1),
@@ -111,12 +113,12 @@ class BottomNavDrawerFragment :
     //sandwich的动画
     private var sandwichAnim: ValueAnimator? = null
 
-    //这是一个动画的插值器
+    //给sandwich的动画整一个插值器
     private val sandwichInterp by lazy(NONE) {
         requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
     }
 
-    //sandwich动画的进度，根据这个进度来更新一些东西
+    //sandwich动画的进度，我们需要跟踪这个进度
     private var sandwichProgress: Float = 0F
         set(value) {
             if (field != value) {    //如果set了一个新的值过来
@@ -129,8 +131,9 @@ class BottomNavDrawerFragment :
                 }
                 //当状态发生改变时，那么显然我们需要做一些操作
                 if (sandwichState != newState)
-
-                    field = value
+                    onSandwichStateChanged(newState)
+                sandwichState = newState
+                field = value
             }
         }
 
@@ -148,6 +151,7 @@ class BottomNavDrawerFragment :
         requireActivity().onBackPressedDispatcher.addCallback(this, closeDrawerOnBackPressed)
     }
 
+    //todo this continue 4.7
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -252,7 +256,7 @@ class BottomNavDrawerFragment :
     }
 
     /**
-     * 每一次sandwich的动画进度发生变化时调用
+     * 每当sandwich的动画进度发生变化时调用
      * @param progress sandwich当前的状态，0是CLOSED,1是OPEN
      */
     private fun onSandwichProgressChanged(progress: Float) {
@@ -315,5 +319,21 @@ class BottomNavDrawerFragment :
 
     override fun onNavMenuItemClicked(item: NavigationModelItem.NavMenuItem) {
         TODO("Not yet implemented")
+    }
+
+    /**
+     * 每当sandwich的state状态发生变化时调用
+     */
+    private fun onSandwichStateChanged(state: SandwichState) {
+        when (state) {
+            SandwichState.OPEN -> binding.run {
+                foregroundContainer.visibility = View.GONE
+                profileImageView.isClickable = false
+            }
+            else -> binding.run {
+                foregroundContainer.visibility = View.VISIBLE
+                profileImageView.isClickable = true
+            }
+        }
     }
 }

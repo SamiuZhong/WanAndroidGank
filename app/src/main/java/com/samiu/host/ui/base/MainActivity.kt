@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.annotation.MenuRes
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
-import com.samiu.base.ui.dataBinding
+import com.samiu.base.ui.BaseActivity
+import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
 import com.samiu.host.databinding.ActivityMainBinding
 import com.samiu.host.ui.base.nav.*
@@ -18,18 +18,17 @@ import kotlin.LazyThreadSafetyMode.NONE
 /**
  * @author Samiu 2020/3/2
  */
-class MainActivity : AppCompatActivity(),
+class MainActivity : BaseActivity(),
     Toolbar.OnMenuItemClickListener,
     NavController.OnDestinationChangedListener {
 
-    private val binding: ActivityMainBinding by dataBinding(R.layout.activity_main)
+    private val binding by viewBinding(ActivityMainBinding::inflate)
+    override fun getBindingRoot() = binding.root
+    override fun initData() = Unit
+    override fun initView() = setUpBottomNavigationAndFab()
+
     private val bottomNavDrawer: BottomNavDrawerFragment by lazy(NONE) {
         supportFragmentManager.findFragmentById(R.id.bottom_nav_drawer) as BottomNavDrawerFragment
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setUpBottomNavigationAndFab()
     }
 
     private fun setUpBottomNavigationAndFab() {
@@ -87,8 +86,8 @@ class MainActivity : AppCompatActivity(),
         destination: NavDestination,
         arguments: Bundle?
     ) {
-        when(destination.id){
-            R.id.browserFragment->
+        when (destination.id) {
+            R.id.browserFragment ->
                 setBottomAppBarForEmail(getBottomAppBarMenuForDestination(destination))
             else ->
                 setBottomAppBarForHome(getBottomAppBarMenuForDestination())
@@ -132,8 +131,8 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {
-        when(item?.itemId){
-            R.id.menu_settings->{
+        when (item?.itemId) {
+            R.id.menu_settings -> {
                 bottomNavDrawer.close()
 //                showDarkThemeMenu()
             }

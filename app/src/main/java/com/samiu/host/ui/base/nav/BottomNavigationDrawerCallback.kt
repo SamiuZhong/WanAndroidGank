@@ -13,10 +13,11 @@ import kotlin.math.max
  */
 class BottomNavigationDrawerCallback : BottomSheetBehavior.BottomSheetCallback() {
 
-    //先整个List来保存滑动的actions
+    //先整个List来存放滑动的actions
     private val onSlideActions: MutableList<OnSlideAction> = mutableListOf()
-    //再整个List来保存状态发生改变的actions
-    private val onStateChangedActions:MutableList<OnStateChangedAction> = mutableListOf()
+
+    //再整个List来存放状态发生改变的actions
+    private val onStateChangedActions: MutableList<OnStateChangedAction> = mutableListOf()
 
     private var lastSlideOffset = -1.0F
     private var halfExpandedSlideOffset = Float.MAX_VALUE
@@ -27,6 +28,7 @@ class BottomNavigationDrawerCallback : BottomSheetBehavior.BottomSheetCallback()
     override fun onSlide(sheet: View, slideOffset: Float) {
         if (halfExpandedSlideOffset == Float.MAX_VALUE)
             calculateInitialHalfExpandedSlideOffset(sheet)
+
         lastSlideOffset = slideOffset
 
         val trueOffset = if (slideOffset <= halfExpandedSlideOffset)
@@ -50,12 +52,15 @@ class BottomNavigationDrawerCallback : BottomSheetBehavior.BottomSheetCallback()
     }
 
     /**
-     * 状态发生改变
+     * 当状态发生改变
      */
     override fun onStateChanged(sheet: View, newState: Int) {
         if (newState == BottomSheetBehavior.STATE_HALF_EXPANDED) {
             halfExpandedSlideOffset = lastSlideOffset
             onStateChanged(sheet, newState)
+        }
+        onStateChangedActions.forEach {
+            it.onStateChanged(sheet, newState)
         }
     }
 
@@ -80,18 +85,30 @@ class BottomNavigationDrawerCallback : BottomSheetBehavior.BottomSheetCallback()
             (collapsedOffset - halfExpandedOffset) / (parent.height - collapsedOffset)
     }
 
+    /**
+     * 通过调用这个方法往上面的list里面添加滑动的action
+     */
     fun addOnSlideAction(action: OnSlideAction): Boolean {
         return onSlideActions.add(action)
     }
 
+    /**
+     * 通过调用这个方法删除上面list里面的滑动action
+     */
     fun removeOnSlideAction(action: OnSlideAction): Boolean {
         return onSlideActions.remove(action)
     }
 
+    /**
+     * 通过调用这个方法往上面的list里面添加状态改变的action
+     */
     fun addOnStateChangedAction(action: OnStateChangedAction): Boolean {
         return onStateChangedActions.add(action)
     }
 
+    /**
+     * 通过调用这个方法删除上面list里面的状态改变action
+     */
     fun removeOnStateChangedAction(action: OnStateChangedAction): Boolean {
         return onStateChangedActions.remove(action)
     }
