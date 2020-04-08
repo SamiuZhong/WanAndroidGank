@@ -57,7 +57,7 @@ class BottomNavigationDrawerCallback : BottomSheetBehavior.BottomSheetCallback()
     override fun onStateChanged(sheet: View, newState: Int) {
         if (newState == BottomSheetBehavior.STATE_HALF_EXPANDED) {
             halfExpandedSlideOffset = lastSlideOffset
-            onStateChanged(sheet, newState)
+            onSlide(sheet, lastSlideOffset)
         }
         onStateChangedActions.forEach {
             it.onStateChanged(sheet, newState)
