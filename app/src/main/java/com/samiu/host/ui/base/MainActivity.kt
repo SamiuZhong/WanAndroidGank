@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.annotation.MenuRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import com.samiu.base.ui.BaseActivity
+import com.samiu.base.ui.dataBinding
 import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
 import com.samiu.host.databinding.ActivityMainBinding
@@ -18,17 +20,18 @@ import kotlin.LazyThreadSafetyMode.NONE
 /**
  * @author Samiu 2020/3/2
  */
-class MainActivity : BaseActivity(),
+class MainActivity : AppCompatActivity(),
     Toolbar.OnMenuItemClickListener,
     NavController.OnDestinationChangedListener {
 
-    private val binding by viewBinding(ActivityMainBinding::inflate)
-    override fun getBindingRoot() = binding.root
-    override fun initData() = Unit
-    override fun initView() = setUpBottomNavigationAndFab()
-
+    private val binding: ActivityMainBinding by dataBinding(R.layout.activity_main)
     private val bottomNavDrawer: BottomNavDrawerFragment by lazy(NONE) {
         supportFragmentManager.findFragmentById(R.id.bottom_nav_drawer) as BottomNavDrawerFragment
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setUpBottomNavigationAndFab()
     }
 
     private fun setUpBottomNavigationAndFab() {

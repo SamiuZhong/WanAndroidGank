@@ -3,15 +3,13 @@ package com.samiu.host.ui.base.nav
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.samiu.host.databinding.ItemNavMenuBinding
+import com.samiu.host.databinding.NavMenuItemLayoutBinding
 
 
 /**
  * @author Samiu 2020/3/31
  */
 private const val VIEW_TYPE_NAV_MENU_ITEM = 4
-//private const val VIEW_TYPE_NAV_DIVIDER = 6
-//private const val VIEW_TYPE_NAV_EMAIL_FOLDER_ITEM = 5
 
 @Suppress("UNCHECKED_CAST")
 class NavigationAdapter(
@@ -37,7 +35,7 @@ class NavigationAdapter(
     ): NavigationViewHolder<NavigationModelItem> {
         return when (viewType) {
             VIEW_TYPE_NAV_MENU_ITEM -> NavigationViewHolder.NavMenuItemViewHolder(
-                ItemNavMenuBinding.inflate(
+                NavMenuItemLayoutBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false

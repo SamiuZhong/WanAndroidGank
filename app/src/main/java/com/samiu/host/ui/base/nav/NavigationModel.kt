@@ -56,11 +56,20 @@ object NavigationModel {
         postListUpdate()
     }
 
-    fun setNavigationMenuItemChecked(id:Int):Boolean{
+    private fun postListUpdate() {
+        _navigationList.value = navigationMenuItems
+    }
+
+    /**
+     * 设置选中的item
+     * @param id
+     * @return 选中的item发生变化就返回true，否则false
+     */
+    fun setNavigationMenuItemChecked(id: Int): Boolean {
         var updated = false
-        navigationMenuItems.forEachIndexed{index, item ->
-            val shouldCheck = item.id==id
-            if (item.checked!=shouldCheck){
+        navigationMenuItems.forEachIndexed { index, item ->
+            val shouldCheck = item.id == id
+            if (item.checked != shouldCheck) {
                 navigationMenuItems[index] = item.copy(checked = shouldCheck)
                 updated = true
             }
@@ -68,10 +77,5 @@ object NavigationModel {
         if (updated)
             postListUpdate()
         return updated
-    }
-
-    private fun postListUpdate(){
-        val newList = navigationMenuItems
-        _navigationList.value = newList
     }
 }

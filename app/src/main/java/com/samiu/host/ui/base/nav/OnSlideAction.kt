@@ -45,8 +45,8 @@ class HalfClockwiseRotateSlideAction(
  * 导航页的抽屉栏从初始的半展开状态到完全展开
  * 包括：
  * @param profileImageView 用户头像的缩放
- * @param foregroundView 上层View的平移,圆角和缺口的处理
- * @param foregroundShapeDrawable
+ * @param foregroundView 上层View的平移
+ * @param foregroundShapeDrawable 圆角和缺口的处理
  */
 class ForegroundSheetTransformSlideAction(
     private val foregroundView: View,

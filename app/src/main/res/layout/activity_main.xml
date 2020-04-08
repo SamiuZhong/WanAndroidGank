@@ -1,80 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/coordinator_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <fragment
-        android:id="@+id/nav_host_fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/main_navigation" />
+        android:layout_height="match_parent">
 
-    <fragment
-        android:id="@+id/bottom_nav_drawer"
-        android:name="com.samiu.host.ui.base.nav.BottomNavDrawerFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bottom_app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:fabAlignmentMode="center"
-        app:fabCradleMargin="@dimen/bottom_app_bar_fab_cradle_margin"
-        app:fabCradleRoundedCornerRadius="@dimen/bottom_app_bar_fab_cradle_corner_radius"
-        app:hideOnScroll="true">
-
-        <LinearLayout
-            android:id="@+id/bottom_app_bar_content_container"
+        <fragment
+            android:id="@+id/nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/min_touch_target_size"
-            android:layout_marginVertical="@dimen/grid_0_5"
-            android:layout_marginEnd="@dimen/space_20"
-            android:foreground="@drawable/bottom_app_bar_title_foreground"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingHorizontal="@dimen/grid_0_5">
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/main_navigation" />
 
-            <ImageView
-                android:id="@+id/bottom_app_bar_chevron"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:contentDescription="@string/bottom_app_bar_chevron_content_desc"
-                app:srcCompat="@drawable/ic_arrow_drop_up"
-                app:tint="?attr/colorOnPrimarySurface" />
+        <fragment
+            android:id="@+id/bottom_nav_drawer"
+            android:name="com.samiu.host.ui.base.nav.BottomNavDrawerFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-            <ImageView
-                android:id="@+id/bottom_app_bar_logo"
-                android:layout_width="@dimen/bottom_app_bar_logo_size"
-                android:layout_height="@dimen/bottom_app_bar_logo_size"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/grid_1"
-                android:contentDescription="@string/bottom_app_bar_logo_content_desc"
-                app:srcCompat="@drawable/ic_reply_logo" />
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottom_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:fabAlignmentMode="center"
+            app:fabCradleMargin="@dimen/bottom_app_bar_fab_cradle_margin"
+            app:fabCradleRoundedCornerRadius="@dimen/bottom_app_bar_fab_cradle_corner_radius"
+            app:hideOnScroll="true">
 
-            <TextView
-                android:id="@+id/bottom_app_bar_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginHorizontal="@dimen/grid_1"
-                android:text="@string/navigation_inbox"
-                android:textAppearance="?attr/textAppearanceBody1"
-                android:textColor="?attr/colorControlNormal" />
-        </LinearLayout>
-    </com.google.android.material.bottomappbar.BottomAppBar>
+            <LinearLayout
+                android:id="@+id/bottom_app_bar_content_container"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/min_touch_target_size"
+                android:layout_marginVertical="@dimen/grid_0_5"
+                android:layout_marginEnd="@dimen/space_20"
+                android:foreground="@drawable/bottom_app_bar_title_foreground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/grid_0_5">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/fab_compose_email_content_description"
-        app:layout_anchor="@id/bottom_app_bar"
-        app:srcCompat="@drawable/asl_edit_reply" />
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+                <ImageView
+                    android:id="@+id/bottom_app_bar_chevron"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/bottom_app_bar_chevron_content_desc"
+                    app:srcCompat="@drawable/ic_arrow_drop_up"
+                    app:tint="?attr/colorOnPrimarySurface" />
+
+                <ImageView
+                    android:id="@+id/bottom_app_bar_logo"
+                    android:layout_width="@dimen/bottom_app_bar_logo_size"
+                    android:layout_height="@dimen/bottom_app_bar_logo_size"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/grid_1"
+                    android:contentDescription="@string/bottom_app_bar_logo_content_desc"
+                    app:srcCompat="@drawable/ic_reply_logo" />
+
+                <TextView
+                    android:id="@+id/bottom_app_bar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginHorizontal="@dimen/grid_1"
+                    android:text="@string/navigation_inbox"
+                    android:textAppearance="?attr/textAppearanceBody1"
+                    android:textColor="?attr/colorControlNormal" />
+            </LinearLayout>
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/fab_compose_email_content_description"
+            app:layout_anchor="@id/bottom_app_bar"
+            app:srcCompat="@drawable/asl_edit_reply" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

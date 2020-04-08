@@ -68,7 +68,7 @@ class VisibilityStateAction(
 }
 
 /**
- * 当抽屉页处于STATE_HIDDEN状态时，我们就来滚动recyclerView
+ * 当抽屉页变为[STATE_HIDDEN]状态时，我们就来把recyclerView滚动到第一项
  * @param recyclerView
  */
 class ScrollToTopStateAction(

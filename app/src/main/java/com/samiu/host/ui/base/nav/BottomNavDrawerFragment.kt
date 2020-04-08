@@ -1,6 +1,5 @@
 package com.samiu.host.ui.base.nav
 
-import android.accounts.Account
 import android.animation.ValueAnimator
 import android.content.res.ColorStateList
 import android.os.Bundle
@@ -9,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.*
@@ -27,12 +27,8 @@ import kotlin.math.abs
  * @author Samiu 2020/3/31
  */
 class BottomNavDrawerFragment :
-    BaseFragment(R.layout.fragment_bottom_nav_drawer),
-    NavigationAdapter.NavigationAdapterListener,
-    AccountAdapter.AccountAdapterListener {
-
-    private val binding by viewBinding(FragmentBottomNavDrawerBinding::bind)
-    override fun initData() = Unit
+    Fragment(),
+    NavigationAdapter.NavigationAdapterListener {
 
     /**
      * 枚举sandwich的状态
@@ -49,6 +45,8 @@ class BottomNavDrawerFragment :
         //sandwich正处于切换中，这个状态既不是OPEN也不是CLOSED
         SETTLING
     }
+
+    private lateinit var binding: FragmentBottomNavDrawerBinding
 
     //抽屉栏的behavior
     private val behavior: BottomSheetBehavior<FrameLayout> by lazy(NONE) {
@@ -151,12 +149,12 @@ class BottomNavDrawerFragment :
         requireActivity().onBackPressedDispatcher.addCallback(this, closeDrawerOnBackPressed)
     }
 
-    //todo this continue 4.7
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        binding = FragmentBottomNavDrawerBinding.inflate(inflater, container, false)
         binding.foregroundContainer.setOnApplyWindowInsetsListener { v, insets ->
             v.setTag(
                 R.id.tag_system_window_inset_top,
@@ -164,10 +162,11 @@ class BottomNavDrawerFragment :
             )
             insets
         }
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return binding.root
     }
 
-    override fun initView() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?){
+        super.onViewCreated(view, savedInstanceState)
         binding.run {
             //设置上下两层的背景
             backgroundContainer.background = backgroundShapeDrawable
@@ -220,6 +219,8 @@ class BottomNavDrawerFragment :
                 }
                 //默认选中第一项
                 NavigationModel.setNavigationMenuItemChecked(0)
+
+                //todo sandwich的item
             }
         }
     }
@@ -255,39 +256,13 @@ class BottomNavDrawerFragment :
         sandwichSlideActions.add(action)
     }
 
-    /**
-     * 每当sandwich的动画进度发生变化时调用
-     * @param progress sandwich当前的状态，0是CLOSED,1是OPEN
-     */
-    private fun onSandwichProgressChanged(progress: Float) {
-        binding.run {
-            val navProgress = lerp(0F, 1F, 0F, 0.5F, progress)
-            val accProgress = lerp(0F, 1F, 0.5F, 1F, progress)
-
-            foregroundContainer.translationY =
-                (binding.foregroundContainer.height * 0.15F) * navProgress
-            profileImageView.scaleX = 1F - navProgress
-            profileImageView.scaleY = 1F - navProgress
-            profileImageView.alpha = 1F - navProgress
-            foregroundContainer.alpha = 1F - navProgress
-            accountRecyclerView.alpha = accProgress
-
-            foregroundShapeDrawable.interpolation = 1F - navProgress
-
-            backgroundContainer.translationY =
-                progress * ((scrimView.bottom - accountRecyclerView.height -
-                        resources.getDimension(R.dimen.bottom_app_bar_height)) -
-                        (backgroundContainer.getTag(R.id.tag_view_top_snapshot) as Int))
-        }
-    }
-
-    override fun onAccountClicked(account: Account) {
-        TODO("Not yet implemented")
+    override fun onNavMenuItemClicked(item: NavigationModelItem.NavMenuItem) {
+        if (NavigationModel.setNavigationMenuItemChecked(item.id))
+            close()
     }
 
     /**
-     * 打开或者关闭账户选择器
-     * 这里我们给这个选择器取了个名字叫做"sandwich"
+     * 打开或者关闭sandwich
      */
     private fun toggleSandwich() {
         //初始化进度
@@ -317,8 +292,30 @@ class BottomNavDrawerFragment :
         sandwichAnim?.start()
     }
 
-    override fun onNavMenuItemClicked(item: NavigationModelItem.NavMenuItem) {
-        TODO("Not yet implemented")
+    /**
+     * 每当sandwich的动画进度发生变化时调用
+     * @param progress sandwich当前的状态，0是CLOSED,1是OPEN
+     */
+    private fun onSandwichProgressChanged(progress: Float) {
+        binding.run {
+            val navProgress = lerp(0F, 1F, 0F, 0.5F, progress)
+            val accProgress = lerp(0F, 1F, 0.5F, 1F, progress)
+
+            foregroundContainer.translationY =
+                (binding.foregroundContainer.height * 0.15F) * navProgress
+            profileImageView.scaleX = 1F - navProgress
+            profileImageView.scaleY = 1F - navProgress
+            profileImageView.alpha = 1F - navProgress
+            foregroundContainer.alpha = 1F - navProgress
+            accountRecyclerView.alpha = accProgress
+
+            foregroundShapeDrawable.interpolation = 1F - navProgress
+
+            backgroundContainer.translationY =
+                progress * ((scrimView.bottom - accountRecyclerView.height -
+                        resources.getDimension(R.dimen.bottom_app_bar_height)) -
+                        (backgroundContainer.getTag(R.id.tag_view_top_snapshot) as Int))
+        }
     }
 
     /**
