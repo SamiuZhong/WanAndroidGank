@@ -1,6 +1,5 @@
 package com.samiu.host.ui.base.nav
 
-import android.animation.ValueAnimator
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,16 +11,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.*
-import com.samiu.base.ui.BaseFragment
-import com.samiu.base.ui.viewBinding
+import com.google.android.material.shape.MaterialShapeDrawable
 import com.samiu.host.R
 import com.samiu.host.databinding.FragmentBottomNavDrawerBinding
-import kotlin.LazyThreadSafetyMode.NONE
-import com.google.android.material.shape.MaterialShapeDrawable
-import com.samiu.host.util.lerp
 import com.samiu.host.util.themeColor
-import com.samiu.host.util.themeInterpolator
-import kotlin.math.abs
+import kotlin.LazyThreadSafetyMode.NONE
 
 /**
  * @author Samiu 2020/3/31
@@ -29,22 +23,6 @@ import kotlin.math.abs
 class BottomNavDrawerFragment :
     Fragment(),
     NavigationAdapter.NavigationAdapterListener {
-
-    /**
-     * 枚举sandwich的状态
-     * （这里的账户选择器我们给它取了个名字叫sandwich）
-     */
-    enum class SandwichState {
-        //TODO 登录/注销、我的收藏
-        //sandwich处于隐藏，navigation drawer为初始弹出状态
-        CLOSED,
-
-        //sandwich处于可见状态
-        OPEN,
-
-        //sandwich正处于切换中，这个状态既不是OPEN也不是CLOSED
-        SETTLING
-    }
 
     private lateinit var binding: FragmentBottomNavDrawerBinding
 
@@ -55,9 +33,6 @@ class BottomNavDrawerFragment :
 
     //抽屉栏的callback
     private val bottomSheetCallback = BottomNavigationDrawerCallback()
-
-    //整个list来存放sandwich滑动的actions
-    private val sandwichSlideActions = mutableListOf<OnSandwichSlideAction>()
 
     //抽屉栏下面那层的Drawable
     private val backgroundShapeDrawable: MaterialShapeDrawable by lazy(NONE) {
@@ -105,36 +80,6 @@ class BottomNavDrawerFragment :
         }
     }
 
-    //sandwich默认CLOSED
-    private var sandwichState: SandwichState = SandwichState.CLOSED
-
-    //sandwich的动画
-    private var sandwichAnim: ValueAnimator? = null
-
-    //给sandwich的动画整一个插值器
-    private val sandwichInterp by lazy(NONE) {
-        requireContext().themeInterpolator(R.attr.motionInterpolatorPersistent)
-    }
-
-    //sandwich动画的进度，我们需要跟踪这个进度
-    private var sandwichProgress: Float = 0F
-        set(value) {
-            if (field != value) {    //如果set了一个新的值过来
-                onSandwichProgressChanged(value)
-                //这里根据传过来的value值确定sandwich的状态
-                val newState = when (value) {
-                    0F -> SandwichState.CLOSED
-                    1F -> SandwichState.OPEN
-                    else -> SandwichState.SETTLING
-                }
-                //当状态发生改变时，那么显然我们需要做一些操作
-                if (sandwichState != newState)
-                    onSandwichStateChanged(newState)
-                sandwichState = newState
-                field = value
-            }
-        }
-
     /**
      * 拦截返回键
      */
@@ -165,7 +110,7 @@ class BottomNavDrawerFragment :
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?){
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.run {
             //设置上下两层的背景
@@ -190,13 +135,6 @@ class BottomNavDrawerFragment :
                 )
                 //根据状态来确定recyclerView的滚动
                 addOnStateChangedAction(ScrollToTopStateAction(navRecyclerView))
-                //关闭sandwich（如果当前它正处于打开状态）
-                addOnStateChangedAction(object : OnStateChangedAction {
-                    override fun onStateChanged(sheet: View, newState: Int) {
-                        sandwichAnim?.cancel()
-                        sandwichProgress = 0F
-                    }
-                })
                 //让drawer接收系统返回键
                 addOnStateChangedAction(object : OnStateChangedAction {
                     override fun onStateChanged(sheet: View, newState: Int) {
@@ -204,7 +142,7 @@ class BottomNavDrawerFragment :
                     }
                 })
                 //点击头像
-                profileImageView.setOnClickListener { toggleSandwich() }
+                profileImageView.setOnClickListener { TODO()}
 
                 behavior.addBottomSheetCallback(bottomSheetCallback)
                 behavior.state = STATE_HIDDEN
@@ -225,14 +163,15 @@ class BottomNavDrawerFragment :
         }
     }
 
+    /**
+     * 底部栏的点击事件
+     */
     fun toggle() {
-        when {
-            sandwichState == SandwichState.OPEN -> toggleSandwich()
-            behavior.state == STATE_HIDDEN -> open()
-            behavior.state == STATE_HIDDEN
-                    || behavior.state == STATE_HALF_EXPANDED
-                    || behavior.state == STATE_EXPANDED
-                    || behavior.state == STATE_COLLAPSED -> close()
+        when (behavior.state) {
+            STATE_HIDDEN -> open()
+            STATE_HALF_EXPANDED,
+            STATE_EXPANDED,
+            STATE_COLLAPSED -> close()
         }
     }
 
@@ -252,85 +191,8 @@ class BottomNavDrawerFragment :
         bottomSheetCallback.addOnStateChangedAction(action)
     }
 
-    fun addOnSandwichSlideAction(action: OnSandwichSlideAction) {
-        sandwichSlideActions.add(action)
-    }
-
     override fun onNavMenuItemClicked(item: NavigationModelItem.NavMenuItem) {
         if (NavigationModel.setNavigationMenuItemChecked(item.id))
             close()
-    }
-
-    /**
-     * 打开或者关闭sandwich
-     */
-    private fun toggleSandwich() {
-        //初始化进度
-        val initialProgress = sandwichProgress
-        val newProgress = when (sandwichState) {
-            SandwichState.CLOSED -> {
-                //存一下sandwich处于CLOSED状态的原始位置
-                //方便我们在sandwich打开和关闭时能找准位置
-                binding.backgroundContainer.setTag(
-                    R.id.tag_view_top_snapshot,
-                    binding.backgroundContainer.top
-                )
-                1F
-            }
-            SandwichState.OPEN -> 0F
-            SandwichState.SETTLING -> return
-        }
-        sandwichAnim?.cancel()
-        //属性动画
-        sandwichAnim = ValueAnimator.ofFloat(initialProgress, newProgress).apply {
-            addUpdateListener { sandwichProgress = animatedValue as Float }
-            interpolator = sandwichInterp
-            duration = (abs(newProgress - initialProgress) *
-                    resources.getInteger(R.integer.reply_motion_duration_medium)).toLong()
-        }
-        //播放动画
-        sandwichAnim?.start()
-    }
-
-    /**
-     * 每当sandwich的动画进度发生变化时调用
-     * @param progress sandwich当前的状态，0是CLOSED,1是OPEN
-     */
-    private fun onSandwichProgressChanged(progress: Float) {
-        binding.run {
-            val navProgress = lerp(0F, 1F, 0F, 0.5F, progress)
-            val accProgress = lerp(0F, 1F, 0.5F, 1F, progress)
-
-            foregroundContainer.translationY =
-                (binding.foregroundContainer.height * 0.15F) * navProgress
-            profileImageView.scaleX = 1F - navProgress
-            profileImageView.scaleY = 1F - navProgress
-            profileImageView.alpha = 1F - navProgress
-            foregroundContainer.alpha = 1F - navProgress
-            accountRecyclerView.alpha = accProgress
-
-            foregroundShapeDrawable.interpolation = 1F - navProgress
-
-            backgroundContainer.translationY =
-                progress * ((scrimView.bottom - accountRecyclerView.height -
-                        resources.getDimension(R.dimen.bottom_app_bar_height)) -
-                        (backgroundContainer.getTag(R.id.tag_view_top_snapshot) as Int))
-        }
-    }
-
-    /**
-     * 每当sandwich的state状态发生变化时调用
-     */
-    private fun onSandwichStateChanged(state: SandwichState) {
-        when (state) {
-            SandwichState.OPEN -> binding.run {
-                foregroundContainer.visibility = View.GONE
-                profileImageView.isClickable = false
-            }
-            else -> binding.run {
-                foregroundContainer.visibility = View.VISIBLE
-                profileImageView.isClickable = true
-            }
-        }
     }
 }

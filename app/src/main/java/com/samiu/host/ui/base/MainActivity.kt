@@ -16,6 +16,7 @@ import com.samiu.host.R
 import com.samiu.host.databinding.ActivityMainBinding
 import com.samiu.host.ui.base.nav.*
 import kotlin.LazyThreadSafetyMode.NONE
+import kotlin.properties.Delegates
 
 /**
  * @author Samiu 2020/3/2
@@ -64,8 +65,6 @@ class MainActivity : AppCompatActivity(),
                         getBottomAppBarMenuForDestination()
                 )
             })
-            //sandwich滑动的时候底部栏的那个尖尖图标也要旋转跳跃
-            addOnSandwichSlideAction(HalfCounterClockwiseRotateSlideAction(binding.bottomAppBarChevron))
         }
 
         //设置底部栏Menu的点击事件
