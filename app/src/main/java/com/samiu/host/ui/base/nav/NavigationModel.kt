@@ -13,31 +13,31 @@ object NavigationModel {
         NavigationModelItem.NavMenuItem(
             id = 0,
             icon = R.drawable.ic_twotone_inbox,
-            titleRes = R.string.navigation_inbox,
+            titleRes = R.string.home,
             checked = false
         ),
         NavigationModelItem.NavMenuItem(
             id = 1,
             icon = R.drawable.ic_twotone_stars,
-            titleRes = R.string.navigation_starred,
+            titleRes = R.string.square,
             checked = false
         ),
         NavigationModelItem.NavMenuItem(
             id = 2,
             icon = R.drawable.ic_twotone_send,
-            titleRes = R.string.navigation_sent,
+            titleRes = R.string.wx_article,
             checked = false
         ),
         NavigationModelItem.NavMenuItem(
             id = 3,
             icon = R.drawable.ic_twotone_delete,
-            titleRes = R.string.navigation_trash,
+            titleRes = R.string.system,
             checked = false
         ),
         NavigationModelItem.NavMenuItem(
             id = 4,
             icon = R.drawable.ic_twotone_error,
-            titleRes = R.string.navigation_spam,
+            titleRes = R.string.navigation,
             checked = false
         ),
         NavigationModelItem.NavMenuItem(

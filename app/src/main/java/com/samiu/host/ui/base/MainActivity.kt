@@ -26,8 +26,12 @@ class MainActivity : AppCompatActivity(),
     NavController.OnDestinationChangedListener {
 
     private val binding: ActivityMainBinding by dataBinding(R.layout.activity_main)
-    private val bottomNavDrawer: BottomNavDrawerFragment by lazy(NONE) {
+    private val bottomNavDrawer: BottomNavDrawerFragment by lazy {
         supportFragmentManager.findFragmentById(R.id.bottom_nav_drawer) as BottomNavDrawerFragment
+    }
+
+    fun getNavController(): NavController {
+        return findNavController(R.id.nav_host_fragment)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +41,7 @@ class MainActivity : AppCompatActivity(),
 
     private fun setUpBottomNavigationAndFab() {
         binding.run {
-            findNavController(R.id.nav_host_fragment).addOnDestinationChangedListener(
+            getNavController().addOnDestinationChangedListener(
                 this@MainActivity
             )
         }
@@ -46,7 +50,13 @@ class MainActivity : AppCompatActivity(),
         binding.fab.apply {
             setShowMotionSpecResource(R.animator.fab_show)
             setHideMotionSpecResource(R.animator.fab_hide)
-            //todo fab.setOnclickListener
+            //点击事件
+            setOnClickListener {
+                val des = getNavController().currentDestination
+                when(des?.id){
+                    R.id.browserFragment -> onBackPressed()
+                }
+            }
         }
 
         bottomNavDrawer.apply {
@@ -56,7 +66,7 @@ class MainActivity : AppCompatActivity(),
             addOnSlideAction(AlphaSlideAction(binding.bottomAppBarTitle, true))
             //给fab安排上显示和隐藏的action
             addOnStateChangedAction(ShowHideFabStateAction(binding.fab))
-            //底部菜单的弹出和收回
+            //底部菜单的替换
             addOnStateChangedAction(ChangeSettingsMenuStateAction { showSettings ->
                 binding.bottomAppBar.replaceMenu(
                     if (showSettings)
@@ -89,10 +99,14 @@ class MainActivity : AppCompatActivity(),
         arguments: Bundle?
     ) {
         when (destination.id) {
-            R.id.browserFragment ->
+            R.id.browserFragment ->{
                 setBottomAppBarForEmail(getBottomAppBarMenuForDestination(destination))
-            else ->
+                binding.bottomAppBar.visibility = View.INVISIBLE
+            }
+            else ->{
                 setBottomAppBarForHome(getBottomAppBarMenuForDestination())
+                binding.bottomAppBar.visibility = View.VISIBLE
+            }
         }
     }
 
@@ -103,8 +117,12 @@ class MainActivity : AppCompatActivity(),
     private fun getBottomAppBarMenuForDestination(destination: NavDestination? = null): Int {
         val dest = destination ?: findNavController(R.id.nav_host_fragment).currentDestination
         return when (dest?.id) {
-            R.id.browserFragment -> R.menu.bottom_app_bar_email_menu
-            else -> R.menu.bottom_app_bar_home_menu
+            R.id.browserFragment -> {
+                R.menu.bottom_app_bar_email_menu
+            }
+            else -> {
+                R.menu.bottom_app_bar_home_menu
+            }
         }
     }
 

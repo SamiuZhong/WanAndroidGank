@@ -7,6 +7,7 @@ import com.samiu.base.ui.BaseFragment
 import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
 import com.samiu.host.databinding.ActivityBrowserBinding
+import com.samiu.host.databinding.FragmentBrowserBinding
 import com.samiu.host.global.URL
 import com.tencent.smtt.sdk.WebChromeClient
 import com.tencent.smtt.sdk.WebView
@@ -16,12 +17,10 @@ import kotlinx.android.synthetic.main.activity_browser.*
 /**
  * @author Samiu 2020/4/6
  */
-class BrowserFragment : BaseFragment(R.layout.activity_browser) {
-    private val binding by viewBinding(ActivityBrowserBinding::bind)
+class BrowserFragment : BaseFragment(R.layout.fragment_browser) {
+    private val binding by viewBinding(FragmentBrowserBinding::bind)
 
     override fun initView() {
-        binding.toolBar.title = getString(R.string.is_loading)
-        binding.toolBar.navigationIcon = getDrawable(requireContext(), R.drawable.arrow_back)
         initWebView()
     }
 
@@ -52,12 +51,6 @@ class BrowserFragment : BaseFragment(R.layout.activity_browser) {
                     super.onProgressChanged(p0, p1)
                     binding.progressBar.progress = p1
                 }
-
-                override fun onReceivedTitle(p0: WebView?, p1: String?) {
-                    super.onReceivedTitle(p0, p1)
-                    p1?.let { tool_bar.title = p1 }
-                }
-
             }
         }
     }
