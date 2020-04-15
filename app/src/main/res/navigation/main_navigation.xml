@@ -10,11 +10,24 @@
         android:label="WanHomeFragment" />
 
     <fragment
+        android:id="@+id/wanSquareFragment"
+        android:name="com.samiu.host.ui.fragment.WanSquareFragment"
+        android:label="WanSquareFragment" />
+
+    <fragment
         android:id="@+id/browserFragment"
         android:name="com.samiu.host.ui.base.nav.BrowserFragment"
-        android:label="BrowserFragment"/>
+        android:label="BrowserFragment" />
 
     <action
         android:id="@+id/to_browser"
         app:destination="@+id/browserFragment" />
+
+    <action
+        android:id="@+id/to_wanHome"
+        app:destination="@+id/wanHomeFragment" />
+
+    <action
+        android:id="@+id/to_wanSquare"
+        app:destination="@+id/wanSquareFragment" />
 </navigation>

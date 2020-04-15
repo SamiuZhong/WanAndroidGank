@@ -14,6 +14,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior.*
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.samiu.host.R
 import com.samiu.host.databinding.FragmentBottomNavDrawerBinding
+import com.samiu.host.global.desTo
 import com.samiu.host.model.data.Account
 import com.samiu.host.util.themeColor
 import kotlin.LazyThreadSafetyMode.NONE
@@ -27,7 +28,7 @@ class BottomNavDrawerFragment :
 
     private lateinit var binding: FragmentBottomNavDrawerBinding
 
-    val account = Account(1L,R.drawable.avatar)
+    val account = Account(1L, R.drawable.avatar)
 
     //抽屉栏的behavior
     private val behavior: BottomSheetBehavior<FrameLayout> by lazy(NONE) {
@@ -69,11 +70,10 @@ class BottomNavDrawerFragment :
             elevation = resources.getDimension(R.dimen.plane_16)
             shadowCompatibilityMode = MaterialShapeDrawable.SHADOW_COMPAT_MODE_NEVER
             initializeElevationOverlay(requireContext())
-            shapeAppearanceModel = shapeAppearanceModel
-                .toBuilder()
+            shapeAppearanceModel = shapeAppearanceModel.toBuilder()
                 .setTopEdge(    //绘制顶部的凹槽
                     SemiCircleEdgeCutoutTreatment(
-                        resources.getDimension(R.dimen.grid_1),
+                        resources.getDimension(R.dimen.grid_2),
                         resources.getDimension(R.dimen.grid_3),
                         0F,
                         resources.getDimension(R.dimen.navigation_drawer_profile_image_size_padded)
@@ -195,7 +195,12 @@ class BottomNavDrawerFragment :
     }
 
     override fun onNavMenuItemClicked(item: NavigationModelItem.NavMenuItem) {
-        if (NavigationModel.setNavigationMenuItemChecked(item.id))
+        if (NavigationModel.setNavigationMenuItemChecked(item.id)) {
+            when (item.id) {
+                0 -> desTo(this, R.id.to_wanHome)
+                1 -> desTo(this, R.id.to_wanSquare)
+            }
             close()
+        }
     }
 }

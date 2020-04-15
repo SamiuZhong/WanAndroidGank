@@ -5,7 +5,7 @@ import androidx.annotation.StringRes
 import androidx.recyclerview.widget.DiffUtil
 
 /**
- * 这个密封类封装了 [navigationAdapter] 能够展示的所有对象
+ * 这个密封类封装了 [navigationAdapter] 能够展示的所有Item
  *
  * @author Samiu 2020/3/31
  */

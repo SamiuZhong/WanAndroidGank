@@ -14,6 +14,10 @@ import com.samiu.host.ui.base.RecyclerActivity
 /**
  * @author Samiu 2020/3/4
  */
+fun desTo(fragment: Fragment, id: Int) {
+    (fragment.requireActivity() as MainActivity).getNavController().navigate(id)
+}
+
 fun toBrowser(fragment: Fragment, url: String) {
     val bundle = Bundle().apply { putString(URL, url) }
     (fragment.requireActivity() as MainActivity).getNavController()
