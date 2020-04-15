@@ -7,6 +7,8 @@ import com.samiu.host.databinding.NavMenuItemLayoutBinding
 
 
 /**
+ * 底部栏RecyclerView的adapter
+ *
  * @author Samiu 2020/3/31
  */
 private const val VIEW_TYPE_NAV_MENU_ITEM = 4

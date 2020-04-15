@@ -48,6 +48,5 @@ sealed class NavigationModelItem {
                 else -> false
             }
         }
-
     }
 }

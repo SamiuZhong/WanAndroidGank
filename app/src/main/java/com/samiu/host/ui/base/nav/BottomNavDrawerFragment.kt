@@ -14,6 +14,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior.*
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.samiu.host.R
 import com.samiu.host.databinding.FragmentBottomNavDrawerBinding
+import com.samiu.host.model.data.Account
 import com.samiu.host.util.themeColor
 import kotlin.LazyThreadSafetyMode.NONE
 
@@ -25,6 +26,8 @@ class BottomNavDrawerFragment :
     NavigationAdapter.NavigationAdapterListener {
 
     private lateinit var binding: FragmentBottomNavDrawerBinding
+
+    val account = Account(1L,R.drawable.avatar)
 
     //抽屉栏的behavior
     private val behavior: BottomSheetBehavior<FrameLayout> by lazy(NONE) {
@@ -112,6 +115,7 @@ class BottomNavDrawerFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.account = account
         binding.run {
             //设置上下两层的背景
             backgroundContainer.background = backgroundShapeDrawable
@@ -142,7 +146,9 @@ class BottomNavDrawerFragment :
                     }
                 })
                 //点击头像
-                profileImageView.setOnClickListener { TODO()}
+                profileImageView.setOnClickListener {
+                    //todo
+                }
 
                 behavior.addBottomSheetCallback(bottomSheetCallback)
                 behavior.state = STATE_HIDDEN
@@ -150,15 +156,12 @@ class BottomNavDrawerFragment :
                 //给recyclerView设置adapter
                 val adapter = NavigationAdapter(this@BottomNavDrawerFragment)
                 navRecyclerView.adapter = adapter
-
                 //liveDate订阅数据的变化
-                NavigationModel.navigationList.observe(this@BottomNavDrawerFragment) {
+                NavigationModel.navigationList.observe(viewLifecycleOwner) {
                     adapter.submitList(it)
                 }
                 //默认选中第一项
                 NavigationModel.setNavigationMenuItemChecked(0)
-
-                //todo sandwich的item
             }
         }
     }

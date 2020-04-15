@@ -2,6 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="account"
+            type="com.samiu.host.model.data.Account" />
+    </data>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -29,7 +35,10 @@
                 android:layout_height="@dimen/navigation_drawer_profile_image_size"
                 android:layout_gravity="center|top"
                 android:foreground="?attr/actionBarItemBackground"
-                android:paddingTop="@dimen/grid_1" />
+                android:paddingTop="@dimen/grid_1"
+                app:glideCenterCrop="@{true}"
+                app:glideCircularCrop="@{true}"
+                app:glideSrc="@{account.avatar}" />
 
             <LinearLayout
                 android:id="@+id/foreground_container"

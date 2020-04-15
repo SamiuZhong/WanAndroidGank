@@ -31,6 +31,8 @@ class BrowserFragment : BaseFragment(R.layout.fragment_browser) {
     }
 
     private fun initWebView() {
+        val binding = this.binding
+
         binding.progressBar.progressDrawable =
             getDrawable(requireContext(), R.drawable.color_progressbar)
         binding.webView.run {

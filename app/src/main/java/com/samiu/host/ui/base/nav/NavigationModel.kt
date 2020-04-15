@@ -65,7 +65,7 @@ object NavigationModel {
      * @param id
      * @return 选中的item发生变化就返回true，否则false
      */
-    fun setNavigationMenuItemChecked(id: Int): Boolean {
+    fun  setNavigationMenuItemChecked(id: Int): Boolean {
         var updated = false
         navigationMenuItems.forEachIndexed { index, item ->
             val shouldCheck = item.id == id
