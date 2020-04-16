@@ -3,7 +3,7 @@ package com.samiu.host.ui.fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.samiu.base.ui.BaseVMFragment
+import com.samiu.base.ui.BaseFragment
 import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
 import com.samiu.host.databinding.FragmentWanProjectBinding
@@ -20,10 +20,10 @@ import kotlin.properties.Delegates
 /**
  * @author Samiu 2020/3/4
  */
-class WanProjectFragment : BaseVMFragment<WanProjectViewModel>(R.layout.fragment_wan_project) {
+class WanProjectFragment : BaseFragment(R.layout.fragment_wan_project) {
     private val binding by viewBinding(FragmentWanProjectBinding::bind)
+    private val projectViewModel: WanProjectViewModel by viewModel()
 
-    private val mViewModel: WanProjectViewModel by viewModel()
     private var currentPage by Delegates.notNull<Int>()
     private var cid by Delegates.notNull<Int>()
     private lateinit var mTypeAdapter: WanTypeAdapter
@@ -34,7 +34,7 @@ class WanProjectFragment : BaseVMFragment<WanProjectViewModel>(R.layout.fragment
     }
 
     override fun initData() {
-        mViewModel.getProjectType()
+        projectViewModel.getProjectType()
         with(project_refresh) {
             setOnRefreshListener {
                 refreshData(REFRESH)
@@ -52,16 +52,16 @@ class WanProjectFragment : BaseVMFragment<WanProjectViewModel>(R.layout.fragment
             REFRESH -> {
                 currentPage = 0
                 mArticleAdapter.clearAll()
-                mViewModel.getAllProjects(currentPage, cid)
+                projectViewModel.getAllProjects(currentPage, cid)
             }
             LOAD_MORE -> {
                 currentPage += 1
-                mViewModel.getAllProjects(currentPage, cid)
+                projectViewModel.getAllProjects(currentPage, cid)
             }
         }
     }
 
-    override fun startObserve() = mViewModel.run {
+    override fun startObserve() = projectViewModel.run {
         mProjectType.observe(this@WanProjectFragment, Observer {
             it[0].isSelected = true
             cid = it[0].id

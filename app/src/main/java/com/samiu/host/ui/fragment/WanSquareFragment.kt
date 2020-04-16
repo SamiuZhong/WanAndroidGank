@@ -3,7 +3,7 @@ package com.samiu.host.ui.fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jeremyliao.liveeventbus.LiveEventBus
-import com.samiu.base.ui.BaseVMFragment
+import com.samiu.base.ui.BaseFragment
 import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
 import com.samiu.host.databinding.FragmentWanSquareBinding
@@ -20,13 +20,14 @@ import kotlin.properties.Delegates
 /**
  * @author Samiu 2020/3/2
  */
-class WanSquareFragment : BaseVMFragment<WanSquareViewModel>(R.layout.fragment_wan_square) {
+class WanSquareFragment : BaseFragment(R.layout.fragment_wan_square) {
     private val binding by viewBinding(FragmentWanSquareBinding::bind)
-    override fun initData() = refreshData(REFRESH)
+    private val squareViewModel: WanSquareViewModel by viewModel()
 
     private var currentPage by Delegates.notNull<Int>()
-    private val mViewModel: WanSquareViewModel by viewModel()
     private lateinit var adapter: WanArticleAdapter
+
+    override fun initData() = refreshData(REFRESH)
 
     override fun initView() {
         initRecyclerView()
@@ -40,16 +41,16 @@ class WanSquareFragment : BaseVMFragment<WanSquareViewModel>(R.layout.fragment_w
             REFRESH -> {
                 currentPage = 0
                 adapter.clearAll()
-                mViewModel.getArticles(currentPage)
+                squareViewModel.getArticles(currentPage)
             }
             LOAD_MORE -> {
                 currentPage += 1
-                mViewModel.getArticles(currentPage)
+                squareViewModel.getArticles(currentPage)
             }
         }
     }
 
-    override fun startObserve() = mViewModel.run {
+    override fun startObserve() = squareViewModel.run {
         mArticles.observe(this@WanSquareFragment, Observer { adapter.addAll(it) })
     }
 

@@ -5,7 +5,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.samiu.base.ui.BaseVMFragment
+import com.samiu.base.ui.BaseFragment
 import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
 import com.samiu.host.databinding.FragmentWanSearchBinding
@@ -22,11 +22,11 @@ import kotlin.properties.Delegates
 /**
  * @author Samiu 2020/3/4
  */
-class WanSearchFragment : BaseVMFragment<WanSearchViewModel>(R.layout.fragment_wan_search) {
+class WanSearchFragment : BaseFragment(R.layout.fragment_wan_search) {
     private val binding by viewBinding(FragmentWanSearchBinding::bind)
+    private val searchViewModel:WanSearchViewModel by viewModel()
 
     private var currentPage by Delegates.notNull<Int>()
-    private val mViewModel: WanSearchViewModel by viewModel()
     private lateinit var adapter: WanArticleAdapter
     private var key = ""
 
@@ -66,7 +66,7 @@ class WanSearchFragment : BaseVMFragment<WanSearchViewModel>(R.layout.fragment_w
     }
 
     override fun initData() {
-        mViewModel.getHotKeys()
+        searchViewModel.getHotKeys()
     }
 
     private fun refreshData(type: Int) {
@@ -74,16 +74,16 @@ class WanSearchFragment : BaseVMFragment<WanSearchViewModel>(R.layout.fragment_w
             REFRESH -> {
                 currentPage = 0
                 adapter.clearAll()
-                mViewModel.getArticles(currentPage, key)
+                searchViewModel.getArticles(currentPage, key)
             }
             LOAD_MORE -> {
                 currentPage += 1
-                mViewModel.getArticles(currentPage, key)
+                searchViewModel.getArticles(currentPage, key)
             }
         }
     }
 
-    override fun startObserve() = mViewModel.run {
+    override fun startObserve() = searchViewModel.run {
         mArticles.observe(this@WanSearchFragment, Observer {
             if (it.isEmpty())
                 Toast.makeText(context, R.string.no_search_resut, Toast.LENGTH_SHORT).show()

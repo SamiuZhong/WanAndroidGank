@@ -1,8 +1,8 @@
 package com.samiu.host.viewmodel
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.samiu.base.ui.BaseViewModel
 import com.samiu.host.model.bean.Article
 import com.samiu.host.model.http.WanResult
 import com.samiu.host.model.repository.WanSquareRepository
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
  */
 class WanSquareViewModel(
     private val wanSquareRepository: WanSquareRepository
-) : BaseViewModel() {
+) : ViewModel() {
 
     val mArticles = MutableLiveData<List<Article>>()
 

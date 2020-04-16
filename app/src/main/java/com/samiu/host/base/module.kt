@@ -9,7 +9,6 @@ import org.koin.dsl.module
 /**
  * @author Samiu 2020/3/3
  */
-
 val viewModelModule = module {
     viewModel { WanHomeViewModel(get()) }
     viewModel { WanSquareViewModel(get()) }

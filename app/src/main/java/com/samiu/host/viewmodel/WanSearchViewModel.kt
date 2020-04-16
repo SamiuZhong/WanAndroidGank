@@ -1,8 +1,8 @@
 package com.samiu.host.viewmodel
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.samiu.base.ui.BaseViewModel
 import com.samiu.host.model.bean.Article
 import com.samiu.host.model.bean.Hot
 import com.samiu.host.model.http.WanResult
@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
  */
 class WanSearchViewModel(
     private val searchRepository: WanSearchRepository
-) : BaseViewModel() {
+) : ViewModel() {
 
     val mArticles = MutableLiveData<List<Article>>()
     val mkeys = MutableLiveData<List<Hot>>()

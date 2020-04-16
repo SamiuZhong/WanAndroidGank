@@ -1,8 +1,8 @@
 package com.samiu.host.viewmodel
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.samiu.base.ui.BaseViewModel
 import com.samiu.host.model.bean.ArticleList
 import com.samiu.host.model.bean.SystemParent
 import com.samiu.host.model.http.WanResult
@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
  */
 class WanSystemViewModel(
     private val wanSystemRepository: WanSystemRepository
-):BaseViewModel() {
+):ViewModel() {
 
     val mSystems = MutableLiveData<List<SystemParent>>()
     val mSystemDetails = MutableLiveData<ArticleList>()

@@ -1,8 +1,8 @@
 package com.samiu.host.viewmodel
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.samiu.base.ui.BaseViewModel
 import com.samiu.host.model.bean.Article
 import com.samiu.host.model.http.WanResult
 import com.samiu.host.model.repository.WanSystemRepository
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
  */
 class RecyclerViewModel(
     private val systemRepository: WanSystemRepository
-) : BaseViewModel() {
+) : ViewModel() {
 
     val mSystemArticles = MutableLiveData<List<Article>>()
 

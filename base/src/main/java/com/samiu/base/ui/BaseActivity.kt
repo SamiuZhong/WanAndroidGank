@@ -18,11 +18,13 @@ abstract class BaseActivity : AppCompatActivity(),
         setContentView(getBindingRoot())
         initView()
         initData()
+        startObserve()
     }
 
     abstract fun getBindingRoot():View
     abstract fun initView()
     abstract fun initData()
+    open fun startObserve()=Unit
 
     override fun onDestroy() {
         super.onDestroy()

@@ -1,7 +1,7 @@
 package com.samiu.host.ui.fragment
 
 import androidx.lifecycle.Observer
-import com.samiu.base.ui.BaseVMFragment
+import com.samiu.base.ui.BaseFragment
 import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
 import com.samiu.host.databinding.FragmentWanHomeBinding
@@ -17,11 +17,11 @@ import kotlin.properties.Delegates
 /**
  * @author Samiu 2020/3/2
  */
-class WanHomeFragment : BaseVMFragment<WanHomeViewModel>(R.layout.fragment_wan_home) {
+class WanHomeFragment : BaseFragment(R.layout.fragment_wan_home) {
     private val binding by viewBinding(FragmentWanHomeBinding::bind)
+    private val homeViewModel: WanHomeViewModel by viewModel()
 
     private var mCurrentPage by Delegates.notNull<Int>()
-    private val mViewModel: WanHomeViewModel by viewModel()
     private lateinit var mAdapter: WanArticleAdapter
 
     override fun initView() {
@@ -30,23 +30,23 @@ class WanHomeFragment : BaseVMFragment<WanHomeViewModel>(R.layout.fragment_wan_h
             setOnRefreshListener {
                 mCurrentPage = 0
                 mAdapter.clearAll()
-                mViewModel.getArticles(mCurrentPage)
+                homeViewModel.getArticles(mCurrentPage)
                 finishRefresh(1000)
             }
             setOnLoadMoreListener {
                 mCurrentPage += 1
-                mViewModel.getArticles(mCurrentPage)
+                homeViewModel.getArticles(mCurrentPage)
                 finishLoadMore(1000)
             }
         }
     }
 
     override fun initData() {
-        mViewModel.run { getBanners() }
+        homeViewModel.run { getBanners() }
         binding.refreshLayout.autoRefresh()
     }
 
-    override fun startObserve() = mViewModel.run {
+    override fun startObserve() = homeViewModel.run {
         mBanners.observe(this@WanHomeFragment, Observer { setBanner(it) })
         mArticles.observe(this@WanHomeFragment, Observer { mAdapter.addAll(it) })
     }

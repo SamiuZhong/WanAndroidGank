@@ -17,11 +17,13 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int) : Fragment(contentL
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initView()
         initData()
+        startObserve()
         super.onViewCreated(view, savedInstanceState)
     }
 
     abstract fun initView()
     abstract fun initData()
+    open fun startObserve()=Unit
 
     override fun onDestroy() {
         super.onDestroy()

@@ -3,7 +3,7 @@ package com.samiu.host.ui.fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jeremyliao.liveeventbus.LiveEventBus
-import com.samiu.base.ui.BaseVMFragment
+import com.samiu.base.ui.BaseFragment
 import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
 import com.samiu.host.databinding.FragmentWanRecentProjectBinding
@@ -12,17 +12,16 @@ import com.samiu.host.global.toBrowser
 import com.samiu.host.ui.adapter.WanProjectAdapter
 import com.samiu.host.viewmodel.WanProjectViewModel
 import kotlinx.android.synthetic.main.fragment_wan_recent_project.*
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.properties.Delegates
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * @author Samiu 2020/3/5
  */
-class WanRecentProjectFragment :
-    BaseVMFragment<WanProjectViewModel>(R.layout.fragment_wan_recent_project) {
+class WanRecentProjectFragment : BaseFragment(R.layout.fragment_wan_recent_project) {
     private val binding by viewBinding(FragmentWanRecentProjectBinding::bind)
+    private val projectViewModel: WanProjectViewModel by viewModel()
 
-    private val mViewModelWan: WanProjectViewModel by viewModel()
     private lateinit var adapterWan: WanProjectAdapter
     private var currentPage by Delegates.notNull<Int>()
 
@@ -42,16 +41,16 @@ class WanRecentProjectFragment :
             -1 -> { //onRefresh
                 currentPage = 0
                 adapterWan.clearAll()
-                mViewModelWan.getRecentProjects(currentPage)
+                projectViewModel.getRecentProjects(currentPage)
             }
             1 -> {  //onLoadMore
                 currentPage += 1
-                mViewModelWan.getRecentProjects(currentPage)
+                projectViewModel.getRecentProjects(currentPage)
             }
         }
     }
 
-    override fun startObserve() = mViewModelWan.run {
+    override fun startObserve() = projectViewModel.run {
         mRecentProjects.observe(this@WanRecentProjectFragment, Observer { adapterWan.addAll(it) })
     }
 
