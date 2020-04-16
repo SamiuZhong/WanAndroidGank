@@ -1,4 +1,4 @@
-package com.samiu.base.view;
+package com.samiu.host.ui.base;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

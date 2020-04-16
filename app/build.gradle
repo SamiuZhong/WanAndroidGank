@@ -54,13 +54,15 @@ dependencies {
     implementation project(':base')
     implementation project(':res')
 
+    //WebView
+    implementation "com.tencent.tbs.tbssdk:sdk:43697"
+    //Glide图片框架
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    kapt 'com.github.bumptech.glide:compiler:4.11.0'
     //屏幕适配
     implementation 'me.jessyan:autosize:1.2.0'
     //Banner
     implementation 'com.youth.banner:banner:2.0.0-alpha02'
-    //Glide图片框架
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
-    kapt 'com.github.bumptech.glide:compiler:4.11.0'
     //下拉刷新
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0'

@@ -53,8 +53,8 @@ class MainActivity : AppCompatActivity(),
             //点击事件
             setOnClickListener {
                 val des = getNavController().currentDestination
-                when(des?.id){
-                    R.id.browserFragment -> onBackPressed()
+                when (des?.id) {
+                    R.id.browserFragment -> getNavController().popBackStack()
                 }
             }
         }
@@ -99,11 +99,11 @@ class MainActivity : AppCompatActivity(),
         arguments: Bundle?
     ) {
         when (destination.id) {
-            R.id.browserFragment ->{
+            R.id.browserFragment -> {
                 setBottomAppBarForEmail(getBottomAppBarMenuForDestination(destination))
                 binding.bottomAppBar.visibility = View.INVISIBLE
             }
-            else ->{
+            else -> {
                 setBottomAppBarForHome(getBottomAppBarMenuForDestination())
                 binding.bottomAppBar.visibility = View.VISIBLE
             }

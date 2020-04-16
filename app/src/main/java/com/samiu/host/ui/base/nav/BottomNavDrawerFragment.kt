@@ -197,8 +197,8 @@ class BottomNavDrawerFragment :
     override fun onNavMenuItemClicked(item: NavigationModelItem.NavMenuItem) {
         if (NavigationModel.setNavigationMenuItemChecked(item.id)) {
             when (item.id) {
-                0 -> desTo(this, R.id.to_wanHome)
-                1 -> desTo(this, R.id.to_wanSquare)
+                0 -> desTo(this, R.id.wanHomeFragment)
+                1 -> desTo(this, R.id.wanSquareFragment)
             }
             close()
         }

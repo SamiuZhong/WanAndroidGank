@@ -6,6 +6,8 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import com.samiu.host.R
 import com.samiu.host.ui.base.BrowserActivity
 import com.samiu.host.ui.base.MainActivity
@@ -15,19 +17,25 @@ import com.samiu.host.ui.base.RecyclerActivity
  * @author Samiu 2020/3/4
  */
 fun desTo(fragment: Fragment, id: Int) {
-    (fragment.requireActivity() as MainActivity).getNavController().navigate(id)
+    val navController = (fragment.requireActivity() as MainActivity).getNavController()
+    try {
+        val desId = navController.getBackStackEntry(id).destination.id
+        navController.popBackStack(desId, false)
+    } catch (e: IllegalArgumentException) {
+        navController.navigate(id)
+    }
 }
 
 fun toBrowser(fragment: Fragment, url: String) {
     val bundle = Bundle().apply { putString(URL, url) }
     (fragment.requireActivity() as MainActivity).getNavController()
-        .navigate(R.id.to_browser, bundle)
+        .navigate(R.id.browserFragment, bundle)
 }
 
 fun toBrowser(activity: Activity, url: String) {
     val bundle = Bundle().apply { putString(URL, url) }
     (activity as MainActivity).getNavController()
-        .navigate(R.id.to_browser, bundle)
+        .navigate(R.id.browserFragment, bundle)
 }
 
 fun toRecycler(fragment: Fragment, cid: Int, title: String) =
