@@ -1,5 +1,6 @@
 package com.samiu.host.ui.base.nav
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,6 +17,7 @@ import com.samiu.host.R
 import com.samiu.host.databinding.FragmentBottomNavDrawerBinding
 import com.samiu.host.global.desTo
 import com.samiu.host.model.data.Account
+import com.samiu.host.ui.base.LoginActivity
 import com.samiu.host.util.themeColor
 import kotlin.LazyThreadSafetyMode.NONE
 
@@ -147,7 +149,7 @@ class BottomNavDrawerFragment :
                 })
                 //点击头像
                 profileImageView.setOnClickListener {
-                    //todo
+                    startActivity(Intent(requireContext(), LoginActivity::class.java))
                 }
 
                 behavior.addBottomSheetCallback(bottomSheetCallback)

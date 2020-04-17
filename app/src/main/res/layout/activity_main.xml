@@ -58,7 +58,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/grid_1"
                     android:contentDescription="@string/bottom_app_bar_logo_content_desc"
-                    app:srcCompat="@drawable/ic_reply_logo" />
+                    app:srcCompat="@drawable/logo_main" />
 
                 <TextView
                     android:id="@+id/bottom_app_bar_title"

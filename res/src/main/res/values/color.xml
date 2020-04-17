@@ -43,6 +43,15 @@
     <color name="reply_black_900_alpha_087">#de000000</color>
     <color name="reply_black_900_alpha_060">#99000000</color>
 
+    <color name="colorPrimary">#E0E0E0</color>
+    <color name="colorPrimaryDark">#FBB8AC</color>
+    <color name="colorAccent">#FEDBD0</color>
+    <color name="textColorPrimary">#442C2E</color>
+    <color name="toolbarIconColor">@color/textColorPrimary</color>
+    <color name="loginPageBackgroundColor">#FFFFFF</color>
+    <color name="productGridBackgroundColor">#FFFBFA</color>
+    <color name="textInputOutlineColor">#FBB8AC</color>
+
     <!--Nav bar color protection for behavior differences between Android P and Q. All sdk-->
     <!--levels should draw fullscreen. P should color the nav bar with a translucent background -->
     <!--to guard for contrast. Q should have a transparent nav bar as Q will automatically -->

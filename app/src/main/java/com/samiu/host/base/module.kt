@@ -17,6 +17,7 @@ val viewModelModule = module {
     viewModel { WanWxViewModel(get()) }
     viewModel { WanSearchViewModel(get()) }
     viewModel { RecyclerViewModel(get()) }
+    viewModel { WanLoginViewModel(get()) }
 }
 
 val repositoryModule = module {
@@ -28,6 +29,7 @@ val repositoryModule = module {
     single { WanSystemRepository() }
     single { WanWxRepository() }
     single { WanSearchRepository() }
+    single { WanLoginRepository() }
 }
 
 val module = listOf(
