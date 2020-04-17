@@ -9,14 +9,10 @@ import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
-import com.samiu.base.ui.BaseActivity
 import com.samiu.base.ui.dataBinding
-import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
 import com.samiu.host.databinding.ActivityMainBinding
 import com.samiu.host.ui.base.nav.*
-import kotlin.LazyThreadSafetyMode.NONE
-import kotlin.properties.Delegates
 
 /**
  * @author Samiu 2020/3/2

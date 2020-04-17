@@ -52,30 +52,24 @@ object NavigationModel {
     val navigationList: LiveData<List<NavigationModelItem>>
         get() = _navigationList
 
-    init {
-        postListUpdate()
-    }
-
-    private fun postListUpdate() {
-        _navigationList.value = navigationMenuItems
-    }
-
     /**
      * 设置选中的item
      * @param id
      * @return 选中的item发生变化就返回true，否则false
      */
-    fun  setNavigationMenuItemChecked(id: Int): Boolean {
+    fun setNavigationMenuItemChecked(id: Int): Boolean {
         var updated = false
-        navigationMenuItems.forEachIndexed { index, item ->
-            val shouldCheck = item.id == id
-            if (item.checked != shouldCheck) {
-                navigationMenuItems[index] = item.copy(checked = shouldCheck)
-                updated = true
+        val newList = mutableListOf<NavigationModelItem>()
+        navigationMenuItems.forEach { item: NavigationModelItem.NavMenuItem? ->
+            item?.let {
+                val shouldCheck = it.id == id
+                if (it.checked != shouldCheck)
+                    updated = true
+                newList.add(it.copy(checked = shouldCheck))
             }
         }
         if (updated)
-            postListUpdate()
+            _navigationList.value = newList
         return updated
     }
 }
