@@ -1,6 +1,5 @@
 package com.samiu.host.viewmodel
 
-import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import com.samiu.host.model.repository.WanLoginRepository
 
@@ -10,8 +9,5 @@ import com.samiu.host.model.repository.WanLoginRepository
 class WanLoginViewModel(
     private val loginRepository: WanLoginRepository
 ) : ViewModel() {
-
-    val userName = ObservableField("")
-    val password = ObservableField("")
 
 }

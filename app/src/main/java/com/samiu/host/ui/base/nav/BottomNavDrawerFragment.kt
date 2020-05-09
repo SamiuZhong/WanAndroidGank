@@ -17,7 +17,7 @@ import com.samiu.host.R
 import com.samiu.host.databinding.FragmentBottomNavDrawerBinding
 import com.samiu.host.global.desTo
 import com.samiu.host.model.data.Account
-import com.samiu.host.ui.base.LoginActivity
+import com.samiu.host.ui.base.WanLoginActivity
 import com.samiu.host.util.themeColor
 import kotlin.LazyThreadSafetyMode.NONE
 
@@ -149,7 +149,7 @@ class BottomNavDrawerFragment :
                 })
                 //点击头像
                 profileImageView.setOnClickListener {
-                    startActivity(Intent(requireContext(), LoginActivity::class.java))
+                    startActivity(Intent(requireContext(), WanLoginActivity::class.java))
                 }
 
                 behavior.addBottomSheetCallback(bottomSheetCallback)
