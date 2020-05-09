@@ -46,6 +46,6 @@ class WanSystemAdapter(context: Context?) : BaseSingleRecyclerAdapter<SystemPare
     fun setOnItemClick(listener: (Int, String) -> Unit) {
         this.listener = listener
     }
-}
 
-class WanSystemHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    class WanSystemHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+}

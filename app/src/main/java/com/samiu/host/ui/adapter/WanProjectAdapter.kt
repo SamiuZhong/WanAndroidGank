@@ -35,6 +35,6 @@ class WanProjectAdapter(context: Context?):BaseSingleRecyclerAdapter<Article>(co
     fun setOnItemClick(listener: (String) -> Unit) {
         this.listener = listener
     }
-}
 
-class ProjectHolder(itemView:View):RecyclerView.ViewHolder(itemView)
+    class ProjectHolder(itemView:View):RecyclerView.ViewHolder(itemView)
+}

@@ -11,7 +11,7 @@ import com.youth.banner.adapter.BannerAdapter
 /**
  * @author Samiu 2020/3/3
  */
-class WanBannerAdapter(var list: List<Banner>) : BannerAdapter<Banner, ImageBannerHolder>(list) {
+class WanBannerAdapter(var list: List<Banner>) : BannerAdapter<Banner, WanBannerAdapter.ImageBannerHolder>(list) {
     private lateinit var context: Context
 
     override fun onCreateHolder(parent: ViewGroup?, viewType: Int): ImageBannerHolder {
@@ -31,6 +31,6 @@ class WanBannerAdapter(var list: List<Banner>) : BannerAdapter<Banner, ImageBann
         if (holder is ImageBannerHolder)
             Glide.with(context).load(list[position].imagePath).into(holder.image)
     }
-}
 
-class ImageBannerHolder(var image: ImageView) : RecyclerView.ViewHolder(image)
+    class ImageBannerHolder(var image: ImageView) : RecyclerView.ViewHolder(image)
+}

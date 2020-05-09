@@ -45,6 +45,6 @@ class WanTitleAdapter(context: Context?) : BaseSingleRecyclerAdapter<SystemParen
     fun setOnItemClick(listener: (Int) -> Unit) {
         this.listener = listener
     }
-}
 
-class TitleHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    class TitleHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+}
