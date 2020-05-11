@@ -6,7 +6,7 @@ import retrofit2.http.*
 /**
  * @author Samiu 2020/3/3
  */
-interface WanService {
+interface WanApiService {
 
     @GET("/article/list/{page}/json")
     suspend fun getHomeArticles(@Path("page") page: Int): WanResponse<ArticleList>
@@ -63,4 +63,16 @@ interface WanService {
     @FormUrlEncoded
     @POST("/lg/user_article/add/json")
     suspend fun shareArticle(@Field("title") title: String, @Field("link") url: String): WanResponse<String>
+
+    @FormUrlEncoded
+    @POST("/user/login")
+    suspend fun login(@Field("username") userName: String, @Field("password") passWord: String): WanResponse<User>
+
+    @GET("/user/logout/json")
+    suspend fun logOut(): WanResponse<Any>
+
+    @FormUrlEncoded
+    @POST("/user/register")
+    suspend fun register(@Field("username") userName: String, @Field("password") passWord: String, @Field("repassword") rePassWord: String): WanResponse<User>
+
 }

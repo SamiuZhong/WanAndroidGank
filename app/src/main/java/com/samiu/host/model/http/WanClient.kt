@@ -11,5 +11,5 @@ const val WAN_BASE_URL = "https://www.wanandroid.com"
 object WanClient : BaseRetrofitClient(AppApplication.context,
     WAN_BASE_URL
 ) {
-    val service by lazy { getService(WanService::class.java) }
+    val service by lazy { getService(WanApiService::class.java) }
 }
