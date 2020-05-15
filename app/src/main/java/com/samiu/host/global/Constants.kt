@@ -15,6 +15,8 @@ const val RECENT_PROJECT = "最新项目"
 const val NETWORK_ERROR = "请检查网络"
 const val REFRESH = -1
 const val LOAD_MORE = 1
+const val WAN_ANDROID = "wanAndroid"
+const val IS_LOGIN = "isLogin"
 
 const val GITHUB_PAGE = "https://github.com/SamiuZhong/WanAndroid_Gank"
 const val MY_BLOG = "https://samiu.top/"

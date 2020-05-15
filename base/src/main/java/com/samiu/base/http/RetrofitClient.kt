@@ -1,6 +1,9 @@
 package com.samiu.base.http
 
 import android.content.Context
+import com.franmontiel.persistentcookiejar.PersistentCookieJar
+import com.franmontiel.persistentcookiejar.cache.SetCookieCache
+import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -14,10 +17,18 @@ abstract class BaseRetrofitClient(var context: Context, private var baseUrl: Str
         private const val DEFAULT_TIMEOUT = 20L
     }
 
+    private val cookieJar by lazy {
+        PersistentCookieJar(
+            SetCookieCache(),
+            SharedPrefsCookiePersistor(context)
+        )
+    }
+
     fun <S> getService(serviceClass: Class<S>): S {
         return Retrofit.Builder()
             .client(
                 OkHttpClient.Builder()
+                    .cookieJar(cookieJar)
                     .addInterceptor(CacheInterceptor(context))
                     .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
                     .writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
