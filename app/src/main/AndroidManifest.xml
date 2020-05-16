@@ -38,6 +38,7 @@
         <activity android:name=".ui.base.BrowserActivity" />
         <activity android:name=".ui.base.RecyclerActivity" />
         <activity android:name=".ui.base.WanLoginActivity" />
+        <activity android:name=".ui.base.WanPersonalActivity" />
     </application>
 
 </manifest>

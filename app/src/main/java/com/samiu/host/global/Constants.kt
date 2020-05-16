@@ -17,6 +17,7 @@ const val REFRESH = -1
 const val LOAD_MORE = 1
 const val WAN_ANDROID = "wanAndroid"
 const val IS_LOGIN = "isLogin"
+const val USER_NAME = "userName"
 
 const val GITHUB_PAGE = "https://github.com/SamiuZhong/WanAndroid_Gank"
 const val MY_BLOG = "https://samiu.top/"

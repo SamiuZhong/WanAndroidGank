@@ -1,13 +1,13 @@
 package com.samiu.host.viewmodel
 
-import android.content.Context
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.samiu.host.base.AppApplication
 import com.samiu.host.global.IS_LOGIN
-import com.samiu.host.global.WAN_ANDROID
+import com.samiu.host.global.USER_NAME
 import com.samiu.host.model.http.WanResult
 import com.samiu.host.model.repository.WanLoginRepository
+import com.samiu.host.util.SpUtil
 import kotlinx.coroutines.launch
 
 /**
@@ -17,18 +17,14 @@ class WanLoginViewModel(
     private val loginRepository: WanLoginRepository
 ) : ViewModel() {
 
-    private val sharedPref = AppApplication.context.getSharedPreferences(
-        WAN_ANDROID, Context.MODE_PRIVATE
-    )
-
-    private var isLogin = sharedPref.getBoolean(IS_LOGIN, false)
+    val loginSuccess = MutableLiveData<Boolean>()
 
     fun login(userName: String, passWord: String) = viewModelScope.launch {
         val user = loginRepository.login(userName, passWord)
-        if (user is WanResult.Success)
-            with(sharedPref.edit()) {
-                putBoolean(IS_LOGIN, true)
-                commit()
-            }
+        if (user is WanResult.Success) {
+            loginSuccess.value = true
+            SpUtil.getInstance.putValue(IS_LOGIN, true)
+            SpUtil.getInstance.putValue(USER_NAME, user.data.nickname)
+        } else loginSuccess.value = false
     }
 }

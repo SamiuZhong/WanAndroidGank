@@ -26,4 +26,5 @@
     <string name="cancel">取消</string>
     <string name="log_in">登录</string>
     <string name="input_correct_info">请输入正确的用户名和密码</string>
+    <string name="log_in_success">登录成功！</string>
 </resources>
