@@ -20,7 +20,7 @@ import com.samiu.host.global.desTo
 import com.samiu.host.model.data.Account
 import com.samiu.host.ui.base.WanLoginActivity
 import com.samiu.host.ui.base.WanPersonalActivity
-import com.samiu.host.util.SpUtil
+import com.samiu.host.util.Preference
 import com.samiu.host.util.themeColor
 import kotlin.LazyThreadSafetyMode.NONE
 
@@ -152,11 +152,11 @@ class BottomNavDrawerFragment :
                 })
                 //点击头像
                 profileImageView.setOnClickListener {
-                    val isLogin = SpUtil.getInstance.getValue(IS_LOGIN, false)
+                    val isLogin by Preference(IS_LOGIN, false)
                     if (isLogin)
-                        startActivity(Intent(requireContext(), WanLoginActivity::class.java))
-                    else
                         startActivity(Intent(requireContext(), WanPersonalActivity::class.java))
+                    else
+                        startActivity(Intent(requireContext(), WanLoginActivity::class.java))
                 }
 
                 behavior.addBottomSheetCallback(bottomSheetCallback)
