@@ -1,5 +1,6 @@
 package com.samiu.host.ui.base.nav
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
@@ -27,6 +28,7 @@ import kotlin.LazyThreadSafetyMode.NONE
 /**
  * @author Samiu 2020/3/31
  */
+@SuppressLint("WrongConstant")
 class BottomNavDrawerFragment :
     Fragment(),
     NavigationAdapter.NavigationAdapterListener {

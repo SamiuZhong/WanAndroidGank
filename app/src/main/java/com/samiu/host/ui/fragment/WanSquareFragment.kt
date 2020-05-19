@@ -6,7 +6,7 @@ import com.jeremyliao.liveeventbus.LiveEventBus
 import com.samiu.base.ui.BaseFragment
 import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
-import com.samiu.host.databinding.FragmentWanSquareBinding
+import com.samiu.host.databinding.FragmentRecyclerBinding
 import com.samiu.host.global.LOAD_MORE
 import com.samiu.host.global.REFRESH
 import com.samiu.host.global.SQUARE
@@ -20,44 +20,41 @@ import kotlin.properties.Delegates
 /**
  * @author Samiu 2020/3/2
  */
-class WanSquareFragment : BaseFragment(R.layout.fragment_wan_square) {
-    private val binding by viewBinding(FragmentWanSquareBinding::bind)
+class WanSquareFragment : BaseFragment(R.layout.fragment_recycler) {
+    private val binding by viewBinding(FragmentRecyclerBinding::bind)
     private val squareViewModel: WanSquareViewModel by viewModel()
 
-    private var currentPage by Delegates.notNull<Int>()
-    private lateinit var adapter: WanArticleAdapter
-
-    override fun initData() = refreshData(REFRESH)
+    private var mCurrentPage by Delegates.notNull<Int>()
+    private lateinit var mAdapter: WanArticleAdapter
 
     override fun initView() {
         initRecyclerView()
-        LiveEventBus
-            .get(SQUARE, Int::class.java)
-            .observe(this, Observer { refreshData(it) })
-    }
-
-    private fun refreshData(type: Int) {
-        when (type) {
-            REFRESH -> {
-                currentPage = 0
-                adapter.clearAll()
-                squareViewModel.getArticles(currentPage)
+        with(binding.refreshLayout) {
+            setOnRefreshListener {
+                mCurrentPage = 0
+                mAdapter.clearAll()
+                squareViewModel.getArticles(mCurrentPage)
+                finishRefresh(1000)
             }
-            LOAD_MORE -> {
-                currentPage += 1
-                squareViewModel.getArticles(currentPage)
+            setOnLoadMoreListener {
+                mCurrentPage += 1
+                squareViewModel.getArticles(mCurrentPage)
+                finishLoadMore(1000)
             }
         }
     }
 
+    override fun initData() {
+        binding.refreshLayout.autoRefresh()
+    }
+
     override fun startObserve() = squareViewModel.run {
-        mArticles.observe(this@WanSquareFragment, Observer { adapter.addAll(it) })
+        mArticles.observe(this@WanSquareFragment, Observer { mAdapter.addAll(it) })
     }
 
     private fun initRecyclerView() {
-        adapter = WanArticleAdapter(context)
-        square_recycler_view.layoutManager = LinearLayoutManager(context)
-        square_recycler_view.adapter = adapter
-        adapter.setOnItemClick { url -> toBrowser(this, url) }
+        mAdapter = WanArticleAdapter(context)
+        binding.recycler.adapter = mAdapter
+        mAdapter.setOnItemClick { url -> toBrowser(this, url) }
     }
 }
