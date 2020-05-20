@@ -11,7 +11,7 @@ import com.samiu.host.R
 import com.samiu.host.databinding.FragmentWanSearchBinding
 import com.samiu.host.global.LOAD_MORE
 import com.samiu.host.global.REFRESH
-import com.samiu.host.global.toBrowser
+import com.samiu.host.global.toBrowserFragment
 import com.samiu.host.model.bean.Hot
 import com.samiu.host.ui.adapter.WanArticleAdapter
 import com.samiu.host.viewmodel.WanSearchViewModel
@@ -117,6 +117,6 @@ class WanSearchFragment : BaseFragment(R.layout.fragment_wan_search) {
         adapter = WanArticleAdapter(context)
         search_recycler.layoutManager = LinearLayoutManager(context)
         search_recycler.adapter = adapter
-        adapter.setOnItemClick { url -> toBrowser(this, url) }
+        adapter.setOnItemClick { url -> toBrowserFragment(this, url) }
     }
 }

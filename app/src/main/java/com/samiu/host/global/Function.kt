@@ -23,13 +23,13 @@ fun desTo(fragment: Fragment, id: Int) {
     }
 }
 
-fun toBrowser(fragment: Fragment, url: String) {
+fun toBrowserFragment(fragment: Fragment, url: String) {
     val bundle = Bundle().apply { putString(URL, url) }
     (fragment.requireActivity() as MainActivity).getNavController()
         .navigate(R.id.browserFragment, bundle)
 }
 
-fun toBrowser(activity: Activity, url: String) {
+fun toBrowserFragment(activity: Activity, url: String) {
     val bundle = Bundle().apply { putString(URL, url) }
     (activity as MainActivity).getNavController()
         .navigate(R.id.browserFragment, bundle)

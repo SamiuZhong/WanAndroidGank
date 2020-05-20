@@ -7,7 +7,7 @@ import com.samiu.base.ui.viewBinding
 import com.samiu.host.databinding.ActivityRecyclerBinding
 import com.samiu.host.global.CID
 import com.samiu.host.global.TITLE
-import com.samiu.host.global.toBrowser
+import com.samiu.host.global.toBrowserFragment
 import com.samiu.host.ui.adapter.WanArticleAdapter
 import com.samiu.host.viewmodel.RecyclerViewModel
 import kotlinx.android.synthetic.main.layout_toolbar.*
@@ -58,7 +58,7 @@ class RecyclerActivity : BaseActivity() {
         adapter = WanArticleAdapter(this)
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = adapter
-        adapter.setOnItemClick { url -> toBrowser(this, url) }
+        adapter.setOnItemClick { url -> toBrowserFragment(this, url) }
     }
 
     override fun startObserve() = recyclerViewModel.run {

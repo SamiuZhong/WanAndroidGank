@@ -35,6 +35,7 @@ class WanArticleAdapter(context: Context?) : BaseSingleRecyclerAdapter<Article>(
     }
 
     private lateinit var listener: (String) -> Unit
+
     fun setOnItemClick(listener: (String) -> Unit) {
         this.listener = listener
     }

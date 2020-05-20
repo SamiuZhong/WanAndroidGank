@@ -8,7 +8,7 @@ import com.samiu.host.R
 import com.samiu.host.databinding.FragmentWanWxArticleBinding
 import com.samiu.host.global.LOAD_MORE
 import com.samiu.host.global.REFRESH
-import com.samiu.host.global.toBrowser
+import com.samiu.host.global.toBrowserFragment
 import com.samiu.host.ui.adapter.WanArticleAdapter
 import com.samiu.host.ui.adapter.WanTitleAdapter
 import com.samiu.host.viewmodel.WanWxViewModel
@@ -86,6 +86,6 @@ class WanWxArticleFragment : BaseFragment(R.layout.fragment_wan_wx_article) {
         mArticleAdapter = WanArticleAdapter(context)
         wx_recycler_2.layoutManager = LinearLayoutManager(context)
         wx_recycler_2.adapter = mArticleAdapter
-        mArticleAdapter.setOnItemClick { url -> toBrowser(this, url) }
+        mArticleAdapter.setOnItemClick { url -> toBrowserFragment(this, url) }
     }
 }

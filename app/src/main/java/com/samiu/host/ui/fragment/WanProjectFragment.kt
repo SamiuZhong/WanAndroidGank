@@ -9,7 +9,7 @@ import com.samiu.host.R
 import com.samiu.host.databinding.FragmentWanProjectBinding
 import com.samiu.host.global.LOAD_MORE
 import com.samiu.host.global.REFRESH
-import com.samiu.host.global.toBrowser
+import com.samiu.host.global.toBrowserFragment
 import com.samiu.host.ui.adapter.WanProjectAdapter
 import com.samiu.host.ui.adapter.WanTypeAdapter
 import com.samiu.host.viewmodel.WanProjectViewModel
@@ -88,6 +88,6 @@ class WanProjectFragment : BaseFragment(R.layout.fragment_wan_project) {
         mArticleAdapter = WanProjectAdapter(context)
         project_recycler_2.layoutManager = LinearLayoutManager(context)
         project_recycler_2.adapter = mArticleAdapter
-        mArticleAdapter.setOnItemClick { url -> toBrowser(this, url) }
+        mArticleAdapter.setOnItemClick { url -> toBrowserFragment(this, url) }
     }
 }

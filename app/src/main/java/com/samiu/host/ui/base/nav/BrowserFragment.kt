@@ -6,19 +6,17 @@ import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import com.samiu.base.ui.BaseFragment
 import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
-import com.samiu.host.databinding.ActivityBrowserBinding
 import com.samiu.host.databinding.FragmentBrowserBinding
 import com.samiu.host.global.URL
 import com.tencent.smtt.sdk.WebChromeClient
 import com.tencent.smtt.sdk.WebView
 import com.tencent.smtt.sdk.WebViewClient
-import kotlinx.android.synthetic.main.activity_browser.*
 
 /**
  * @author Samiu 2020/4/6
  */
 class BrowserFragment : BaseFragment(R.layout.fragment_browser) {
-    private val binding by viewBinding(FragmentBrowserBinding::bind)
+    private val mBinding by viewBinding(FragmentBrowserBinding::bind)
 
     override fun initView() {
         initWebView()
@@ -26,12 +24,12 @@ class BrowserFragment : BaseFragment(R.layout.fragment_browser) {
 
     override fun initData() {
         arguments?.getString(URL)?.let {
-            binding.webView.loadUrl(it)
+            mBinding.webView.loadUrl(it)
         }
     }
 
     private fun initWebView() {
-        val binding = this.binding
+        val binding = this.mBinding
 
         binding.progressBar.progressDrawable =
             getDrawable(requireContext(), R.drawable.color_progressbar)

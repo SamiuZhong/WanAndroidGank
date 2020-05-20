@@ -8,7 +8,7 @@ import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
 import com.samiu.host.databinding.FragmentWanRecentProjectBinding
 import com.samiu.host.global.RECENT_PROJECT
-import com.samiu.host.global.toBrowser
+import com.samiu.host.global.toBrowserFragment
 import com.samiu.host.ui.adapter.WanProjectAdapter
 import com.samiu.host.viewmodel.WanProjectViewModel
 import kotlinx.android.synthetic.main.fragment_wan_recent_project.*
@@ -58,7 +58,7 @@ class WanRecentProjectFragment : BaseFragment(R.layout.fragment_wan_recent_proje
         adapterWan = WanProjectAdapter(context)
         recent_project_rv.layoutManager = LinearLayoutManager(context)
         recent_project_rv.adapter = adapterWan
-        adapterWan.setOnItemClick { url -> toBrowser(this, url) }
+        adapterWan.setOnItemClick { url -> toBrowserFragment(this, url) }
     }
 }
 

@@ -1,12 +1,11 @@
 package com.samiu.host.ui.fragment
 
 import androidx.lifecycle.Observer
-import com.google.android.material.shape.MaterialShapeDrawable
 import com.samiu.base.ui.BaseFragment
 import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
 import com.samiu.host.databinding.FragmentWanHomeBinding
-import com.samiu.host.global.toBrowser
+import com.samiu.host.global.toBrowserFragment
 import com.samiu.host.model.bean.Banner
 import com.samiu.host.ui.adapter.WanArticleAdapter
 import com.samiu.host.ui.adapter.WanBannerAdapter
@@ -19,52 +18,52 @@ import kotlin.properties.Delegates
  * @author Samiu 2020/3/2
  */
 class WanHomeFragment : BaseFragment(R.layout.fragment_wan_home) {
-    private val binding by viewBinding(FragmentWanHomeBinding::bind)
-    private val homeViewModel: WanHomeViewModel by viewModel()
+    private val mBinding by viewBinding(FragmentWanHomeBinding::bind)
+    private val viewModel: WanHomeViewModel by viewModel()
 
     private var mCurrentPage by Delegates.notNull<Int>()
     private lateinit var mAdapter: WanArticleAdapter
 
     override fun initView() {
         initRecyclerView()
-        with(binding.refreshLayout) {
+        with(mBinding.refreshLayout) {
             setOnRefreshListener {
                 mCurrentPage = 0
                 mAdapter.clearAll()
-                homeViewModel.getArticles(mCurrentPage)
+                viewModel.getArticles(mCurrentPage)
                 finishRefresh(1000)
             }
             setOnLoadMoreListener {
                 mCurrentPage += 1
-                homeViewModel.getArticles(mCurrentPage)
+                viewModel.getArticles(mCurrentPage)
                 finishLoadMore(1000)
             }
         }
     }
 
     override fun initData() {
-        homeViewModel.run { getBanners() }
-        binding.refreshLayout.autoRefresh()
+        viewModel.run { getBanners() }
+        mBinding.refreshLayout.autoRefresh()
     }
 
-    override fun startObserve() = homeViewModel.run {
+    override fun startObserve() = viewModel.run {
         mBanners.observe(this@WanHomeFragment, Observer { setBanner(it) })
         mArticles.observe(this@WanHomeFragment, Observer { mAdapter.addAll(it) })
     }
 
     private fun initRecyclerView() {
-        mAdapter = WanArticleAdapter(context)
-        binding.recycler.adapter = mAdapter
-        mAdapter.setOnItemClick { url -> toBrowser(this, url) }
+        mAdapter = WanArticleAdapter(requireContext())
+        mBinding.recycler.adapter = mAdapter
+        mAdapter.setOnItemClick { url -> toBrowserFragment(this, url) }
     }
 
     private fun setBanner(bannerList: List<Banner>) {
-        binding.banner.adapter = WanBannerAdapter(bannerList)
-        binding.banner.setOnBannerListener(object : OnBannerListener<Banner> {
+        mBinding.banner.adapter = WanBannerAdapter(bannerList)
+        mBinding.banner.setOnBannerListener(object : OnBannerListener<Banner> {
             override fun onBannerChanged(position: Int) = Unit
             override fun OnBannerClick(data: Banner?, position: Int) {
                 data?.url?.let {
-                    toBrowser(this@WanHomeFragment, it)
+                    toBrowserFragment(this@WanHomeFragment, it)
                 }
             }
         })
@@ -72,11 +71,11 @@ class WanHomeFragment : BaseFragment(R.layout.fragment_wan_home) {
 
     override fun onStart() {
         super.onStart()
-        binding.banner.start()
+        mBinding.banner.start()
     }
 
     override fun onStop() {
         super.onStop()
-        binding.banner.stop()
+        mBinding.banner.stop()
     }
 }
