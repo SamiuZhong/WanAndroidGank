@@ -155,8 +155,8 @@ class MainActivity : AppCompatActivity(),
                 startActivity(Intent(this, SearchActivity::class.java))
             }
             R.id.menu_settings -> {
-                //TODO click setting button to dark theme
-                bottomNavDrawer.close()
+                startActivity(Intent(this, MineActivity::class.java))
+                bottomNavDrawer.toggle()
             }
         }
         return true

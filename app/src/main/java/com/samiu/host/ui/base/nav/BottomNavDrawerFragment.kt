@@ -155,6 +155,7 @@ class BottomNavDrawerFragment :
                 //点击头像
                 profileImageView.setOnClickListener {
                     val isLogin by Preference(IS_LOGIN, false)
+                    toggle()
                     if (isLogin)
                         startActivity(Intent(requireContext(), WanPersonalActivity::class.java))
                     else

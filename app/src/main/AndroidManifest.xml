@@ -42,6 +42,9 @@
         <activity
             android:name=".ui.base.SearchActivity"
             android:theme="@style/SearchTheme" />
+        <activity
+            android:name=".ui.base.MineActivity"
+            android:theme="@style/SearchTheme" />
     </application>
 
 </manifest>

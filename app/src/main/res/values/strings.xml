@@ -31,4 +31,5 @@
     <string name="log_out">登出</string>
     <string name="confirm_log_out">确定要退出登录吗？</string>
     <string name="confirm">确定</string>
+    <string name="about">关于</string>
 </resources>
