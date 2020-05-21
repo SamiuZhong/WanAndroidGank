@@ -1,5 +1,6 @@
 package com.samiu.host.ui.base
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.navigation.findNavController
 import com.samiu.base.ui.dataBinding
 import com.samiu.host.R
 import com.samiu.host.databinding.ActivityMainBinding
+import com.samiu.host.global.desTo
 import com.samiu.host.ui.base.nav.*
 
 /**
@@ -148,33 +150,15 @@ class MainActivity : AppCompatActivity(),
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {
         when (item?.itemId) {
+            R.id.menu_search -> {
+//                getNavController().navigate(R.id.wanSearchFragment)
+                startActivity(Intent(this, SearchActivity::class.java))
+            }
             R.id.menu_settings -> {
+                //TODO click setting button to dark theme
                 bottomNavDrawer.close()
-//                showDarkThemeMenu()
             }
         }
         return true
     }
-
-//    private fun showDarkThemeMenu() {
-//        MenuBottomSheetDialogFragment(R.menu.dark_theme_bottom_sheet_menu) {
-//            onDarkThemeMenuItemSelected(it.itemId)
-//        }.show(supportFragmentManager, null)
-//    }
-
-//    /**
-//     * 夜间模式
-//     */
-//    private fun onDarkThemeMenuItemSelected(itemId: Int): Boolean {
-//        val nightMode = when (itemId) {
-//            R.id.menu_light -> AppCompatDelegate.MODE_NIGHT_NO
-//            R.id.menu_dark -> AppCompatDelegate.MODE_NIGHT_YES
-//            R.id.menu_battery_saver -> AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
-//            R.id.menu_system_default -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
-//            else -> return false
-//        }
-//
-//        delegate.localNightMode = nightMode
-//        return true
-//    }
 }

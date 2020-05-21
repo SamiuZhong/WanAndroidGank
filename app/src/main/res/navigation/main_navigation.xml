@@ -18,4 +18,9 @@
         android:id="@+id/browserFragment"
         android:name="com.samiu.host.ui.base.nav.BrowserFragment"
         android:label="BrowserFragment"/>
+
+    <fragment
+        android:id="@+id/wanSearchFragment"
+        android:name="com.samiu.host.ui.fragment.WanSearchFragment"
+        android:label="WanSearchFragment" />
 </navigation>

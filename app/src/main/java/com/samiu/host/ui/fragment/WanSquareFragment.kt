@@ -49,6 +49,6 @@ class WanSquareFragment : BaseFragment(R.layout.fragment_recycler) {
     private fun initRecyclerView() {
         mAdapter = WanArticleAdapter(requireContext())
         mBinding.recycler.adapter = mAdapter
-        mAdapter.setOnItemClick { url -> toBrowserFragment(this, url) }
+        mAdapter.setOnItemClick { toBrowserFragment(this, it) }
     }
 }

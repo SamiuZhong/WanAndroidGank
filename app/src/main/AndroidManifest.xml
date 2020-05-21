@@ -39,6 +39,9 @@
         <activity android:name=".ui.base.RecyclerActivity" />
         <activity android:name=".ui.base.WanLoginActivity" />
         <activity android:name=".ui.base.WanPersonalActivity" />
+        <activity
+            android:name=".ui.base.SearchActivity"
+            android:theme="@style/SearchTheme" />
     </application>
 
 </manifest>

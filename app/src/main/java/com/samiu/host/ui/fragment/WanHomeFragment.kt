@@ -54,7 +54,7 @@ class WanHomeFragment : BaseFragment(R.layout.fragment_wan_home) {
     private fun initRecyclerView() {
         mAdapter = WanArticleAdapter(requireContext())
         mBinding.recycler.adapter = mAdapter
-        mAdapter.setOnItemClick { url -> toBrowserFragment(this, url) }
+        mAdapter.setOnItemClick { toBrowserFragment(this, it) }
     }
 
     private fun setBanner(bannerList: List<Banner>) {

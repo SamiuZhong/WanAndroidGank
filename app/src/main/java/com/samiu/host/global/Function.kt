@@ -35,12 +35,13 @@ fun toBrowserFragment(activity: Activity, url: String) {
         .navigate(R.id.browserFragment, bundle)
 }
 
+fun Context.openNativeBrowser(url: String) {
+    Intent(Intent.ACTION_VIEW, Uri.parse(url)).run { startActivity(this) }
+}
+
 fun toRecycler(fragment: Fragment, cid: Int, title: String) =
     fragment.startActivity(Intent(fragment.context, RecyclerActivity::class.java).apply {
         putExtra(CID, cid)
         putExtra(TITLE, title)
     })
 
-fun Context.openNativeBrowser(url: String) {
-    Intent(Intent.ACTION_VIEW, Uri.parse(url)).run { startActivity(this) }
-}
