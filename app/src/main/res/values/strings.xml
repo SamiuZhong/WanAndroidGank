@@ -28,4 +28,7 @@
     <string name="input_correct_info">请输入正确的用户名和密码</string>
     <string name="log_in_success">登录成功！</string>
     <string name="my_collection">我的收藏</string>
+    <string name="log_out">登出</string>
+    <string name="confirm_log_out">确定要退出登录吗？</string>
+    <string name="confirm">确定</string>
 </resources>

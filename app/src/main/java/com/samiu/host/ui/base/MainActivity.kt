@@ -6,6 +6,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.annotation.MenuRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
@@ -151,7 +152,6 @@ class MainActivity : AppCompatActivity(),
     override fun onMenuItemClick(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.menu_search -> {
-//                getNavController().navigate(R.id.wanSearchFragment)
                 startActivity(Intent(this, SearchActivity::class.java))
             }
             R.id.menu_settings -> {

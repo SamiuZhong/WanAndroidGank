@@ -29,4 +29,5 @@ class WanLoginViewModel(
             nickname = user.data.nickname
         } else loginSuccess.value = false
     }
+
 }

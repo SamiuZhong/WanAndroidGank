@@ -69,7 +69,7 @@ interface WanApiService {
     suspend fun login(@Field("username") userName: String, @Field("password") passWord: String): WanResponse<User>
 
     @GET("/user/logout/json")
-    suspend fun logOut(): WanResponse<Any>
+    suspend fun logout(): WanResponse<Any>
 
     @FormUrlEncoded
     @POST("/user/register")
