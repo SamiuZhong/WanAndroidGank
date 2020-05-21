@@ -1,5 +1,6 @@
 package com.samiu.host.ui.base
 
+import android.content.Intent
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
@@ -10,7 +11,8 @@ import com.samiu.host.R
 import com.samiu.host.databinding.ActivityWanSearchBinding
 import com.samiu.host.global.LOAD_MORE
 import com.samiu.host.global.REFRESH
-import com.samiu.host.global.toBrowserFragment
+import com.samiu.host.global.URL
+import com.samiu.host.global.drawShape
 import com.samiu.host.model.bean.Hot
 import com.samiu.host.ui.adapter.WanArticleAdapter
 import com.samiu.host.viewmodel.WanSearchViewModel
@@ -31,8 +33,15 @@ class SearchActivity : BaseActivity() {
     private var key = ""
 
     override fun initView() {
+        //recycler view
         mAdapter = WanArticleAdapter(this)
-        mAdapter.setOnItemClick { toBrowserFragment(this, it) }
+        mAdapter.setOnItemClick {
+            val intent = Intent(this, BrowserActivity::class.java).apply {
+                putExtra(URL, it)
+            }
+            startActivity(intent)
+        }
+        mBinding.searchRecycler.adapter = mAdapter
         //search
         mBinding.searchIcon.setOnClickListener {
             key = mBinding.searchEdt.text.toString()
@@ -91,12 +100,19 @@ class SearchActivity : BaseActivity() {
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 )
-                setPadding(10, 4, 10, 4)
-                background =
-                    context?.resources?.getDrawable(R.drawable.shape_100_line_3066be, null)
+                setPadding(20, 6, 20, 6)
+
+                background = drawShape(
+                    this@SearchActivity,
+                    100F,
+                    getColor(R.color.white),
+                    getColor(R.color.reply_blue_700)
+                )
+
                 text = item.name
                 setOnClickListener {
                     key = item.name
+                    mBinding.searchEdt.setText(key)
                     refreshData(REFRESH)
                 }
             }

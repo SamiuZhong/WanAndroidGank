@@ -3,9 +3,11 @@ package com.samiu.host.global
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.google.android.material.shape.MaterialShapeDrawable
 import com.samiu.host.R
 import com.samiu.host.ui.base.MainActivity
 import com.samiu.host.ui.base.RecyclerActivity
@@ -45,3 +47,57 @@ fun toRecycler(fragment: Fragment, cid: Int, title: String) =
         putExtra(TITLE, title)
     })
 
+fun drawShape(
+    context: Context, cornerSize: Float, color: Int
+) = MaterialShapeDrawable(
+    context,
+    null,
+    0,
+    0
+).apply {
+    fillColor = ColorStateList.valueOf(color)
+    shapeAppearanceModel = shapeAppearanceModel
+        .toBuilder()
+        .setAllCornerSizes(cornerSize)
+        .build()
+}
+
+fun drawShape(
+    context: Context,
+    ltCorner: Float,
+    rtCorner: Float,
+    lbCorner: Float,
+    rbCorner: Float,
+    color: Int
+) = MaterialShapeDrawable(
+    context,
+    null,
+    0,
+    0
+).apply {
+    fillColor = ColorStateList.valueOf(color)
+    shapeAppearanceModel = shapeAppearanceModel
+        .toBuilder()
+        .setTopLeftCornerSize(ltCorner)
+        .setTopRightCornerSize(rtCorner)
+        .setBottomLeftCornerSize(lbCorner)
+        .setBottomRightCornerSize(rbCorner)
+        .build()
+}
+
+fun drawShape(
+    context: Context, cornerSize: Float, color: Int, lineColor: Int
+) = MaterialShapeDrawable(
+    context,
+    null,
+    0,
+    0
+).apply {
+    fillColor = ColorStateList.valueOf(color)
+    strokeWidth = 1F
+    strokeColor = ColorStateList.valueOf(lineColor)
+    shapeAppearanceModel = shapeAppearanceModel
+        .toBuilder()
+        .setAllCornerSizes(cornerSize)
+        .build()
+}
