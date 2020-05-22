@@ -211,6 +211,7 @@ class BottomNavDrawerFragment :
             when (item.id) {
                 0 -> desTo(this, R.id.wanHomeFragment)
                 1 -> desTo(this, R.id.wanSquareFragment)
+                2 -> desTo(this, R.id.wanSystemFragment)
             }
             close()
         }

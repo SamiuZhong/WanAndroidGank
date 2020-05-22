@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.samiu.base.adapter.BaseSingleRecyclerAdapter
 import com.samiu.host.R
+import com.samiu.host.global.drawShape
 import com.samiu.host.model.bean.SystemParent
 import kotlinx.android.synthetic.main.item_wan_system.view.*
 
@@ -30,9 +31,15 @@ class WanSystemAdapter(context: Context?) : BaseSingleRecyclerAdapter<SystemPare
                             ViewGroup.LayoutParams.WRAP_CONTENT,
                             ViewGroup.LayoutParams.WRAP_CONTENT
                         )
-                        setPadding(10, 4, 10, 4)
-                        background =
-                            context?.resources?.getDrawable(R.drawable.shape_100_line_3066be, null)
+                        setPadding(20, 6, 20, 6)
+
+                        background = drawShape(
+                            context,
+                            100F,
+                            context.getColor(R.color.white),
+                            context.getColor(R.color.reply_blue_700)
+                        )
+
                         text = item.name
                         setOnClickListener { listener(item.id, item.name) }
                     }

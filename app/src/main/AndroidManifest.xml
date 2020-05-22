@@ -36,9 +36,11 @@
 
         <activity android:name=".ui.base.MainActivity" />
         <activity android:name=".ui.base.BrowserActivity" />
-        <activity android:name=".ui.base.RecyclerActivity" />
         <activity android:name=".ui.base.WanLoginActivity" />
         <activity android:name=".ui.base.WanPersonalActivity" />
+        <activity
+            android:name=".ui.base.SystemDisplayActivity"
+            android:theme="@style/SearchTheme" />
         <activity
             android:name=".ui.base.SearchActivity"
             android:theme="@style/SearchTheme" />

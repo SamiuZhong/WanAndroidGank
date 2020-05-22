@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 /**
  * @author Samiu 2020/3/6
  */
-class RecyclerViewModel(
+class SystemDisplayViewModel(
     private val systemRepository: WanSystemRepository
 ) : ViewModel() {
 

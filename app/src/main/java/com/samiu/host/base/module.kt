@@ -16,7 +16,7 @@ val viewModelModule = module {
     viewModel { WanSystemViewModel(get()) }
     viewModel { WanWxViewModel(get()) }
     viewModel { WanSearchViewModel(get()) }
-    viewModel { RecyclerViewModel(get()) }
+    viewModel { SystemDisplayViewModel(get()) }
     viewModel { WanLoginViewModel(get()) }
     viewModel { WanPersonalViewModel(get(), get()) }
 }

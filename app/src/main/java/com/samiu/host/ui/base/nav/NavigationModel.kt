@@ -25,25 +25,25 @@ object NavigationModel {
         NavigationModelItem.NavMenuItem(
             id = 2,
             icon = R.drawable.ic_twotone_send,
-            titleRes = R.string.wx_article,
+            titleRes = R.string.system,
             checked = false
         ),
         NavigationModelItem.NavMenuItem(
             id = 3,
             icon = R.drawable.ic_twotone_delete,
-            titleRes = R.string.system,
+            titleRes = R.string.navigation,
             checked = false
         ),
         NavigationModelItem.NavMenuItem(
             id = 4,
             icon = R.drawable.ic_twotone_error,
-            titleRes = R.string.navigation,
+            titleRes = R.string.wx_article,
             checked = false
         ),
         NavigationModelItem.NavMenuItem(
             id = 5,
             icon = R.drawable.ic_twotone_drafts,
-            titleRes = R.string.navigation_drafts,
+            titleRes = R.string.title_wan_project,
             checked = false
         )
     )

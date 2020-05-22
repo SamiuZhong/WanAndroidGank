@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.samiu.host.R
 import com.samiu.host.ui.base.MainActivity
-import com.samiu.host.ui.base.RecyclerActivity
+import com.samiu.host.ui.base.SystemDisplayActivity
 
 /**
  * @author Samiu 2020/3/4
@@ -41,8 +41,8 @@ fun Context.openNativeBrowser(url: String) {
     Intent(Intent.ACTION_VIEW, Uri.parse(url)).run { startActivity(this) }
 }
 
-fun toRecycler(fragment: Fragment, cid: Int, title: String) =
-    fragment.startActivity(Intent(fragment.context, RecyclerActivity::class.java).apply {
+fun toSystemList(fragment: Fragment, cid: Int, title: String) =
+    fragment.startActivity(Intent(fragment.context, SystemDisplayActivity::class.java).apply {
         putExtra(CID, cid)
         putExtra(TITLE, title)
     })
