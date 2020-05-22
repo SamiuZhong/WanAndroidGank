@@ -22,11 +22,11 @@ class WanTitleAdapter(context: Context?) : BaseSingleRecyclerAdapter<SystemParen
             val data = list[position]
             with(holder.itemView.title_text) {
                 text = data.name
-                if (data.isSelected){
-                    setTextColor(resources.getColor(R.color.colorPrimary,null))
-                    background = resources.getDrawable(R.color.white, null)
+                if (data.isSelected) {
+                    setTextColor(resources.getColor(R.color.reply_blue_700, null))
+                    background = resources.getDrawable(R.color.reply_blue_50, null)
                 } else {
-                    setTextColor(resources.getColor(R.color.default_prompt_text_color_9496A4,null))
+                    setTextColor(resources.getColor(R.color.default_prompt_text_color_9496A4, null))
                     background = resources.getDrawable(R.color.color_F7F7F7, null)
                 }
             }

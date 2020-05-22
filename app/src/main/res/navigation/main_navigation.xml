@@ -28,4 +28,9 @@
         android:id="@+id/wanSystemFragment"
         android:name="com.samiu.host.ui.fragment.WanSystemFragment"
         android:label="WanSystemFragment" />
+
+    <fragment
+        android:id="@+id/wanWxArticleFragment"
+        android:name="com.samiu.host.ui.fragment.WanWxArticleFragment"
+        android:label="WanWxArticleFragment" />
 </navigation>
