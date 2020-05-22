@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.samiu.base.adapter.BaseSingleRecyclerAdapter
 import com.samiu.host.R
+import com.samiu.host.global.drawShape
 import com.samiu.host.model.bean.SystemParent
 import kotlinx.android.synthetic.main.item_wan_type.view.*
 
@@ -22,12 +23,16 @@ class WanTypeAdapter(context: Context?) : BaseSingleRecyclerAdapter<SystemParent
             holder.setIsRecyclable(false)
             with(holder.itemView.type_text) {
                 text = list[position].name
-                background = if (list[position].isSelected) {
+                if (list[position].isSelected) {
                     setTextColor(resources.getColor(R.color.white, null))
-                    resources.getDrawable(R.drawable.shape_16_3066be, null)
+                    background = drawShape(
+                        context,
+                        100F,
+                        context.getColor(R.color.reply_blue_700)
+                    )
                 } else {
                     setTextColor(resources.getColor(R.color.default_text_color_252F3B, null))
-                    null
+                    background = null
                 }
             }
             holder.itemView.setOnClickListener {

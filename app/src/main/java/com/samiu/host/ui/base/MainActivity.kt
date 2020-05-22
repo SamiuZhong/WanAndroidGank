@@ -74,6 +74,8 @@ class MainActivity : AppCompatActivity(),
                         getBottomAppBarMenuForDestination()
                 )
             })
+            //底部菜单文字的切换
+            setOnCutover { binding.bottomAppBarTitle.setText(it) }
         }
 
         //设置底部栏Menu的点击事件

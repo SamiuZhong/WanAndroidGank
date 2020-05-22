@@ -33,4 +33,9 @@
         android:id="@+id/wanWxArticleFragment"
         android:name="com.samiu.host.ui.fragment.WanWxArticleFragment"
         android:label="WanWxArticleFragment" />
+
+    <fragment
+        android:id="@+id/wanProjectFragment"
+        android:name="com.samiu.host.ui.fragment.WanProjectFragment"
+        android:label="WanProjectFragment" />
 </navigation>

@@ -8,7 +8,6 @@
         android:id="@+id/project_recycler_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/color_F7F7F7"
         android:overScrollMode="never"
         android:paddingStart="@dimen/space_10"
         android:paddingEnd="@dimen/space_10" />

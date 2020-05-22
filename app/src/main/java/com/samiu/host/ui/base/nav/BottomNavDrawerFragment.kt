@@ -36,6 +36,7 @@ class BottomNavDrawerFragment :
     private lateinit var binding: FragmentBottomNavDrawerBinding
 
     val account = Account(1L, R.drawable.avatar)
+    private lateinit var onCutover: (Int) -> Unit
 
     //抽屉栏的behavior
     private val behavior: BottomSheetBehavior<FrameLayout> by lazy(NONE) {
@@ -206,6 +207,10 @@ class BottomNavDrawerFragment :
         bottomSheetCallback.addOnStateChangedAction(action)
     }
 
+    fun setOnCutover(onCutover:(Int) -> Unit){
+        this.onCutover = onCutover
+    }
+
     override fun onNavMenuItemClicked(item: NavigationModelItem.NavMenuItem) {
         if (NavigationModel.setNavigationMenuItemChecked(item.id)) {
             when (item.id) {
@@ -213,7 +218,9 @@ class BottomNavDrawerFragment :
                 1 -> desTo(this, R.id.wanSquareFragment)
                 2 -> desTo(this, R.id.wanSystemFragment)
                 3 -> desTo(this, R.id.wanWxArticleFragment)
+                4 -> desTo(this, R.id.wanProjectFragment)
             }
+            onCutover(item.titleRes)
             close()
         }
     }
