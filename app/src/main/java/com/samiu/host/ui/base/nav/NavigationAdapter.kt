@@ -7,7 +7,7 @@ import com.samiu.host.databinding.NavMenuItemLayoutBinding
 
 
 /**
- * BottomNaDrawerFragment的adapter
+ * [BottomNavDrawerFragment]的adapter
  *
  * @author Samiu 2020/3/31
  */

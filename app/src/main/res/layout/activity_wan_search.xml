@@ -26,9 +26,9 @@
                 android:src="@drawable/login_btn_back_white" />
 
             <LinearLayout
+                android:id="@+id/search_layout"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
-                android:background="@drawable/shape_16_fff"
                 android:orientation="horizontal"
                 android:paddingStart="@dimen/space_10"
                 android:paddingEnd="@dimen/space_10">

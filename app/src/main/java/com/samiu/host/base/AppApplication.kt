@@ -2,7 +2,6 @@ package com.samiu.host.base
 
 import android.app.Application
 import android.content.Context
-import com.jeremyliao.liveeventbus.LiveEventBus
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import kotlin.properties.Delegates
@@ -19,7 +18,6 @@ class AppApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         context = applicationContext
-        LiveEventBus.config()
 
         startKoin {
             androidContext(this@AppApplication)

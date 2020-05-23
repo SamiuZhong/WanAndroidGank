@@ -43,6 +43,8 @@ class SearchActivity : BaseActivity() {
         }
         mBinding.searchRecycler.adapter = mAdapter
         //search
+        mBinding.searchLayout.background =
+            drawShape(this, 100F, getColor(R.color.white))
         mBinding.searchIcon.setOnClickListener {
             key = mBinding.searchEdt.text.toString()
             refreshData(REFRESH)

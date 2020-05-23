@@ -23,7 +23,6 @@ val viewModelModule = module {
 
 val repositoryModule = module {
     single { WanClient.service }
-    single { CoroutineDispatcherProvider() }
     single { WanHomeRepository() }
     single { WanSquareRepository() }
     single { WanProjectRepository() }
