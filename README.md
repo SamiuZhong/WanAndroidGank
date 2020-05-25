@@ -18,7 +18,7 @@
 
 MaterialShapeDrawable实现了展开菜单的Material丝滑动画
 
-<img src="https://upload-images.jianshu.io/upload_images/15143432-43b256804130d85c.gif?imageMogr2/auto-orient/strip" style="zoom:50%;" />
+<img src="https://upload-images.jianshu.io/upload_images/15143432-43b256804130d85c.gif?imageMogr2/auto-orient/strip" width="50%"" />
 
 ```kotlin
 private val foregroundShapeDrawable: MaterialShapeDrawable by lazy(NONE) {
