@@ -1,25 +1,103 @@
 # WanAndroid_Gank
-Jetpack MVVM和Kotlin碰撞出来的WanAndroid和干货集中营聚合客户端
 
-- 使用[玩安卓](https://www.wanandroid.com/)和[干货集中营](http://gank.io/)开放API搞出来的一个玩意儿
-- 遵循Google Jetpack开发规范
-- 使用Kotlin语言开发、协程实现网络请求
+玩Android大家都很熟悉了，是鸿洋大佬的一个开源知识网站，目前基于玩Android开源API的各种版本APP也多是如牛毛。
 
-## 效果图
+那么经过一段时间的潜心修炼，今天给大家带来了一个从未有过的船新版本。
 
-![](https://upload-images.jianshu.io/upload_images/15143432-5bfcdc7af971eeaf.png?imageMogr2/auto-orient/strip|imageView2/2/w/260/format/webp)  ![](https://upload-images.jianshu.io/upload_images/15143432-193f53aad0e86f78.png?imageMogr2/auto-orient/strip|imageView2/2/w/260/format/webp)  ![](https://upload-images.jianshu.io/upload_images/15143432-7baf327fad863bdb.png?imageMogr2/auto-orient/strip|imageView2/2/w/260/format/webp)
+## 设计
 
-![](https://upload-images.jianshu.io/upload_images/15143432-d244295572bf442c.png?imageMogr2/auto-orient/strip|imageView2/2/w/260/format/webp)  ![](https://upload-images.jianshu.io/upload_images/15143432-a9cbc5b873b0c8b8.png?imageMogr2/auto-orient/strip|imageView2/2/w/260/format/webp)  ![](https://upload-images.jianshu.io/upload_images/15143432-50438d8354fa331a.png?imageMogr2/auto-orient/strip|imageView2/2/w/260/format/webp)
+这次的UI整体是根据Google官方的设计，参照Material Design的风格整粗来的，应该能给大家带来耳目一新的感觉。
 
-## 第三方依赖
+下面我们先来看看效果图
 
-- 屏幕适配 [Autosize](https://github.com/JessYanCoding/AndroidAutoSize)
-- 广告轮播 [Banner](https://github.com/youth5201314/banner)
-- Kotlin注入框架 [Koin](https://github.com/InsertKoinIO/koin)
-- 图片加载 [Glide](https://github.com/bumptech/glide)
-- 网络请求 [OkHttp](https://github.com/square/okhttp)、[Retrofit](https://github.com/square/retrofit)
-- 下拉框 [SmartRefreshLayout](https://github.com/scwang90/SmartRefreshLayout)
-- 事件总线 [LiveEventBus](https://github.com/JeremyLiao/LiveEventBus)
-- 流式布局  [FlowLayout](https://github.com/nex3z/FlowLayout)
-- Dialog  [Material Dialog](https://github.com/afollestad/material-dialogs)、[LicensesDialog](https://github.com/PSDev/LicensesDialog)
+![](https://upload-images.jianshu.io/upload_images/15143432-c88fb00f261b68b2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/260)  ![](https://upload-images.jianshu.io/upload_images/15143432-eb95e2a2fe839d3a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/260)  ![](https://upload-images.jianshu.io/upload_images/15143432-be2adaa59b95c972.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/260)
 
+![](https://upload-images.jianshu.io/upload_images/15143432-985ec5bfcc9d01fd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/260)  ![](https://upload-images.jianshu.io/upload_images/15143432-b72e69cc373317c6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/260)  ![](https://upload-images.jianshu.io/upload_images/15143432-838bbb7a15030489.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/260)
+
+底部导航栏使用了BottomAppbar和FloatingActionButton组件
+
+MaterialShapeDrawable实现了展开菜单的Material丝滑动画
+
+<img src="https://upload-images.jianshu.io/upload_images/15143432-43b256804130d85c.gif?imageMogr2/auto-orient/strip" style="zoom:50%;" />
+
+```kotlin
+private val foregroundShapeDrawable: MaterialShapeDrawable by lazy(NONE) {
+        val foregroundContext = binding.foregroundContainer.context
+        MaterialShapeDrawable(
+            foregroundContext,
+            null,
+            R.attr.bottomSheetStyle,
+            0
+        ).apply {
+            fillColor = ColorStateList.valueOf(
+                foregroundContext.themeColor(R.attr.colorPrimarySurface)
+            )
+            elevation = resources.getDimension(R.dimen.plane_16)
+            shadowCompatibilityMode = MaterialShapeDrawable.SHADOW_COMPAT_MODE_NEVER
+            initializeElevationOverlay(requireContext())
+            shapeAppearanceModel = shapeAppearanceModel.toBuilder()
+                .setTopEdge(    
+                    SemiCircleEdgeCutoutTreatment(
+                        resources.getDimension(R.dimen.grid_2),
+                        resources.getDimension(R.dimen.grid_3),
+                        0F,
+                        resources.getDimension(R.dimen.navigation_drawer_profile_image_size_padded)
+                    )
+                )
+                .build()
+        }
+    }
+```
+
+
+
+## 技术
+
+技术方面采用的是Kotlin语言实现，整体架构为MVVM，使用协程配合Retrofit来创建和处理网络请求的异步任务。
+
+封装了dataBinding和viewBinding的懒加载
+
+```kotlin
+/**
+ * Fragment ViewBinding Delegate
+ */
+fun <T : ViewBinding> Fragment.viewBinding(viewBindingFactory: (View) -> T) =
+    FragmentViewBindingDelegate(this, viewBindingFactory)
+
+class FragmentViewBindingDelegate<T : ViewBinding>(
+    val fragment: Fragment,
+    val viewBindingFactory: (View) -> T
+) : ReadOnlyProperty<Fragment, T> {
+    private var _binding: T? = null
+
+    init {
+        fragment.lifecycle.addObserver(object : DefaultLifecycleObserver {
+            override fun onCreate(owner: LifecycleOwner) {
+                fragment.viewLifecycleOwnerLiveData.observe(fragment) { viewLifecycleOwner ->
+                    viewLifecycleOwner.lifecycle.addObserver(object : DefaultLifecycleObserver {
+                        override fun onDestroy(owner: LifecycleOwner) {
+                            _binding = null
+                        }
+                    })
+                }
+            }
+        })
+    }
+
+    override fun getValue(thisRef: Fragment, property: KProperty<*>): T {
+        val binding = _binding
+        if (binding != null) {
+            return binding
+        }
+
+        val lifecycle = fragment.viewLifecycleOwner.lifecycle
+        if (!lifecycle.currentState.isAtLeast(Lifecycle.State.INITIALIZED)) {
+            throw IllegalStateException("Should not attempt to get bindings when Fragment views are destroyed.")
+        }
+
+        return viewBindingFactory(thisRef.requireView()).also { _binding = it }
+    }
+}
+```
+
+欢迎各位看官老爷star鼓励~
