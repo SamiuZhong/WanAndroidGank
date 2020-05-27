@@ -4,6 +4,14 @@
 
 那么经过一段时间的潜心修炼，今天给大家带来了一个从未有过的船新版本。
 
+下载安装包体验点击这里
+
+[蓝奏云](https://ww.lanzous.com/id2bz8j)
+
+或者扫描二维码
+
+![](https://upload-images.jianshu.io/upload_images/15143432-53416d6b5ff2b25e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 ## 设计
 
 这次的UI整体是根据Google官方的设计，参照Material Design的风格整粗来的，应该能给大家带来耳目一新的感觉。
