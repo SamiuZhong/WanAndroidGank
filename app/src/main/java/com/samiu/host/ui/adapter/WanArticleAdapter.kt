@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.item_wan_article.view.*
  */
 class WanArticleAdapter(context: Context?) : BaseSingleRecyclerAdapter<Article>(context) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return WanHomeHolder(
+        return WanArticleHolder(
             layoutInflater.inflate(
                 R.layout.item_wan_article,
                 parent,
@@ -24,7 +24,7 @@ class WanArticleAdapter(context: Context?) : BaseSingleRecyclerAdapter<Article>(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is WanHomeHolder)
+        if (holder is WanArticleHolder)
             with(holder.itemView) {
                 val data = list[position]
                 item_title.text = data.title
@@ -40,5 +40,5 @@ class WanArticleAdapter(context: Context?) : BaseSingleRecyclerAdapter<Article>(
         this.listener = listener
     }
 
-    class WanHomeHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    class WanArticleHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }
