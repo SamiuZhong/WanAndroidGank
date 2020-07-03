@@ -5,7 +5,6 @@ import com.samiu.base.ui.BaseFragment
 import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
 import com.samiu.host.databinding.FragmentRecyclerBinding
-import com.samiu.host.global.toBrowserFragment
 import com.samiu.host.ui.adapter.WanArticleAdapter
 import com.samiu.host.viewmodel.WanSquareViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -49,6 +48,5 @@ class WanSquareFragment : BaseFragment(R.layout.fragment_recycler) {
     private fun initRecyclerView() {
         mAdapter = WanArticleAdapter(requireContext())
         mBinding.recycler.adapter = mAdapter
-        mAdapter.setOnItemClick { toBrowserFragment(this, it) }
     }
 }

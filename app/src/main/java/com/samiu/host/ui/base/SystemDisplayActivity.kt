@@ -62,11 +62,5 @@ class SystemDisplayActivity : BaseActivity() {
     private fun initRecyclerView() {
         mAdapter = WanArticleAdapter(this@SystemDisplayActivity)
         mBinding.recyclerView.adapter = mAdapter
-        mAdapter.setOnItemClick {
-            val intent = Intent(this@SystemDisplayActivity, BrowserActivity::class.java).apply {
-                putExtra(URL, it)
-            }
-            startActivity(intent)
-        }
     }
 }

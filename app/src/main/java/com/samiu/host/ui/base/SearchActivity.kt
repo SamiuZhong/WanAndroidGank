@@ -35,12 +35,6 @@ class SearchActivity : BaseActivity() {
     override fun initView() {
         //recycler view
         mAdapter = WanArticleAdapter(this)
-        mAdapter.setOnItemClick {
-            val intent = Intent(this, BrowserActivity::class.java).apply {
-                putExtra(URL, it)
-            }
-            startActivity(intent)
-        }
         mBinding.searchRecycler.adapter = mAdapter
         //search
         mBinding.searchLayout.background =

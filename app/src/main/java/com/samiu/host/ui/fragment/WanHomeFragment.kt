@@ -5,7 +5,7 @@ import com.samiu.base.ui.BaseFragment
 import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
 import com.samiu.host.databinding.FragmentWanHomeBinding
-import com.samiu.host.global.toBrowserFragment
+import com.samiu.host.global.toBrowser
 import com.samiu.host.model.bean.Banner
 import com.samiu.host.ui.adapter.WanArticleAdapter
 import com.samiu.host.ui.adapter.WanBannerAdapter
@@ -54,7 +54,6 @@ class WanHomeFragment : BaseFragment(R.layout.fragment_wan_home) {
     private fun initRecyclerView() {
         mAdapter = WanArticleAdapter(requireContext())
         mBinding.recycler.adapter = mAdapter
-        mAdapter.setOnItemClick { toBrowserFragment(this, it) }
     }
 
     private fun setBanner(bannerList: List<Banner>) {
@@ -62,8 +61,8 @@ class WanHomeFragment : BaseFragment(R.layout.fragment_wan_home) {
         mBinding.banner.setOnBannerListener(object : OnBannerListener<Banner> {
             override fun onBannerChanged(position: Int) = Unit
             override fun OnBannerClick(data: Banner?, position: Int) {
-                data?.url?.let {
-                    toBrowserFragment(this@WanHomeFragment, it)
+                data?.let {
+                    requireContext().toBrowser(it.url, it.title)
                 }
             }
         })

@@ -38,12 +38,6 @@ class WanPersonalActivity : BaseActivity() {
         //recycler view
         mAdapter = WanArticleAdapter(this)
         mBinding.recycler.adapter = mAdapter
-        mAdapter.setOnItemClick {
-            val intent = Intent(this, BrowserActivity::class.java).apply {
-                putExtra(URL, it)
-            }
-            startActivity(intent)
-        }
         //refresh layout
         with(mBinding.refreshLayout) {
             setOnRefreshListener {

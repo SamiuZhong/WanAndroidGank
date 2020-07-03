@@ -7,6 +7,7 @@ import com.samiu.base.ui.BaseActivity
 import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
 import com.samiu.host.databinding.ActivityBrowserBinding
+import com.samiu.host.global.TITLE
 import com.samiu.host.global.URL
 import com.tencent.smtt.sdk.WebChromeClient
 import com.tencent.smtt.sdk.WebView
@@ -27,6 +28,9 @@ class BrowserActivity : BaseActivity() {
     override fun initData() {
         intent.getStringExtra(URL)?.let {
             mBinding.webView.loadUrl(it)
+        }
+        intent.getStringExtra(TITLE)?.let{
+            mBinding.toolbarTitle.text = it
         }
     }
 
@@ -56,10 +60,4 @@ class BrowserActivity : BaseActivity() {
             }
         }
     }
-
-//    override fun onBackPressed() {
-//        if (mBinding.webView.canGoBack())
-//            mBinding.webView.goBack()
-//        super.onBackPressed()
-//    }
 }

@@ -15,11 +15,6 @@
         android:label="WanSquareFragment" />
 
     <fragment
-        android:id="@+id/browserFragment"
-        android:name="com.samiu.host.ui.base.nav.BrowserFragment"
-        android:label="BrowserFragment"/>
-
-    <fragment
         android:id="@+id/wanSystemFragment"
         android:name="com.samiu.host.ui.fragment.WanSystemFragment"
         android:label="WanSystemFragment" />

@@ -9,6 +9,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.samiu.host.R
+import com.samiu.host.ui.base.BrowserActivity
 import com.samiu.host.ui.base.MainActivity
 import com.samiu.host.ui.base.SystemDisplayActivity
 
@@ -25,20 +26,16 @@ fun desTo(fragment: Fragment, id: Int) {
     }
 }
 
-fun toBrowserFragment(fragment: Fragment, url: String) {
-    val bundle = Bundle().apply { putString(URL, url) }
-    (fragment.requireActivity() as MainActivity).getNavController()
-        .navigate(R.id.browserFragment, bundle)
-}
-
-fun toBrowserFragment(activity: Activity, url: String) {
-    val bundle = Bundle().apply { putString(URL, url) }
-    (activity as MainActivity).getNavController()
-        .navigate(R.id.browserFragment, bundle)
-}
-
 fun Context.openNativeBrowser(url: String) {
     Intent(Intent.ACTION_VIEW, Uri.parse(url)).run { startActivity(this) }
+}
+
+fun Context.toBrowser(url: String,title: String) {
+    val intent = Intent(this, BrowserActivity::class.java).apply {
+        putExtra(URL, url)
+        putExtra(TITLE,title)
+    }
+    startActivity(intent)
 }
 
 fun toSystemList(fragment: Fragment, cid: Int, title: String) =

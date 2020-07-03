@@ -8,7 +8,6 @@ import com.samiu.host.R
 import com.samiu.host.databinding.FragmentWanWxArticleBinding
 import com.samiu.host.global.LOAD_MORE
 import com.samiu.host.global.REFRESH
-import com.samiu.host.global.toBrowserFragment
 import com.samiu.host.ui.adapter.WanArticleAdapter
 import com.samiu.host.ui.adapter.WanTitleAdapter
 import com.samiu.host.viewmodel.WanWxViewModel
@@ -20,7 +19,7 @@ import kotlin.properties.Delegates
  * @author Samiu 2020/3/2
  */
 class WanWxArticleFragment : BaseFragment(R.layout.fragment_wan_wx_article) {
-    private val binding by viewBinding(FragmentWanWxArticleBinding::bind)
+    private val mBinding by viewBinding(FragmentWanWxArticleBinding::bind)
     private val wxViewModel: WanWxViewModel by viewModel()
 
     private var currentPage by Delegates.notNull<Int>()
@@ -74,8 +73,8 @@ class WanWxArticleFragment : BaseFragment(R.layout.fragment_wan_wx_article) {
     private fun initRecycler() {
         //left recycler
         mTitleAdapter = WanTitleAdapter(context)
-        wx_recycler_1.layoutManager = LinearLayoutManager(context)
-        wx_recycler_1.adapter = mTitleAdapter
+        mBinding.wxRecycler1.layoutManager = LinearLayoutManager(context)
+        mBinding.wxRecycler1.adapter = mTitleAdapter
         mTitleAdapter.setOnItemClick { id ->
             run {
                 mId = id
@@ -84,8 +83,7 @@ class WanWxArticleFragment : BaseFragment(R.layout.fragment_wan_wx_article) {
         }
         //right recycler
         mArticleAdapter = WanArticleAdapter(context)
-        wx_recycler_2.layoutManager = LinearLayoutManager(context)
-        wx_recycler_2.adapter = mArticleAdapter
-        mArticleAdapter.setOnItemClick { url -> toBrowserFragment(this, url) }
+        mBinding.wxRecycler2.layoutManager = LinearLayoutManager(context)
+        mBinding.wxRecycler2.adapter = mArticleAdapter
     }
 }

@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.samiu.base.adapter.BaseSingleRecyclerAdapter
 import com.samiu.host.R
+import com.samiu.host.global.toBrowser
 import com.samiu.host.model.bean.Article
 import kotlinx.android.synthetic.main.item_wan_article.view.*
 
@@ -30,14 +31,8 @@ class WanArticleAdapter(context: Context?) : BaseSingleRecyclerAdapter<Article>(
                 item_title.text = data.title
                 item_nice_data.text = data.niceDate
                 item_author.text = data.shareUser
-                setOnClickListener { listener(data.link) }
+                setOnClickListener { context.toBrowser(data.link, data.title) }
             }
-    }
-
-    private lateinit var listener: (String) -> Unit
-
-    fun setOnItemClick(listener: (String) -> Unit) {
-        this.listener = listener
     }
 
     class WanArticleHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
