@@ -36,7 +36,7 @@ class WanHomeFragment : BaseFragment(R.layout.fragment_wan_home) {
     }
 
     override fun initData() {
-        viewModel.run { getBanners() }
+        viewModel.getBanners()
         binding.refreshLayout.autoRefresh()
     }
 
