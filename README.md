@@ -6,7 +6,7 @@
 
 下载安装包体验点击这里
 
-[蓝奏云](https://ww.lanzous.com/id2bz8j)
+[蓝奏云](https://wws.lanzous.com/iyAMHed8sud)
 
 或者扫描二维码
 
@@ -100,7 +100,7 @@ class WanHomeFragment : BaseFragment(R.layout.fragment_wan_home) {
 	...
 
     override fun initData() {
-        viewModel.run { getBanners() }
+        viewModel.getBanners()
         binding.refreshLayout.autoRefresh()
     }
 
