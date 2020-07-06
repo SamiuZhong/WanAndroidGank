@@ -10,7 +10,6 @@ import com.samiu.host.model.repository.WanCollectionRepository
 import com.samiu.host.model.repository.WanLoginRepository
 import com.samiu.host.util.Preference
 import kotlinx.coroutines.launch
-import kotlin.math.log
 
 /**
  * @author Samiu 2020/5/20

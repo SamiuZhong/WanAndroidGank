@@ -20,12 +20,12 @@ import de.psdev.licensesdialog.model.Notice
  */
 class MineActivity : BaseActivity() {
 
-    private val mBinding by viewBinding(ActivityMineBinding::inflate)
-    override fun getBindingRoot() = mBinding.root
+    private val binding by viewBinding(ActivityMineBinding::inflate)
+    override fun getBindingRoot() = binding.root
     override fun initData() = Unit
 
     override fun initView() {
-        mBinding.run {
+        binding.run {
             backIcon.setOnClickListener { finish() }
             text1.setOnClickListener {
                 val notice = Notice(getString(R.string.app_name), GITHUB_PAGE, "", MITLicense())

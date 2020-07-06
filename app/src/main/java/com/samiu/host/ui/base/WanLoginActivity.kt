@@ -17,15 +17,15 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  */
 class WanLoginActivity : BaseActivity() {
 
-    private val mBinding by viewBinding(ActivityWanLoginBinding::inflate)
+    private val binding by viewBinding(ActivityWanLoginBinding::inflate)
     private val viewModel: WanLoginViewModel by viewModel()
 
-    override fun getBindingRoot() = mBinding.root
+    override fun getBindingRoot() = binding.root
 
     override fun initData() = Unit
 
     override fun initView() {
-        mBinding.run {
+        binding.run {
             cancelBtn.setOnClickListener { finish() }
             loginBtn.setOnClickListener {
                 if (userName.text!!.isNotBlank() && password.text!!.isNotBlank())

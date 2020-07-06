@@ -1,14 +1,18 @@
 package com.samiu.host.ui.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.samiu.base.adapter.BaseSingleRecyclerAdapter
 import com.samiu.host.R
+import com.samiu.host.global.CID
+import com.samiu.host.global.TITLE
 import com.samiu.host.global.drawShape
 import com.samiu.host.model.bean.SystemParent
+import com.samiu.host.ui.base.SystemDisplayActivity
 import kotlinx.android.synthetic.main.item_wan_system.view.*
 
 /**
@@ -25,7 +29,7 @@ class WanSystemAdapter(context: Context?) : BaseSingleRecyclerAdapter<SystemPare
         if (holder is WanSystemHolder) {
             holder.setIsRecyclable(false)
             with(holder.itemView) {
-                val data = list[position]
+                val data = mList[position]
                 system_title.text = data.name
                 for (item in data.children) {
                     val textView = TextView(context).apply {
@@ -43,17 +47,21 @@ class WanSystemAdapter(context: Context?) : BaseSingleRecyclerAdapter<SystemPare
                         )
 
                         text = item.name
-                        setOnClickListener { listener(item.id, item.name) }
+                        setOnClickListener {
+                            val intent = Intent(
+                                context,
+                                SystemDisplayActivity::class.java
+                            ).apply {
+                                putExtra(CID, item.id)
+                                putExtra(TITLE, item.name)
+                            }
+                            context.startActivity(intent)
+                        }
                     }
                     system_flow_layout.addView(textView)
                 }
             }
         }
-    }
-
-    private lateinit var listener: (Int, String) -> Unit
-    fun setOnItemClick(listener: (Int, String) -> Unit) {
-        this.listener = listener
     }
 
     class WanSystemHolder(itemView: View) : RecyclerView.ViewHolder(itemView)

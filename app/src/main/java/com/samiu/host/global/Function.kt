@@ -37,12 +37,6 @@ fun Context.toBrowser(url: String,title: String) {
     startActivity(intent)
 }
 
-fun toSystemList(fragment: Fragment, cid: Int, title: String) =
-    fragment.startActivity(Intent(fragment.context, SystemDisplayActivity::class.java).apply {
-        putExtra(CID, cid)
-        putExtra(TITLE, title)
-    })
-
 fun drawShape(
     context: Context, cornerSize: Float, color: Int
 ) = MaterialShapeDrawable(

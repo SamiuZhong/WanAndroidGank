@@ -21,7 +21,7 @@ class WanTitleAdapter(context: Context?) : BaseSingleRecyclerAdapter<SystemParen
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is TitleHolder) {
-            val data = list[position]
+            val data = mList[position]
             with(holder.itemView.title_text) {
                 text = data.name
                 if (data.isSelected) {
@@ -35,8 +35,8 @@ class WanTitleAdapter(context: Context?) : BaseSingleRecyclerAdapter<SystemParen
             holder.itemView.setOnClickListener {
                 listener(data.id)
                 if (!data.isSelected) {
-                    for (index in list.indices)
-                        list[index].isSelected = index == position
+                    for (index in mList.indices)
+                        mList[index].isSelected = index == position
                     notifyDataSetChanged()
                 }
             }

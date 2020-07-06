@@ -1,41 +1,38 @@
 package com.samiu.host.ui.adapter
 
-import android.content.Context
-import android.view.View
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.samiu.base.adapter.BaseSingleRecyclerAdapter
-import com.samiu.host.R
-import com.samiu.host.global.toBrowser
+import com.samiu.host.databinding.ItemWanArticleBinding
 import com.samiu.host.model.bean.Article
-import kotlinx.android.synthetic.main.item_wan_article.view.*
+import com.samiu.host.ui.adapter.holder.ArticleViewHolder
 
 /**
  * @author Samiu 2020/3/4
  * @github https://github.com/SamiuZhong
  * @blog samiu.top
  */
-class WanArticleAdapter(context: Context?) : BaseSingleRecyclerAdapter<Article>(context) {
+class WanArticleAdapter(
+    private val listener: ArticleListener
+) : BaseSingleRecyclerAdapter<Article>() {
+
+    interface ArticleListener {
+        fun onArticleClick(article: Article)
+        fun onArticleStarChanged(article: Article, newValue: Boolean)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return WanArticleHolder(
-            layoutInflater.inflate(
-                R.layout.item_wan_article,
+        return ArticleViewHolder(
+            ItemWanArticleBinding.inflate(
+                LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
+            ), listener
         )
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is WanArticleHolder)
-            with(holder.itemView) {
-                val data = list[position]
-                item_title.text = data.title
-                item_nice_data.text = data.niceDate
-                item_author.text = data.shareUser
-                setOnClickListener { context.toBrowser(data.link, data.title) }
-            }
+        if (holder is ArticleViewHolder) holder.bind(mList[position])
     }
-
-    class WanArticleHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }

@@ -5,7 +5,6 @@ import com.samiu.base.ui.BaseFragment
 import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
 import com.samiu.host.databinding.FragmentWanSystemBinding
-import com.samiu.host.global.toSystemList
 import com.samiu.host.ui.adapter.WanSystemAdapter
 import com.samiu.host.viewmodel.WanSystemViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -16,15 +15,15 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  * @blog samiu.top
  */
 class WanSystemFragment : BaseFragment(R.layout.fragment_wan_system) {
-    private val systemViewModel: WanSystemViewModel by viewModel()
-    private val mBinding by viewBinding(FragmentWanSystemBinding::bind)
+    private val viewModel: WanSystemViewModel by viewModel()
+    private val binding by viewBinding(FragmentWanSystemBinding::bind)
 
     override fun initView() = initRecyclerView()
-    override fun initData() = systemViewModel.getSystem()
+    override fun initData() = viewModel.getSystem()
 
     private lateinit var adapter: WanSystemAdapter
 
-    override fun startObserve() = systemViewModel.run {
+    override fun startObserve() = viewModel.run {
         mSystems.observe(this@WanSystemFragment, Observer {
             adapter.addAll(it)
         })
@@ -32,7 +31,6 @@ class WanSystemFragment : BaseFragment(R.layout.fragment_wan_system) {
 
     private fun initRecyclerView() {
         adapter = WanSystemAdapter(context)
-        mBinding.systemRv.adapter = adapter
-        adapter.setOnItemClick { cid, title -> toSystemList(this, cid, title) }
+        binding.systemRv.adapter = adapter
     }
 }

@@ -22,8 +22,9 @@ import kotlin.properties.Delegates
  * @blog samiu.top
  */
 class WanProjectFragment : BaseFragment(R.layout.fragment_wan_project) {
-    private val mBinding by viewBinding(FragmentWanProjectBinding::bind)
-    private val projectViewModel: WanProjectViewModel by viewModel()
+
+    private val binding by viewBinding(FragmentWanProjectBinding::bind)
+    private val viewModel: WanProjectViewModel by viewModel()
 
     private var currentPage by Delegates.notNull<Int>()
     private var cid by Delegates.notNull<Int>()
@@ -35,7 +36,7 @@ class WanProjectFragment : BaseFragment(R.layout.fragment_wan_project) {
     }
 
     override fun initData() {
-        projectViewModel.getProjectType()
+        viewModel.getProjectType()
         with(project_refresh) {
             setOnRefreshListener {
                 refreshData(REFRESH)
@@ -53,16 +54,16 @@ class WanProjectFragment : BaseFragment(R.layout.fragment_wan_project) {
             REFRESH -> {
                 currentPage = 0
                 mArticleAdapter.clearAll()
-                projectViewModel.getAllProjects(currentPage, cid)
+                viewModel.getAllProjects(currentPage, cid)
             }
             LOAD_MORE -> {
                 currentPage += 1
-                projectViewModel.getAllProjects(currentPage, cid)
+                viewModel.getAllProjects(currentPage, cid)
             }
         }
     }
 
-    override fun startObserve() = projectViewModel.run {
+    override fun startObserve() = viewModel.run {
         mProjectType.observe(this@WanProjectFragment, Observer {
             it[0].isSelected = true
             cid = it[0].id
@@ -75,10 +76,10 @@ class WanProjectFragment : BaseFragment(R.layout.fragment_wan_project) {
     private fun initRecyclerView() {
         //title
         mTypeAdapter = WanTypeAdapter(context)
-        mBinding.projectRecycler1.layoutManager = LinearLayoutManager(context).apply {
+        binding.projectRecycler1.layoutManager = LinearLayoutManager(context).apply {
             orientation = RecyclerView.HORIZONTAL
         }
-        mBinding.projectRecycler1.adapter = mTypeAdapter
+        binding.projectRecycler1.adapter = mTypeAdapter
         mTypeAdapter.setOnItemClick { cid ->
             run {
                 this.cid = cid
@@ -87,7 +88,7 @@ class WanProjectFragment : BaseFragment(R.layout.fragment_wan_project) {
         }
         //article
         mArticleAdapter = WanProjectAdapter(context)
-        mBinding.projectRecycler2.layoutManager = LinearLayoutManager(context)
-        mBinding.projectRecycler2.adapter = mArticleAdapter
+        binding.projectRecycler2.layoutManager = LinearLayoutManager(context)
+        binding.projectRecycler2.adapter = mArticleAdapter
     }
 }

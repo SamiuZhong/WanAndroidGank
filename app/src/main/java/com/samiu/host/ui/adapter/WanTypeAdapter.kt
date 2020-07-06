@@ -24,8 +24,8 @@ class WanTypeAdapter(context: Context?) : BaseSingleRecyclerAdapter<SystemParent
         if (holder is WanTypeHolder) {
             holder.setIsRecyclable(false)
             with(holder.itemView.type_text) {
-                text = list[position].name
-                if (list[position].isSelected) {
+                text = mList[position].name
+                if (mList[position].isSelected) {
                     setTextColor(resources.getColor(R.color.white, null))
                     background = drawShape(
                         context,
@@ -38,10 +38,10 @@ class WanTypeAdapter(context: Context?) : BaseSingleRecyclerAdapter<SystemParent
                 }
             }
             holder.itemView.setOnClickListener {
-                if (!list[position].isSelected) {
-                    listener(list[position].id)
-                    for (i in list.indices)
-                        list[i].isSelected = i == position
+                if (!mList[position].isSelected) {
+                    listener(mList[position].id)
+                    for (i in mList.indices)
+                        mList[i].isSelected = i == position
                     notifyDataSetChanged()
                 }
             }

@@ -19,25 +19,25 @@ import com.tencent.smtt.sdk.WebViewClient
  * @blog samiu.top
  */
 class BrowserActivity : BaseActivity() {
-    private val mBinding by viewBinding(ActivityBrowserBinding::inflate)
-    override fun getBindingRoot() = mBinding.root
+    private val binding by viewBinding(ActivityBrowserBinding::inflate)
+    override fun getBindingRoot() = binding.root
 
     override fun initView() {
-        mBinding.toolbar.setNavigationOnClickListener { finish() }
+        binding.toolbar.setNavigationOnClickListener { finish() }
         initWebView()
     }
 
     override fun initData() {
         intent.getStringExtra(URL)?.let {
-            mBinding.webView.loadUrl(it)
+            binding.webView.loadUrl(it)
         }
         intent.getStringExtra(TITLE)?.let{
-            mBinding.toolbarTitle.text = it
+            binding.toolbarTitle.text = it
         }
     }
 
     private fun initWebView() {
-        val binding = this.mBinding
+        val binding = this.binding
 
         binding.progressBar.progressDrawable =
             AppCompatResources.getDrawable(this, R.drawable.color_progressbar)

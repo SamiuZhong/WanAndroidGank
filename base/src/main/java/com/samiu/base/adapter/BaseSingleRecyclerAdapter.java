@@ -16,7 +16,10 @@ import java.util.List;
 public abstract class BaseSingleRecyclerAdapter<T> extends RecyclerView.Adapter {
     private Context context;
     public LayoutInflater layoutInflater;
-    public List<T> list = new ArrayList<>();
+    public List<T> mList = new ArrayList<>();
+
+    public BaseSingleRecyclerAdapter() {
+    }
 
     public BaseSingleRecyclerAdapter(Context context) {
         this.context = context;
@@ -30,7 +33,7 @@ public abstract class BaseSingleRecyclerAdapter<T> extends RecyclerView.Adapter 
      */
     @Override
     public int getItemCount() {
-        return list.size();
+        return mList.size();
     }
 
     /**
@@ -39,7 +42,7 @@ public abstract class BaseSingleRecyclerAdapter<T> extends RecyclerView.Adapter 
      * @param item
      */
     public void addItem(T item) {
-        list.add(item);
+        mList.add(item);
         notifyDataSetChanged();
     }
 
@@ -49,8 +52,8 @@ public abstract class BaseSingleRecyclerAdapter<T> extends RecyclerView.Adapter 
      * @param items
      */
     public void addAll(List<T> items) {
-        if (list != null) {
-            list.addAll(items);
+        if (mList != null) {
+            mList.addAll(items);
         }
         notifyDataSetChanged();
     }
@@ -61,7 +64,7 @@ public abstract class BaseSingleRecyclerAdapter<T> extends RecyclerView.Adapter 
      * @param list
      */
     public void replaceAll(List<T> list) {
-        this.list.clear();
+        this.mList.clear();
         addAll(list);
     }
 
@@ -69,7 +72,7 @@ public abstract class BaseSingleRecyclerAdapter<T> extends RecyclerView.Adapter 
      * 清空Item列表
      */
     public void clearAll() {
-        list.clear();
+        mList.clear();
         notifyDataSetChanged();
     }
 
@@ -79,7 +82,7 @@ public abstract class BaseSingleRecyclerAdapter<T> extends RecyclerView.Adapter 
      * @param index
      */
     public void remove(int index) {
-        list.remove(index);
+        mList.remove(index);
         notifyDataSetChanged();
     }
 }

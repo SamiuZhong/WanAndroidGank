@@ -7,9 +7,11 @@
         <item name="android:background">@drawable/splash</item>
     </style>
 
-    <style name="SearchTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <style name="SearchTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/reply_blue_700</item>
         <item name="colorPrimaryDark">@color/reply_blue_700</item>
-        <item name="colorAccent">@color/reply_blue_700</item>
+        <item name="colorSecondary">@color/reply_orange_500</item>
+        <item name="colorSecondaryVariant">@color/reply_orange_400</item>
+        <item name="android:colorBackground">@color/reply_blue_50</item>
     </style>
 </resources>

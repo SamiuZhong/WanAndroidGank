@@ -3,7 +3,9 @@ package com.samiu.host.ui.base
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.samiu.base.ui.BaseActivity
 import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
@@ -11,7 +13,11 @@ import com.samiu.host.databinding.ActivityWanSearchBinding
 import com.samiu.host.global.LOAD_MORE
 import com.samiu.host.global.REFRESH
 import com.samiu.host.global.drawShape
+import com.samiu.host.global.toBrowser
+import com.samiu.host.model.bean.Article
 import com.samiu.host.model.bean.Hot
+import com.samiu.host.ui.adapter.ArticleListenerImpl
+import com.samiu.host.ui.adapter.ReboundingSwipeActionCallback
 import com.samiu.host.ui.adapter.WanArticleAdapter
 import com.samiu.host.viewmodel.WanSearchViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -24,27 +30,45 @@ import kotlin.properties.Delegates
  */
 class SearchActivity : BaseActivity() {
 
-    private val mBinding by viewBinding(ActivityWanSearchBinding::inflate)
+    private val binding by viewBinding(ActivityWanSearchBinding::inflate)
     private val viewModel: WanSearchViewModel by viewModel()
-    override fun getBindingRoot() = mBinding.root
+    override fun getBindingRoot() = binding.root
 
     private var currentPage by Delegates.notNull<Int>()
     private lateinit var mAdapter: WanArticleAdapter
     private var key = ""
 
     override fun initView() {
-        //recycler view
-        mAdapter = WanArticleAdapter(this)
-        mBinding.searchRecycler.adapter = mAdapter
+        initAdapter()
+        initRefresh()
         //search
-        mBinding.searchLayout.background =
+        binding.searchLayout.background =
             drawShape(this, 100F, getColor(R.color.white))
-        mBinding.searchIcon.setOnClickListener {
-            key = mBinding.searchEdt.text.toString()
+        binding.searchIcon.setOnClickListener {
+            key = binding.searchEdt.text.toString()
             refreshData(REFRESH)
         }
-        //refresh layout
-        with(mBinding.searchRefresh) {
+        //clear
+        binding.searchBackIcon.setOnClickListener { mAdapter.clearAll() }
+        //back
+        binding.searchBackIcon.setOnClickListener { finish() }
+    }
+
+    override fun initData() {
+        viewModel.getHotKeys()
+    }
+
+    private fun initAdapter() {
+        mAdapter = WanArticleAdapter(ArticleListenerImpl(this))
+        binding.searchRecycler.apply {
+            val itemTouchHelper = ItemTouchHelper(ReboundingSwipeActionCallback())
+            itemTouchHelper.attachToRecyclerView(this)
+            adapter = mAdapter
+        }
+    }
+
+    private fun initRefresh(){
+        with(binding.searchRefresh) {
             setOnRefreshListener {
                 refreshData(REFRESH)
                 finishRefresh(1500)
@@ -54,14 +78,6 @@ class SearchActivity : BaseActivity() {
                 finishLoadMore(2000)
             }
         }
-        //clear
-        mBinding.searchBackIcon.setOnClickListener { mAdapter.clearAll() }
-        //back
-        mBinding.searchBackIcon.setOnClickListener { finish() }
-    }
-
-    override fun initData() {
-        viewModel.getHotKeys()
     }
 
     private fun refreshData(type: Int) {
@@ -108,11 +124,11 @@ class SearchActivity : BaseActivity() {
                 text = item.name
                 setOnClickListener {
                     key = item.name
-                    mBinding.searchEdt.setText(key)
+                    binding.searchEdt.setText(key)
                     refreshData(REFRESH)
                 }
             }
-            mBinding.searchFlow.addView(textView)
+            binding.searchFlow.addView(textView)
         }
     }
 }

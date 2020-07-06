@@ -24,7 +24,7 @@ class WanProjectAdapter(context: Context?) : BaseSingleRecyclerAdapter<Article>(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is ProjectHolder)
             with(holder.itemView) {
-                val data = list[position]
+                val data = mList[position]
                 Glide.with(context).load(data.envelopePic).into(project_img)
                 project_title.text = data.title
                 project_desc.text = data.desc

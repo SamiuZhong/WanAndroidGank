@@ -1,6 +1,7 @@
 package com.samiu.host.ui.base
 
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
 import com.samiu.base.ui.BaseActivity
@@ -9,6 +10,8 @@ import com.samiu.host.R
 import com.samiu.host.databinding.ActivityWanPersonalBinding
 import com.samiu.host.global.USER_NAME
 import com.samiu.host.global.drawShape
+import com.samiu.host.ui.adapter.ArticleListenerImpl
+import com.samiu.host.ui.adapter.ReboundingSwipeActionCallback
 import com.samiu.host.ui.adapter.WanArticleAdapter
 import com.samiu.host.util.Preference
 import com.samiu.host.viewmodel.WanPersonalViewModel
@@ -22,22 +25,46 @@ import kotlin.properties.Delegates
  */
 class WanPersonalActivity : BaseActivity() {
 
-    private val mBinding by viewBinding(ActivityWanPersonalBinding::inflate)
+    private val binding by viewBinding(ActivityWanPersonalBinding::inflate)
     private val viewModel: WanPersonalViewModel by viewModel()
-    override fun getBindingRoot() = mBinding.root
+    override fun getBindingRoot() = binding.root
 
     private val userName: String by Preference(USER_NAME, "")
     private var mCurrentPage by Delegates.notNull<Int>()
     private lateinit var mAdapter: WanArticleAdapter
 
     override fun initView() {
-        mBinding.toolbar.setNavigationOnClickListener { finish() }
-        mBinding.nickname.text = userName
-        //recycler view
-        mAdapter = WanArticleAdapter(this)
-        mBinding.recycler.adapter = mAdapter
-        //refresh layout
-        with(mBinding.refreshLayout) {
+        binding.toolbar.setNavigationOnClickListener { finish() }
+        binding.nickname.text = userName
+        initAdapter()
+        initRefresh()
+        setLogout()
+    }
+
+    override fun initData() {
+        binding.refreshLayout.autoRefresh()
+    }
+
+    override fun startObserve() = viewModel.run {
+        mCollections.observe(this@WanPersonalActivity, Observer {
+            for (data in it) {
+                data.collect = true
+            }
+            mAdapter.addAll(it)
+        })
+    }
+
+    private fun initAdapter() {
+        mAdapter = WanArticleAdapter(ArticleListenerImpl(this))
+        binding.recycler.apply {
+            val itemTouchHelper = ItemTouchHelper(ReboundingSwipeActionCallback())
+            itemTouchHelper.attachToRecyclerView(this)
+            adapter = mAdapter
+        }
+    }
+
+    private fun initRefresh() {
+        with(binding.refreshLayout) {
             setOnRefreshListener {
                 mCurrentPage = 0
                 mAdapter.clearAll()
@@ -50,8 +77,10 @@ class WanPersonalActivity : BaseActivity() {
                 finishLoadMore(1000)
             }
         }
-        //log out
-        mBinding.logOutBtn.run {
+    }
+
+    private fun setLogout() {
+        binding.logOutBtn.run {
             background = drawShape(
                 this@WanPersonalActivity,
                 10F,
@@ -72,13 +101,5 @@ class WanPersonalActivity : BaseActivity() {
     private fun logout() {
         viewModel.logout()
         finish()
-    }
-
-    override fun initData() {
-        mBinding.refreshLayout.autoRefresh()
-    }
-
-    override fun startObserve() = viewModel.run {
-        mCollections.observe(this@WanPersonalActivity, Observer { mAdapter.addAll(it) })
     }
 }
