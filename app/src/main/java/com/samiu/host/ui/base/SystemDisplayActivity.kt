@@ -1,13 +1,11 @@
 package com.samiu.host.ui.base
 
-import android.content.Intent
 import androidx.lifecycle.Observer
 import com.samiu.base.ui.BaseActivity
 import com.samiu.base.ui.viewBinding
 import com.samiu.host.databinding.ActivitySystemDisplayBinding
 import com.samiu.host.global.CID
 import com.samiu.host.global.TITLE
-import com.samiu.host.global.URL
 import com.samiu.host.ui.adapter.WanArticleAdapter
 import com.samiu.host.viewmodel.SystemDisplayViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -15,6 +13,8 @@ import kotlin.properties.Delegates
 
 /**
  * @author Samiu 2020/3/6
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 class SystemDisplayActivity : BaseActivity() {
     private val mBinding by viewBinding(ActivitySystemDisplayBinding::inflate)

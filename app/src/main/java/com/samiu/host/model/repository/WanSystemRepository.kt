@@ -9,6 +9,8 @@ import com.samiu.host.model.http.WanResult
 
 /**
  * @author Samiu 2020/3/6
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 class WanSystemRepository : BaseWanRepository() {
 

@@ -24,14 +24,22 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.elevation.ElevationOverlayProvider
 import com.samiu.host.R
 
+/**
+ * @author Samiu 2020/7/6
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
+ */
+
 @BindingAdapter(
     "popupElevationOverlay"
 )
 fun Spinner.bindPopupElevationOverlay(popupElevationOverlay: Float) {
-    setPopupBackgroundDrawable(ColorDrawable(
-        ElevationOverlayProvider(context)
-            .compositeOverlayWithThemeSurfaceColorIfNeeded(popupElevationOverlay)
-    ))
+    setPopupBackgroundDrawable(
+        ColorDrawable(
+            ElevationOverlayProvider(context)
+                .compositeOverlayWithThemeSurfaceColorIfNeeded(popupElevationOverlay)
+        )
+    )
 }
 
 @BindingAdapter(
@@ -152,8 +160,8 @@ fun View.bindGoneIf(gone: Boolean) {
 fun View.bindLayoutFullscreen(previousFullscreen: Boolean, fullscreen: Boolean) {
     if (previousFullscreen != fullscreen && fullscreen) {
         systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
-            View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
-            View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
+                View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
     }
 }
 

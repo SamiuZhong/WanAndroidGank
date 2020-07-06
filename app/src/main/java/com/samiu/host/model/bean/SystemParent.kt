@@ -1,9 +1,9 @@
 package com.samiu.host.model.bean
 
-import com.samiu.host.model.bean.SystemChild
-
 /**
  * @author Samiu 2020/3/3
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 data class SystemParent(
     val children: List<SystemChild>,

@@ -11,6 +11,8 @@ import kotlinx.coroutines.launch
 
 /**
  * @author Samiu 2020/3/5
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 class WanProjectViewModel(
     private val wanProjectRepository: WanProjectRepository

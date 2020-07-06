@@ -12,6 +12,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * @author Samiu 2020/3/2
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 class WanSystemFragment : BaseFragment(R.layout.fragment_wan_system) {
     private val systemViewModel: WanSystemViewModel by viewModel()

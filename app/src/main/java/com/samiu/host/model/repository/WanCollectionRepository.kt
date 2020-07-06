@@ -6,6 +6,8 @@ import com.samiu.host.model.http.WanClient
 
 /**
  * @author Samiu 2020/5/20
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 class WanCollectionRepository : BaseWanRepository() {
 

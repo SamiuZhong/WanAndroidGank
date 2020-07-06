@@ -11,6 +11,8 @@ import java.util.concurrent.TimeUnit
 
 /**
  * @author Samiu 2020/3/3
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 abstract class BaseRetrofitClient(var context: Context, private var baseUrl: String) {
     companion object {

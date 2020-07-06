@@ -16,6 +16,8 @@ import kotlin.properties.Delegates
 
 /**
  * @author Samiu 2020/3/2
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 class WanHomeFragment : BaseFragment(R.layout.fragment_wan_home) {
     private val mBinding by viewBinding(FragmentWanHomeBinding::bind)

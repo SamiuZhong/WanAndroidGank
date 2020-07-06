@@ -10,6 +10,8 @@ import com.samiu.host.databinding.NavMenuItemLayoutBinding
  * [BottomNavDrawerFragment]的adapter
  *
  * @author Samiu 2020/3/31
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 class NavigationAdapter(
     private val listener: NavigationAdapterListener

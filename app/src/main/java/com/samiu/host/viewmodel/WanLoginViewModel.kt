@@ -12,6 +12,8 @@ import kotlinx.coroutines.launch
 
 /**
  * @author Samiu 2020/4/17
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 class WanLoginViewModel(
     private val loginRepository: WanLoginRepository

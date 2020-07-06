@@ -1,16 +1,12 @@
 package com.samiu.host.ui.base
 
-import android.content.Intent
-import android.widget.Toast
 import androidx.lifecycle.Observer
-import com.afollestad.materialdialogs.DialogCallback
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
 import com.samiu.base.ui.BaseActivity
 import com.samiu.base.ui.viewBinding
 import com.samiu.host.R
 import com.samiu.host.databinding.ActivityWanPersonalBinding
-import com.samiu.host.global.URL
 import com.samiu.host.global.USER_NAME
 import com.samiu.host.global.drawShape
 import com.samiu.host.ui.adapter.WanArticleAdapter
@@ -21,6 +17,8 @@ import kotlin.properties.Delegates
 
 /**
  * @author Samiu 2020/5/16
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 class WanPersonalActivity : BaseActivity() {
 

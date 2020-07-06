@@ -12,6 +12,8 @@ import kotlinx.android.synthetic.main.item_wan_article.view.*
 
 /**
  * @author Samiu 2020/3/4
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 class WanArticleAdapter(context: Context?) : BaseSingleRecyclerAdapter<Article>(context) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

@@ -1,20 +1,19 @@
 package com.samiu.host.global
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.net.Uri
-import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.google.android.material.shape.MaterialShapeDrawable
-import com.samiu.host.R
 import com.samiu.host.ui.base.BrowserActivity
 import com.samiu.host.ui.base.MainActivity
 import com.samiu.host.ui.base.SystemDisplayActivity
 
 /**
  * @author Samiu 2020/3/4
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 fun desTo(fragment: Fragment, id: Int) {
     val navController = (fragment.requireActivity() as MainActivity).getNavController()

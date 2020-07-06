@@ -10,6 +10,8 @@ import com.tencent.smtt.sdk.WebViewClient;
 
 /**
  * @author Samiu 2020/3/2
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 public class X5WebView extends WebView {
 

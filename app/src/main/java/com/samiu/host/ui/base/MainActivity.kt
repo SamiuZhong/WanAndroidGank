@@ -14,6 +14,8 @@ import com.samiu.host.ui.base.nav.*
 
 /**
  * @author Samiu 2020/3/2
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 class MainActivity : AppCompatActivity(),
     Toolbar.OnMenuItemClickListener{

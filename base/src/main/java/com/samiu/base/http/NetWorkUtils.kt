@@ -5,6 +5,8 @@ import android.net.ConnectivityManager
 
 /**
  * @author Samiu 2020/3/3
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 class NetWorkUtils {
 

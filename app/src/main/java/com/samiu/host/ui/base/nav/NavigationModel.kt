@@ -6,6 +6,8 @@ import com.samiu.host.R
 
 /**
  * @author Samiu 2020/4/2
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 object NavigationModel {
 

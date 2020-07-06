@@ -13,6 +13,8 @@ import kotlinx.android.synthetic.main.item_wan_project.view.*
 
 /**
  * @author Samiu 2020/3/5
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 class WanProjectAdapter(context: Context?) : BaseSingleRecyclerAdapter<Article>(context) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

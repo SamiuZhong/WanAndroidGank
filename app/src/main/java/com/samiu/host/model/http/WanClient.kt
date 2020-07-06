@@ -5,6 +5,8 @@ import com.samiu.host.base.AppApplication
 
 /**
  * @author Samiu 2020/3/3
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 const val WAN_BASE_URL = "https://www.wanandroid.com"
 

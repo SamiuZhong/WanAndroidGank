@@ -15,6 +15,8 @@ import com.tencent.smtt.sdk.WebViewClient
 
 /**
  * @author Samiu 2020/3/4
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 class BrowserActivity : BaseActivity() {
     private val mBinding by viewBinding(ActivityBrowserBinding::inflate)

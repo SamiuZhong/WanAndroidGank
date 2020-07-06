@@ -2,6 +2,8 @@ package com.samiu.host.global
 
 /**
  * @author Samiu 2020/3/4
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 const val URL = "url"
 const val CID = "cid"

@@ -10,6 +10,8 @@ import kotlinx.coroutines.cancel
 
 /**
  * @author Samiu 2020/3/2
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 abstract class BaseFragment(@LayoutRes contentLayoutId: Int) : Fragment(contentLayoutId),
     CoroutineScope by MainScope() {

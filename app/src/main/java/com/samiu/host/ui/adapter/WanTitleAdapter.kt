@@ -11,6 +11,8 @@ import kotlinx.android.synthetic.main.item_wan_verti_title.view.*
 
 /**
  * @author Samiu 2020/3/7
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 class WanTitleAdapter(context: Context?) : BaseSingleRecyclerAdapter<SystemParent>(context) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

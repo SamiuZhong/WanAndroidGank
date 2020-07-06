@@ -14,6 +14,8 @@ import kotlin.math.log
 
 /**
  * @author Samiu 2020/5/20
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 class WanPersonalViewModel(
     private val collectionRepository: WanCollectionRepository,

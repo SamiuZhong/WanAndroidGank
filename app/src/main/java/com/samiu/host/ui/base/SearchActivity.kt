@@ -1,6 +1,5 @@
 package com.samiu.host.ui.base
 
-import android.content.Intent
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
@@ -11,7 +10,6 @@ import com.samiu.host.R
 import com.samiu.host.databinding.ActivityWanSearchBinding
 import com.samiu.host.global.LOAD_MORE
 import com.samiu.host.global.REFRESH
-import com.samiu.host.global.URL
 import com.samiu.host.global.drawShape
 import com.samiu.host.model.bean.Hot
 import com.samiu.host.ui.adapter.WanArticleAdapter
@@ -21,6 +19,8 @@ import kotlin.properties.Delegates
 
 /**
  * @author Samiu 2020/5/21
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 class SearchActivity : BaseActivity() {
 

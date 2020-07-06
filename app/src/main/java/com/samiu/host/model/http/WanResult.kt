@@ -2,6 +2,8 @@ package com.samiu.host.model.http
 
 /**
  * @author Samiu 2020/3/3
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 sealed class WanResult<out  T:Any> {
 

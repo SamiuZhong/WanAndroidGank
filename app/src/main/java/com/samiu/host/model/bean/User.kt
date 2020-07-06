@@ -2,6 +2,8 @@ package com.samiu.host.model.bean
 
 /**
  * @author Samiu 2020/5/11
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 data class User(
     val admin: Boolean,

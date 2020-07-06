@@ -8,6 +8,8 @@ import kotlin.reflect.KProperty
 
 /**
  * @author Samiu 2020/4/2
+ * @github https://github.com/SamiuZhong
+ * @blog samiu.top
  */
 
 /**
