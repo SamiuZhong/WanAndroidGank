@@ -18,15 +18,8 @@ class WanProjectViewModel(
     private val wanProjectRepository: WanProjectRepository
 ) : ViewModel() {
 
-    val mRecentProjects = MutableLiveData<List<Article>>()
     val mProjectType = MutableLiveData<List<SystemParent>>()
     val mAllProjects = MutableLiveData<List<Article>>()
-
-    fun getRecentProjects(page: Int) = viewModelScope.launch {
-        val projects = wanProjectRepository.getRecentProjects(page)
-        if (projects is WanResult.Success)
-            mRecentProjects.value = projects.data.datas
-    }
 
     fun getProjectType() = viewModelScope.launch {
         val type = wanProjectRepository.getProjectType()

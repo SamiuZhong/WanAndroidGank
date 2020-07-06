@@ -1,14 +1,17 @@
 package com.samiu.host.ui.adapter
 
-import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.samiu.base.adapter.BaseSingleRecyclerAdapter
 import com.samiu.host.R
+import com.samiu.host.databinding.ItemWanProjectBinding
 import com.samiu.host.global.toBrowser
 import com.samiu.host.model.bean.Article
+import com.samiu.host.ui.adapter.holder.ArticleViewHolder
+import com.samiu.host.ui.adapter.holder.ProjectViewHolder
 import kotlinx.android.synthetic.main.item_wan_project.view.*
 
 /**
@@ -16,23 +19,21 @@ import kotlinx.android.synthetic.main.item_wan_project.view.*
  * @github https://github.com/SamiuZhong
  * @blog samiu.top
  */
-class WanProjectAdapter(context: Context?) : BaseSingleRecyclerAdapter<Article>(context) {
+class WanProjectAdapter(
+    private val listener: WanArticleAdapter.ArticleListener
+) : BaseSingleRecyclerAdapter<Article>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return ProjectHolder(layoutInflater.inflate(R.layout.item_wan_project, parent, false))
+        return ProjectViewHolder(
+            ItemWanProjectBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            ), listener
+        )
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is ProjectHolder)
-            with(holder.itemView) {
-                val data = mList[position]
-                Glide.with(context).load(data.envelopePic).into(project_img)
-                project_title.text = data.title
-                project_desc.text = data.desc
-                project_time.text = data.niceDate
-                project_author.text = data.author
-                setOnClickListener { context.toBrowser(data.link, data.title) }
-            }
+        if (holder is ProjectViewHolder) holder.bind(mList[position])
     }
-
-    class ProjectHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }

@@ -67,11 +67,6 @@ fun TextView.bindDrawables(
     )
 }
 
-/**
- * Set a Chip's leading icon using Glide.
- *
- * Optionally set the image to be center cropped and/or cropped to a circle.
- */
 @BindingAdapter(
     "glideChipIcon",
     "glideChipIconCenterCrop",
@@ -133,6 +128,16 @@ fun ImageView.bindGlideSrc(
         centerCrop,
         circularCrop
     ).into(this)
+}
+
+@BindingAdapter(
+    "glideRemote"
+)
+fun ImageView.bindGlideRemote(
+    remoteRes: String?
+) {
+    if (remoteRes == null) return
+    Glide.with(context).load(remoteRes).into(this)
 }
 
 private fun createGlideRequest(

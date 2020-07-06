@@ -3,7 +3,6 @@ package com.samiu.host.ui.adapter.holder
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.samiu.host.R
-import com.samiu.host.databinding.ItemWanArticleBinding
 import com.samiu.host.databinding.ItemWanProjectBinding
 import com.samiu.host.model.bean.Article
 import com.samiu.host.ui.adapter.Drawable.ArticleSwipeActionDrawable
@@ -16,8 +15,8 @@ import kotlin.math.abs
  * @github https://github.com/SamiuZhong
  * @blog samiu.top
  */
-class ArticleViewHolder(
-    private val binding: ItemWanArticleBinding,
+class ProjectViewHolder(
+    private val binding: ItemWanProjectBinding,
     listener: WanArticleAdapter.ArticleListener
 ) : RecyclerView.ViewHolder(binding.root), ReboundingSwipeActionCallback.ReboundableViewHolder {
 
@@ -37,7 +36,7 @@ class ArticleViewHolder(
     fun bind(article: Article) {
         binding.article = article
         binding.root.isActivated = article.collect
-        binding.itemAuthor.text =
+        binding.projectAuthor.text =
             when {
                 !article.author.isNullOrEmpty() -> article.author
                 !article.shareUser.isNullOrEmpty() -> article.shareUser

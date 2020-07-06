@@ -1,6 +1,7 @@
 package com.samiu.host.ui.fragment
 
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.samiu.base.ui.BaseFragment
@@ -9,6 +10,8 @@ import com.samiu.host.R
 import com.samiu.host.databinding.FragmentWanProjectBinding
 import com.samiu.host.global.LOAD_MORE
 import com.samiu.host.global.REFRESH
+import com.samiu.host.ui.adapter.ArticleListenerImpl
+import com.samiu.host.ui.adapter.ReboundingSwipeActionCallback
 import com.samiu.host.ui.adapter.WanProjectAdapter
 import com.samiu.host.ui.adapter.WanTypeAdapter
 import com.samiu.host.viewmodel.WanProjectViewModel
@@ -32,21 +35,12 @@ class WanProjectFragment : BaseFragment(R.layout.fragment_wan_project) {
     private lateinit var mArticleAdapter: WanProjectAdapter
 
     override fun initView() {
-        initRecyclerView()
+        initAdapter()
+        initRefresh()
     }
 
     override fun initData() {
         viewModel.getProjectType()
-        with(project_refresh) {
-            setOnRefreshListener {
-                refreshData(REFRESH)
-                finishRefresh(1500)
-            }
-            setOnLoadMoreListener {
-                refreshData(LOAD_MORE)
-                finishLoadMore(2000)
-            }
-        }
     }
 
     private fun refreshData(type: Int) {
@@ -73,12 +67,9 @@ class WanProjectFragment : BaseFragment(R.layout.fragment_wan_project) {
         mAllProjects.observe(this@WanProjectFragment, Observer { mArticleAdapter.addAll(it) })
     }
 
-    private fun initRecyclerView() {
+    private fun initAdapter() {
         //title
         mTypeAdapter = WanTypeAdapter(context)
-        binding.projectRecycler1.layoutManager = LinearLayoutManager(context).apply {
-            orientation = RecyclerView.HORIZONTAL
-        }
         binding.projectRecycler1.adapter = mTypeAdapter
         mTypeAdapter.setOnItemClick { cid ->
             run {
@@ -87,8 +78,24 @@ class WanProjectFragment : BaseFragment(R.layout.fragment_wan_project) {
             }
         }
         //article
-        mArticleAdapter = WanProjectAdapter(context)
-        binding.projectRecycler2.layoutManager = LinearLayoutManager(context)
-        binding.projectRecycler2.adapter = mArticleAdapter
+        mArticleAdapter = WanProjectAdapter(ArticleListenerImpl(requireContext()))
+        binding.projectRecycler2.apply {
+            val itemTouchHelper = ItemTouchHelper(ReboundingSwipeActionCallback())
+            itemTouchHelper.attachToRecyclerView(this)
+            adapter = mArticleAdapter
+        }
+    }
+
+    private fun initRefresh() {
+        with(binding.projectRefresh) {
+            setOnRefreshListener {
+                refreshData(REFRESH)
+                finishRefresh(1500)
+            }
+            setOnLoadMoreListener {
+                refreshData(LOAD_MORE)
+                finishLoadMore(2000)
+            }
+        }
     }
 }

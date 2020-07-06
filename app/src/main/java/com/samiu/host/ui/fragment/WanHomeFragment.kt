@@ -32,19 +32,7 @@ class WanHomeFragment : BaseFragment(R.layout.fragment_wan_home) {
 
     override fun initView() {
         initAdapter()
-        with(binding.refreshLayout) {
-            setOnRefreshListener {
-                mCurrentPage = 0
-                mAdapter.clearAll()
-                viewModel.getArticles(mCurrentPage)
-                finishRefresh(1000)
-            }
-            setOnLoadMoreListener {
-                mCurrentPage += 1
-                viewModel.getArticles(mCurrentPage)
-                finishLoadMore(1000)
-            }
-        }
+        initRefresh()
     }
 
     override fun initData() {
@@ -63,6 +51,22 @@ class WanHomeFragment : BaseFragment(R.layout.fragment_wan_home) {
             val itemTouchHelper = ItemTouchHelper(ReboundingSwipeActionCallback())
             itemTouchHelper.attachToRecyclerView(this)
             adapter = mAdapter
+        }
+    }
+
+    private fun initRefresh() {
+        with(binding.refreshLayout) {
+            setOnRefreshListener {
+                mCurrentPage = 0
+                mAdapter.clearAll()
+                viewModel.getArticles(mCurrentPage)
+                finishRefresh(1000)
+            }
+            setOnLoadMoreListener {
+                mCurrentPage += 1
+                viewModel.getArticles(mCurrentPage)
+                finishLoadMore(1000)
+            }
         }
     }
 

@@ -80,12 +80,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:text="@{article.shareUser}"
                     android:textColor="@color/default_prompt_text_color_9496A4"
                     android:textSize="@dimen/text_size_12"
                     app:layout_constraintBaseline_toBaselineOf="@id/item_nice_data"
                     app:layout_constraintStart_toEndOf="@id/ic_author"
-                    tools:text="Samiu" />
+                    tools:text="机智的张尼玛" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
     </FrameLayout>
