@@ -3,6 +3,7 @@ package com.samiu.host.ui.base
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
@@ -11,6 +12,10 @@ import com.samiu.base.ui.dataBinding
 import com.samiu.host.R
 import com.samiu.host.databinding.ActivityMainBinding
 import com.samiu.host.ui.base.nav.*
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import java.util.*
 
 /**
  * @author Samiu 2020/3/2
@@ -18,8 +23,9 @@ import com.samiu.host.ui.base.nav.*
  * @blog samiu.top
  */
 class MainActivity : AppCompatActivity(),
-    Toolbar.OnMenuItemClickListener{
+    Toolbar.OnMenuItemClickListener {
 
+    private var mBackPressed: Boolean = false
     private val binding: ActivityMainBinding by dataBinding(R.layout.activity_main)
     private val bottomNavDrawer: BottomNavDrawerFragment by lazy {
         supportFragmentManager.findFragmentById(R.id.bottom_nav_drawer) as BottomNavDrawerFragment
@@ -94,5 +100,16 @@ class MainActivity : AppCompatActivity(),
             }
         }
         return true
+    }
+
+    override fun onBackPressed() {
+        if (!mBackPressed) {
+            Toast.makeText(this, getString(R.string.repress_to_back), Toast.LENGTH_SHORT).show()
+            mBackPressed = true
+            MainScope().launch {
+                delay(2000L)
+                mBackPressed = false
+            }
+        } else finish()
     }
 }
