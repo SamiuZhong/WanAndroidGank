@@ -33,5 +33,5 @@
     <string name="confirm">确定</string>
     <string name="about">关于</string>
     <string name="nobody">佚名</string>
-    <string name="repress_to_back">再按一次推出程序</string>
+    <string name="repress_to_back">再按一次退出程序</string>
 </resources>
