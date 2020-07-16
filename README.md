@@ -6,11 +6,11 @@
 
 下载安装包体验点击这里
 
-[蓝奏云](https://wws.lanzous.com/iyAMHed8sud)
+[蓝奏云](https://wws.lanzous.com/iSUHWenhsuh)
 
 或者扫描二维码
 
-![](https://upload-images.jianshu.io/upload_images/15143432-c751e70da5b669ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/250)
+![](https://upload-images.jianshu.io/upload_images/15143432-95f9b0810cf82cb2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/250)
 
 ## 设计
 
@@ -18,17 +18,17 @@
 
 下面我们先来看看效果图
 
-![](https://upload-images.jianshu.io/upload_images/15143432-edef9291a686c14e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/260)  ![](https://upload-images.jianshu.io/upload_images/15143432-5fcb1ed75b4e522e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/260)  ![](https://upload-images.jianshu.io/upload_images/15143432-d95bf89c2295639f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/260)
+![](https://upload-images.jianshu.io/upload_images/15143432-cb49ba46bb74f3cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/260)  ![](https://upload-images.jianshu.io/upload_images/15143432-f090a8366737cc37.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/260)  ![](https://upload-images.jianshu.io/upload_images/15143432-835ce0baaf91024d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/260)
 
-![](https://upload-images.jianshu.io/upload_images/15143432-ac44152ee4e40db1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/260)  ![](https://upload-images.jianshu.io/upload_images/15143432-1d2589fecb6b5dc8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/260)  ![](https://upload-images.jianshu.io/upload_images/15143432-3baa709048cfe0fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/260)
+![](https://upload-images.jianshu.io/upload_images/15143432-86fcec8f3b701049.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/260)  ![](https://upload-images.jianshu.io/upload_images/15143432-ba87a0ac73ef0809.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/260)  ![](https://upload-images.jianshu.io/upload_images/15143432-2dfac741fd60ff61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/260)
 
 底部导航栏的展开动画
 
-<img src="https://upload-images.jianshu.io/upload_images/15143432-9e4e942397f516e8.gif?imageMogr2/auto-orient/strip" width="35%" />
+<img src="https://upload-images.jianshu.io/upload_images/15143432-dc27fbe6e1dfbe0f.gif?imageMogr2/auto-orient/strip" width="35%" />
 
 滑动收藏文章
 
-<img src="https://upload-images.jianshu.io/upload_images/15143432-5b6f32108f0043a2.gif?imageMogr2/auto-orient/strip" width="35%" />
+<img src="https://upload-images.jianshu.io/upload_images/15143432-093d2c3eeb1f30e5.gif?imageMogr2/auto-orient/strip" width="35%" />
 
 
 
