@@ -6,7 +6,7 @@
 
         <variable
             name="account"
-            type="com.samiu.host.model.data.Account" />
+            type="com.samiu.wangank.model.data.Account" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

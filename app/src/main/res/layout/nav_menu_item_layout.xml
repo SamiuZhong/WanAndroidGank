@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.samiu.host.R"/>
+        <import type="com.samiu.wangank.R"/>
 
         <variable
             name="navMenuItem"
-            type="com.samiu.host.ui.base.nav.NavigationModelItem.NavMenuItem" />
+            type="com.samiu.wangank.ui.base.nav.NavigationModelItem.NavMenuItem" />
 
         <variable
             name="navListener"
-            type="com.samiu.host.ui.base.nav.NavigationAdapter.NavigationAdapterListener" />
+            type="com.samiu.wangank.ui.base.nav.NavigationAdapter.NavigationAdapterListener" />
     </data>
 
     <CheckedTextView

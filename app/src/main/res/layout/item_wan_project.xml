@@ -7,11 +7,11 @@
 
         <variable
             name="article"
-            type="com.samiu.host.model.bean.Article" />
+            type="com.samiu.wangank.model.bean.Article" />
 
         <variable
             name="listener"
-            type="com.samiu.host.ui.adapter.WanArticleAdapter.ArticleListener" />
+            type="com.samiu.wangank.ui.adapter.WanArticleAdapter.ArticleListener" />
     </data>
 
     <FrameLayout

@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="3dp" />
 
-    <com.samiu.host.ui.base.X5WebView
+    <com.samiu.wangank.ui.base.X5WebView
         android:id="@+id/web_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

@@ -6,26 +6,26 @@
 
     <fragment
         android:id="@+id/wanHomeFragment"
-        android:name="com.samiu.host.ui.fragment.WanHomeFragment"
+        android:name="com.samiu.wangank.ui.fragment.WanHomeFragment"
         android:label="WanHomeFragment" />
 
     <fragment
         android:id="@+id/wanSquareFragment"
-        android:name="com.samiu.host.ui.fragment.WanSquareFragment"
+        android:name="com.samiu.wangank.ui.fragment.WanSquareFragment"
         android:label="WanSquareFragment" />
 
     <fragment
         android:id="@+id/wanSystemFragment"
-        android:name="com.samiu.host.ui.fragment.WanSystemFragment"
+        android:name="com.samiu.wangank.ui.fragment.WanSystemFragment"
         android:label="WanSystemFragment" />
 
     <fragment
         android:id="@+id/wanWxArticleFragment"
-        android:name="com.samiu.host.ui.fragment.WanWxArticleFragment"
+        android:name="com.samiu.wangank.ui.fragment.WanWxArticleFragment"
         android:label="WanWxArticleFragment" />
 
     <fragment
         android:id="@+id/wanProjectFragment"
-        android:name="com.samiu.host.ui.fragment.WanProjectFragment"
+        android:name="com.samiu.wangank.ui.fragment.WanProjectFragment"
         android:label="WanProjectFragment" />
 </navigation>
