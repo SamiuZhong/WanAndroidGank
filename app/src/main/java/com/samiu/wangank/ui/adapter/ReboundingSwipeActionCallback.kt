@@ -76,8 +76,8 @@ class ReboundingSwipeActionCallback : ItemTouchHelper.SimpleCallback(
         isCurrentlyActive: Boolean
     ) {
         if (viewHolder !is ReboundableViewHolder) return
-        if (currentTargetPosition != viewHolder.bindingAdapterPosition) {
-            currentTargetPosition = viewHolder.bindingAdapterPosition
+        if (currentTargetPosition != viewHolder.adapterPosition) {
+            currentTargetPosition = viewHolder.adapterPosition
             currentTargetHasMetThresholdOnce = false
         }
 
