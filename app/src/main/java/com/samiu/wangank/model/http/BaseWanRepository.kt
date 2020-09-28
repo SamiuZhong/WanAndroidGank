@@ -14,18 +14,10 @@ open class BaseWanRepository {
 
     suspend fun <T : Any> readyCall(
         call: suspend () -> WanResult<T>,
-        errorMessage: String
-    ): WanResult<T> {
-        return try {
-            call()
-        } catch (e: Exception) {
-            WanResult.Error(
-                IOException(
-                    errorMessage,
-                    e
-                )
-            )
-        }
+    ): WanResult<T> = try {
+        call()
+    } catch (e: Exception) {
+        WanResult.Error(e.toString())
     }
 
     suspend fun <T : Any> call(
@@ -36,11 +28,7 @@ open class BaseWanRepository {
         return coroutineScope {
             if (response.errorCode == -1) {
                 errorBlock?.let { it() }
-                WanResult.Error(
-                    IOException(
-                        response.errorMsg
-                    )
-                )
+                WanResult.Error(response.errorMsg)
             } else {
                 successBlock?.let { it() }
                 WanResult.Success(response.data)

@@ -5,15 +5,15 @@ package com.samiu.wangank.model.http
  * @github https://github.com/SamiuZhong
  * @blog samiu.top
  */
-sealed class WanResult<out  T:Any> {
+sealed class WanResult<out T : Any> {
 
     data class Success<out T : Any>(val data: T) : WanResult<T>()
-    data class Error(val exception: Exception) : WanResult<Nothing>()
+    data class Error(val msg: String) : WanResult<Nothing>()
 
     override fun toString(): String {
         return when (this) {
             is Success<*> -> "Success[data=$data]"
-            is Error -> "Error[exception=$exception]"
+            is Error -> "Error[msg=$msg]"
         }
     }
 }

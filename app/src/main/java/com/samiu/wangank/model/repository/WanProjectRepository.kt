@@ -1,6 +1,5 @@
 package com.samiu.wangank.model.repository
 
-import com.samiu.wangank.global.NETWORK_ERROR
 import com.samiu.wangank.model.bean.ArticleList
 import com.samiu.wangank.model.bean.SystemParent
 import com.samiu.wangank.model.http.BaseWanRepository
@@ -14,27 +13,15 @@ import com.samiu.wangank.model.http.WanResult
  */
 class WanProjectRepository : BaseWanRepository() {
 
-    suspend fun getRecentProjects(page: Int): WanResult<ArticleList> {
-        return readyCall(
-            call = {
-                call(WanClient.service.getLastedProject(page))
-            }, errorMessage = NETWORK_ERROR
-        )
+    suspend fun getRecentProjects(page: Int): WanResult<ArticleList> = readyCall {
+        call(WanClient.service.getLastedProject(page))
     }
 
-    suspend fun getProjectType(): WanResult<List<SystemParent>> {
-        return readyCall(
-            call = {
-                call(WanClient.service.getProjectType())
-            }, errorMessage = NETWORK_ERROR
-        )
+    suspend fun getProjectType(): WanResult<List<SystemParent>> = readyCall {
+        call(WanClient.service.getProjectType())
     }
 
-    suspend fun getAllProjects(page: Int, cid: Int): WanResult<ArticleList> {
-        return readyCall(
-            call = {
-                call(WanClient.service.getProjectTypeDetail(page, cid))
-            }, errorMessage = NETWORK_ERROR
-        )
+    suspend fun getAllProjects(page: Int, cid: Int): WanResult<ArticleList> = readyCall {
+        call(WanClient.service.getProjectTypeDetail(page, cid))
     }
 }

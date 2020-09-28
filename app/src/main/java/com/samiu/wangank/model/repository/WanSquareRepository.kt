@@ -1,6 +1,5 @@
 package com.samiu.wangank.model.repository
 
-import com.samiu.wangank.global.NETWORK_ERROR
 import com.samiu.wangank.model.http.BaseWanRepository
 import com.samiu.wangank.model.http.WanClient
 
@@ -11,9 +10,7 @@ import com.samiu.wangank.model.http.WanClient
  */
 class WanSquareRepository : BaseWanRepository() {
 
-    suspend fun getSquareArticle(page: Int) = readyCall(
-        call = {
-            call(WanClient.service.getSquareArticleList(page))
-        }, errorMessage = NETWORK_ERROR
-    )
+    suspend fun getSquareArticle(page: Int) = readyCall{
+        call(WanClient.service.getSquareArticleList(page))
+    }
 }

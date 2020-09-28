@@ -1,6 +1,5 @@
 package com.samiu.wangank.model.repository
 
-import com.samiu.wangank.global.NETWORK_ERROR
 import com.samiu.wangank.model.http.BaseWanRepository
 import com.samiu.wangank.model.http.WanClient
 
@@ -11,15 +10,11 @@ import com.samiu.wangank.model.http.WanClient
  */
 class WanLoginRepository : BaseWanRepository() {
 
-    suspend fun login(userName: String, passWord: String) = readyCall(
-        call = {
-            call(WanClient.service.login(userName, passWord))
-        }, errorMessage = NETWORK_ERROR
-    )
+    suspend fun login(userName: String, passWord: String) = readyCall{
+        call(WanClient.service.login(userName, passWord))
+    }
 
-    suspend fun logout() = readyCall(
-        call = {
-            call(WanClient.service.logout())
-        }, errorMessage = NETWORK_ERROR
-    )
+    suspend fun logout() = readyCall{
+        call(WanClient.service.logout())
+    }
 }

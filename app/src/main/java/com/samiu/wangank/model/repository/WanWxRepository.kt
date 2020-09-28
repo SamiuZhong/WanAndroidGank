@@ -1,6 +1,5 @@
 package com.samiu.wangank.model.repository
 
-import com.samiu.wangank.global.NETWORK_ERROR
 import com.samiu.wangank.model.bean.ArticleList
 import com.samiu.wangank.model.bean.SystemParent
 import com.samiu.wangank.model.http.BaseWanRepository
@@ -14,19 +13,11 @@ import com.samiu.wangank.model.http.WanResult
  */
 class WanWxRepository : BaseWanRepository() {
 
-    suspend fun getWxAccount(): WanResult<List<SystemParent>> {
-        return readyCall(
-            call = {
-                call(WanClient.service.getBlogType())
-            }, errorMessage = NETWORK_ERROR
-        )
+    suspend fun getWxAccount(): WanResult<List<SystemParent>> = readyCall {
+        call(WanClient.service.getBlogType())
     }
 
-    suspend fun getWxArticle(id: Int, page: Int): WanResult<ArticleList> {
-        return readyCall(
-            call = {
-                call(WanClient.service.getBlogArticle(id, page))
-            }, errorMessage = NETWORK_ERROR
-        )
+    suspend fun getWxArticle(id: Int, page: Int): WanResult<ArticleList> = readyCall {
+        call(WanClient.service.getBlogArticle(id, page))
     }
 }

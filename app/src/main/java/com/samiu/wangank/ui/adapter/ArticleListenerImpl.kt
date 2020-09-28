@@ -44,15 +44,11 @@ class ArticleListenerImpl(
             doCancelCollect(id)
     }
 
-    private suspend fun doCollect(id: Int) = readyCall(
-        call = {
-            call(WanClient.service.collectArticle(id))
-        }, errorMessage = NETWORK_ERROR
-    )
+    private suspend fun doCollect(id: Int) = readyCall {
+        call(WanClient.service.collectArticle(id))
+    }
 
-    private suspend fun doCancelCollect(id: Int) = readyCall(
-        call = {
-            call(WanClient.service.cancelCollectArticle(id))
-        }, errorMessage = NETWORK_ERROR
-    )
+    private suspend fun doCancelCollect(id: Int) = readyCall {
+        call(WanClient.service.cancelCollectArticle(id))
+    }
 }
