@@ -2,7 +2,7 @@ package com.samiu.wangank.ui.adapter
 
 import android.content.Context
 import com.samiu.wangank.global.NETWORK_ERROR
-import com.samiu.wangank.global.toBrowser
+import com.samiu.wangank.util.toBrowser
 import com.samiu.wangank.model.bean.Article
 import com.samiu.wangank.model.http.BaseWanRepository
 import com.samiu.wangank.model.http.WanClient

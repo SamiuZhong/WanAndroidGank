@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.samiu.wangank.R
 import com.samiu.wangank.databinding.ItemWanProjectBinding
 import com.samiu.wangank.model.bean.Article
-import com.samiu.wangank.ui.adapter.Drawable.ArticleSwipeActionDrawable
+import com.samiu.wangank.ui.adapter.drawable.ArticleSwipeActionDrawable
 import com.samiu.wangank.ui.adapter.ReboundingSwipeActionCallback
 import com.samiu.wangank.ui.adapter.WanArticleAdapter
 import kotlin.math.abs

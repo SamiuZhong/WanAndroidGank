@@ -1,4 +1,4 @@
-package com.samiu.wangank.ui.adapter.Drawable
+package com.samiu.wangank.ui.adapter.drawable
 
 import android.animation.ValueAnimator
 import android.content.Context

@@ -11,11 +11,11 @@ import com.samiu.wangank.R
 import com.samiu.wangank.databinding.ActivityWanSearchBinding
 import com.samiu.wangank.global.LOAD_MORE
 import com.samiu.wangank.global.REFRESH
-import com.samiu.wangank.global.drawShape
 import com.samiu.wangank.model.bean.Hot
 import com.samiu.wangank.ui.adapter.ArticleListenerImpl
 import com.samiu.wangank.ui.adapter.ReboundingSwipeActionCallback
 import com.samiu.wangank.ui.adapter.WanArticleAdapter
+import com.samiu.wangank.util.drawShape
 import com.samiu.wangank.viewmodel.WanSearchViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.properties.Delegates
@@ -40,7 +40,7 @@ class SearchActivity : BaseActivity() {
         initRefresh()
         //search
         binding.searchLayout.background =
-            drawShape(this, 100F, getColor(R.color.white))
+            drawShape(this, R.dimen.corner_20, R.color.white)
         binding.searchIcon.setOnClickListener {
             key = binding.searchEdt.text.toString()
             refreshData(REFRESH)
@@ -64,7 +64,7 @@ class SearchActivity : BaseActivity() {
         }
     }
 
-    private fun initRefresh(){
+    private fun initRefresh() {
         with(binding.searchRefresh) {
             setOnRefreshListener {
                 refreshData(REFRESH)
@@ -113,9 +113,9 @@ class SearchActivity : BaseActivity() {
 
                 background = drawShape(
                     this@SearchActivity,
-                    100F,
-                    getColor(R.color.white),
-                    getColor(R.color.reply_blue_700)
+                    R.dimen.corner_20,
+                    R.color.white,
+                    R.color.reply_blue_700
                 )
 
                 text = item.name

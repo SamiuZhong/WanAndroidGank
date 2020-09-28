@@ -6,7 +6,7 @@ import com.samiu.base.ui.BaseFragment
 import com.samiu.base.ui.viewBinding
 import com.samiu.wangank.R
 import com.samiu.wangank.databinding.FragmentWanHomeBinding
-import com.samiu.wangank.global.toBrowser
+import com.samiu.wangank.util.toBrowser
 import com.samiu.wangank.model.bean.Banner
 import com.samiu.wangank.ui.adapter.ArticleListenerImpl
 import com.samiu.wangank.ui.adapter.ReboundingSwipeActionCallback

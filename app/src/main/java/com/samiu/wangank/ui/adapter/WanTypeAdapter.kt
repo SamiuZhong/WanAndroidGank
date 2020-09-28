@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.samiu.base.adapter.BaseSingleRecyclerAdapter
 import com.samiu.wangank.R
-import com.samiu.wangank.global.drawShape
 import com.samiu.wangank.model.bean.SystemParent
+import com.samiu.wangank.util.drawShape
 import kotlinx.android.synthetic.main.item_wan_type.view.*
 
 /**
@@ -29,8 +29,8 @@ class WanTypeAdapter(context: Context?) : BaseSingleRecyclerAdapter<SystemParent
                     setTextColor(resources.getColor(R.color.white, null))
                     background = drawShape(
                         context,
-                        100F,
-                        context.getColor(R.color.reply_blue_700)
+                        R.dimen.corner_20,
+                        R.color.reply_blue_700
                     )
                 } else {
                     setTextColor(resources.getColor(R.color.default_text_color_252F3B, null))

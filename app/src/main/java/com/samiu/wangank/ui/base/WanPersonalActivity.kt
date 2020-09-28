@@ -9,11 +9,11 @@ import com.samiu.base.ui.viewBinding
 import com.samiu.wangank.R
 import com.samiu.wangank.databinding.ActivityWanPersonalBinding
 import com.samiu.wangank.global.USER_NAME
-import com.samiu.wangank.global.drawShape
 import com.samiu.wangank.ui.adapter.ArticleListenerImpl
 import com.samiu.wangank.ui.adapter.ReboundingSwipeActionCallback
 import com.samiu.wangank.ui.adapter.WanArticleAdapter
 import com.samiu.wangank.util.Preference
+import com.samiu.wangank.util.drawShape
 import com.samiu.wangank.viewmodel.WanPersonalViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.properties.Delegates
@@ -83,8 +83,8 @@ class WanPersonalActivity : BaseActivity() {
         binding.logOutBtn.run {
             background = drawShape(
                 this@WanPersonalActivity,
-                10F,
-                getColor(R.color.reply_blue_700)
+                R.dimen.corner_5,
+                R.color.reply_blue_700
             )
             setOnClickListener {
                 MaterialDialog(this@WanPersonalActivity).show {

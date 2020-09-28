@@ -9,5 +9,8 @@
     <dimen name="text_size_16">16sp</dimen>
     <dimen name="text_size_18">18sp</dimen>
     <dimen name="text_size_20">20sp</dimen>
+    <dimen name="corner_5">5dp</dimen>
+    <dimen name="corner_20">20dp</dimen>
     <dimen name="corner_24">24dp</dimen>
+    <dimen name="corner_0">0dp</dimen>
 </resources>

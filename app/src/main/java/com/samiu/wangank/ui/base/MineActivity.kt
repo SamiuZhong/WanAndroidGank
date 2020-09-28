@@ -8,7 +8,7 @@ import com.samiu.wangank.R
 import com.samiu.wangank.databinding.ActivityMineBinding
 import com.samiu.wangank.global.GITHUB_PAGE
 import com.samiu.wangank.global.MY_BLOG
-import com.samiu.wangank.global.openNativeBrowser
+import com.samiu.wangank.util.openNativeBrowser
 import de.psdev.licensesdialog.LicensesDialog
 import de.psdev.licensesdialog.licenses.MITLicense
 import de.psdev.licensesdialog.model.Notice

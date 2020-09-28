@@ -17,7 +17,7 @@ import com.google.android.material.shape.MaterialShapeDrawable
 import com.samiu.wangank.R
 import com.samiu.wangank.databinding.FragmentBottomNavDrawerBinding
 import com.samiu.wangank.global.IS_LOGIN
-import com.samiu.wangank.global.desTo
+import com.samiu.wangank.util.desTo
 import com.samiu.wangank.model.data.Account
 import com.samiu.wangank.ui.base.WanLoginActivity
 import com.samiu.wangank.ui.base.WanPersonalActivity

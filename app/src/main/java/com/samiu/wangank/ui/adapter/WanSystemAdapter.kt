@@ -10,9 +10,9 @@ import com.samiu.base.adapter.BaseSingleRecyclerAdapter
 import com.samiu.wangank.R
 import com.samiu.wangank.global.CID
 import com.samiu.wangank.global.TITLE
-import com.samiu.wangank.global.drawShape
 import com.samiu.wangank.model.bean.SystemParent
 import com.samiu.wangank.ui.base.SystemDisplayActivity
+import com.samiu.wangank.util.drawShape
 import kotlinx.android.synthetic.main.item_wan_system.view.*
 
 /**
@@ -41,9 +41,9 @@ class WanSystemAdapter(context: Context?) : BaseSingleRecyclerAdapter<SystemPare
 
                         background = drawShape(
                             context,
-                            100F,
-                            context.getColor(R.color.white),
-                            context.getColor(R.color.reply_blue_700)
+                            R.dimen.corner_20,
+                            R.color.white,
+                            R.color.reply_blue_700
                         )
 
                         text = item.name
