@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
  * @github https://github.com/SamiuZhong
  * @blog samiu.top
  */
-data class Article(
+data class ArticleItem(
     val id: Int,
     val originId: Int,
     val title: String,
@@ -40,10 +40,10 @@ data class Article(
     val userId: Int
 )
 
-object ArticleDiff:DiffUtil.ItemCallback<Article>() {
-    override fun areItemsTheSame(oldItem: Article, newItem: Article) =
+object ArticleDiff:DiffUtil.ItemCallback<ArticleItem>() {
+    override fun areItemsTheSame(oldItem: ArticleItem, newItem: ArticleItem) =
         oldItem.id==newItem.id
 
-    override fun areContentsTheSame(oldItem: Article, newItem: Article)=
+    override fun areContentsTheSame(oldItem: ArticleItem, newItem: ArticleItem)=
         oldItem.link==newItem.link
 }

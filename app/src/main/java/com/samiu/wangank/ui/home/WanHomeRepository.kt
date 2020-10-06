@@ -1,5 +1,7 @@
 package com.samiu.wangank.ui.home
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
 import com.samiu.wangank.bean.ArticleList
 import com.samiu.wangank.bean.Banner
 import com.samiu.wangank.http.BaseWanRepository
@@ -13,11 +15,13 @@ import com.samiu.wangank.bean.base.WanResult
  */
 class WanHomeRepository : BaseWanRepository() {
 
-    suspend fun getBanners(): WanResult<List<Banner>> = readyCall{
+    suspend fun getBanners(): WanResult<List<Banner>> = readyCall {
         call(WanClient.service.getBanner())
     }
 
-    suspend fun getArticlesList(page: Int): WanResult<ArticleList> = readyCall{
-        call(WanClient.service.getHomeArticles(page))
-    }
+    fun getArticlesList() = Pager(
+        PagingConfig(20)
+    ) {
+        WanHomePagingSource(WanClient.service)
+    }.flow
 }

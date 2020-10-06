@@ -2,7 +2,7 @@ package com.samiu.wangank.ui.home.adapter
 
 import android.content.Context
 import com.samiu.wangank.util.toBrowser
-import com.samiu.wangank.bean.Article
+import com.samiu.wangank.bean.ArticleItem
 import com.samiu.wangank.http.BaseWanRepository
 import com.samiu.wangank.http.WanClient
 import kotlinx.coroutines.MainScope
@@ -17,11 +17,11 @@ class ArticleListenerImpl(
     private val context: Context
 ) : WanArticleAdapter.ArticleAdapterListener, BaseWanRepository() {
 
-    override fun onArticleClick(article: Article) {
+    override fun onArticleClick(article: ArticleItem) {
         context.toBrowser(article.link, article.title)
     }
 
-    override fun onArticleStarChanged(article: Article, newValue: Boolean) {
+    override fun onArticleStarChanged(article: ArticleItem, newValue: Boolean) {
         article.collect = newValue
         if (newValue)
             collectArticle(article.id, article.originId)

@@ -4,7 +4,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.samiu.wangank.R
 import com.samiu.wangank.databinding.ItemWanArticleBinding
-import com.samiu.wangank.bean.Article
+import com.samiu.wangank.bean.ArticleItem
 import kotlin.math.abs
 
 /**
@@ -30,7 +30,7 @@ class ArticleViewHolder(
         }
     }
 
-    fun bind(article: Article) {
+    fun bind(article: ArticleItem) {
         binding.article = article
         binding.root.isActivated = article.collect
         binding.itemAuthor.text =

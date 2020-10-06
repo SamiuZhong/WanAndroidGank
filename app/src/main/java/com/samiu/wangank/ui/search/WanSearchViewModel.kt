@@ -3,7 +3,7 @@ package com.samiu.wangank.ui.search
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.samiu.wangank.bean.Article
+import com.samiu.wangank.bean.ArticleItem
 import com.samiu.wangank.bean.Hot
 import com.samiu.wangank.bean.base.WanResult
 import kotlinx.coroutines.launch
@@ -17,7 +17,7 @@ class WanSearchViewModel(
     private val searchRepository: WanSearchRepository
 ) : ViewModel() {
 
-    val mArticles = MutableLiveData<List<Article>>()
+    val mArticles = MutableLiveData<List<ArticleItem>>()
     val mkeys = MutableLiveData<List<Hot>>()
 
     fun getArticles(page: Int, key: String) = viewModelScope.launch {

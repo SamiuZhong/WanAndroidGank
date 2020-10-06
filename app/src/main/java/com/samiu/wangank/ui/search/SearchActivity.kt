@@ -45,7 +45,7 @@ class SearchActivity : BaseActivity() {
             refreshData(REFRESH)
         }
         //clear
-        binding.searchBackIcon.setOnClickListener { mAdapter.clearAll() }
+//        binding.searchBackIcon.setOnClickListener { mAdapter.clearAll() }
         //back
         binding.searchBackIcon.setOnClickListener { finish() }
     }
@@ -77,27 +77,27 @@ class SearchActivity : BaseActivity() {
     }
 
     private fun refreshData(type: Int) {
-        when (type) {
-            REFRESH -> {
-                currentPage = 0
-                mAdapter.clearAll()
-                viewModel.getArticles(currentPage, key)
-            }
-            LOAD_MORE -> {
-                currentPage += 1
-                viewModel.getArticles(currentPage, key)
-            }
-        }
+//        when (type) {
+//            REFRESH -> {
+//                currentPage = 0
+//                mAdapter.clearAll()
+//                viewModel.getArticles(currentPage, key)
+//            }
+//            LOAD_MORE -> {
+//                currentPage += 1
+//                viewModel.getArticles(currentPage, key)
+//            }
+//        }
     }
 
     override fun startObserve() = viewModel.run {
-        mArticles.observe(this@SearchActivity, Observer {
-            if (it.isEmpty())
-                Toast.makeText(this@SearchActivity, R.string.no_search_resut, Toast.LENGTH_SHORT)
-                    .show()
-            else
-                mAdapter.addAll(it)
-        })
+//        mArticles.observe(this@SearchActivity, Observer {
+//            if (it.isEmpty())
+//                Toast.makeText(this@SearchActivity, R.string.no_search_resut, Toast.LENGTH_SHORT)
+//                    .show()
+//            else
+////                mAdapter.addAll(it)
+//        })
         mkeys.observe(this@SearchActivity, Observer { setHotKeys(it) })
     }
 

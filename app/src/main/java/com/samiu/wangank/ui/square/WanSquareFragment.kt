@@ -34,7 +34,7 @@ class WanSquareFragment : BaseFragment(R.layout.fragment_recycler) {
     }
 
     override fun startObserve() = viewModel.run {
-        mArticles.observe(this@WanSquareFragment, Observer { mAdapter.addAll(it) })
+//        mArticles.observe(this@WanSquareFragment, Observer { mAdapter.addAll(it) })
     }
 
     private fun initAdapter() {
@@ -47,18 +47,18 @@ class WanSquareFragment : BaseFragment(R.layout.fragment_recycler) {
     }
 
     private fun initRefresh() {
-        with(binding.refreshLayout) {
-            setOnRefreshListener {
-                mCurrentPage = 0
-                mAdapter.clearAll()
-                viewModel.getArticles(mCurrentPage)
-                finishRefresh(1000)
-            }
-            setOnLoadMoreListener {
-                mCurrentPage += 1
-                viewModel.getArticles(mCurrentPage)
-                finishLoadMore(1000)
-            }
-        }
+//        with(binding.refreshLayout) {
+//            setOnRefreshListener {
+//                mCurrentPage = 0
+//                mAdapter.clearAll()
+//                viewModel.getArticles(mCurrentPage)
+//                finishRefresh(1000)
+//            }
+//            setOnLoadMoreListener {
+//                mCurrentPage += 1
+//                viewModel.getArticles(mCurrentPage)
+//                finishLoadMore(1000)
+//            }
+//        }
     }
 }

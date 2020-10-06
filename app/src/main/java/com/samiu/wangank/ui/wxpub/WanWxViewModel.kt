@@ -3,7 +3,7 @@ package com.samiu.wangank.ui.wxpub
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.samiu.wangank.bean.Article
+import com.samiu.wangank.bean.ArticleItem
 import com.samiu.wangank.bean.SystemParent
 import com.samiu.wangank.bean.base.WanResult
 import kotlinx.coroutines.launch
@@ -18,7 +18,7 @@ class WanWxViewModel(
 ) : ViewModel() {
 
     val mAccounts = MutableLiveData<List<SystemParent>>()
-    val mArticles = MutableLiveData<List<Article>>()
+    val mArticles = MutableLiveData<List<ArticleItem>>()
 
     fun getAccounts() = viewModelScope.launch {
         val accounts = wanWxRepository.getWxAccount()

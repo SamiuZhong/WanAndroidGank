@@ -3,9 +3,12 @@ package com.samiu.wangank.ui.home
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.samiu.wangank.bean.Article
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.cachedIn
 import com.samiu.wangank.bean.Banner
 import com.samiu.wangank.bean.base.WanResult
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 
 /**
@@ -14,21 +17,16 @@ import kotlinx.coroutines.launch
  * @blog samiu.top
  */
 class WanHomeViewModel(
-    private val wanHomeRepository: WanHomeRepository
+    private val homeRepository: WanHomeRepository
 ) : ViewModel() {
 
-    val mArticles = MutableLiveData<List<Article>>()
     val mBanners = MutableLiveData<List<Banner>>()
 
     fun getBanners() = viewModelScope.launch {
-        val data = wanHomeRepository.getBanners()
+        val data = homeRepository.getBanners()
         if (data is WanResult.Success)
             mBanners.value = data.data
     }
 
-    fun getArticles(page: Int) = viewModelScope.launch {
-        val articleList = wanHomeRepository.getArticlesList(page)
-        if (articleList is WanResult.Success)
-            mArticles.value = articleList.data.datas
-    }
+    val articles = homeRepository.getArticlesList().cachedIn(viewModelScope)
 }

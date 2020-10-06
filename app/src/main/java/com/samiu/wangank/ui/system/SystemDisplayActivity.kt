@@ -42,7 +42,7 @@ class SystemDisplayActivity : BaseActivity() {
     }
 
     override fun startObserve() = viewModel.run {
-        mSystemArticles.observe(this@SystemDisplayActivity, Observer { mAdapter.addAll(it) })
+//        mSystemArticles.observe(this@SystemDisplayActivity, Observer { mAdapter.addAll(it) })
     }
 
     private fun initAdapter() {
@@ -55,18 +55,18 @@ class SystemDisplayActivity : BaseActivity() {
     }
 
     private fun initRefresh() {
-        with(binding.recyclerRefresh) {
-            setOnRefreshListener {
-                currentPage = 0
-                mAdapter.clearAll()
-                viewModel.getSystemArticles(currentPage, cid)
-                finishRefresh(1500)
-            }
-            setOnLoadMoreListener {
-                currentPage += 1
-                viewModel.getSystemArticles(currentPage, cid)
-                finishLoadMore(2000)
-            }
-        }
+//        with(binding.recyclerRefresh) {
+//            setOnRefreshListener {
+//                currentPage = 0
+//                mAdapter.clearAll()
+//                viewModel.getSystemArticles(currentPage, cid)
+//                finishRefresh(1500)
+//            }
+//            setOnLoadMoreListener {
+//                currentPage += 1
+//                viewModel.getSystemArticles(currentPage, cid)
+//                finishLoadMore(2000)
+//            }
+//        }
     }
 }
