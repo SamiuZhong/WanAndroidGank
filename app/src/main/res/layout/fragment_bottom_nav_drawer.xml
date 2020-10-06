@@ -6,7 +6,7 @@
 
         <variable
             name="account"
-            type="com.samiu.wangank.model.data.Account" />
+            type="com.samiu.wangank.bean.Account" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

@@ -7,11 +7,11 @@
 
         <variable
             name="article"
-            type="com.samiu.wangank.model.bean.Article" />
+            type="com.samiu.wangank.bean.Article" />
 
         <variable
             name="listener"
-            type="com.samiu.wangank.ui.adapter.WanArticleAdapter.ArticleListener" />
+            type="com.samiu.wangank.ui.home.adapter.WanArticleAdapter.ArticleAdapterListener" />
     </data>
 
     <FrameLayout
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="@{(view)->listener.onArticleClick(article)}"
+            android:onClick="@{()->listener.onArticleClick(article)}"
             app:cardPreventCornerOverlap="false">
 
             <androidx.constraintlayout.widget.ConstraintLayout

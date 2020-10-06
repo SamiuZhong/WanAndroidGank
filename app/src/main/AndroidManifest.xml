@@ -33,13 +33,13 @@
 
         <activity android:name="com.samiu.wangank.ui.base.MainActivity" />
         <activity android:name="com.samiu.wangank.ui.base.BrowserActivity" />
-        <activity android:name="com.samiu.wangank.ui.base.WanLoginActivity" />
-        <activity android:name="com.samiu.wangank.ui.base.WanPersonalActivity" />
+        <activity android:name="com.samiu.wangank.ui.login.WanLoginActivity" />
+        <activity android:name="com.samiu.wangank.ui.login.WanPersonalActivity" />
         <activity
-            android:name="com.samiu.wangank.ui.base.SystemDisplayActivity"
+            android:name="com.samiu.wangank.ui.system.SystemDisplayActivity"
             android:theme="@style/SearchTheme" />
         <activity
-            android:name="com.samiu.wangank.ui.base.SearchActivity"
+            android:name="com.samiu.wangank.ui.search.SearchActivity"
             android:theme="@style/SearchTheme" />
         <activity
             android:name="com.samiu.wangank.ui.base.MineActivity"

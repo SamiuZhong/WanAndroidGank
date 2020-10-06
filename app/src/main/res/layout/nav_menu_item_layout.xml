@@ -8,11 +8,11 @@
 
         <variable
             name="navMenuItem"
-            type="com.samiu.wangank.ui.base.nav.NavigationModelItem.NavMenuItem" />
+            type="com.samiu.wangank.ui.nav.adapter.NavigationModelItem.NavMenuItem" />
 
         <variable
             name="navListener"
-            type="com.samiu.wangank.ui.base.nav.NavigationAdapter.NavigationAdapterListener" />
+            type="com.samiu.wangank.ui.nav.adapter.NavigationAdapter.NavigationAdapterListener" />
     </data>
 
     <CheckedTextView

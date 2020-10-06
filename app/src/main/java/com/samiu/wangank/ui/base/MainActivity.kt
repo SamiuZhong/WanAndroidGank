@@ -11,7 +11,8 @@ import androidx.navigation.findNavController
 import com.samiu.base.ui.dataBinding
 import com.samiu.wangank.R
 import com.samiu.wangank.databinding.ActivityMainBinding
-import com.samiu.wangank.ui.base.nav.*
+import com.samiu.wangank.ui.nav.*
+import com.samiu.wangank.ui.search.SearchActivity
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
