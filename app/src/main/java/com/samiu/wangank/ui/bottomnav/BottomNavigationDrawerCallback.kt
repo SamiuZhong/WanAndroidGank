@@ -1,10 +1,12 @@
-package com.samiu.wangank.ui.nav
+package com.samiu.wangank.ui.bottomnav
 
 import android.annotation.SuppressLint
 import android.view.View
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.google.android.material.R
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.samiu.wangank.ui.bottomnav.action.OnSlideAction
+import com.samiu.wangank.ui.bottomnav.action.OnStateChangedAction
 import com.samiu.wangank.util.normalize
 import kotlin.math.max
 

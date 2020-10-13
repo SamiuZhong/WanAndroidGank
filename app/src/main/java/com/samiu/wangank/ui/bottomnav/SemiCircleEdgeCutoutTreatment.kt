@@ -1,4 +1,4 @@
-package com.samiu.wangank.ui.nav
+package com.samiu.wangank.ui.bottomnav
 
 import com.google.android.material.shape.EdgeTreatment
 import com.google.android.material.shape.ShapePath

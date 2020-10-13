@@ -1,4 +1,4 @@
-package com.samiu.wangank.ui.nav
+package com.samiu.wangank.ui.bottomnav
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -19,11 +19,12 @@ import com.samiu.wangank.databinding.FragmentBottomNavDrawerBinding
 import com.samiu.wangank.global.IS_LOGIN
 import com.samiu.wangank.util.desTo
 import com.samiu.wangank.bean.Account
+import com.samiu.wangank.ui.bottomnav.action.*
 import com.samiu.wangank.ui.login.WanLoginActivity
 import com.samiu.wangank.ui.login.WanPersonalActivity
-import com.samiu.wangank.ui.nav.adapter.NavigationAdapter
-import com.samiu.wangank.ui.nav.adapter.NavigationModel
-import com.samiu.wangank.ui.nav.adapter.NavigationModelItem
+import com.samiu.wangank.ui.bottomnav.adapter.NavigationAdapter
+import com.samiu.wangank.ui.bottomnav.model.NavigationModel
+import com.samiu.wangank.ui.bottomnav.model.NavigationModelItem
 import com.samiu.wangank.util.Preference
 import com.samiu.wangank.util.themeColor
 import kotlin.LazyThreadSafetyMode.NONE
@@ -216,7 +217,7 @@ class BottomNavDrawerFragment :
         this.onCutover = onCutover
     }
 
-    override fun onNavMenuItemClicked(item: NavigationModelItem.NavMenuItem) {
+    override fun onNavMenuItemClicked(item: NavigationModelItem) {
         if (NavigationModel.setNavigationMenuItemChecked(item.id)) {
             when (item.id) {
                 0 -> desTo(this, R.id.wanHomeFragment)

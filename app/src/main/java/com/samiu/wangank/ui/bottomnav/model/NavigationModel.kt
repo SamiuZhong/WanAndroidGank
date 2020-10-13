@@ -1,4 +1,4 @@
-package com.samiu.wangank.ui.nav.adapter
+package com.samiu.wangank.ui.bottomnav.model
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -12,31 +12,31 @@ import com.samiu.wangank.R
 object NavigationModel {
 
     private var navigationMenuItems = mutableListOf(
-        NavigationModelItem.NavMenuItem(
+        NavigationModelItem(
             id = 0,
             icon = R.drawable.ic_twotone_inbox,
             titleRes = R.string.home,
             checked = false
         ),
-        NavigationModelItem.NavMenuItem(
+        NavigationModelItem(
             id = 1,
             icon = R.drawable.ic_twotone_stars,
             titleRes = R.string.square,
             checked = false
         ),
-        NavigationModelItem.NavMenuItem(
+        NavigationModelItem(
             id = 2,
             icon = R.drawable.ic_twotone_send,
             titleRes = R.string.system,
             checked = false
         ),
-        NavigationModelItem.NavMenuItem(
+        NavigationModelItem(
             id = 3,
             icon = R.drawable.ic_twotone_error,
             titleRes = R.string.wx_article,
             checked = false
         ),
-        NavigationModelItem.NavMenuItem(
+        NavigationModelItem(
             id = 4,
             icon = R.drawable.ic_twotone_drafts,
             titleRes = R.string.title_wan_project,
@@ -62,7 +62,7 @@ object NavigationModel {
     fun setNavigationMenuItemChecked(id: Int): Boolean {
         var updated = false
         val newList = mutableListOf<NavigationModelItem>()
-        navigationMenuItems.forEach { item: NavigationModelItem.NavMenuItem? ->
+        navigationMenuItems.forEach { item: NavigationModelItem? ->
             item?.let {
                 val shouldCheck = it.id == id
                 if (it.checked != shouldCheck)

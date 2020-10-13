@@ -1,4 +1,4 @@
-package com.samiu.wangank.ui.nav
+package com.samiu.wangank.ui.bottomnav.action
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
