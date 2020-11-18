@@ -7,7 +7,7 @@
 
         <variable
             name="article"
-            type="com.samiu.wangank.bean.ArticleItem" />
+            type="com.samiu.wangank.bean.Article" />
 
         <variable
             name="listener"

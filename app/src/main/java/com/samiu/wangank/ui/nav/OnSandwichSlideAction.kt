@@ -1,4 +1,4 @@
-package com.samiu.wangank.ui.bottomnav.action
+package com.samiu.wangank.ui.nav
 
 import android.view.View
 import androidx.annotation.FloatRange

@@ -46,7 +46,7 @@ class WanWxArticleFragment : BaseFragment(R.layout.fragment_wan_wx_article) {
                 it[0].isSelected = true
             })
         })
-//        mArticles.observe(this@WanWxArticleFragment, Observer { mArticleAdapter.addAll(it) })
+        mArticles.observe(this@WanWxArticleFragment, Observer { mArticleAdapter.addAll(it) })
     }
 
     private fun initAdapter() {
@@ -82,16 +82,16 @@ class WanWxArticleFragment : BaseFragment(R.layout.fragment_wan_wx_article) {
     }
 
     private fun refreshData(type: Int) {
-//        when (type) {
-//            REFRESH -> {
-//                currentPage = 0
-//                mArticleAdapter.clearAll()
-//                viewModel.getArticles(mId, currentPage)
-//            }
-//            LOAD_MORE -> {
-//                currentPage += 1
-//                viewModel.getArticles(mId, currentPage)
-//            }
-//        }
+        when (type) {
+            REFRESH -> {
+                currentPage = 0
+                mArticleAdapter.clearAll()
+                viewModel.getArticles(mId, currentPage)
+            }
+            LOAD_MORE -> {
+                currentPage += 1
+                viewModel.getArticles(mId, currentPage)
+            }
+        }
     }
 }

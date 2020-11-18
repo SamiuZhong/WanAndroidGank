@@ -1,19 +1,20 @@
 package com.samiu.wangank.ui.home
 
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.samiu.base.ui.BaseFragment
 import com.samiu.base.ui.viewBinding
 import com.samiu.wangank.R
-import com.samiu.wangank.bean.Banner
 import com.samiu.wangank.databinding.FragmentWanHomeBinding
+import com.samiu.wangank.util.toBrowser
+import com.samiu.wangank.bean.Banner
 import com.samiu.wangank.ui.home.adapter.ArticleListenerImpl
 import com.samiu.wangank.ui.home.adapter.ReboundingSwipeActionCallback
 import com.samiu.wangank.ui.home.adapter.WanArticleAdapter
 import com.samiu.wangank.ui.home.adapter.WanBannerAdapter
-import com.samiu.wangank.util.toBrowser
 import com.youth.banner.listener.OnBannerListener
-import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import kotlin.properties.Delegates
 
 /**
  * @author Samiu 2020/3/2
@@ -25,24 +26,22 @@ class WanHomeFragment : BaseFragment(R.layout.fragment_wan_home) {
     private val binding by viewBinding(FragmentWanHomeBinding::bind)
     private val viewModel: WanHomeViewModel by viewModel()
 
+    private var mCurrentPage by Delegates.notNull<Int>()
     private lateinit var mAdapter: WanArticleAdapter
 
     override fun initView() {
         initAdapter()
+        initRefresh()
     }
 
     override fun initData() {
         viewModel.getBanners()
-    }
-
-    override suspend fun startFlow() {
-        viewModel.articles.collectLatest {
-            mAdapter.submitData(it)
-        }
+        binding.refreshLayout.autoRefresh()
     }
 
     override fun startObserve() = viewModel.run {
-        mBanners.observe(this@WanHomeFragment, { setBanner(it) })
+        mBanners.observe(this@WanHomeFragment, Observer { setBanner(it) })
+        mArticles.observe(this@WanHomeFragment, Observer { mAdapter.addAll(it) })
     }
 
     private fun initAdapter() {
@@ -51,6 +50,22 @@ class WanHomeFragment : BaseFragment(R.layout.fragment_wan_home) {
             val itemTouchHelper = ItemTouchHelper(ReboundingSwipeActionCallback())
             itemTouchHelper.attachToRecyclerView(this)
             adapter = mAdapter
+        }
+    }
+
+    private fun initRefresh() {
+        with(binding.refreshLayout) {
+            setOnRefreshListener {
+                mCurrentPage = 0
+                mAdapter.clearAll()
+                viewModel.getArticles(mCurrentPage)
+                finishRefresh(1000)
+            }
+            setOnLoadMoreListener {
+                mCurrentPage += 1
+                viewModel.getArticles(mCurrentPage)
+                finishLoadMore(1000)
+            }
         }
     }
 

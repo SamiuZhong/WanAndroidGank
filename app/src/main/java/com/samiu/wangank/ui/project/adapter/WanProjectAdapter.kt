@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.samiu.base.adapter.BaseSingleRecyclerAdapter
 import com.samiu.wangank.databinding.ItemWanProjectBinding
-import com.samiu.wangank.bean.ArticleItem
+import com.samiu.wangank.bean.Article
 import com.samiu.wangank.ui.home.adapter.WanArticleAdapter
 
 /**
@@ -15,7 +15,7 @@ import com.samiu.wangank.ui.home.adapter.WanArticleAdapter
  */
 class WanProjectAdapter(
     private val listener: WanArticleAdapter.ArticleAdapterListener
-) : BaseSingleRecyclerAdapter<ArticleItem>() {
+) : BaseSingleRecyclerAdapter<Article>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ProjectViewHolder(

@@ -1,45 +1,45 @@
-package com.samiu.wangank.ui.bottomnav.adapter
+package com.samiu.wangank.ui.nav.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.samiu.wangank.databinding.NavMenuItemLayoutBinding
-import com.samiu.wangank.ui.bottomnav.model.NavModelItemDiff
-import com.samiu.wangank.ui.bottomnav.model.NavigationModelItem
 
 
 /**
+ * [BottomNavDrawerFragment]的adapter
+ *
  * @author Samiu 2020/3/31
  * @github https://github.com/SamiuZhong
  * @blog samiu.top
  */
 class NavigationAdapter(
     private val listener: NavigationAdapterListener
-) : ListAdapter<NavigationModelItem, NavigationViewHolder>(
-    NavModelItemDiff
+) : ListAdapter<NavigationModelItem, NavigationViewHolder<NavigationModelItem>>(
+    NavigationModelItem.NavModelItemDiff
 ) {
 
     interface NavigationAdapterListener {
-        fun onNavMenuItemClicked(item: NavigationModelItem)
+        fun onNavMenuItemClicked(item: NavigationModelItem.NavMenuItem)
     }
 
     @Suppress("UNCHECKED_CAST")
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): NavigationViewHolder {
-        return NavigationViewHolder(
+    ): NavigationViewHolder<NavigationModelItem> {
+        return NavigationViewHolder.NavMenuItemViewHolder(
             NavMenuItemLayoutBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
             ),
             listener
-        )
+        ) as NavigationViewHolder<NavigationModelItem>
     }
 
     override fun onBindViewHolder(
-        holder: NavigationViewHolder,
+        holder: NavigationViewHolder<NavigationModelItem>,
         position: Int
     ) {
         holder.bind(getItem(position))

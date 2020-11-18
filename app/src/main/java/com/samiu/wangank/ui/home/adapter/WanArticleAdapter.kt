@@ -2,12 +2,10 @@ package com.samiu.wangank.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.samiu.base.adapter.BaseSingleRecyclerAdapter
-import com.samiu.wangank.bean.ArticleDiff
 import com.samiu.wangank.databinding.ItemWanArticleBinding
-import com.samiu.wangank.bean.ArticleItem
+import com.samiu.wangank.bean.Article
 
 /**
  * @author Samiu 2020/3/4
@@ -16,14 +14,14 @@ import com.samiu.wangank.bean.ArticleItem
  */
 class WanArticleAdapter(
     private val listener: ArticleAdapterListener
-) : PagingDataAdapter<ArticleItem, ArticleViewHolder>(ArticleDiff) {
+) : BaseSingleRecyclerAdapter<Article>() {
 
     interface ArticleAdapterListener {
-        fun onArticleClick(article: ArticleItem)
-        fun onArticleStarChanged(article: ArticleItem, newValue: Boolean)
+        fun onArticleClick(article: Article)
+        fun onArticleStarChanged(article: Article, newValue: Boolean)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ArticleViewHolder(
             ItemWanArticleBinding.inflate(
                 LayoutInflater.from(parent.context),
@@ -33,9 +31,7 @@ class WanArticleAdapter(
         )
     }
 
-    override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
-        getItem(position)?.let {
-            holder.bind(it)
-        }
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if (holder is ArticleViewHolder) holder.bind(mList[position])
     }
 }

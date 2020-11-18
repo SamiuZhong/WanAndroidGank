@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.samiu.wangank.global.IS_LOGIN
-import com.samiu.wangank.bean.ArticleItem
+import com.samiu.wangank.bean.Article
 import com.samiu.wangank.bean.base.WanResult
 import com.samiu.wangank.util.Preference
 import kotlinx.coroutines.launch
@@ -19,7 +19,7 @@ class WanPersonalViewModel(
     private val loginRepository: WanLoginRepository
 ) : ViewModel() {
 
-    val mCollections = MutableLiveData<List<ArticleItem>>()
+    val mCollections = MutableLiveData<List<Article>>()
     private var isLogin by Preference(IS_LOGIN, false)
 
     fun getCollections(page: Int) = viewModelScope.launch {
