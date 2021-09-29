@@ -3,12 +3,12 @@ package com.samiu.wangank.ui.project.adapter
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.samiu.base.adapter.BaseSingleRecyclerAdapter
 import com.samiu.wangank.R
 import com.samiu.wangank.bean.SystemParent
 import com.samiu.wangank.util.drawShape
-import kotlinx.android.synthetic.main.item_wan_type.view.*
 
 /**
  * @author Samiu 2020/3/7
@@ -23,7 +23,7 @@ class WanTypeAdapter(context: Context?) : BaseSingleRecyclerAdapter<SystemParent
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is WanTypeHolder) {
             holder.setIsRecyclable(false)
-            with(holder.itemView.type_text) {
+            with(holder.typeTv) {
                 text = mList[position].name
                 if (mList[position].isSelected) {
                     setTextColor(resources.getColor(R.color.white, null))
@@ -53,5 +53,7 @@ class WanTypeAdapter(context: Context?) : BaseSingleRecyclerAdapter<SystemParent
         this.listener = listener
     }
 
-    class WanTypeHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    class WanTypeHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var typeTv: TextView = itemView.findViewById(R.id.type_text)
+    }
 }

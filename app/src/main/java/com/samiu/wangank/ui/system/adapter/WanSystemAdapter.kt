@@ -6,14 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.nex3z.flowlayout.FlowLayout
 import com.samiu.base.adapter.BaseSingleRecyclerAdapter
 import com.samiu.wangank.R
+import com.samiu.wangank.bean.SystemParent
 import com.samiu.wangank.global.CID
 import com.samiu.wangank.global.TITLE
-import com.samiu.wangank.bean.SystemParent
 import com.samiu.wangank.ui.system.SystemDisplayActivity
 import com.samiu.wangank.util.drawShape
-import kotlinx.android.synthetic.main.item_wan_system.view.*
 
 /**
  * @author Samiu 2020/3/6
@@ -30,7 +30,7 @@ class WanSystemAdapter(context: Context?) : BaseSingleRecyclerAdapter<SystemPare
             holder.setIsRecyclable(false)
             with(holder.itemView) {
                 val data = mList[position]
-                system_title.text = data.name
+                holder.systemTitle.text = data.name
                 for (item in data.children) {
                     val textView = TextView(context).apply {
                         layoutParams = ViewGroup.LayoutParams(
@@ -58,11 +58,14 @@ class WanSystemAdapter(context: Context?) : BaseSingleRecyclerAdapter<SystemPare
                             context.startActivity(intent)
                         }
                     }
-                    system_flow_layout.addView(textView)
+                    holder.flowLayout.addView(textView)
                 }
             }
         }
     }
 
-    class WanSystemHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    class WanSystemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var systemTitle: TextView = itemView.findViewById(R.id.system_title)
+        var flowLayout: FlowLayout = itemView.findViewById(R.id.system_flow_layout)
+    }
 }

@@ -1,6 +1,8 @@
 package com.samiu.wangank.ui.base
 
+import android.content.Intent
 import android.graphics.Bitmap
+import android.net.Uri
 import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
 import com.samiu.base.ui.BaseActivity
@@ -31,7 +33,7 @@ class BrowserActivity : BaseActivity() {
         intent.getStringExtra(URL)?.let {
             binding.webView.loadUrl(it)
         }
-        intent.getStringExtra(TITLE)?.let{
+        intent.getStringExtra(TITLE)?.let {
             binding.toolbarTitle.text = it
         }
     }
@@ -43,6 +45,22 @@ class BrowserActivity : BaseActivity() {
             AppCompatResources.getDrawable(this, R.drawable.color_progressbar)
         binding.webView.run {
             webViewClient = object : WebViewClient() {
+
+                override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
+                    if (url.startsWith("http") || url.startsWith("https")) {
+                        return super.shouldOverrideUrlLoading(view, url)
+                    } else {
+                        try {
+                            val intent = Intent()
+                            intent.action = Intent.ACTION_VIEW
+                            intent.data = Uri.parse(url)
+                            startActivity(intent)
+                            return true
+                        } catch (e: Exception) {
+                            return true
+                        }
+                    }
+                }
 
                 override fun onPageStarted(p0: WebView?, p1: String?, p2: Bitmap?) {
                     super.onPageStarted(p0, p1, p2)
