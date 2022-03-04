@@ -29,7 +29,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "WanAndroid_Gank"
+rootProject.name = "WanAndroidGank"
 include(":app")
 include(":base")
 include(":res")

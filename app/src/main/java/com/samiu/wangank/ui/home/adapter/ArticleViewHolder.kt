@@ -1,5 +1,6 @@
 package com.samiu.wangank.ui.home.adapter
 
+import android.text.Html
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.samiu.wangank.R
@@ -32,6 +33,7 @@ class ArticleViewHolder(
     fun bind(article: Article) {
         binding.article = article
         binding.root.isActivated = article.collect
+        binding.itemTitle.text = Html.fromHtml(article.title,0)
         binding.itemAuthor.text =
             when {
                 !article.author.isNullOrEmpty() -> article.author

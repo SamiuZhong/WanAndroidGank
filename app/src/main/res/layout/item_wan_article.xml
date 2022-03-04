@@ -39,7 +39,6 @@
                     android:id="@+id/item_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{article.title}"
                     android:textSize="@dimen/text_size_18"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="测试数据测试数据" />
