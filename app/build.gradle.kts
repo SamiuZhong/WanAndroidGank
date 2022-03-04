@@ -47,7 +47,8 @@ dependencies {
     implementation(project(":base"))
     implementation(project(":res"))
 
-    implementation(Deps.Http.X5WebView)
+    implementation(Deps.Http.agentWebCore)
+    implementation(Deps.Http.agentWebFileChooser)
     implementation(Deps.Bumptech.glide)
     kapt(Deps.Bumptech.glideCompiler)
     implementation(Deps.Component.autoSize)
@@ -57,5 +58,6 @@ dependencies {
     implementation(Deps.Component.flowLayout)
     implementation(Deps.Component.materialDialog)
     implementation(Deps.Component.materialDialogLifecycle)
+    implementation(Deps.Component.licensesDialog)
     implementation(Deps.Component.licensesDialog)
 }

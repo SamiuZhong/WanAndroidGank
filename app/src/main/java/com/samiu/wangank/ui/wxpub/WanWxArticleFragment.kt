@@ -50,7 +50,7 @@ class WanWxArticleFragment : BaseFragment(R.layout.fragment_wan_wx_article) {
 
     private fun initAdapter() {
         //left recycler
-        mTitleAdapter = WanTitleAdapter(context)
+        mTitleAdapter = WanTitleAdapter(requireContext())
         binding.wxRecycler1.adapter = mTitleAdapter
         mTitleAdapter.setOnItemClick { id ->
             run {

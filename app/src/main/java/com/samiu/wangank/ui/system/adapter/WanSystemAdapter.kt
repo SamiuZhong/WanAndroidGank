@@ -19,7 +19,7 @@ import com.samiu.wangank.util.drawShape
  * @author Samiu 2020/3/6
  * @email samiuzhong@outlook.com
  */
-class WanSystemAdapter(context: Context?) : BaseSingleRecyclerAdapter<SystemParent>(context) {
+class WanSystemAdapter(context: Context) : BaseSingleRecyclerAdapter<SystemParent>(context) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return WanSystemHolder(layoutInflater.inflate(R.layout.item_wan_system, parent, false))
     }

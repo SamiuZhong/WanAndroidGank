@@ -62,13 +62,12 @@ class MainActivity : AppCompatActivity(),
             //给fab安排上显示和隐藏的action
             addOnStateChangedAction(ShowHideFabStateAction(binding.fab))
             //底部菜单的替换
-            binding.bottomAppBar.replaceMenu(R.menu.bottom_app_bar_home_menu)
             addOnStateChangedAction(ChangeSettingsMenuStateAction { showSettings ->
                 binding.bottomAppBar.replaceMenu(
                     if (showSettings)
                         R.menu.bottom_app_bar_settings_menu
                     else
-                        R.menu.bottom_app_bar_home_menu
+                        R.menu.bottom_app_bar_empty_menu
                 )
             })
             //底部菜单文字的切换
@@ -92,6 +91,7 @@ class MainActivity : AppCompatActivity(),
         when (item?.itemId) {
             R.id.menu_search -> {
                 startActivity(Intent(this, SearchActivity::class.java))
+                bottomNavDrawer.toggle()
             }
             R.id.menu_settings -> {
                 startActivity(Intent(this, MineActivity::class.java))

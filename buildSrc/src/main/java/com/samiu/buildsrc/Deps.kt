@@ -21,7 +21,6 @@ object Deps {
         const val okHttp = "4.9.3"
         const val cookieJar = "v1.0.1"
         const val material = "1.4.0-alpha02"
-        const val X5WebView = "43697"
         const val glide = "4.11.0"
         const val autoSize = "1.2.1"
         const val banner = "2.0.0-alpha02"
@@ -29,6 +28,7 @@ object Deps {
         const val flowLayout = "1.3.1"
         const val materialDialog = "3.3.0"
         const val licensesDialog = "2.1.0"
+        const val agentWeb = "v5.0.0-alpha"
     }
 
     object AndroidX {
@@ -74,8 +74,10 @@ object Deps {
      * Network component
      */
     object Http {
-        //Tencent WebView
-        const val X5WebView = "com.tencent.tbs.tbssdk:sdk:${Versions.X5WebView}"
+        //AgentWeb
+        const val agentWebCore = "com.github.Justson.AgentWeb:agentweb-core:${Versions.agentWeb}"
+        const val agentWebFileChooser =
+            "com.github.Justson.AgentWeb:agentweb-filechooser:${Versions.agentWeb}"
 
         //Retrofit,OkHttp
         const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"

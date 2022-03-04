@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/browser_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -12,25 +13,19 @@
         android:layout_height="wrap_content"
         app:navigationIcon="@drawable/back_icon_black">
 
-        <TextView
+        <com.samiu.wangank.ui.view.MarqueeTextView
             android:id="@+id/toolbar_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/space_20"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
             android:singleLine="true"
             android:textColor="@color/black"
-            android:textSize="20sp"
-            android:layout_marginEnd="@dimen/space_20"
+            android:textSize="@dimen/text_size_18"
             tools:text="浏览器" />
     </androidx.appcompat.widget.Toolbar>
-
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="3dp" />
-
-    <com.samiu.wangank.ui.base.X5WebView
-        android:id="@+id/web_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 </LinearLayout>

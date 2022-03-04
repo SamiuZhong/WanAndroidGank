@@ -28,7 +28,7 @@ class WanSystemFragment : BaseFragment(R.layout.fragment_wan_system) {
     }
 
     private fun initRecyclerView() {
-        adapter = WanSystemAdapter(context)
+        adapter = WanSystemAdapter(requireContext())
         binding.systemRv.adapter = adapter
     }
 }

@@ -13,7 +13,7 @@ import com.samiu.wangank.bean.SystemParent
  * @author Samiu 2020/3/7
  * @email samiuzhong@outlook.com
  */
-class WanTitleAdapter(context: Context?) : BaseSingleRecyclerAdapter<SystemParent>(context) {
+class WanTitleAdapter(context: Context) : BaseSingleRecyclerAdapter<SystemParent>(context) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return TitleHolder(layoutInflater.inflate(R.layout.item_wan_verti_title, parent, false))
     }

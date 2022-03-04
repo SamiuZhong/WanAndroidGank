@@ -64,7 +64,7 @@ class WanProjectFragment : BaseFragment(R.layout.fragment_wan_project) {
 
     private fun initAdapter() {
         //title
-        mTypeAdapter = WanTypeAdapter(context)
+        mTypeAdapter = WanTypeAdapter(requireContext())
         binding.projectRecycler1.adapter = mTypeAdapter
         mTypeAdapter.setOnItemClick { cid ->
             run {
