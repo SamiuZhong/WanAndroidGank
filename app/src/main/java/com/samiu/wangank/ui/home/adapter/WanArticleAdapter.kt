@@ -9,8 +9,7 @@ import com.samiu.wangank.bean.Article
 
 /**
  * @author Samiu 2020/3/4
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 class WanArticleAdapter(
     private val listener: ArticleAdapterListener

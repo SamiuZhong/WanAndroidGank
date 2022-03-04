@@ -8,8 +8,7 @@ import kotlinx.coroutines.runBlocking
 
 /**
  * @author Samiu 2020/5/21
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 class SplashActivity : AppCompatActivity() {
 

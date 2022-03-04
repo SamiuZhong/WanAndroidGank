@@ -7,8 +7,7 @@ import kotlinx.coroutines.coroutineScope
 
 /**
  * @author Samiu 2020/3/3
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 open class BaseWanRepository {
 

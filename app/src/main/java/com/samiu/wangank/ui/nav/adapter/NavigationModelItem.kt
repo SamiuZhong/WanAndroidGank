@@ -8,8 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
  * 这个密封类封装了[NavigationAdapter]能够展示的所有Item
  *
  * @author Samiu 2020/3/31
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 sealed class NavigationModelItem {
 

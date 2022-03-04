@@ -8,8 +8,7 @@ import com.samiu.wangank.bean.base.WanResult
 
 /**
  * @author Samiu 2020/3/6
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 class WanSystemRepository : BaseWanRepository() {
 

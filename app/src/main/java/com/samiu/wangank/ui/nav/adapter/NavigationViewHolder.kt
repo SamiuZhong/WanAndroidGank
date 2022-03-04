@@ -8,8 +8,7 @@ import com.samiu.wangank.databinding.NavMenuItemLayoutBinding
  * 这个密封类可以定义NavigationViewHolder的多个子类，方便拓展
  *
  * @author Samiu 2020/3/31
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 sealed class NavigationViewHolder<T : NavigationModelItem>(
     view: View

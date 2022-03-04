@@ -11,8 +11,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * @author Samiu 2020/4/17
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 class WanLoginActivity : BaseActivity() {
 

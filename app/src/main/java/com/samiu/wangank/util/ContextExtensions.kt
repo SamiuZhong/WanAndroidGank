@@ -16,8 +16,7 @@ import androidx.core.content.res.use
 
 /**
  * @author Samiu 2020/3/31
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 @ColorInt
 @SuppressLint("Recycle")

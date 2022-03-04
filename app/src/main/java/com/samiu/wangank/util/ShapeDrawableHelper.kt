@@ -9,8 +9,7 @@ import com.samiu.wangank.R
  * 绘制ShapeDrawable
  *
  * @author Samiu 2020/9/17
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 fun drawShape(
     context: Context, cornerSize: Int?, color: Int
@@ -61,7 +60,7 @@ fun drawShape(
     0
 ).apply {
     val realColor = context.resources.getColor(color,null)
-    val realLineColor = context.resources.getColor(lineColor)
+    val realLineColor = context.resources.getColor(lineColor,null)
     fillColor = ColorStateList.valueOf(realColor)
     strokeWidth = 1F
     strokeColor = ColorStateList.valueOf(realLineColor)

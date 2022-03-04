@@ -11,8 +11,7 @@ import kotlin.reflect.KProperty
 
 /**
  * @author Samiu 2020/5/18
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 class Preference<T>(
     val name: String,

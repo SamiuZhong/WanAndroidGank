@@ -10,8 +10,7 @@ import com.samiu.wangank.ui.home.adapter.WanArticleAdapter
 
 /**
  * @author Samiu 2020/3/5
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 class WanProjectAdapter(
     private val listener: WanArticleAdapter.ArticleAdapterListener

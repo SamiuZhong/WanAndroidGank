@@ -12,8 +12,7 @@ import com.samiu.wangank.util.drawShape
 
 /**
  * @author Samiu 2020/3/7
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 class WanTypeAdapter(context: Context?) : BaseSingleRecyclerAdapter<SystemParent>(context) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

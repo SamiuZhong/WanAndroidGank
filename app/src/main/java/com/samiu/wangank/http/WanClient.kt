@@ -5,8 +5,7 @@ import com.samiu.wangank.base.AppApplication
 
 /**
  * @author Samiu 2020/3/3
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 const val WAN_BASE_URL = "https://www.wanandroid.com"
 

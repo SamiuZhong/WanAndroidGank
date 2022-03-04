@@ -10,8 +10,7 @@ import java.util.List;
 
 /**
  * @author Samiu 2020/3/3
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 public abstract class BaseSingleRecyclerAdapter<T> extends RecyclerView.Adapter {
     private Context context;

@@ -9,8 +9,7 @@ import kotlin.math.ln
 
 /**
  * @author Samiu 2020/7/6
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 
 //右滑接近阈值的时候降低dX的滑动速度

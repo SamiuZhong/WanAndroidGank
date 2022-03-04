@@ -14,8 +14,7 @@ import kotlin.reflect.KProperty
 
 /**
  * @author Samiu 2020/3/27
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 
 /**

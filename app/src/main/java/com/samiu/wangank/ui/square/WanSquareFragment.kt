@@ -14,8 +14,7 @@ import kotlin.properties.Delegates
 
 /**
  * @author Samiu 2020/3/2
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 class WanSquareFragment : BaseFragment(R.layout.fragment_recycler) {
     private val binding by viewBinding(FragmentRecyclerBinding::bind)

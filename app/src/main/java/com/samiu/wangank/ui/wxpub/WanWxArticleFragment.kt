@@ -17,8 +17,7 @@ import kotlin.properties.Delegates
 
 /**
  * @author Samiu 2020/3/2
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 class WanWxArticleFragment : BaseFragment(R.layout.fragment_wan_wx_article) {
     private val binding by viewBinding(FragmentWanWxArticleBinding::bind)

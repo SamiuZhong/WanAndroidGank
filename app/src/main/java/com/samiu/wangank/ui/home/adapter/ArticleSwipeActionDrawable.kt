@@ -17,8 +17,7 @@ import kotlin.math.sin
 
 /**
  * @author Samiu 2020/7/6
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 class ArticleSwipeActionDrawable(context: Context) : Drawable() {
 

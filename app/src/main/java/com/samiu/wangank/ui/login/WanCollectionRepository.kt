@@ -5,8 +5,7 @@ import com.samiu.wangank.http.WanClient
 
 /**
  * @author Samiu 2020/5/20
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 class WanCollectionRepository : BaseWanRepository() {
 

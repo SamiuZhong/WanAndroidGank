@@ -11,8 +11,7 @@ import com.samiu.wangank.ui.base.MainActivity
 
 /**
  * @author Samiu 2020/3/4
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 fun desTo(fragment: Fragment, id: Int) {
     val navController = (fragment.requireActivity() as MainActivity).getNavController()

@@ -2,8 +2,7 @@ package com.samiu.wangank.bean
 
 /**
  * @author Samiu 2020/5/11
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 data class User(
     val admin: Boolean,

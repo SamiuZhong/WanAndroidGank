@@ -10,8 +10,7 @@ import kotlinx.coroutines.launch
 
 /**
  * @author Samiu 2020/7/6
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 class ArticleListenerImpl(
     private val context: Context

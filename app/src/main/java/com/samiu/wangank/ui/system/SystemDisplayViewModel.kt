@@ -9,8 +9,7 @@ import kotlinx.coroutines.launch
 
 /**
  * @author Samiu 2020/3/6
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 class SystemDisplayViewModel(
     private val systemRepository: WanSystemRepository

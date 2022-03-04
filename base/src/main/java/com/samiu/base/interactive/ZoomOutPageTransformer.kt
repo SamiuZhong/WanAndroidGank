@@ -5,8 +5,7 @@ import androidx.viewpager2.widget.ViewPager2
 
 /**
  * @author Samiu 2020/3/3
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 class ZoomOutPageTransformer:ViewPager2.PageTransformer {
 

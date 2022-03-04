@@ -10,8 +10,7 @@ import com.youth.banner.adapter.BannerAdapter
 
 /**
  * @author Samiu 2020/3/3
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 class WanBannerAdapter(var list: List<Banner>) : BannerAdapter<Banner, WanBannerAdapter.ImageBannerHolder>(list) {
     private lateinit var context: Context

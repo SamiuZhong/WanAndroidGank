@@ -11,8 +11,7 @@ import com.samiu.wangank.util.normalize
 
 /**
  * @author Samiu 2020/3/31
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 interface OnSlideAction {
 

@@ -4,8 +4,7 @@ import androidx.annotation.DrawableRes
 
 /**
  * @author Samiu 2020/4/14
- * @github https://github.com/SamiuZhong
- * @blog samiu.top
+ * @email samiuzhong@outlook.com
  */
 data class Account(
     val id:Long,
