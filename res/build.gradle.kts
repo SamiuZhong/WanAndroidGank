@@ -19,6 +19,5 @@ dependencies {
     implementation(Deps.AndroidX.coreKtx)
     implementation(Deps.AndroidX.appcompat)
 
-    //MaterialDesign
-    api("com.google.android.material:material:1.4.0-alpha02")
+    api(Deps.Google.material)
 }

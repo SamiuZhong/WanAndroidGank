@@ -34,28 +34,22 @@ dependencies {
     implementation(Deps.AndroidX.coreKtx)
     implementation(Deps.AndroidX.appcompat)
 
-    //AndroidX、Jetpack
-    api("androidx.viewpager2:viewpager2:1.0.0")
-    api("androidx.constraintlayout:constraintlayout:2.1.3")
-    api("androidx.navigation:navigation-ui-ktx:2.4.1")
-    api("androidx.navigation:navigation-fragment-ktx:2.4.1")
-    api("androidx.lifecycle:lifecycle-runtime-ktx:2.4.1")
-    api("androidx.lifecycle:lifecycle-livedata-ktx:2.4.1")
-    api("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1")
-    api("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
-    api("androidx.paging:paging-runtime-ktx:3.1.0")
+    api(Deps.AndroidX.viewpager2)
+    api(Deps.AndroidX.constraintLayout)
+    api(Deps.AndroidX.navigationUi)
+    api(Deps.AndroidX.navigationFragment)
+    api(Deps.AndroidX.lifecycleRuntime)
+    api(Deps.AndroidX.lifecycleLivedata)
+    api(Deps.AndroidX.lifecycleViewModel)
+    api(Deps.AndroidX.swipeRefresh)
+    api(Deps.AndroidX.pagingRuntime)
 
-    //Kotlin Coroutines
-    api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0")
-
-    //Koin注入框架
-    api("io.insert-koin:koin-core:3.1.2")
-    api("io.insert-koin:koin-android:3.1.2")
-    api("io.insert-koin:koin-android-compat:3.1.2")
-
-    //网络
-    api("com.squareup.retrofit2:retrofit:2.9.0")
-    api("com.squareup.retrofit2:converter-gson:2.9.0")
-    api("com.squareup.okhttp3:okhttp:4.9.3")
-    implementation("com.github.franmontiel:PersistentCookieJar:v1.0.1")
+    api(Deps.Kotlin.kotlinxCoroutines)
+    api(Deps.Koin.core)
+    api(Deps.Koin.android)
+    api(Deps.Koin.compat)
+    api(Deps.Http.retrofit)
+    api(Deps.Http.retrofitConverter)
+    api(Deps.Http.okHttp)
+    implementation(Deps.Http.cookieJar)
 }
