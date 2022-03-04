@@ -3,7 +3,7 @@ import com.samiu.buildsrc.Deps
 
 plugins {
     id("com.android.library")
-    id("kotlin-android")
+    kotlin("android")
 }
 
 android {
