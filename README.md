@@ -1,20 +1,12 @@
 # WanAndroid_GanK
 
-玩Android大家都很熟悉了，是鸿洋大佬的一个开源知识网站，目前基于玩Android开源API的各种版本APP也多是如牛毛。
+玩Android大家都很熟悉了，是鸿洋大佬的一个开源知识网站，目前基于玩Android开源API的各种版本APP多如过江之鲫。
 
-那么经过一段时间的潜心修炼，今天给大家带来了一个从未有过的船新版本。
-
-下载安装包体验点击这里
-
-[蓝奏云](https://wws.lanzous.com/iSUHWenhsuh)
-
-或者扫描二维码
-
-![](https://upload-images.jianshu.io/upload_images/15143432-95f9b0810cf82cb2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/250)
+那么经过一段时间的潜心修炼，今天给大家带来了一个从未有过的全新版本。
 
 ## 设计
 
-这次的UI整体是根据Google官方的设计，参照Material Design的风格整粗来的，应该能给大家带来耳目一新的感觉。
+这次的UI整体是根据Google官方的设计，参照Material Design的风格整粗来的。
 
 下面我们先来看看效果图
 
@@ -111,6 +103,4 @@ class WanHomeFragment : BaseFragment(R.layout.fragment_wan_home) {
 }
 ```
 
-更多实现请clone查看~
-
-欢迎各位看官老爷star鼓励~
+更多实现请clone查看。
