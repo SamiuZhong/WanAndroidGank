@@ -44,12 +44,12 @@ class WanPersonalActivity : BaseActivity() {
     }
 
     override fun startObserve() = viewModel.run {
-        mCollections.observe(this@WanPersonalActivity, Observer {
-            for (data in it) {
-                data.collect = true
-            }
-            mAdapter.addAll(it)
-        })
+//        mCollections.observe(this@WanPersonalActivity, Observer {
+//            for (data in it) {
+//                data.collect = true
+//            }
+//            mAdapter.addAll(it)
+//        })
     }
 
     private fun initAdapter() {
@@ -62,19 +62,19 @@ class WanPersonalActivity : BaseActivity() {
     }
 
     private fun initRefresh() {
-        with(binding.refreshLayout) {
-            setOnRefreshListener {
-                mCurrentPage = 0
-                mAdapter.clearAll()
-                viewModel.getCollections(mCurrentPage)
-                finishRefresh(1000)
-            }
-            setOnLoadMoreListener {
-                mCurrentPage += 1
-                viewModel.getCollections(mCurrentPage)
-                finishLoadMore(1000)
-            }
-        }
+//        with(binding.refreshLayout) {
+//            setOnRefreshListener {
+//                mCurrentPage = 0
+//                mAdapter.clearAll()
+//                viewModel.getCollections(mCurrentPage)
+//                finishRefresh(1000)
+//            }
+//            setOnLoadMoreListener {
+//                mCurrentPage += 1
+//                viewModel.getCollections(mCurrentPage)
+//                finishLoadMore(1000)
+//            }
+//        }
     }
 
     private fun setLogout() {

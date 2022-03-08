@@ -1,7 +1,7 @@
 package com.samiu.buildsrc
 
 /**
- * @author samiu 2022/3/4
+ * @author Samiu 2022/3/4
  * @email samiuzhong@outlook.com
  */
 object Deps {
@@ -20,7 +20,7 @@ object Deps {
         const val retrofit = "2.9.0"
         const val okHttp = "4.9.3"
         const val cookieJar = "v1.0.1"
-        const val material = "1.4.0-alpha02"
+        const val material = "1.6.0-alpha03"
         const val glide = "4.11.0"
         const val autoSize = "1.2.1"
         const val banner = "2.0.0-alpha02"

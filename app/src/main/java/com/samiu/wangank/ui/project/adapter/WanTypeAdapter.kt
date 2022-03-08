@@ -1,6 +1,7 @@
 package com.samiu.wangank.ui.project.adapter
 
 import android.content.Context
+import android.text.Html
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -23,7 +24,7 @@ class WanTypeAdapter(context: Context) : BaseSingleRecyclerAdapter<SystemParent>
         if (holder is WanTypeHolder) {
             holder.setIsRecyclable(false)
             with(holder.typeTv) {
-                text = mList[position].name
+                text = Html.fromHtml(mList[position].name,0)
                 if (mList[position].isSelected) {
                     setTextColor(resources.getColor(R.color.white, null))
                     background = drawShape(

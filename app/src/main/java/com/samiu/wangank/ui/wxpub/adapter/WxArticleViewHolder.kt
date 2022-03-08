@@ -1,4 +1,4 @@
-package com.samiu.wangank.ui.home.adapter
+package com.samiu.wangank.ui.wxpub.adapter
 
 import android.text.Html
 import android.view.View
@@ -6,15 +6,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.samiu.wangank.R
 import com.samiu.wangank.databinding.ItemWanArticleBinding
 import com.samiu.wangank.bean.Article
+import com.samiu.wangank.databinding.ItemWxArticleBinding
+import com.samiu.wangank.ui.home.adapter.ArticleSwipeActionDrawable
+import com.samiu.wangank.ui.home.adapter.ReboundingSwipeActionCallback
 import kotlin.math.abs
 
 /**
  * @author Samiu 2020/7/6
  * @email samiuzhong@outlook.com
  */
-class ArticleViewHolder(
-    private val binding: ItemWanArticleBinding,
-    listener: WanArticleAdapter.ArticleAdapterListener
+class WxArticleViewHolder(
+    private val binding: ItemWxArticleBinding,
+    listener: WxArticleAdapter.ArticleAdapterListener
 ) : RecyclerView.ViewHolder(binding.root), ReboundingSwipeActionCallback.ReboundableViewHolder {
 
     private val starredCornerSize =

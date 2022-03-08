@@ -3,7 +3,7 @@ package com.samiu.buildsrc
 import org.gradle.api.JavaVersion
 
 /**
- * @author samiu 2022/3/4
+ * @author Samiu 2022/3/4
  * @email samiuzhong@outlook.com
  */
 object BuildConfig {

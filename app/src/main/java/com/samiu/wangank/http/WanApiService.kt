@@ -11,7 +11,7 @@ import retrofit2.http.*
 interface WanApiService {
 
     @GET("/article/list/{page}/json")
-    suspend fun getHomeArticles(@Path("page") page: Int): WanResponse<ArticleList>
+    suspend fun getHomeArticles(@Path("page") page: Long): WanResponse<ArticleList>
 
     @GET("/banner/json")
     suspend fun getBanner(): WanResponse<List<Banner>>
@@ -60,7 +60,7 @@ interface WanApiService {
     suspend fun cancelCollectArticle(@Path("id") id: Int): WanResponse<ArticleList>
 
     @GET("/user_article/list/{page}/json")
-    suspend fun getSquareArticleList(@Path("page") page: Int): WanResponse<ArticleList>
+    suspend fun getSquareArticleList(@Path("page") page: Long): WanResponse<ArticleList>
 
     @FormUrlEncoded
     @POST("/lg/user_article/add/json")

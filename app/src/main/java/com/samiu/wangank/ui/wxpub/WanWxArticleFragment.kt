@@ -8,10 +8,10 @@ import com.samiu.wangank.R
 import com.samiu.wangank.databinding.FragmentWanWxArticleBinding
 import com.samiu.wangank.global.LOAD_MORE
 import com.samiu.wangank.global.REFRESH
-import com.samiu.wangank.ui.home.adapter.ArticleListenerImpl
 import com.samiu.wangank.ui.home.adapter.ReboundingSwipeActionCallback
-import com.samiu.wangank.ui.home.adapter.WanArticleAdapter
 import com.samiu.wangank.ui.wxpub.adapter.WanTitleAdapter
+import com.samiu.wangank.ui.wxpub.adapter.WxArticleAdapter
+import com.samiu.wangank.ui.wxpub.adapter.WxArticleListenerImpl
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.properties.Delegates
 
@@ -26,7 +26,7 @@ class WanWxArticleFragment : BaseFragment(R.layout.fragment_wan_wx_article) {
     private var currentPage by Delegates.notNull<Int>()
     private var mId by Delegates.notNull<Int>()
     private lateinit var mTitleAdapter: WanTitleAdapter
-    private lateinit var mArticleAdapter: WanArticleAdapter
+    private lateinit var mArticleAdapter: WxArticleAdapter
 
     override fun initView() {
         initAdapter()
@@ -38,14 +38,14 @@ class WanWxArticleFragment : BaseFragment(R.layout.fragment_wan_wx_article) {
     }
 
     override fun startObserve() = viewModel.run {
-        mAccounts.observe(this@WanWxArticleFragment, Observer {
+        mAccounts.observe(this@WanWxArticleFragment) {
             mTitleAdapter.replaceAll(it.also {
                 mId = it[0].id
                 refreshData(REFRESH)
                 it[0].isSelected = true
             })
-        })
-        mArticles.observe(this@WanWxArticleFragment, Observer { mArticleAdapter.addAll(it) })
+        }
+        mArticles.observe(this@WanWxArticleFragment) { mArticleAdapter.addAll(it) }
     }
 
     private fun initAdapter() {
@@ -59,7 +59,7 @@ class WanWxArticleFragment : BaseFragment(R.layout.fragment_wan_wx_article) {
             }
         }
         //right recycler
-        mArticleAdapter = WanArticleAdapter(ArticleListenerImpl(requireContext()))
+        mArticleAdapter = WxArticleAdapter(WxArticleListenerImpl(requireContext()))
         binding.wxRecycler2.apply {
             val itemTouchHelper = ItemTouchHelper(ReboundingSwipeActionCallback())
             itemTouchHelper.attachToRecyclerView(this)
@@ -69,6 +69,7 @@ class WanWxArticleFragment : BaseFragment(R.layout.fragment_wan_wx_article) {
 
     private fun initRefresh() {
         with(binding.wxRefresh) {
+            setEnableRefresh(false)
             setOnRefreshListener {
                 refreshData(REFRESH)
                 finishRefresh(1500)
@@ -83,7 +84,7 @@ class WanWxArticleFragment : BaseFragment(R.layout.fragment_wan_wx_article) {
     private fun refreshData(type: Int) {
         when (type) {
             REFRESH -> {
-                currentPage = 0
+                currentPage = 1
                 mArticleAdapter.clearAll()
                 viewModel.getArticles(mId, currentPage)
             }

@@ -1,4 +1,4 @@
-# WanAndroid_GanK
+# WanAndroidGanK
 
 玩Android大家都很熟悉了，是鸿洋大佬的一个开源知识网站，目前基于玩Android开源API的各种版本APP也多是如牛毛。
 

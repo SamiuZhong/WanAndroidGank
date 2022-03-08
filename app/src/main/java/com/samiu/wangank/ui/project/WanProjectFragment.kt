@@ -83,6 +83,7 @@ class WanProjectFragment : BaseFragment(R.layout.fragment_wan_project) {
 
     private fun initRefresh() {
         with(binding.projectRefresh) {
+            setEnableRefresh(false)
             setOnRefreshListener {
                 refreshData(REFRESH)
                 finishRefresh(1500)

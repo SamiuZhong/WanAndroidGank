@@ -11,6 +11,9 @@ import androidx.navigation.findNavController
 import com.samiu.base.ui.dataBinding
 import com.samiu.wangank.R
 import com.samiu.wangank.databinding.ActivityMainBinding
+import com.samiu.wangank.ui.home.HomeScrollListener
+import com.samiu.wangank.ui.home.SCROLL_DOWN
+import com.samiu.wangank.ui.home.SCROLL_UP
 import com.samiu.wangank.ui.nav.*
 import com.samiu.wangank.ui.search.SearchActivity
 import kotlinx.coroutines.MainScope
@@ -22,10 +25,12 @@ import kotlinx.coroutines.launch
  * @email samiuzhong@outlook.com
  */
 class MainActivity : AppCompatActivity(),
-    Toolbar.OnMenuItemClickListener {
+    Toolbar.OnMenuItemClickListener, HomeScrollListener {
 
-    private var mBackPressed: Boolean = false
     private val binding: ActivityMainBinding by dataBinding(R.layout.activity_main)
+    private var mBackPressed: Boolean = false
+    private var bottomHide: Boolean = false
+
     private val bottomNavDrawer: BottomNavDrawerFragment by lazy {
         supportFragmentManager.findFragmentById(R.id.bottom_nav_drawer) as BottomNavDrawerFragment
     }
@@ -40,7 +45,6 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun setUpBottomNavigationAndFab() {
-
         //给fab整个动画
         binding.fab.apply {
             setShowMotionSpecResource(R.animator.fab_show)
@@ -110,5 +114,18 @@ class MainActivity : AppCompatActivity(),
                 mBackPressed = false
             }
         } else finish()
+    }
+
+    /**
+     * WanHomeFragment页因为嵌套CoordinatorLayout，这里手动触发BottomAppbar的show/hide
+     */
+    override fun onHomeScrolled(scrollType: Int) {
+        if (SCROLL_UP == scrollType && !bottomHide) {
+            binding.bottomAppBar.performHide()
+            bottomHide = true
+        } else if (SCROLL_DOWN == scrollType && bottomHide) {
+            binding.bottomAppBar.performShow()
+            bottomHide = false
+        }
     }
 }

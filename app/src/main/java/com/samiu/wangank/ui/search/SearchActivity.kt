@@ -15,6 +15,8 @@ import com.samiu.wangank.bean.Hot
 import com.samiu.wangank.ui.home.adapter.ArticleListenerImpl
 import com.samiu.wangank.ui.home.adapter.ReboundingSwipeActionCallback
 import com.samiu.wangank.ui.home.adapter.WanArticleAdapter
+import com.samiu.wangank.ui.wxpub.adapter.WxArticleAdapter
+import com.samiu.wangank.ui.wxpub.adapter.WxArticleListenerImpl
 import com.samiu.wangank.util.drawShape
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.properties.Delegates
@@ -30,7 +32,7 @@ class SearchActivity : BaseActivity() {
     override fun getBindingRoot() = binding.root
 
     private var currentPage by Delegates.notNull<Int>()
-    private lateinit var mAdapter: WanArticleAdapter
+    private lateinit var mAdapter: WxArticleAdapter
     private var key = ""
 
     override fun initView() {
@@ -54,7 +56,7 @@ class SearchActivity : BaseActivity() {
     }
 
     private fun initAdapter() {
-        mAdapter = WanArticleAdapter(ArticleListenerImpl(this))
+        mAdapter = WxArticleAdapter(WxArticleListenerImpl(this))
         binding.searchRecycler.apply {
             val itemTouchHelper = ItemTouchHelper(ReboundingSwipeActionCallback())
             itemTouchHelper.attachToRecyclerView(this)
@@ -64,6 +66,7 @@ class SearchActivity : BaseActivity() {
 
     private fun initRefresh() {
         with(binding.searchRefresh) {
+            setEnableRefresh(false)
             setOnRefreshListener {
                 refreshData(REFRESH)
                 finishRefresh(1500)
