@@ -16,6 +16,8 @@ import com.samiu.wangank.ui.home.SCROLL_DOWN
 import com.samiu.wangank.ui.home.SCROLL_UP
 import com.samiu.wangank.ui.nav.*
 import com.samiu.wangank.ui.search.SearchActivity
+import com.samiu.wangank.util.toBrowser
+import com.samiu.wangank.util.toShare
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -51,10 +53,7 @@ class MainActivity : AppCompatActivity(),
             setHideMotionSpecResource(R.animator.fab_hide)
             //点击事件
             setOnClickListener {
-//                val des = getNavController().currentDestination
-//                when (des?.id) {
-//                    R.id.browserFragment -> getNavController().popBackStack()
-//                }
+                toShare()
             }
         }
 

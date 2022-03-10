@@ -3,10 +3,11 @@ package com.samiu.wangank.base
 import com.samiu.wangank.http.WanClient
 import com.samiu.wangank.ui.home.WanHomeRepository
 import com.samiu.wangank.ui.home.WanHomeViewModel
-import com.samiu.wangank.ui.login.WanCollectionRepository
-import com.samiu.wangank.ui.login.WanLoginRepository
-import com.samiu.wangank.ui.login.WanLoginViewModel
-import com.samiu.wangank.ui.login.WanPersonalViewModel
+import com.samiu.wangank.ui.mine.login.WanCollectionRepository
+import com.samiu.wangank.ui.mine.login.WanMineRepository
+import com.samiu.wangank.ui.mine.login.WanLoginViewModel
+import com.samiu.wangank.ui.mine.login.WanPersonalViewModel
+import com.samiu.wangank.ui.mine.share.WanShareViewModel
 import com.samiu.wangank.ui.project.WanProjectRepository
 import com.samiu.wangank.ui.project.WanProjectViewModel
 import com.samiu.wangank.ui.search.WanSearchRepository
@@ -35,6 +36,7 @@ val viewModelModule = module {
     viewModel { SystemDisplayViewModel(get()) }
     viewModel { WanLoginViewModel(get()) }
     viewModel { WanPersonalViewModel(get(), get()) }
+    viewModel { WanShareViewModel(get()) }
 }
 
 val repositoryModule = module {
@@ -45,7 +47,7 @@ val repositoryModule = module {
     single { WanSystemRepository() }
     single { WanWxRepository() }
     single { WanSearchRepository() }
-    single { WanLoginRepository() }
+    single { WanMineRepository() }
     single { WanCollectionRepository() }
 }
 

@@ -25,7 +25,7 @@ open class BaseWanRepository {
         errorBlock: (suspend CoroutineScope.() -> Unit)? = null
     ): WanResult<T> {
         return coroutineScope {
-            if (response.errorCode == -1) {
+            if (response.errorCode != 0) {
                 errorBlock?.let { it() }
                 WanResult.Error(response.errorMsg)
             } else {

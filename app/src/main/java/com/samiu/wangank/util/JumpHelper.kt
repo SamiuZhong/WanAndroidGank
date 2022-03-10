@@ -8,6 +8,7 @@ import com.samiu.wangank.global.TITLE
 import com.samiu.wangank.global.URL
 import com.samiu.wangank.ui.base.BrowserActivity
 import com.samiu.wangank.ui.base.MainActivity
+import com.samiu.wangank.ui.mine.share.WanShareActivity
 
 /**
  * @author Samiu 2020/3/4
@@ -27,10 +28,14 @@ fun Context.openNativeBrowser(url: String) {
     Intent(Intent.ACTION_VIEW, Uri.parse(url)).run { startActivity(this) }
 }
 
-fun Context.toBrowser(url: String,title: String) {
+fun Context.toBrowser(url: String, title: String) {
     val intent = Intent(this, BrowserActivity::class.java).apply {
         putExtra(URL, url)
-        putExtra(TITLE,title)
+        putExtra(TITLE, title)
     }
     startActivity(intent)
+}
+
+fun Context.toShare() {
+    startActivity(Intent(this, WanShareActivity::class.java))
 }

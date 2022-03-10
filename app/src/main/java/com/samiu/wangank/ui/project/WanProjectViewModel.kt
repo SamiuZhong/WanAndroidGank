@@ -21,13 +21,16 @@ class WanProjectViewModel(
 
     fun getProjectType() = viewModelScope.launch {
         val type = wanProjectRepository.getProjectType()
-        if (type is WanResult.Success)
-            mProjectType.value = type.data
+        if (type is WanResult.Success) {
+            type.data?.let {
+                mProjectType.value = it
+            }
+        }
     }
 
     fun getAllProjects(page: Int, cid: Int) = viewModelScope.launch {
         val projects = wanProjectRepository.getAllProjects(page, cid)
         if (projects is WanResult.Success)
-            mAllProjects.value = projects.data.datas
+            mAllProjects.value = projects.data?.datas
     }
 }

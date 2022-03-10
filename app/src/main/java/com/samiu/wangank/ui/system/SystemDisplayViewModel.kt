@@ -20,7 +20,7 @@ class SystemDisplayViewModel(
     fun getSystemArticles(page: Int, cid: Int) = viewModelScope.launch {
         val data = systemRepository.getSystemDetail(page, cid)
         if (data is WanResult.Success) {
-            mSystemArticles.value = data.data.datas
+            mSystemArticles.value = data.data?.datas
         }
     }
 }

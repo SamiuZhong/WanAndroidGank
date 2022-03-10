@@ -1,4 +1,4 @@
-package com.samiu.wangank.ui.login
+package com.samiu.wangank.ui.mine.login
 
 import android.content.Intent
 import android.widget.Toast
@@ -19,7 +19,6 @@ class WanLoginActivity : BaseActivity() {
     private val viewModel: WanLoginViewModel by viewModel()
 
     override fun getBindingRoot() = binding.root
-
     override fun initData() = Unit
 
     override fun initView() {
@@ -39,7 +38,7 @@ class WanLoginActivity : BaseActivity() {
     }
 
     override fun startObserve() = viewModel.run {
-        loginSuccess.observe(this@WanLoginActivity, Observer { aBoolean ->
+        loginSuccess.observe(this@WanLoginActivity) { aBoolean ->
             if (aBoolean) {
                 Toast.makeText(
                     this@WanLoginActivity,
@@ -54,6 +53,6 @@ class WanLoginActivity : BaseActivity() {
                     getString(R.string.input_correct_info),
                     Toast.LENGTH_SHORT
                 ).show()
-        })
+        }
     }
 }

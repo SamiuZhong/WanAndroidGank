@@ -18,8 +18,8 @@ import com.samiu.wangank.databinding.FragmentBottomNavDrawerBinding
 import com.samiu.wangank.global.IS_LOGIN
 import com.samiu.wangank.util.desTo
 import com.samiu.wangank.bean.Account
-import com.samiu.wangank.ui.login.WanLoginActivity
-import com.samiu.wangank.ui.login.WanPersonalActivity
+import com.samiu.wangank.ui.mine.login.WanLoginActivity
+import com.samiu.wangank.ui.mine.login.WanPersonalActivity
 import com.samiu.wangank.ui.nav.adapter.NavigationAdapter
 import com.samiu.wangank.ui.nav.adapter.NavigationModel
 import com.samiu.wangank.ui.nav.adapter.NavigationModelItem

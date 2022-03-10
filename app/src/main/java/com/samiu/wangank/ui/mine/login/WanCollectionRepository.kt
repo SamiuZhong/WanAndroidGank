@@ -1,4 +1,4 @@
-package com.samiu.wangank.ui.login
+package com.samiu.wangank.ui.mine.login
 
 import com.samiu.wangank.http.BaseWanRepository
 import com.samiu.wangank.http.WanClient

@@ -11,6 +11,7 @@ const val NETWORK_ERROR = "请检查网络"
 const val WAN_ANDROID = "wanAndroid"
 const val IS_LOGIN = "isLogin"
 const val USER_NAME = "userName"
+const val WAN_ERROR = "wanError"
 
 const val REFRESH = -1
 const val LOAD_MORE = 1

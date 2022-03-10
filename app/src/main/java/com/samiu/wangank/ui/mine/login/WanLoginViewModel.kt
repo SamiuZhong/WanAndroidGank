@@ -1,4 +1,4 @@
-package com.samiu.wangank.ui.login
+package com.samiu.wangank.ui.mine.login
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
  * @email samiuzhong@outlook.com
  */
 class WanLoginViewModel(
-    private val loginRepository: WanLoginRepository
+    private val loginRepository: WanMineRepository
 ) : ViewModel() {
 
     private var isLogin by Preference(IS_LOGIN, false)
@@ -26,7 +26,7 @@ class WanLoginViewModel(
         if (user is WanResult.Success) {
             loginSuccess.value = true
             isLogin = true
-            nickname = user.data.nickname
+            nickname = user.data!!.nickname
         } else loginSuccess.value = false
     }
 

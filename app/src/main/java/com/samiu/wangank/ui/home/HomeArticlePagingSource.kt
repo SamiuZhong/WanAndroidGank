@@ -19,7 +19,7 @@ class HomeArticlePagingSource : PagingSource<Long, Article>() {
             Log.d("Paging3", "Paging加载Article数据：第${currentPage}页面")
 
             LoadResult.Page(
-                data = response.data.datas,
+                data = response.data!!.datas,
                 prevKey = if (currentPage > 0) currentPage - 1L else null,
                 nextKey = if (response.data.datas.isNotEmpty()) currentPage + 1L else null
             )

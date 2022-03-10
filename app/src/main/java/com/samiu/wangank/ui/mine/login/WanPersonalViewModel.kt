@@ -1,4 +1,4 @@
-package com.samiu.wangank.ui.login
+package com.samiu.wangank.ui.mine.login
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
  */
 class WanPersonalViewModel(
     private val collectionRepository: WanCollectionRepository,
-    private val loginRepository: WanLoginRepository
+    private val loginRepository: WanMineRepository
 ) : ViewModel() {
 
     val mCollections = MutableLiveData<List<Article>>()
@@ -24,7 +24,7 @@ class WanPersonalViewModel(
     fun getCollections(page: Int) = viewModelScope.launch {
         val articleList = collectionRepository.getCollections(page)
         if (articleList is WanResult.Success)
-            mCollections.value = articleList.data.datas
+            mCollections.value = articleList.data?.datas
     }
 
     fun logout() = viewModelScope.launch {

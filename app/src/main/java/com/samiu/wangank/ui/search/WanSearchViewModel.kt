@@ -22,12 +22,15 @@ class WanSearchViewModel(
     fun getArticles(page: Int, key: String) = viewModelScope.launch {
         val articleList = searchRepository.getSearchArticle(page, key)
         if (articleList is WanResult.Success)
-            mArticles.value = articleList.data.datas
+            mArticles.value = articleList.data?.datas
     }
 
     fun getHotKeys() = viewModelScope.launch {
         val key = searchRepository.getHotKey()
-        if (key is WanResult.Success)
-            mkeys.value = key.data
+        if (key is WanResult.Success) {
+            key.data?.let {
+                mkeys.value = it
+            }
+        }
     }
 }

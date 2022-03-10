@@ -21,13 +21,16 @@ class WanWxViewModel(
 
     fun getAccounts() = viewModelScope.launch {
         val accounts = wanWxRepository.getWxAccount()
-        if (accounts is WanResult.Success)
-            mAccounts.value = accounts.data
+        if (accounts is WanResult.Success) {
+            accounts.data?.let {
+                mAccounts.value = it
+            }
+        }
     }
 
     fun getArticles(id: Int, page: Int) = viewModelScope.launch {
         val articles = wanWxRepository.getWxArticle(id, page)
         if (articles is WanResult.Success)
-            mArticles.value = articles.data.datas
+            mArticles.value = articles.data?.datas
     }
 }

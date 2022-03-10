@@ -1,4 +1,4 @@
-package com.samiu.wangank.ui.login
+package com.samiu.wangank.ui.mine.login
 
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
