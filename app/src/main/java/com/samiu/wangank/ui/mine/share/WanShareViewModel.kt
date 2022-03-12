@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.samiu.wangank.bean.base.WanResult
-import com.samiu.wangank.ui.mine.login.WanMineRepository
+import com.samiu.wangank.ui.mine.WanMineRepository
 import kotlinx.coroutines.launch
 
 class WanShareViewModel(

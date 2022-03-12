@@ -7,6 +7,12 @@ import com.samiu.wangank.R
 import com.samiu.wangank.databinding.ActivityWanShareBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+/**
+ * 分享文章页
+ *
+ * @author Samiu 2022/3/10
+ * @email samiuzhong@outlook.com
+ */
 class WanShareActivity : BaseActivity() {
 
     private val binding by viewBinding(ActivityWanShareBinding::inflate)

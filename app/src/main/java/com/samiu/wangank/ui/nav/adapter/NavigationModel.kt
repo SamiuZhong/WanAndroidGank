@@ -22,31 +22,31 @@ object NavigationModel {
             icon = R.drawable.ic_twotone_stars,
             titleRes = R.string.square,
             checked = false
+        )
+        , NavigationModelItem.NavMenuItem(
+            id = 2,
+            icon = R.drawable.ic_twotone_star,
+            titleRes = R.string.collection,
+            checked = false
         ),
         NavigationModelItem.NavMenuItem(
-            id = 2,
+            id = 3,
             icon = R.drawable.ic_twotone_send,
             titleRes = R.string.system,
             checked = false
         ),
         NavigationModelItem.NavMenuItem(
-            id = 3,
+            id = 4,
             icon = R.drawable.ic_twotone_error,
             titleRes = R.string.wx_article,
             checked = false
         ),
         NavigationModelItem.NavMenuItem(
-            id = 4,
+            id = 5,
             icon = R.drawable.ic_twotone_drafts,
             titleRes = R.string.title_wan_project,
             checked = false
         )
-//        , NavigationModelItem.NavMenuItem(
-//            id = 5,
-//            icon = R.drawable.ic_twotone_delete,
-//            titleRes = R.string.navigation,
-//            checked = false
-//        )
     )
 
     private val _navigationList: MutableLiveData<List<NavigationModelItem>> = MutableLiveData()

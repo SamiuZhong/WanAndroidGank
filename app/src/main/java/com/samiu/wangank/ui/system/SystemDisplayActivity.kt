@@ -1,19 +1,20 @@
 package com.samiu.wangank.ui.system
 
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.samiu.base.ui.BaseActivity
 import com.samiu.base.ui.viewBinding
 import com.samiu.wangank.databinding.ActivitySystemDisplayBinding
 import com.samiu.wangank.global.CID
 import com.samiu.wangank.global.TITLE
-import com.samiu.wangank.ui.home.adapter.ArticleListenerImpl
 import com.samiu.wangank.ui.home.adapter.ReboundingSwipeActionCallback
-import com.samiu.wangank.ui.home.adapter.WanArticleAdapter
+import com.samiu.wangank.ui.wxpub.adapter.WxArticleAdapter
+import com.samiu.wangank.ui.wxpub.adapter.WxArticleListenerImpl
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.properties.Delegates
 
 /**
+ * 体系列表页
+ *
  * @author Samiu 2020/3/6
  * @email samiuzhong@outlook.com
  */
@@ -25,7 +26,7 @@ class SystemDisplayActivity : BaseActivity() {
 
     private var currentPage by Delegates.notNull<Int>()
     private var cid by Delegates.notNull<Int>()
-    private lateinit var mAdapter: WanArticleAdapter
+    private lateinit var mAdapter: WxArticleAdapter
 
     override fun initView() {
         cid = intent.getIntExtra(CID, 0)
@@ -41,11 +42,11 @@ class SystemDisplayActivity : BaseActivity() {
     }
 
     override fun startObserve() = viewModel.run {
-//        mSystemArticles.observe(this@SystemDisplayActivity, Observer { mAdapter.addAll(it) })
+        mSystemArticles.observe(this@SystemDisplayActivity) { mAdapter.addAll(it) }
     }
 
     private fun initAdapter() {
-        mAdapter = WanArticleAdapter(ArticleListenerImpl(this))
+        mAdapter = WxArticleAdapter(WxArticleListenerImpl(this))
         binding.recyclerView.apply {
             val itemTouchHelper = ItemTouchHelper(ReboundingSwipeActionCallback())
             itemTouchHelper.attachToRecyclerView(this)
@@ -54,18 +55,19 @@ class SystemDisplayActivity : BaseActivity() {
     }
 
     private fun initRefresh() {
-//        with(binding.recyclerRefresh) {
-//            setOnRefreshListener {
-//                currentPage = 0
-//                mAdapter.clearAll()
-//                viewModel.getSystemArticles(currentPage, cid)
-//                finishRefresh(1500)
-//            }
-//            setOnLoadMoreListener {
-//                currentPage += 1
-//                viewModel.getSystemArticles(currentPage, cid)
-//                finishLoadMore(2000)
-//            }
-//        }
+        with(binding.recyclerRefresh) {
+            setEnableRefresh(false)
+            setOnRefreshListener {
+                currentPage = 0
+                mAdapter.clearAll()
+                viewModel.getSystemArticles(currentPage, cid)
+                finishRefresh(1500)
+            }
+            setOnLoadMoreListener {
+                currentPage += 1
+                viewModel.getSystemArticles(currentPage, cid)
+                finishLoadMore(2000)
+            }
+        }
     }
 }

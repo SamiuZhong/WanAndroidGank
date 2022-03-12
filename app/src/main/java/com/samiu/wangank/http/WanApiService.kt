@@ -51,7 +51,7 @@ interface WanApiService {
     suspend fun searchHot(@Path("page") page: Int, @Field("k") key: String): WanResponse<ArticleList>
 
     @GET("/lg/collect/list/{page}/json")
-    suspend fun getCollectArticles(@Path("page") page: Int): WanResponse<ArticleList>
+    suspend fun getCollectArticles(@Path("page") page: Long): WanResponse<ArticleList>
 
     @POST("/lg/collect/{id}/json")
     suspend fun collectArticle(@Path("id") id: Int): WanResponse<ArticleList>
@@ -59,12 +59,15 @@ interface WanApiService {
     @POST("/lg/uncollect_originId/{id}/json")
     suspend fun cancelCollectArticle(@Path("id") id: Int): WanResponse<ArticleList>
 
-    @GET("/user_article/list/{page}/json")
-    suspend fun getSquareArticleList(@Path("page") page: Long): WanResponse<ArticleList>
-
     @FormUrlEncoded
     @POST("/lg/user_article/add/json")
     suspend fun shareArticle(@Field("title") title: String, @Field("link") url: String): WanResponse<String>
+
+    @GET("/user_article/list/{page}/json")
+    suspend fun getSquareArticleList(@Path("page") page: Long): WanResponse<ArticleList>
+
+    @GET("/user/lg/private_articles/{page}/json")
+    suspend fun getMyArticles(@Path("page") page: Long):WanResponse<ShareArticle>
 
     @FormUrlEncoded
     @POST("/user/login")

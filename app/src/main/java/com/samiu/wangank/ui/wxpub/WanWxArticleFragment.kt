@@ -1,6 +1,5 @@
 package com.samiu.wangank.ui.wxpub
 
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.samiu.base.ui.BaseFragment
 import com.samiu.base.ui.viewBinding
@@ -16,6 +15,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.properties.Delegates
 
 /**
+ * 微信公众号页
+ *
  * @author Samiu 2020/3/2
  * @email samiuzhong@outlook.com
  */

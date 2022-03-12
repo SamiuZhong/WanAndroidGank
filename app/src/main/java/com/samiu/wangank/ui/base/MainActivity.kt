@@ -16,13 +16,14 @@ import com.samiu.wangank.ui.home.SCROLL_DOWN
 import com.samiu.wangank.ui.home.SCROLL_UP
 import com.samiu.wangank.ui.nav.*
 import com.samiu.wangank.ui.search.SearchActivity
-import com.samiu.wangank.util.toBrowser
 import com.samiu.wangank.util.toShare
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 /**
+ * 主页
+ *
  * @author Samiu 2020/3/2
  * @email samiuzhong@outlook.com
  */

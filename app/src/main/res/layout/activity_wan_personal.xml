@@ -1,69 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        app:navigationIcon="@drawable/back_icon_black">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:navigationIcon="@drawable/back_icon_black">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/nickname"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:text="@string/my_collection"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_20" />
 
-                <TextView
-                    android:id="@+id/nickname"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:singleLine="true"
-                    android:text="@string/my_collection"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_20" />
-
-                <TextView
-                    android:id="@+id/log_out_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/space_10"
-                    android:layout_marginEnd="10dp"
-                    android:paddingStart="@dimen/space_10"
-                    android:paddingTop="6dp"
-                    android:paddingEnd="@dimen/space_10"
-                    android:paddingBottom="6dp"
-                    android:text="@string/log_out"
-                    android:textColor="@color/reply_white_50"
-                    android:textSize="@dimen/text_size_14" />
-            </LinearLayout>
-        </androidx.appcompat.widget.Toolbar>
-
-        <com.scwang.smartrefresh.layout.SmartRefreshLayout
-            android:id="@+id/refresh_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.scwang.smartrefresh.header.MaterialHeader
-                android:id="@+id/refresh_header"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/log_out_btn"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:overScrollMode="never"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+                android:layout_marginStart="@dimen/space_10"
+                android:layout_marginEnd="10dp"
+                android:paddingStart="@dimen/space_10"
+                android:paddingTop="6dp"
+                android:paddingEnd="@dimen/space_10"
+                android:paddingBottom="6dp"
+                android:text="@string/log_out"
+                android:textColor="@color/reply_white_50"
+                android:textSize="@dimen/text_size_14" />
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:overScrollMode="never"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+</LinearLayout>

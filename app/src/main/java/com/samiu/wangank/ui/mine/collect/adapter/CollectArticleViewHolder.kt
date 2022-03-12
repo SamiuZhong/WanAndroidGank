@@ -1,12 +1,11 @@
-package com.samiu.wangank.ui.wxpub.adapter
+package com.samiu.wangank.ui.mine.collect.adapter
 
 import android.text.Html
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.samiu.wangank.R
-import com.samiu.wangank.databinding.ItemWanArticleBinding
 import com.samiu.wangank.bean.Article
-import com.samiu.wangank.databinding.ItemWxArticleBinding
+import com.samiu.wangank.databinding.ItemCollectArticleBinding
 import com.samiu.wangank.ui.home.adapter.ArticleSwipeActionDrawable
 import com.samiu.wangank.ui.home.adapter.ReboundingSwipeActionCallback
 import kotlin.math.abs
@@ -15,9 +14,9 @@ import kotlin.math.abs
  * @author Samiu 2020/7/6
  * @email samiuzhong@outlook.com
  */
-class WxArticleViewHolder(
-    private val binding: ItemWxArticleBinding,
-    listener: WxArticleAdapter.ArticleAdapterListener
+class CollectArticleViewHolder(
+    private val binding: ItemCollectArticleBinding,
+    listener: CollectArticleAdapter.ArticleAdapterListener
 ) : RecyclerView.ViewHolder(binding.root), ReboundingSwipeActionCallback.ReboundableViewHolder {
 
     private val starredCornerSize =
@@ -34,9 +33,10 @@ class WxArticleViewHolder(
     }
 
     fun bind(article: Article) {
+        article.collect = true
         binding.article = article
         binding.root.isActivated = article.collect
-        binding.itemTitle.text = Html.fromHtml(article.title,0)
+        binding.itemTitle.text = Html.fromHtml(article.title, 0)
         if (article.author != null && article.author.isNotEmpty()) {
             binding.itemAuthor.text = article.author
         } else if (article.shareUser != null && article.shareUser.isNotEmpty()) {
@@ -44,6 +44,7 @@ class WxArticleViewHolder(
         } else {
             binding.itemAuthor.text = binding.itemAuthor.context.getString(R.string.no_name)
         }
+
         val interpolation = if (article.collect) 1F else 0F
         updateCardViewTopLeftCornerSize(interpolation)
 

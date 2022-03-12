@@ -33,13 +33,14 @@ class ArticleViewHolder(
     fun bind(article: Article) {
         binding.article = article
         binding.root.isActivated = article.collect
-        binding.itemTitle.text = Html.fromHtml(article.title,0)
-        binding.itemAuthor.text =
-            when {
-                article.author.isNotEmpty() -> article.author
-                article.shareUser.isNotEmpty() -> article.shareUser
-                else -> "佚名"
-            }
+        binding.itemTitle.text = Html.fromHtml(article.title, 0)
+        if (article.author != null && article.author.isNotEmpty()) {
+            binding.itemAuthor.text = article.author
+        } else if (article.shareUser != null && article.shareUser.isNotEmpty()) {
+            binding.itemAuthor.text = article.shareUser
+        } else {
+            binding.itemAuthor.text = binding.itemAuthor.context.getString(R.string.no_name)
+        }
 
         val interpolation = if (article.collect) 1F else 0F
         updateCardViewTopLeftCornerSize(interpolation)

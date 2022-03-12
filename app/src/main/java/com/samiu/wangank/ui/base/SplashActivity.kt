@@ -7,6 +7,8 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 
 /**
+ * 启动页
+ *
  * @author Samiu 2020/5/21
  * @email samiuzhong@outlook.com
  */
@@ -19,7 +21,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun jump() {
         runBlocking {
-            delay(2000)
+            delay(1000)
         }
         startActivity(Intent(this, MainActivity::class.java))
         finish()

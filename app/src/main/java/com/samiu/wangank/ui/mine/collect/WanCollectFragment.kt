@@ -1,4 +1,4 @@
-package com.samiu.wangank.ui.square
+package com.samiu.wangank.ui.mine.collect
 
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -8,25 +8,26 @@ import com.samiu.wangank.R
 import com.samiu.wangank.databinding.FragmentRecyclerBinding
 import com.samiu.wangank.ui.home.adapter.ArticleListenerImpl
 import com.samiu.wangank.ui.home.adapter.ReboundingSwipeActionCallback
-import com.samiu.wangank.ui.home.adapter.WanArticleAdapter
+import com.samiu.wangank.ui.mine.collect.adapter.CollectArticleAdapter
+import com.samiu.wangank.ui.mine.collect.adapter.CollectArticleListenerImpl
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
- * 广场页
+ * 收藏页面
  *
- * @author Samiu 2020/3/2
+ * @author Samiu 2022/3/12
  * @email samiuzhong@outlook.com
  */
-class WanSquareFragment : BaseFragment(R.layout.fragment_recycler) {
-    
-    private val binding by viewBinding(FragmentRecyclerBinding::bind)
-    private val viewModel: WanSquareViewModel by viewModel()
+class WanCollectFragment : BaseFragment(R.layout.fragment_recycler) {
 
-    private lateinit var mAdapter: WanArticleAdapter
+    private val binding by viewBinding(FragmentRecyclerBinding::bind)
+    private val viewModel: WanCollectViewModel by viewModel()
+
+    private lateinit var mAdapter: CollectArticleAdapter
 
     override fun initView() {
-        mAdapter = WanArticleAdapter(ArticleListenerImpl(requireContext()))
+        mAdapter = CollectArticleAdapter(CollectArticleListenerImpl(requireContext()))
         binding.recycler.apply {
             val itemTouchHelper = ItemTouchHelper(ReboundingSwipeActionCallback())
             itemTouchHelper.attachToRecyclerView(this)

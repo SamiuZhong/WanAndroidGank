@@ -16,6 +16,8 @@ import com.samiu.wangank.ui.system.SystemDisplayActivity
 import com.samiu.wangank.util.drawShape
 
 /**
+ * 体系页
+ *
  * @author Samiu 2020/3/6
  * @email samiuzhong@outlook.com
  */

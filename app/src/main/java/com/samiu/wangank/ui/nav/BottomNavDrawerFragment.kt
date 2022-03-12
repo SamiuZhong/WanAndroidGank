@@ -19,7 +19,7 @@ import com.samiu.wangank.global.IS_LOGIN
 import com.samiu.wangank.util.desTo
 import com.samiu.wangank.bean.Account
 import com.samiu.wangank.ui.mine.login.WanLoginActivity
-import com.samiu.wangank.ui.mine.login.WanPersonalActivity
+import com.samiu.wangank.ui.mine.personal.WanPersonalActivity
 import com.samiu.wangank.ui.nav.adapter.NavigationAdapter
 import com.samiu.wangank.ui.nav.adapter.NavigationModel
 import com.samiu.wangank.ui.nav.adapter.NavigationModelItem
@@ -28,6 +28,8 @@ import com.samiu.wangank.util.themeColor
 import kotlin.LazyThreadSafetyMode.NONE
 
 /**
+ * BottomNav页
+ *
  * @author Samiu 2020/3/31
  * @email samiuzhong@outlook.com
  */
@@ -191,6 +193,8 @@ class BottomNavDrawerFragment :
             STATE_HALF_EXPANDED,
             STATE_EXPANDED,
             STATE_COLLAPSED -> close()
+            STATE_DRAGGING -> Unit
+            STATE_SETTLING -> Unit
         }
     }
 
@@ -210,7 +214,7 @@ class BottomNavDrawerFragment :
         bottomSheetCallback.addOnStateChangedAction(action)
     }
 
-    fun setOnCutover(onCutover:(Int) -> Unit){
+    fun setOnCutover(onCutover: (Int) -> Unit) {
         this.onCutover = onCutover
     }
 
@@ -219,9 +223,10 @@ class BottomNavDrawerFragment :
             when (item.id) {
                 0 -> desTo(this, R.id.wanHomeFragment)
                 1 -> desTo(this, R.id.wanSquareFragment)
-                2 -> desTo(this, R.id.wanSystemFragment)
-                3 -> desTo(this, R.id.wanWxArticleFragment)
-                4 -> desTo(this, R.id.wanProjectFragment)
+                2 -> desTo(this, R.id.wanCollectFragment)
+                3 -> desTo(this, R.id.wanSystemFragment)
+                4 -> desTo(this, R.id.wanWxArticleFragment)
+                5 -> desTo(this, R.id.wanProjectFragment)
             }
             onCutover(item.titleRes)
             close()

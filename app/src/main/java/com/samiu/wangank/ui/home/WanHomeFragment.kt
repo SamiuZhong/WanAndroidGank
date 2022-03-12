@@ -25,6 +25,8 @@ import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
+ * 首页
+ *
  * @author Samiu 2020/3/2
  * @email samiuzhong@outlook.com
  */

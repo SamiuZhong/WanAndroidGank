@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.samiu.wangank.global.IS_LOGIN
 import com.samiu.wangank.global.USER_NAME
 import com.samiu.wangank.bean.base.WanResult
+import com.samiu.wangank.ui.mine.WanMineRepository
 import com.samiu.wangank.util.Preference
 import kotlinx.coroutines.launch
 

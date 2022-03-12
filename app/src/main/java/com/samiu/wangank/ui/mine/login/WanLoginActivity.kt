@@ -2,14 +2,16 @@ package com.samiu.wangank.ui.mine.login
 
 import android.content.Intent
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import com.samiu.base.ui.BaseActivity
 import com.samiu.base.ui.viewBinding
 import com.samiu.wangank.R
 import com.samiu.wangank.databinding.ActivityWanLoginBinding
+import com.samiu.wangank.ui.mine.personal.WanPersonalActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
+ * 登录页
+ *
  * @author Samiu 2020/4/17
  * @email samiuzhong@outlook.com
  */

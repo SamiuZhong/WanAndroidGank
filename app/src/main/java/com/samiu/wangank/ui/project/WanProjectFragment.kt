@@ -16,6 +16,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.properties.Delegates
 
 /**
+ * 开源项目页
+ *
  * @author Samiu 2020/3/4
  * @email samiuzhong@outlook.com
  */

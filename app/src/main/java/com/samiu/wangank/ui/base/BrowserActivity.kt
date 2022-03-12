@@ -14,6 +14,8 @@ import com.samiu.wangank.global.TITLE
 import com.samiu.wangank.global.URL
 
 /**
+ * 文章详情 WebView页面
+ *
  * @author Samiu 2020/3/4
  * @email samiuzhong@outlook.com
  */

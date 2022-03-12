@@ -3,18 +3,15 @@ package com.samiu.wangank.ui.search
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.samiu.base.ui.BaseActivity
 import com.samiu.base.ui.viewBinding
 import com.samiu.wangank.R
+import com.samiu.wangank.bean.Hot
 import com.samiu.wangank.databinding.ActivityWanSearchBinding
 import com.samiu.wangank.global.LOAD_MORE
 import com.samiu.wangank.global.REFRESH
-import com.samiu.wangank.bean.Hot
-import com.samiu.wangank.ui.home.adapter.ArticleListenerImpl
 import com.samiu.wangank.ui.home.adapter.ReboundingSwipeActionCallback
-import com.samiu.wangank.ui.home.adapter.WanArticleAdapter
 import com.samiu.wangank.ui.wxpub.adapter.WxArticleAdapter
 import com.samiu.wangank.ui.wxpub.adapter.WxArticleListenerImpl
 import com.samiu.wangank.util.drawShape
@@ -22,6 +19,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.properties.Delegates
 
 /**
+ * 搜索页
+ *
  * @author Samiu 2020/5/21
  * @email samiuzhong@outlook.com
  */
@@ -93,14 +92,14 @@ class SearchActivity : BaseActivity() {
     }
 
     override fun startObserve() = viewModel.run {
-        mArticles.observe(this@SearchActivity, Observer {
+        mArticles.observe(this@SearchActivity) {
             if (it.isEmpty())
                 Toast.makeText(this@SearchActivity, R.string.no_search_resut, Toast.LENGTH_SHORT)
                     .show()
             else
                 mAdapter.addAll(it)
-        })
-        mkeys.observe(this@SearchActivity, Observer { setHotKeys(it) })
+        }
+        mkeys.observe(this@SearchActivity) { setHotKeys(it) }
     }
 
     private fun setHotKeys(list: List<Hot>) {

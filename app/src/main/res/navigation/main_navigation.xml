@@ -15,6 +15,11 @@
         android:label="WanSquareFragment" />
 
     <fragment
+        android:id="@+id/wanCollectFragment"
+        android:name="com.samiu.wangank.ui.mine.collect.WanCollectFragment"
+        android:label="WanCollectFragment" />
+
+    <fragment
         android:id="@+id/wanSystemFragment"
         android:name="com.samiu.wangank.ui.system.WanSystemFragment"
         android:label="WanSystemFragment" />

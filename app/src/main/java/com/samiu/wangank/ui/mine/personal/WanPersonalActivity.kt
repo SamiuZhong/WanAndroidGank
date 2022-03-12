@@ -1,6 +1,6 @@
-package com.samiu.wangank.ui.mine.login
+package com.samiu.wangank.ui.mine.personal
 
-import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
@@ -14,10 +14,12 @@ import com.samiu.wangank.ui.home.adapter.ReboundingSwipeActionCallback
 import com.samiu.wangank.ui.home.adapter.WanArticleAdapter
 import com.samiu.wangank.util.Preference
 import com.samiu.wangank.util.drawShape
+import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import kotlin.properties.Delegates
 
 /**
+ * 个人中心页面
+ *
  * @author Samiu 2020/5/16
  * @email samiuzhong@outlook.com
  */
@@ -28,28 +30,21 @@ class WanPersonalActivity : BaseActivity() {
     override fun getBindingRoot() = binding.root
 
     private val userName: String by Preference(USER_NAME, "")
-    private var mCurrentPage by Delegates.notNull<Int>()
     private lateinit var mAdapter: WanArticleAdapter
 
     override fun initView() {
         binding.toolbar.setNavigationOnClickListener { finish() }
         binding.nickname.text = userName
         initAdapter()
-        initRefresh()
         setLogout()
     }
 
     override fun initData() {
-        binding.refreshLayout.autoRefresh()
-    }
-
-    override fun startObserve() = viewModel.run {
-//        mCollections.observe(this@WanPersonalActivity, Observer {
-//            for (data in it) {
-//                data.collect = true
-//            }
-//            mAdapter.addAll(it)
-//        })
+        lifecycleScope.launchWhenCreated {
+            viewModel.articlePagingList.collectLatest {
+                mAdapter.submitData(it)
+            }
+        }
     }
 
     private fun initAdapter() {
@@ -61,21 +56,6 @@ class WanPersonalActivity : BaseActivity() {
         }
     }
 
-    private fun initRefresh() {
-//        with(binding.refreshLayout) {
-//            setOnRefreshListener {
-//                mCurrentPage = 0
-//                mAdapter.clearAll()
-//                viewModel.getCollections(mCurrentPage)
-//                finishRefresh(1000)
-//            }
-//            setOnLoadMoreListener {
-//                mCurrentPage += 1
-//                viewModel.getCollections(mCurrentPage)
-//                finishLoadMore(1000)
-//            }
-//        }
-    }
 
     private fun setLogout() {
         binding.logOutBtn.run {

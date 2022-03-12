@@ -14,7 +14,7 @@ data class Article(
     val chapterName: String,
     val envelopePic: String,
     val link: String,
-    val author: String,
+    val author: String?,
     val origin: String,
     val publishTime: Long,
     val zan: Int,
@@ -34,15 +34,15 @@ data class Article(
     val prefix: String,
     val selfVisible: Int,
     val shareDate: Long,
-    val shareUser: String,
+    val shareUser: String?,
     val tags: Any,
     val userId: Int
 )
 
-object ArticleDiff:DiffUtil.ItemCallback<Article>() {
+object ArticleDiff : DiffUtil.ItemCallback<Article>() {
     override fun areItemsTheSame(oldItem: Article, newItem: Article) =
-        oldItem.id==newItem.id
+        oldItem.id == newItem.id
 
-    override fun areContentsTheSame(oldItem: Article, newItem: Article)=
-        oldItem.link==newItem.link
+    override fun areContentsTheSame(oldItem: Article, newItem: Article) =
+        oldItem.link == newItem.link
 }

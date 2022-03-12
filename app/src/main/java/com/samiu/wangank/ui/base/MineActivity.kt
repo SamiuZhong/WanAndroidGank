@@ -14,6 +14,7 @@ import de.psdev.licensesdialog.licenses.MITLicense
 import de.psdev.licensesdialog.model.Notice
 
 /**
+ * 关于页面
  * @author Samiu 2020/5/21
  * @email samiuzhong@outlook.com
  */

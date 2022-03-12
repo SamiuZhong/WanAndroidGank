@@ -9,6 +9,8 @@ import com.samiu.wangank.ui.system.adapter.WanSystemAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
+ * 体系页
+ *
  * @author Samiu 2020/3/2
  * @email samiuzhong@outlook.com
  */
