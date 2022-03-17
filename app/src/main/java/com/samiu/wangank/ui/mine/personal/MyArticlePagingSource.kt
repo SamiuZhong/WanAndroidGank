@@ -20,7 +20,7 @@ class MyArticlePagingSource : PagingSource<Long, Article>() {
 
             LoadResult.Page(
                 data = response.data!!.shareArticles.datas,
-                prevKey = if (currentPage > 0) currentPage - 1L else null,
+                prevKey = if (currentPage > 1) currentPage - 1L else null,
                 nextKey = if (response.data.shareArticles.datas.isNotEmpty()) currentPage + 1L else null
             )
         } catch (exception: Exception) {
@@ -34,9 +34,9 @@ class MyArticlePagingSource : PagingSource<Long, Article>() {
     }
 
     private fun getCurrentPage(page: Long?): Long {
-        var result = 0L
+        var result = 1L
         page?.let {
-            if (page > 0)
+            if (page > 1)
                 result = page
         }
         return result

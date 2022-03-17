@@ -69,7 +69,6 @@ class WanPersonalActivity : BaseActivity() {
                     message(R.string.confirm_log_out)
                     positiveButton(R.string.confirm) { logout() }
                     negativeButton(R.string.cancel)
-                    debugMode(false)
                     lifecycleOwner(this@WanPersonalActivity)
                 }
             }

@@ -1,3 +1,8 @@
+rootProject.name = "WanAndroidGank"
+include(":app")
+include(":base")
+include(":res")
+
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -28,8 +33,3 @@ dependencyResolutionManagement {
         }
     }
 }
-
-rootProject.name = "WanAndroidGank"
-include(":app")
-include(":base")
-include(":res")
