@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "WanAndroidGank"
-include ':app'
+include(":app")
