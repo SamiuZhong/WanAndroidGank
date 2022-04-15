@@ -1,25 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="default_text_color_252F3B">#252F3B</color>
-    <color name="default_prompt_text_color_9496A4">#9496A4</color>
-    <color name="default_hint_text_color">#87918F</color>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="white">#ffffff</color>
-    <color name="black">#000000</color>
-    <color name="gray">#8e8e8e</color>
-    <color name="light_gray">#e0e0e0</color>
-    <color name="red">#ff0000</color>
-    <color name="text_gray">#2f2f2f</color>
-    <color name="scrim">#99323232</color>
-    <color name="dark_icon">#99000000</color>
-    <color name="color_B9CDDA">#B9CDDA</color>
-    <color name="color_A6D8D4">#A6D8D4</color>
-    <color name="color_6B7D7D">#6B7D7D</color>
-    <color name="color_3066BE">#3066BE</color>
-    <color name="color_119DA4">#119DA4</color>
-    <color name="color_80DED9">#80DED9</color>
-    <color name="color_29E7CD">#29E7CD</color>
-    <color name="color_F7F7F7">#F7F7F7</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
 </resources>
