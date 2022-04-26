@@ -52,6 +52,7 @@ dependencies {
     implementation(Deps.AndroidX.composeMaterial)
     implementation(Deps.AndroidX.activityCompose)
     implementation(Deps.AndroidX.lifecycleRuntime)
+    implementation(Deps.AndroidX.navigationCompose)
     implementation(Deps.AndroidX.uiToolingPreview)
     debugImplementation(Deps.AndroidX.uiTooling)
 }

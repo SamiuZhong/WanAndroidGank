@@ -12,6 +12,7 @@ object Deps {
         const val composeMaterial = "1.0.0-alpha09"
         const val activityCompose = "1.4.0"
         const val lifecycle = "2.4.1"
+        const val navigation = "2.4.2"
     }
 
     object AndroidX {
@@ -26,5 +27,7 @@ object Deps {
             "androidx.compose.ui:ui-tooling:${Versions.composeVersion}"
         const val uiToolingPreview =
             "androidx.compose.ui:ui-tooling-preview:${Versions.composeVersion}"
+        const val navigationCompose =
+            "androidx.navigation:navigation-compose:${Versions.navigation}"
     }
 }
