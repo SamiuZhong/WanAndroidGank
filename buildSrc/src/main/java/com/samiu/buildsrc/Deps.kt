@@ -18,11 +18,13 @@ object Deps {
         const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
         const val composeUi = "androidx.compose.ui:ui:${Versions.composeVersion}"
         const val activityCompose = "androidx.activity:activity-compose:${Versions.activityCompose}"
-        const val composePreview =
-            "androidx.compose.ui:ui-tooling-preview:${Versions.composeVersion}"
         const val composeMaterial =
             "androidx.compose.material3:material3:${Versions.composeMaterial}"
         const val lifecycleRuntime =
             "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
+        const val uiTooling =
+            "androidx.compose.ui:ui-tooling:${Versions.composeVersion}"
+        const val uiToolingPreview =
+            "androidx.compose.ui:ui-tooling-preview:${Versions.composeVersion}"
     }
 }

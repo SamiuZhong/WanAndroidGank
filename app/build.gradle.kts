@@ -49,8 +49,9 @@ android {
 dependencies {
     implementation(Deps.AndroidX.coreKtx)
     implementation(Deps.AndroidX.composeUi)
-    implementation(Deps.AndroidX.composePreview)
     implementation(Deps.AndroidX.composeMaterial)
     implementation(Deps.AndroidX.activityCompose)
     implementation(Deps.AndroidX.lifecycleRuntime)
+    implementation(Deps.AndroidX.uiToolingPreview)
+    debugImplementation(Deps.AndroidX.uiTooling)
 }
