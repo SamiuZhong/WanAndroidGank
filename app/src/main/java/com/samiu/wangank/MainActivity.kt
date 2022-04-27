@@ -20,8 +20,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             WanAndroidGankTheme {
-                navController = rememberNavController()
-                SetupNavGraph(navController = navController)
+//                navController = rememberNavController()
+//                SetupNavGraph(navController = navController)
+                MainScreen()
             }
         }
     }
