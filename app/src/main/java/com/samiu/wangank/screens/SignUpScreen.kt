@@ -1,4 +1,4 @@
-package com.samiu.wangank
+package com.samiu.wangank.screens
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -19,7 +19,7 @@ import androidx.navigation.compose.rememberNavController
  * @email samiuzhong@outlook.com
  */
 @Composable
-fun DetailScreen(
+fun SignUpScreen(
     navController: NavController
 ) {
     Box(
@@ -27,12 +27,10 @@ fun DetailScreen(
         contentAlignment = Alignment.Center
     ) {
         Text(
-            modifier = Modifier.clickable {
-                navController.popBackStack()
-            },
-            text = "Detail",
-            color = Color.Red,
-            fontSize = MaterialTheme.typography.headlineMedium.fontSize,
+            modifier = Modifier.clickable { navController.popBackStack() },
+            text = "Sign Up",
+            color = Color.Green,
+            fontSize = MaterialTheme.typography.headlineLarge.fontSize,
             fontWeight = FontWeight.Bold
         )
     }
@@ -40,6 +38,6 @@ fun DetailScreen(
 
 @Preview(showBackground = true)
 @Composable
-fun DetailScreenPreview() {
-    DetailScreen(navController = rememberNavController())
+fun previewSignUp() {
+    SignUpScreen(navController = rememberNavController())
 }
