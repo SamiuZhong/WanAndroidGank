@@ -20,7 +20,7 @@ import androidx.navigation.compose.rememberNavController
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen() {
+fun TestScreen() {
     val navController = rememberNavController()
     Scaffold(bottomBar = { BottomBar(navController = navController) }) {
         BottomNavGraph(navController = navController)
