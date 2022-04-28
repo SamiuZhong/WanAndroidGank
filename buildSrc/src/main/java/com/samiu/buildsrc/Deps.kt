@@ -9,7 +9,7 @@ object Deps {
     object Versions {
         const val coreKtx = "1.7.0"
         const val composeVersion = "1.2.0-alpha07"
-        const val composeMaterial = "1.0.0-alpha09"
+        const val material3 = "1.0.0-alpha09"
         const val activityCompose = "1.4.0"
         const val lifecycle = "2.4.1"
         const val navigation = "2.4.2"
@@ -19,8 +19,10 @@ object Deps {
         const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
         const val composeUi = "androidx.compose.ui:ui:${Versions.composeVersion}"
         const val activityCompose = "androidx.activity:activity-compose:${Versions.activityCompose}"
-        const val composeMaterial =
-            "androidx.compose.material3:material3:${Versions.composeMaterial}"
+        const val material =
+            "androidx.compose.material:material:${Versions.composeVersion}"
+        const val material3 =
+            "androidx.compose.material3:material3:${Versions.material3}"
         const val lifecycleRuntime =
             "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
         const val uiTooling =

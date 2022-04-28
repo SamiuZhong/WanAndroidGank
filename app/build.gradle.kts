@@ -49,7 +49,8 @@ android {
 dependencies {
     implementation(Deps.AndroidX.coreKtx)
     implementation(Deps.AndroidX.composeUi)
-    implementation(Deps.AndroidX.composeMaterial)
+    implementation(Deps.AndroidX.material)
+    implementation(Deps.AndroidX.material3)
     implementation(Deps.AndroidX.activityCompose)
     implementation(Deps.AndroidX.lifecycleRuntime)
     implementation(Deps.AndroidX.navigationCompose)
