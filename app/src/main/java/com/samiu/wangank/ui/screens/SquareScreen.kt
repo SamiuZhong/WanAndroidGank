@@ -10,35 +10,33 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import com.samiu.wangank.ui.theme.Huilv
+import com.samiu.wangank.ui.theme.Canghuang
 import com.samiu.wangank.ui.theme.Qianshibai
-import com.samiu.wangank.ui.theme.Xiangyehong
-import com.samiu.wangank.ui.theme.Yuhong
 
 /**
- * 首页
+ * 广场
  *
  * @author samiu 2022/4/29
  * @email samiuzhong@outlook.com
  */
 @Composable
-fun FrontScreen() {
+fun SquareScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Xiangyehong),
+            .background(Canghuang),
         contentAlignment = Alignment.Center,
     ) {
         Text(
-            text = "首页",
+            text = "广场",
             color = Qianshibai,
             style = MaterialTheme.typography.headlineLarge
         )
     }
 }
 
-@Preview(showBackground = true)
+@Preview
 @Composable
-fun PreviewFront() {
-    FrontScreen()
+fun PreviewSquare() {
+    SquareScreen()
 }

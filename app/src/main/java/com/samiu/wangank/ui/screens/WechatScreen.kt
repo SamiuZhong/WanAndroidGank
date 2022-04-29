@@ -8,37 +8,34 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import com.samiu.wangank.ui.theme.Huilv
+import com.samiu.wangank.ui.theme.Qianniuhualan
 import com.samiu.wangank.ui.theme.Qianshibai
-import com.samiu.wangank.ui.theme.Xiangyehong
-import com.samiu.wangank.ui.theme.Yuhong
 
 /**
- * 首页
+ * 微信公众号
  *
  * @author samiu 2022/4/29
  * @email samiuzhong@outlook.com
  */
 @Composable
-fun FrontScreen() {
+fun WechatScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Xiangyehong),
+            .background(Qianniuhualan),
         contentAlignment = Alignment.Center,
     ) {
         Text(
-            text = "首页",
+            text = "微信公众号",
             color = Qianshibai,
             style = MaterialTheme.typography.headlineLarge
         )
     }
 }
 
-@Preview(showBackground = true)
+@Preview
 @Composable
-fun PreviewFront() {
-    FrontScreen()
+fun PreviewWechat() {
+    WechatScreen()
 }

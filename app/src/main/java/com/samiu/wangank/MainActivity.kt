@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.navigation.NavHostController
+import com.samiu.wangank.ui.screens.MainScreen
 import com.samiu.wangank.ui.theme.WanAndroidGankTheme
 
 /**
@@ -20,7 +21,7 @@ class MainActivity : ComponentActivity() {
             WanAndroidGankTheme {
 //                navController = rememberNavController()
 //                SetupNavGraph(navController = navController)
-                TestScreen()
+                MainScreen()
             }
         }
     }
