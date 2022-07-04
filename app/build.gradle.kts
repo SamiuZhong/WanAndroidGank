@@ -51,9 +51,15 @@ dependencies {
     implementation(Deps.AndroidX.composeUi)
     implementation(Deps.AndroidX.material)
     implementation(Deps.AndroidX.material3)
+    implementation(Deps.AndroidX.recyclerview)
     implementation(Deps.AndroidX.activityCompose)
     implementation(Deps.AndroidX.lifecycleRuntime)
     implementation(Deps.AndroidX.navigationCompose)
     implementation(Deps.AndroidX.uiToolingPreview)
     debugImplementation(Deps.AndroidX.uiTooling)
+
+    implementation(Deps.Http.okHttp)
+    implementation(Deps.Http.retrofit)
+    implementation(Deps.Http.retrofitConverter)
+    implementation(Deps.Http.cookieJar)
 }
