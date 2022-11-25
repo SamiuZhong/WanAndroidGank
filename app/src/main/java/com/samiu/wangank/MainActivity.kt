@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.navigation.NavHostController
 import com.samiu.wangank.ui.screens.MainScreen
-import com.samiu.wangank.ui.theme.WanAndroidGankTheme
+import com.samiu.wangank.ui.theme.WanAndroidTheme
 
 /**
  * @author samiu 2020/3/2
@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            WanAndroidGankTheme {
+            WanAndroidTheme() {
 //                navController = rememberNavController()
 //                SetupNavGraph(navController = navController)
                 MainScreen()

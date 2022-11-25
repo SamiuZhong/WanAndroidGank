@@ -1,20 +1,25 @@
-import com.samiu.buildsrc.BuildConfig
-import com.samiu.buildsrc.Deps
-
 plugins {
     id("com.android.application")
     kotlin("android")
 }
 
+val coreKtxVersion: String by project
+val composeVersion: String by project
+val material3Version: String by project
+val activityComposeVersion: String by project
+val lifecycleVersion: String by project
+val navigationVersion: String by project
+val recyclerviewVersion: String by project
+
 android {
-    compileSdk = BuildConfig.compileSdk
+    compileSdk = 33
 
     defaultConfig {
-        applicationId = BuildConfig.applicationId
-        minSdk = BuildConfig.minSdk
-        targetSdk = BuildConfig.targetSdk
-        versionCode = BuildConfig.versionCode
-        versionName = BuildConfig.versionName
+        applicationId = "com.samiu.wangank"
+        minSdk = 26
+        targetSdk = 33
+        versionCode = 1
+        versionName = "1.0"
     }
 
     buildTypes {
@@ -26,17 +31,17 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = BuildConfig.javaVersion
-        targetCompatibility = BuildConfig.javaVersion
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = BuildConfig.kotlinJvmTarget
+        jvmTarget = "11"
     }
     buildFeatures {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = Deps.Versions.composeVersion
+        kotlinCompilerExtensionVersion = composeVersion
     }
     packagingOptions {
         resources.excludes.apply {
@@ -47,19 +52,14 @@ android {
 }
 
 dependencies {
-    implementation(Deps.AndroidX.coreKtx)
-    implementation(Deps.AndroidX.composeUi)
-    implementation(Deps.AndroidX.material)
-    implementation(Deps.AndroidX.material3)
-    implementation(Deps.AndroidX.recyclerview)
-    implementation(Deps.AndroidX.activityCompose)
-    implementation(Deps.AndroidX.lifecycleRuntime)
-    implementation(Deps.AndroidX.navigationCompose)
-    implementation(Deps.AndroidX.uiToolingPreview)
-    debugImplementation(Deps.AndroidX.uiTooling)
-
-    implementation(Deps.Http.okHttp)
-    implementation(Deps.Http.retrofit)
-    implementation(Deps.Http.retrofitConverter)
-    implementation(Deps.Http.cookieJar)
+    implementation("androidx.core:core-ktx:$coreKtxVersion")
+    implementation("androidx.compose.ui:ui:$composeVersion")
+    implementation("androidx.compose.material:material:$composeVersion")
+    implementation("androidx.compose.material3:material3:$material3Version")
+    implementation("androidx.recyclerview:recyclerview:$recyclerviewVersion")
+    implementation("androidx.activity:activity-compose:$activityComposeVersion")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion")
+    implementation("androidx.navigation:navigation-compose:$navigationVersion")
+    implementation("androidx.compose.ui:ui-tooling-preview:$composeVersion")
+    debugImplementation("androidx.compose.ui:ui-tooling:$composeVersion")
 }
