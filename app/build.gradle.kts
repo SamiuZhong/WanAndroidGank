@@ -55,19 +55,13 @@ android {
 dependencies {
     implementation("androidx.core:core-ktx:$coreKtxVersion")
     implementation("androidx.compose.ui:ui:$composeVersion")
-
     implementation("androidx.compose.material:material:$composeVersion")
     implementation("androidx.compose.ui:ui-tooling-preview:$composeVersion")
     debugImplementation("androidx.compose.ui:ui-tooling:$composeVersion")
     implementation("androidx.compose.material:material-icons-extended:$composeVersion")
-
     implementation("androidx.compose.material3:material3:$material3Version")
-    implementation("androidx.compose.material3:material3-window-size-class:$material3Version")
-
     implementation("androidx.recyclerview:recyclerview:$recyclerviewVersion")
     implementation("androidx.activity:activity-compose:$activityComposeVersion")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion")
     implementation("androidx.navigation:navigation-compose:$navigationVersion")
-
-    implementation("com.google.accompanist:accompanist-adaptive:$adaptiveVersion")
 }

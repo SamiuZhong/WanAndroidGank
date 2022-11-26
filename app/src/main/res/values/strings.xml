@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">玩安卓</string>
+    <string name="home">首页</string>
+    <string name="square">广场</string>
+    <string name="project">项目</string>
+    <string name="publish_account">公众号</string>
+    <string name="mine">我的</string>
 </resources>
