@@ -17,6 +17,7 @@ object WanRoute {
     const val PROJECTS = "Projects" // 项目
     const val PUBLISH_ACCOUNT = "PublishAccount"// 公众号
     const val MINE = "Mine" // 我的
+    const val BROWDER = "Browser" // WenView Page
 }
 
 data class WanTopLevelDestination(

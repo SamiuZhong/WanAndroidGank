@@ -6,8 +6,10 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.samiu.wangank.data.repository.HomeRepository
 import com.samiu.wangank.model.ArticleDTO
+import com.samiu.wangank.model.BannerDTO
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,13 +23,26 @@ class HomeViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _articles = MutableStateFlow<PagingData<ArticleDTO>>(PagingData.empty())
-    val articles = _articles
+    private val _banners = MutableStateFlow(emptyList<BannerDTO>())
 
-    fun getArticles() {
-        viewModelScope.launch {
-            repository.getHomeArticles().cachedIn(viewModelScope).collect {
-                    _articles.value = it
-                }
+    val articles = _articles
+    val banners = _banners
+
+    /**
+     * 获取首页文章列表
+     */
+    fun getArticles() = viewModelScope.launch {
+        repository.getHomeArticles().cachedIn(viewModelScope).collect {
+            _articles.value = it
+        }
+    }
+
+    /**
+     * 获取首页banner
+     */
+    fun getBanners() = viewModelScope.launch {
+        repository.getBanners().collectLatest {
+            _banners.value = it
         }
     }
 }

@@ -17,6 +17,7 @@ import com.samiu.wangank.ui.navigation.WanTopLevelDestination
 import com.samiu.wangank.ui.navigation.WanBottomNavigationBar
 import com.samiu.wangank.ui.navigation.WanNavigationActions
 import com.samiu.wangank.ui.navigation.WanRoute
+import com.samiu.wangank.ui.screens.base.BrowserScreen
 import com.samiu.wangank.ui.screens.home.HomeScreen
 import com.samiu.wangank.ui.screens.mine.MineScreen
 import com.samiu.wangank.ui.screens.project.ProjectScreen

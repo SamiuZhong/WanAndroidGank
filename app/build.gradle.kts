@@ -19,6 +19,7 @@ val hiltVersion: String by project
 val hiltComposeVersion: String by project
 val hiltCompilerVersion: String by project
 val pagingVersion: String by project
+val coilVersion: String by project
 
 android {
     compileSdk = 33
@@ -96,4 +97,7 @@ dependencies {
 
     // Paging3
     implementation("androidx.paging:paging-compose:$pagingVersion")
+
+    // Coil
+    implementation("io.coil-kt:coil-compose:$coilVersion")
 }

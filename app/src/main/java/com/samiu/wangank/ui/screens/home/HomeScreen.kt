@@ -2,19 +2,21 @@ package com.samiu.wangank.ui.screens.home
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Text
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
+import coil.compose.AsyncImage
 import com.samiu.wangank.model.ArticleDTO
-import com.samiu.wangank.ui.theme.wanTypography
+import com.samiu.wangank.model.BannerDTO
+import com.samiu.wangank.ui.components.ArticleItem
 
 /**
  * 首页
@@ -26,46 +28,39 @@ import com.samiu.wangank.ui.theme.wanTypography
 fun HomeScreen(
     navController: NavController, viewModel: HomeViewModel = hiltViewModel()
 ) {
+    val banners = viewModel.banners.collectAsState()
     val articles = viewModel.articles.collectAsLazyPagingItems()
+
+    viewModel.getBanners()
     viewModel.getArticles()
 
-    ListContent(list = articles)
+    ListContent(bannerList = banners.value, articleList = articles)
 }
 
 @Composable
-private fun ListContent(list: LazyPagingItems<ArticleDTO>) {
+private fun ListContent(bannerList: List<BannerDTO>, articleList: LazyPagingItems<ArticleDTO>) {
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
         contentPadding = PaddingValues(all = 12.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        items(items = list, key = { article: ArticleDTO ->
+        item {
+            LazyRow {
+                items(bannerList) { banner ->
+                    AsyncImage(
+                        modifier = Modifier
+                            .wrapContentHeight()
+                            .fillMaxWidth(),
+                        model = banner.imagePath,
+                        contentDescription = null
+                    )
+                }
+            }
+        }
+        items(items = articleList, key = { article: ArticleDTO ->
             article.id
         }) { article: ArticleDTO? ->
             article?.let { ArticleItem(article = it) }
         }
     }
-}
-
-@Composable
-private fun ArticleItem(
-    article: ArticleDTO
-) {
-    Box(
-        modifier = Modifier
-            .wrapContentHeight()
-            .fillMaxWidth()
-    ) {
-        Text(text = article.title, style = wanTypography.labelMedium)
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewItem() {
-    ArticleItem(
-        article = ArticleDTO(
-            title = "Hello World!"
-        )
-    )
 }
