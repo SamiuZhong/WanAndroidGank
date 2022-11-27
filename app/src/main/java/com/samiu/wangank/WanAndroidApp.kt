@@ -8,7 +8,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -18,7 +17,11 @@ import com.samiu.wangank.ui.navigation.WanTopLevelDestination
 import com.samiu.wangank.ui.navigation.WanBottomNavigationBar
 import com.samiu.wangank.ui.navigation.WanNavigationActions
 import com.samiu.wangank.ui.navigation.WanRoute
-import com.samiu.wangank.ui.screens.*
+import com.samiu.wangank.ui.screens.home.HomeScreen
+import com.samiu.wangank.ui.screens.mine.MineScreen
+import com.samiu.wangank.ui.screens.project.ProjectScreen
+import com.samiu.wangank.ui.screens.publich.PAccountScreen
+import com.samiu.wangank.ui.screens.square.SquareScreen
 
 /**
  * @author samiu 2022/11/25
@@ -84,10 +87,4 @@ private fun WanNavHost(
             MineScreen(navController = navController)
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewApp() {
-    WanAndroidApp()
 }

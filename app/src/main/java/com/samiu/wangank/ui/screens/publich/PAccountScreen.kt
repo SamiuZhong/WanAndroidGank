@@ -1,4 +1,4 @@
-package com.samiu.wangank.ui.screens
+package com.samiu.wangank.ui.screens.publich
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,23 +12,23 @@ import androidx.navigation.compose.rememberNavController
 import com.samiu.wangank.ui.theme.wanTypography
 
 /**
- * 开源项目
+ * 公众号
  *
  * @author samiu 2022/11/26
  * @email samiuzhong@outlook.com
  */
 @Composable
-fun ProjectScreen(
+fun PAccountScreen(
     navController: NavController,
     modifier: Modifier = Modifier
 ) {
     Box(modifier = modifier.fillMaxSize(), Alignment.Center) {
-        Text(text = "Projects", style = wanTypography.headlineMedium)
+        Text(text = "Publish Account", style = wanTypography.headlineMedium)
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewProject() {
-    ProjectScreen(navController = rememberNavController())
+fun PreviewPAccount() {
+    PAccountScreen(navController = rememberNavController())
 }

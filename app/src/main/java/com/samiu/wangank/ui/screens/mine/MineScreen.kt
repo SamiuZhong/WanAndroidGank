@@ -1,4 +1,4 @@
-package com.samiu.wangank.ui.screens
+package com.samiu.wangank.ui.screens.mine
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,23 +12,23 @@ import androidx.navigation.compose.rememberNavController
 import com.samiu.wangank.ui.theme.wanTypography
 
 /**
- * 首页
+ * 我的
  *
  * @author samiu 2022/11/26
  * @email samiuzhong@outlook.com
  */
 @Composable
-fun HomeScreen(
+fun MineScreen(
     navController: NavController,
     modifier: Modifier = Modifier
 ) {
     Box(modifier = modifier.fillMaxSize(), Alignment.Center) {
-        Text(text = "Home", style = wanTypography.headlineMedium)
+        Text(text = "Mine", style = wanTypography.headlineMedium)
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewHome() {
-    HomeScreen(navController = rememberNavController())
+fun PreviewMine() {
+    MineScreen(navController = rememberNavController())
 }

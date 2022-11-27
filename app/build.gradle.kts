@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     kotlin("android")
+    kotlin("kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 val coreKtxVersion: String by project
@@ -8,9 +10,15 @@ val composeVersion: String by project
 val material3Version: String by project
 val activityComposeVersion: String by project
 val lifecycleVersion: String by project
-val navigationVersion: String by project
+val navigationComposeVersion: String by project
 val recyclerviewVersion: String by project
-val adaptiveVersion: String by project
+val loggingInterceptorVersion: String by project
+val retrofitVersion: String by project
+val viewModelComposeVersion: String by project
+val hiltVersion: String by project
+val hiltComposeVersion: String by project
+val hiltCompilerVersion: String by project
+val pagingVersion: String by project
 
 android {
     compileSdk = 33
@@ -48,8 +56,13 @@ android {
         resources.excludes.apply {
             add("META-INF/AL2.0")
             add("META-INF/LGPL2.1")
+            add("META-INF/INDEX.LIST")
         }
     }
+}
+
+kapt {
+    correctErrorTypes = true
 }
 
 dependencies {
@@ -63,5 +76,24 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:$recyclerviewVersion")
     implementation("androidx.activity:activity-compose:$activityComposeVersion")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion")
-    implementation("androidx.navigation:navigation-compose:$navigationVersion")
+
+    // ViewModel Compose
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$viewModelComposeVersion")
+
+    // Navigation Compose
+    implementation("androidx.navigation:navigation-compose:$navigationComposeVersion")
+
+    // Hilt
+    implementation("com.google.dagger:hilt-android:$hiltVersion")
+    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
+    kapt("androidx.hilt:hilt-compiler:$hiltCompilerVersion")
+    implementation("androidx.hilt:hilt-navigation-compose:$hiltComposeVersion")
+
+    // Retrofit
+    implementation("com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
+
+    // Paging3
+    implementation("androidx.paging:paging-compose:$pagingVersion")
 }

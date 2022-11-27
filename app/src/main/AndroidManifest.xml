@@ -3,15 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.samiu.wangank">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".WanApplication"
         android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/logo_main"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.WanAndroidGank"
-        tools:targetApi="31">
+        tools:targetApi="32">
         <activity
             android:name=".MainActivity"
             android:exported="true"
