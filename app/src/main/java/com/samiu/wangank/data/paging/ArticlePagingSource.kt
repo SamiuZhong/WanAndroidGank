@@ -11,7 +11,7 @@ import com.samiu.wangank.model.ArticleDTO
  * @author samiu 2022/11/27
  * @email samiuzhong@outlook.com
  */
-class HomeArticlePagingSource(
+class ArticlePagingSource(
     private val apiService: WanApiService,
     private val initialPage: Int
 ) : PagingSource<Int, ArticleDTO>() {

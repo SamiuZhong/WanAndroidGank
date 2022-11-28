@@ -1,11 +1,17 @@
 package com.samiu.wangank.model
 
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.samiu.wangank.util.Constants.ARTICLE_TABLE
+
 /**
  * 首页文章列表
  *
  * @author samiu 2022/11/26
  * @email samiuzhong@outlook.com
  */
+@Entity(tableName = ARTICLE_TABLE)
 data class ArticleDTO(
     val adminAdd: Boolean = false,
     val apkLink: String = "",
@@ -21,6 +27,7 @@ data class ArticleDTO(
     val envelopePic: String = "",
     val fresh: Boolean = false,
     val host: String = "",
+    @PrimaryKey(autoGenerate = false)
     val id: Int = 0,
     val isAdminAdd: Boolean = false,
     val link: String = "",
@@ -36,6 +43,7 @@ data class ArticleDTO(
     val shareUser: String = "",
     val superChapterId: Int = 0,
     val superChapterName: String = "",
+    @Embedded
     val tags: List<TagDTO> = listOf(),
     val title: String = "",
     val type: Int = 0,
