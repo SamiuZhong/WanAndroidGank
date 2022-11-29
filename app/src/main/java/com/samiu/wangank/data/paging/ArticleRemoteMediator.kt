@@ -1,5 +1,6 @@
 package com.samiu.wangank.data.paging
 
+import android.util.Log
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
@@ -20,6 +21,10 @@ class ArticleRemoteMediator(
     private val database: WanDatabase,
     private val initialPage: Int
 ) : RemoteMediator<Int, ArticleDTO>() {
+
+    companion object{
+        private const val TAG = "ArticleRemoteMediator##";
+    }
 
     private val articleDao = database.articleDao()
     private val remoteKeysDao = database.articleRemoteKeysDao()
@@ -50,6 +55,8 @@ class ArticleRemoteMediator(
                 }
             }
 
+            Log.d(TAG, "=================================================================================")
+            Log.d(TAG, "load: current page is $currentPage")
             val response = apiService.getHomeArticles(currentPage)
             val endOfPaginationReached = response.data.over
 
@@ -63,11 +70,13 @@ class ArticleRemoteMediator(
                 }
                 val keys = response.data.datas.map { article ->
                     ArticleRemoteKeys(
-                        id = article.id,
+                        id = article.sortId,
                         prevPage = prevPage,
                         nextPage = nextPage
                     )
                 }
+                Log.d(TAG, "load: add remote keys = $keys")
+                Log.d(TAG, "load: add article = ${response.data}")
                 remoteKeysDao.addAllRemoteKeys(keys)
                 articleDao.addArticles(response.data.datas)
             }
@@ -80,8 +89,11 @@ class ArticleRemoteMediator(
     private suspend fun getRemoteKeyClosestToCurrentPosition(
         state: PagingState<Int, ArticleDTO>
     ): ArticleRemoteKeys? {
+        Log.d(TAG, "getRemoteKeyClosestToCurrentPosition: ")
         return state.anchorPosition?.let { position ->
-            state.closestItemToPosition(position)?.id?.let { id ->
+            Log.d(TAG, "getRemoteKeyClosestToCurrentPosition: position = $position")
+            state.closestItemToPosition(position)?.sortId?.let { id ->
+                Log.d(TAG, "getRemoteKeyClosestToCurrentPosition: id = $id")
                 remoteKeysDao.getRemoteKeys(id = id)
             }
         }
@@ -90,17 +102,21 @@ class ArticleRemoteMediator(
     private suspend fun getRemoteKeyForFirstItem(
         state: PagingState<Int, ArticleDTO>
     ): ArticleRemoteKeys? {
+        Log.d(TAG, "getRemoteKeyForFirstItem: ")
         return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()
             ?.let { article ->
-                remoteKeysDao.getRemoteKeys(id = article.id)
+                Log.d(TAG, "getRemoteKeyForFirstItem: id = ${article.sortId}")
+                remoteKeysDao.getRemoteKeys(id = article.sortId)
             }
     }
 
     private suspend fun getRemoteKeyForLastItem(
         state: PagingState<Int, ArticleDTO>
     ): ArticleRemoteKeys? {
+        Log.d(TAG, "getRemoteKeyForLastItem: ")
         return state.pages.lastOrNull { it.data.isNotEmpty() }?.data?.lastOrNull()?.let { article ->
-            remoteKeysDao.getRemoteKeys(id = article.id)
+            Log.d(TAG, "getRemoteKeyForLastItem: id = ${article.sortId}")
+            remoteKeysDao.getRemoteKeys(id = article.sortId)
         }
     }
 }

@@ -16,8 +16,8 @@ import com.samiu.wangank.util.Constants.ARTICLE_TABLE
 @TypeConverters(TagDTOConvert::class)
 data class ArticleDTO(
 
-    @PrimaryKey(autoGenerate = false)
-    val id: Int = 0,
+    @PrimaryKey(autoGenerate = true)
+    val sortId: Int,
 
     @SerializedName("adminAdd")
     val adminAddX: Boolean = false,
@@ -25,6 +25,7 @@ data class ArticleDTO(
     @SerializedName("isAdminAdd")
     val adminAddY: Boolean = false,
 
+    val id: Int = 0,
     val apkLink: String = "",
     val audit: Int = 0,
     val author: String = "",
