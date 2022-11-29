@@ -29,10 +29,11 @@ fun HomeScreen(
     navController: NavController, viewModel: HomeViewModel = hiltViewModel()
 ) {
     val banners = viewModel.banners.collectAsState()
-    val articles = viewModel.articles.collectAsLazyPagingItems()
-
     viewModel.getBanners()
-    viewModel.getArticles()
+
+//    val articles = viewModel.articles.collectAsLazyPagingItems()
+//    viewModel.getArticles()
+    val articles = viewModel.getArticles.collectAsLazyPagingItems()
 
     ListContent(bannerList = banners.value, articleList = articles)
 }

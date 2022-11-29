@@ -28,14 +28,16 @@ class HomeViewModel @Inject constructor(
     val articles = _articles
     val banners = _banners
 
-    /**
-     * 获取首页文章列表
-     */
-    fun getArticles() = viewModelScope.launch {
-        repository.getHomeArticles().cachedIn(viewModelScope).collect {
-            _articles.value = it
-        }
-    }
+//    /**
+//     * 获取首页文章列表
+//     */
+//    fun getArticles() = viewModelScope.launch {
+//        repository.getHomeArticles().cachedIn(viewModelScope).collect {
+//            _articles.value = it
+//        }
+//    }
+
+    val getArticles = repository.getHomeArticles()
 
     /**
      * 获取首页banner

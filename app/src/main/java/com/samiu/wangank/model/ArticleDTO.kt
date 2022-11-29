@@ -1,8 +1,9 @@
 package com.samiu.wangank.model
 
-import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.google.gson.annotations.SerializedName
 import com.samiu.wangank.util.Constants.ARTICLE_TABLE
 
 /**
@@ -12,8 +13,18 @@ import com.samiu.wangank.util.Constants.ARTICLE_TABLE
  * @email samiuzhong@outlook.com
  */
 @Entity(tableName = ARTICLE_TABLE)
+@TypeConverters(TagDTOConvert::class)
 data class ArticleDTO(
-    val adminAdd: Boolean = false,
+
+    @PrimaryKey(autoGenerate = false)
+    val id: Int = 0,
+
+    @SerializedName("adminAdd")
+    val adminAddX: Boolean = false,
+
+    @SerializedName("isAdminAdd")
+    val adminAddY: Boolean = false,
+
     val apkLink: String = "",
     val audit: Int = 0,
     val author: String = "",
@@ -27,9 +38,6 @@ data class ArticleDTO(
     val envelopePic: String = "",
     val fresh: Boolean = false,
     val host: String = "",
-    @PrimaryKey(autoGenerate = false)
-    val id: Int = 0,
-    val isAdminAdd: Boolean = false,
     val link: String = "",
     val niceDate: String = "",
     val niceShareDate: String = "",
@@ -43,16 +51,10 @@ data class ArticleDTO(
     val shareUser: String = "",
     val superChapterId: Int = 0,
     val superChapterName: String = "",
-    @Embedded
     val tags: List<TagDTO> = listOf(),
     val title: String = "",
     val type: Int = 0,
     val userId: Int = 0,
     val visible: Int = 0,
     val zan: Int = 0
-)
-
-data class TagDTO(
-    val name: String = "",
-    val url: String = ""
 )

@@ -27,43 +27,54 @@ class ArticleRemoteMediator(
     override suspend fun load(
         loadType: LoadType, state: PagingState<Int, ArticleDTO>
     ): MediatorResult {
-        val currentPage = when (loadType) {
-            LoadType.REFRESH -> {
-                val remoteKeys = getRemoteKeyClosestToCurrentPosition(state)
-                remoteKeys?.nextPage?.minus(1) ?: initialPage
-            }
-            LoadType.PREPEND -> {
-                val remoteKeys = getRemoteKeyForFirstItem(state)
-                val prePage = remoteKeys?.prevPage ?: return MediatorResult.Success(
-                    endOfPaginationReached = remoteKeys != null
-                )
-                prePage
-            }
-            LoadType.APPEND -> {
-                val remoteKeys = getRemoteKeyForLastItem(state)
-                val nextPage = remoteKeys?.nextPage
-                    ?: return MediatorResult.Success(
+        return try {
+            val currentPage = when (loadType) {
+                LoadType.REFRESH -> {
+                    val remoteKeys = getRemoteKeyClosestToCurrentPosition(state)
+                    remoteKeys?.nextPage?.minus(1) ?: initialPage
+                }
+                LoadType.PREPEND -> {
+                    val remoteKeys = getRemoteKeyForFirstItem(state)
+                    val prevPage = remoteKeys?.prevPage ?: return MediatorResult.Success(
                         endOfPaginationReached = remoteKeys != null
                     )
-                nextPage
+                    prevPage
+                }
+                LoadType.APPEND -> {
+                    val remoteKeys = getRemoteKeyForLastItem(state)
+                    val nextPage = remoteKeys?.nextPage
+                        ?: return MediatorResult.Success(
+                            endOfPaginationReached = remoteKeys != null
+                        )
+                    nextPage
+                }
             }
-        }
 
-        val response = apiService.getHomeArticles(page = currentPage)
-        val endOfPaginationReached = response.data.over
+            val response = apiService.getHomeArticles(currentPage)
+            val endOfPaginationReached = response.data.over
 
-        val prevKey = if (currentPage == initialPage) null else currentPage - 1
-        val nextKey = if (endOfPaginationReached) null else currentPage + 1
+            val prevPage = if (currentPage == initialPage) null else currentPage - 1
+            val nextPage = if (endOfPaginationReached) null else currentPage + 1
 
-        database.withTransaction {
-            if (loadType==LoadType.REFRESH){
-                articleDao.deleteAllArticles()
-                remoteKeysDao.deleteAllRemoteKeys()
+            database.withTransaction {
+                if (loadType == LoadType.REFRESH) {
+                    articleDao.deleteAllArticles()
+                    remoteKeysDao.deleteAllRemoteKeys()
+                }
+                val keys = response.data.datas.map { article ->
+                    ArticleRemoteKeys(
+                        id = article.id,
+                        prevPage = prevPage,
+                        nextPage = nextPage
+                    )
+                }
+                remoteKeysDao.addAllRemoteKeys(keys)
+                articleDao.addArticles(response.data.datas)
             }
-            val keys = response.data
+            MediatorResult.Success(endOfPaginationReached)
+        } catch (e: Exception) {
+            return MediatorResult.Error(e)
         }
-
-        return MediatorResult.Error(Exception())
     }
 
     private suspend fun getRemoteKeyClosestToCurrentPosition(
