@@ -20,7 +20,6 @@ val hiltComposeVersion: String by project
 val hiltCompilerVersion: String by project
 val pagingVersion: String by project
 val coilVersion: String by project
-val roomVersion: String by project
 
 android {
     compileSdk = 33
@@ -31,16 +30,6 @@ android {
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
-
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments += mapOf(
-                    "room.schemaLocation" to "$projectDir/schemas",
-                    "room.incremental" to "true",
-                    "room.expandProjection" to "true"
-                )
-            }
-        }
     }
 
     buildTypes {
@@ -111,10 +100,4 @@ dependencies {
 
     // Coil
     implementation("io.coil-kt:coil-compose:$coilVersion")
-
-    // Room
-    implementation("androidx.room:room-runtime:$roomVersion")
-    kapt("androidx.room:room-compiler:$roomVersion")
-    implementation("androidx.room:room-ktx:$roomVersion")
-    implementation("androidx.room:room-paging:$roomVersion")
 }

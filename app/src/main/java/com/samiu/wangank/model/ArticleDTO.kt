@@ -1,10 +1,6 @@
 package com.samiu.wangank.model
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
-import com.samiu.wangank.util.Constants.ARTICLE_TABLE
 
 /**
  * 首页文章列表
@@ -12,12 +8,7 @@ import com.samiu.wangank.util.Constants.ARTICLE_TABLE
  * @author samiu 2022/11/26
  * @email samiuzhong@outlook.com
  */
-@Entity(tableName = ARTICLE_TABLE)
-@TypeConverters(TagDTOConvert::class)
 data class ArticleDTO(
-
-    @PrimaryKey(autoGenerate = true)
-    val sortId: Int,
 
     @SerializedName("adminAdd")
     val adminAddX: Boolean = false,

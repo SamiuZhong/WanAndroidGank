@@ -4,7 +4,7 @@ package com.samiu.wangank.model
  * @author samiu 2022/11/26
  * @email samiuzhong@outlook.com
  */
-data class PageInfo<T>(
+data class PageWrapper<T>(
     val curPage: Int = 0,
     val datas: List<T> = listOf(),
     val offset: Int = 0,

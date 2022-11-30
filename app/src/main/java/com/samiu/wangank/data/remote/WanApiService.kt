@@ -2,7 +2,7 @@ package com.samiu.wangank.data.remote
 
 import com.samiu.wangank.model.ArticleDTO
 import com.samiu.wangank.model.BannerDTO
-import com.samiu.wangank.model.PageInfo
+import com.samiu.wangank.model.PageWrapper
 import com.samiu.wangank.model.WanResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -19,7 +19,7 @@ interface WanApiService {
     @GET("/article/list/{page}/json")
     suspend fun getHomeArticles(
         @Path("page") page: Int
-    ): WanResponse<PageInfo<ArticleDTO>>
+    ): WanResponse<PageWrapper<ArticleDTO>>
 
     /**
      * 首页banner

@@ -32,7 +32,6 @@ fun ArticleItem(
 fun PreviewItem() {
     ArticleItem(
         article = ArticleDTO(
-            sortId = 0,
             title = "Hello World!"
         )
     )

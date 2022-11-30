@@ -31,9 +31,8 @@ fun HomeScreen(
     val banners = viewModel.banners.collectAsState()
     viewModel.getBanners()
 
-//    val articles = viewModel.articles.collectAsLazyPagingItems()
-//    viewModel.getArticles()
-    val articles = viewModel.getArticles.collectAsLazyPagingItems()
+    val articles = viewModel.articles.collectAsLazyPagingItems()
+    viewModel.getArticles()
 
     ListContent(bannerList = banners.value, articleList = articles)
 }
