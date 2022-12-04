@@ -10,11 +10,11 @@ val composeVersion: String by project
 val material3Version: String by project
 val activityComposeVersion: String by project
 val lifecycleVersion: String by project
+val kotlinxCoroutinesVersion: String by project
 val navigationComposeVersion: String by project
 val recyclerviewVersion: String by project
 val loggingInterceptorVersion: String by project
 val retrofitVersion: String by project
-val viewModelComposeVersion: String by project
 val hiltVersion: String by project
 val hiltComposeVersion: String by project
 val hiltCompilerVersion: String by project
@@ -76,10 +76,16 @@ dependencies {
     implementation("androidx.compose.material3:material3:$material3Version")
     implementation("androidx.recyclerview:recyclerview:$recyclerviewVersion")
     implementation("androidx.activity:activity-compose:$activityComposeVersion")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion")
 
-    // ViewModel Compose
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$viewModelComposeVersion")
+    // Lifecycle
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:$lifecycleVersion")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycleVersion")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycleVersion")
+
+    // Kotlinx Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxCoroutinesVersion")
 
     // Navigation Compose
     implementation("androidx.navigation:navigation-compose:$navigationComposeVersion")
@@ -87,7 +93,6 @@ dependencies {
     // Hilt
     implementation("com.google.dagger:hilt-android:$hiltVersion")
     kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
-//    kapt("androidx.hilt:hilt-compiler:$hiltCompilerVersion")
     implementation("androidx.hilt:hilt-navigation-compose:$hiltComposeVersion")
 
     // Retrofit

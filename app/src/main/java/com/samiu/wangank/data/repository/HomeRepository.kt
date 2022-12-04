@@ -27,7 +27,7 @@ class HomeRepository @Inject constructor(
     /**
      * 获取首页文章列表
      */
-    fun getHomeArticles(): Flow<PagingData<ArticleDTO>> {
+    fun getHomeArticles(): ArticleFlow {
         return Pager(config = PagingConfig(pageSize), pagingSourceFactory = {
             ArticlePagingSource(apiService, initialPage)
         }).flow
@@ -43,3 +43,5 @@ class HomeRepository @Inject constructor(
         }
     }.flowOn(Dispatchers.IO)
 }
+
+typealias ArticleFlow = Flow<PagingData<ArticleDTO>>
