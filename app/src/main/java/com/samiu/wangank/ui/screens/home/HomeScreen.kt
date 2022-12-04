@@ -17,6 +17,7 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import com.samiu.wangank.model.ArticleDTO
 import com.samiu.wangank.ui.components.ArticleItem
+import com.samiu.wangank.ui.components.WanSearchBar
 
 /**
  * 首页
@@ -44,6 +45,9 @@ private fun ListContent(lazyListState: LazyListState, pagingItems: LazyPagingIte
         contentPadding = PaddingValues(all = 12.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
+        item {
+            WanSearchBar(modifier = Modifier.fillMaxWidth())
+        }
         items(items = pagingItems, key = { article: ArticleDTO ->
             article.id
         }) { article: ArticleDTO? ->
