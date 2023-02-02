@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/space_10">
+
+    <TextView
+        android:id="@+id/system_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_18"
+        tools:text="撒娇欧舒丹" />
+
+    <com.nex3z.flowlayout.FlowLayout
+        android:layout_marginTop="6dp"
+        android:id="@+id/system_flow_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:flChildSpacing="6dp"
+        app:flChildSpacingForLastRow="align"
+        app:flRowSpacing="8dp" />
+</LinearLayout>

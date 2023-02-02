@@ -1,0 +1,17 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.Material" />
+
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:background">@drawable/splash</item>
+    </style>
+
+    <style name="SearchTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/reply_blue_700</item>
+        <item name="colorPrimaryDark">@color/reply_blue_700</item>
+        <item name="colorSecondary">@color/reply_orange_500</item>
+        <item name="colorSecondaryVariant">@color/reply_orange_400</item>
+        <item name="android:colorBackground">@color/reply_blue_50</item>
+    </style>
+</resources>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="article"
+            type="com.samiu.wangank.bean.Article" />
+
+        <variable
+            name="listener"
+            type="com.samiu.wangank.ui.home.adapter.WanArticleAdapter.ArticleAdapterListener" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="4dp"
+        android:layout_marginVertical="2dp"
+        android:background="?attr/colorSecondary">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{()->listener.onArticleClick(article)}"
+            app:cardPreventCornerOverlap="false">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/space_20">
+
+                <TextView
+                    android:id="@+id/item_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_18"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="测试数据测试数据" />
+
+                <ImageView
+                    android:id="@+id/ic_time"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/ic_time"
+                    app:layout_constraintBottom_toBottomOf="@id/item_nice_data"
+                    app:layout_constraintStart_toStartOf="@id/item_title"
+                    app:layout_constraintTop_toTopOf="@id/item_nice_data" />
+
+                <TextView
+                    android:id="@+id/item_nice_data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@{article.niceDate}"
+                    android:textColor="@color/default_prompt_text_color_9496A4"
+                    android:textSize="@dimen/text_size_12"
+                    app:layout_constraintStart_toEndOf="@id/ic_time"
+                    app:layout_constraintTop_toBottomOf="@id/item_title"
+                    tools:text="4小时前" />
+
+                <ImageView
+                    android:id="@+id/ic_author"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_marginStart="14dp"
+                    android:src="@drawable/ic_author"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/item_nice_data" />
+
+                <TextView
+                    android:id="@+id/item_author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:textColor="@color/default_prompt_text_color_9496A4"
+                    android:textSize="@dimen/text_size_12"
+                    app:layout_constraintBaseline_toBaselineOf="@id/item_nice_data"
+                    app:layout_constraintStart_toEndOf="@id/ic_author"
+                    tools:text="机智的张尼玛" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </FrameLayout>
+</layout>

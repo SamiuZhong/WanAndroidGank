@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<notices>
+    <notice>
+        <name>koin</name>
+        <url>https://github.com/InsertKoinIO/koin</url>
+        <copyright />
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>Retrofit</name>
+        <url>https://github.com/square/retrofit</url>
+        <copyright>Copyright 2013 Square, Inc.</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>OkHttp</name>
+        <url>https://github.com/square/okhttp</url>
+        <copyright>Copyright 2013 Square, Inc</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>PersistentCookieJar</name>
+        <url>https://github.com/franmontiel/PersistentCookieJar</url>
+        <copyright>Copyright 2013 Francisco José Montiel Navarro</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>AndroidAutoSize</name>
+        <url>https://github.com/JessYanCoding/AndroidAutoSize</url>
+        <copyright>Copyright 2013 jessyan</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>SmartRefreshLayout</name>
+        <url>https://github.com/scwang90/SmartRefreshLayout</url>
+        <copyright>Copyright 2013 scwang90</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>FlowLayout</name>
+        <url>https://github.com/nex3z/FlowLayout</url>
+        <copyright>Copyright 2013 nex3z</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>banner</name>
+        <url>https://github.com/youth5201314/banner</url>
+        <copyright />
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>material-dialogs</name>
+        <url>https://github.com/afollestad/material-dialogs</url>
+        <copyright />
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>LicensesDialog</name>
+        <url>https://github.com/PSDev/LicensesDialog</url>
+        <copyright>Copyright 2013 Philip Schiffer</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+</notices>
