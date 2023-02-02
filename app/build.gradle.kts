@@ -1,8 +1,11 @@
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    kotlin("android")
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
+@Suppress("UnstableApiUsage")
 android {
     namespace = "com.samiu.wangank"
     compileSdk = 33
@@ -15,7 +18,6 @@ android {
         versionName = "1.0"
     }
 
-    @Suppress("UnstableApiUsage")
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -24,17 +26,30 @@ android {
             )
         }
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+
     kotlinOptions {
         jvmTarget = "17"
     }
+}
+
+kapt {
+    correctErrorTypes = true
 }
 
 // library versions are in PROJECT_ROOT/gradle/libs.versions.toml
 dependencies {
     implementation(libs.bundles.androidx)
     implementation(libs.android.material)
+    implementation(libs.dagger.hilt)
+    kapt(libs.dagger.hilt.compiler)
+    implementation(libs.bundles.retrofit)
 }
