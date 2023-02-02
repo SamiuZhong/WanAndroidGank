@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/main_page_0"
+        android:icon="@drawable/ic_star_checkable_24"
+        android:title="@string/front" />
+    <item
+        android:id="@+id/main_page_1"
+        android:icon="@drawable/ic_star_checkable_24"
+        android:title="@string/square" />
+    <item
+        android:id="@+id/main_page_2"
+        android:icon="@drawable/ic_star_checkable_24"
+        android:title="@string/project" />
+</menu>

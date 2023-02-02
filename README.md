@@ -1,3 +1,3 @@
-# WanAndroid_Gank
+# WanAndroidGank
 
 Coming soon...
