@@ -16,6 +16,16 @@ android {
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += mapOf(
+                    "room.schemaLocation" to "$projectDir/schemas",
+                    "room.incremental" to "true",
+                    "room.expandProjection" to "true"
+                )
+            }
+        }
     }
 
     buildTypes {
@@ -49,7 +59,12 @@ kapt {
 dependencies {
     implementation(libs.bundles.androidx)
     implementation(libs.android.material)
+
     implementation(libs.dagger.hilt)
     kapt(libs.dagger.hilt.compiler)
+    implementation(libs.bundles.room)
+    kapt(libs.room.compiler)
+    implementation(libs.paging.runtime)
+
     implementation(libs.bundles.retrofit)
 }
