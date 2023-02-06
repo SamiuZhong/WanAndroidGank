@@ -1,5 +1,6 @@
 package com.samiu.wangank.model
 
+import androidx.recyclerview.widget.DiffUtil
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
@@ -59,3 +60,11 @@ data class ArticleDTO(
     val visible: Int = 0,
     val zan: Int = 0
 )
+
+object ArticleDiff : DiffUtil.ItemCallback<ArticleDTO>() {
+    override fun areItemsTheSame(oldItem: ArticleDTO, newItem: ArticleDTO) =
+        oldItem.id == newItem.id
+
+    override fun areContentsTheSame(oldItem: ArticleDTO, newItem: ArticleDTO) =
+        oldItem.link == newItem.link
+}

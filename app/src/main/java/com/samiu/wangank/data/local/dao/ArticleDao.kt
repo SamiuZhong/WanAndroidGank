@@ -14,12 +14,12 @@ import com.samiu.wangank.model.ArticleDTO
 @Dao
 interface ArticleDao {
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(articles: List<ArticleDTO>)
+
     @Query("SELECT * FROM article_table")
     fun getAllArticles(): PagingSource<Int, ArticleDTO>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addAllArticles(articles: List<ArticleDTO>)
-
     @Query("DELETE FROM article_table")
-    suspend fun deleteAllImages()
+    suspend fun clearAll()
 }

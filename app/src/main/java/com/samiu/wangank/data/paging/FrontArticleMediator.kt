@@ -12,7 +12,6 @@ import com.samiu.wangank.data.remote.WanApiService
 import com.samiu.wangank.model.ArticleDTO
 import com.samiu.wangank.model.ArticleRemoteKeys
 import com.samiu.wangank.utils.Constants
-import javax.inject.Inject
 
 /**
  * 首页文章列表
@@ -29,85 +28,99 @@ class FrontArticleMediator(
     private val remoteKeysDao: ArticleRemoteKeysDao
 ) : RemoteMediator<Int, ArticleDTO>() {
 
+    override suspend fun initialize(): InitializeAction {
+        return InitializeAction.LAUNCH_INITIAL_REFRESH
+    }
+
     override suspend fun load(
         loadType: LoadType, state: PagingState<Int, ArticleDTO>
     ): MediatorResult {
-        try {
-            val initialPage = Constants.Network.PAGER_INITIAL_PAGE
-            val currentPage = when (loadType) {
-                LoadType.REFRESH -> {
-                    val remoteKeys = getRemoteKeyClosestToCurrentPosition(state)
-                    remoteKeys?.nextPage?.minus(1) ?: initialPage
+        val initialPage = Constants.Network.PAGER_INITIAL_PAGE
+        val currentPage: Int =
+            when (val pageKeyData = getKeyPageData(initialPage, loadType, state)) {
+                is MediatorResult.Success -> {
+                    return pageKeyData
                 }
-                LoadType.PREPEND -> {
-                    val remoteKeys = getRemoteKeysForFirstItem(state)
-                    val prevPage = remoteKeys?.prevPage ?: return MediatorResult.Success(
-                        endOfPaginationReached = remoteKeys != null
-                    )
-                    prevPage
-                }
-                LoadType.APPEND -> {
-                    val remoteKeys = getRemoteKeyForLastItem(state)
-                    val nextPage = remoteKeys?.nextPage ?: return MediatorResult.Success(
-                        endOfPaginationReached = remoteKeys != null
-                    )
-                    nextPage
+                else -> {
+                    pageKeyData as Int
                 }
             }
-            val response = service.getFrontArticles(page = currentPage)
-            val endOfPaginationReached = response.data.datas.isEmpty()
+        try {
+            val response = service.getFrontArticles(currentPage)
             val articleList: List<ArticleDTO> = response.data.datas
+            val endOfList = articleList.isEmpty()
 
             val prevPage = if (currentPage == initialPage) null else currentPage.minus(1)
-            val nextPage = if (endOfPaginationReached) null else currentPage.plus(1)
+            val nextPage = if (endOfList) null else currentPage.plus(1)
 
             database.withTransaction {
                 if (loadType == LoadType.REFRESH) {
-                    articleDao.deleteAllImages()
-                    remoteKeysDao.deleteAllRemoteKeys()
+                    articleDao.clearAll()
+                    remoteKeysDao.clearAll()
                 }
                 val keys = articleList.map { article ->
-                    ArticleRemoteKeys(
-                        id = article.id,
-                        prevPage = prevPage,
-                        nextPage = nextPage
-                    )
+                    ArticleRemoteKeys(article.id, prevPage, nextPage)
                 }
-                remoteKeysDao.addAllRemoteKeys(remoteKeys = keys)
-                articleDao.addAllArticles(articles = articleList)
+                remoteKeysDao.insertRemote(keys)
+                articleDao.insert(articleList)
             }
-            return MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
+            return MediatorResult.Success(endOfPaginationReached = endOfList)
         } catch (e: Exception) {
             return MediatorResult.Error(e)
         }
     }
 
-    private suspend fun getRemoteKeysForFirstItem(
+    private suspend fun getKeyPageData(
+        initialPage: Int, loadType: LoadType, state: PagingState<Int, ArticleDTO>
+    ): Any {
+        return when (loadType) {
+            LoadType.REFRESH -> {
+                val remoteKeys = getRefreshRemoteKey(state)
+                remoteKeys?.nextPage?.minus(1) ?: initialPage
+            }
+            LoadType.PREPEND -> {
+                val remoteKeys = getFirstRemoteKey(state)
+                val prevPage = remoteKeys?.prevPage ?: return MediatorResult.Success(
+                    endOfPaginationReached = false
+                )
+                prevPage
+            }
+            LoadType.APPEND -> {
+                val remoteKeys = getLastRemoteKey(state)
+                val nextPage = remoteKeys?.nextPage ?: return MediatorResult.Success(
+                    endOfPaginationReached = true
+                )
+                nextPage
+            }
+        }
+    }
+
+    private suspend fun getFirstRemoteKey(
         state: PagingState<Int, ArticleDTO>
     ): ArticleRemoteKeys? {
         return state.pages.firstOrNull {
             it.data.isNotEmpty()
         }?.data?.firstOrNull()?.let { article ->
-            remoteKeysDao.getRemoteKeys(id = article.id)
+            remoteKeysDao.getRemoteKeys(article.id)
         }
     }
 
-    private suspend fun getRemoteKeyForLastItem(
+    private suspend fun getLastRemoteKey(
         state: PagingState<Int, ArticleDTO>
     ): ArticleRemoteKeys? {
         return state.pages.lastOrNull {
             it.data.isNotEmpty()
         }?.data?.lastOrNull()?.let { article ->
-            remoteKeysDao.getRemoteKeys(id = article.id)
+            remoteKeysDao.getRemoteKeys(article.id)
         }
     }
 
-    private suspend fun getRemoteKeyClosestToCurrentPosition(
+    private suspend fun getRefreshRemoteKey(
         state: PagingState<Int, ArticleDTO>
     ): ArticleRemoteKeys? {
         return state.anchorPosition?.let { position ->
             state.closestItemToPosition(position)?.id?.let { id ->
-                remoteKeysDao.getRemoteKeys(id = id)
+                remoteKeysDao.getRemoteKeys(id)
             }
         }
     }

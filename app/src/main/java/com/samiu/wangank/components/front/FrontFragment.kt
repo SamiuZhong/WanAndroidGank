@@ -1,6 +1,5 @@
 package com.samiu.wangank.components.front
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -8,6 +7,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.samiu.wangank.R
 import com.samiu.wangank.databinding.FragmentTimelineBinding
+import com.samiu.wangank.model.ArticleDTO
+import com.samiu.wangank.ui.adapter.ArticleAdapter
 import com.samiu.wangank.utils.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -19,21 +20,30 @@ import kotlinx.coroutines.flow.collectLatest
  * @email samiuzhong@outlook.com
  */
 @AndroidEntryPoint
-class FrontFragment : Fragment(R.layout.fragment_timeline) {
+class FrontFragment : Fragment(R.layout.fragment_timeline), ArticleAdapter.ArticleListener {
 
     private val binding by viewBinding(FragmentTimelineBinding::bind)
     private val viewModel: FrontViewModel by viewModels()
 
+    private lateinit var mAdapter: ArticleAdapter
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.timelineRoot.setBackgroundColor(Color.BLUE)
+        initAdapter()
+        viewModel.printTest()
     }
 
     private fun initAdapter() {
-        lifecycleScope.launchWhenCreated {
-            viewModel.frontArticles.collectLatest {
-
-            }
+        mAdapter = ArticleAdapter(this)
+        binding.timelineRecycler.adapter = mAdapter
+        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
+//            viewModel.frontArticles.collectLatest {
+//                mAdapter.submitData(it)
+//            }
         }
+    }
+
+    override fun onItemClick(article: ArticleDTO) {
+
     }
 }

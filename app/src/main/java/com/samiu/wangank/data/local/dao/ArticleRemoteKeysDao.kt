@@ -13,12 +13,12 @@ import com.samiu.wangank.model.ArticleRemoteKeys
 @Dao
 interface ArticleRemoteKeysDao {
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertRemote(remoteKeys: List<ArticleRemoteKeys>)
+
     @Query("SELECT * from article_remote_keys_table WHERE id = :id")
     suspend fun getRemoteKeys(id: Int): ArticleRemoteKeys
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addAllRemoteKeys(remoteKeys: List<ArticleRemoteKeys>)
-
     @Query("DELETE FROM article_remote_keys_table")
-    suspend fun deleteAllRemoteKeys()
+    suspend fun clearAll()
 }

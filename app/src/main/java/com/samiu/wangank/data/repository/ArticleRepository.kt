@@ -1,9 +1,6 @@
 package com.samiu.wangank.data.repository
 
-import androidx.paging.ExperimentalPagingApi
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
+import androidx.paging.*
 import com.samiu.wangank.data.local.WanDatabase
 import com.samiu.wangank.data.local.dao.ArticleDao
 import com.samiu.wangank.data.local.dao.ArticleRemoteKeysDao
@@ -16,11 +13,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * @author samiu 2023/2/6
  * @email samiuzhong@outlook.com
  */
+@Singleton
 @OptIn(ExperimentalPagingApi::class)
 class ArticleRepository @Inject constructor(
     private val service: WanApiService,
@@ -32,14 +31,11 @@ class ArticleRepository @Inject constructor(
     /**
      * 获取首页文章列表
      */
-    fun getFrontArticles(): Flow<PagingData<ArticleDTO>> {
-        val sourceFactory = { articleDao.getAllArticles() }
-        return Pager(
-            config = PagingConfig(pageSize = Constants.Network.PAGER_SIZE),
-            remoteMediator = FrontArticleMediator(
-                service, database, articleDao, remoteKeysDao
-            ),
-            pagingSourceFactory = sourceFactory
-        ).flow
-    }
+    fun getFrontArticles(): Flow<PagingData<ArticleDTO>> = Pager(
+        config = PagingConfig(pageSize = Constants.Network.PAGER_SIZE),
+        remoteMediator = FrontArticleMediator(
+            service, database, articleDao, remoteKeysDao
+        ),
+        pagingSourceFactory = { articleDao.getAllArticles() }
+    ).flow
 }
