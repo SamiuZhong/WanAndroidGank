@@ -1,6 +1,11 @@
 package com.samiu.wangank.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
+import com.samiu.wangank.model.converters.Converters
+import com.samiu.wangank.utils.Constants
 
 /**
  * 首页文章列表
@@ -8,6 +13,8 @@ import com.google.gson.annotations.SerializedName
  * @author samiu 2023/2/2
  * @email samiuzhong@outlook.com
  */
+@Entity(tableName = Constants.Database.ARTICLE_TABLE)
+@TypeConverters(Converters::class)
 data class ArticleDTO(
 
     @SerializedName("adminAdd")
@@ -16,7 +23,9 @@ data class ArticleDTO(
     @SerializedName("isAdminAdd")
     val adminAddY: Boolean = false,
 
+    @PrimaryKey
     val id: Int = 0,
+
     val apkLink: String = "",
     val audit: Int = 0,
     val author: String = "",

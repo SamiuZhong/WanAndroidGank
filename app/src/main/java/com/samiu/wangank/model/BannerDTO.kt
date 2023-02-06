@@ -13,5 +13,4 @@ data class BannerDTO(
     val title: String = "",
     val type: Int = 0,
     val url: String = ""
-
 )

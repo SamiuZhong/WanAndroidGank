@@ -2,23 +2,21 @@ package com.samiu.wangank
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
-import com.google.android.material.navigation.NavigationView
-import com.google.android.material.theme.overlay.MaterialThemeOverlay
 import com.samiu.wangank.components.front.FrontFragment
 import com.samiu.wangank.components.project.ProjectFragment
 import com.samiu.wangank.components.square.SquareFragment
 import com.samiu.wangank.databinding.ActivityMainBinding
 import com.samiu.wangank.ui.adapter.MainPagerAdapter
 import com.samiu.wangank.utils.viewBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * @author samiu 2023/2/2
  * @email samiuzhong@outlook.com
  */
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val binding by viewBinding(ActivityMainBinding::inflate)

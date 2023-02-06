@@ -1,0 +1,270 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "3c1869a02b7030cf77ec6370d1a989a4",
+    "entities": [
+      {
+        "tableName": "article_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`adminAddX` INTEGER NOT NULL, `adminAddY` INTEGER NOT NULL, `id` INTEGER NOT NULL, `apkLink` TEXT NOT NULL, `audit` INTEGER NOT NULL, `author` TEXT NOT NULL, `canEdit` INTEGER NOT NULL, `chapterId` INTEGER NOT NULL, `chapterName` TEXT NOT NULL, `collect` INTEGER NOT NULL, `courseId` INTEGER NOT NULL, `desc` TEXT NOT NULL, `descMd` TEXT NOT NULL, `envelopePic` TEXT NOT NULL, `fresh` INTEGER NOT NULL, `host` TEXT NOT NULL, `link` TEXT NOT NULL, `niceDate` TEXT NOT NULL, `niceShareDate` TEXT NOT NULL, `origin` TEXT NOT NULL, `prefix` TEXT NOT NULL, `projectLink` TEXT NOT NULL, `publishTime` INTEGER NOT NULL, `realSuperChapterId` INTEGER NOT NULL, `selfVisible` INTEGER NOT NULL, `shareDate` INTEGER NOT NULL, `shareUser` TEXT NOT NULL, `superChapterId` INTEGER NOT NULL, `superChapterName` TEXT NOT NULL, `tags` TEXT NOT NULL, `title` TEXT NOT NULL, `type` INTEGER NOT NULL, `userId` INTEGER NOT NULL, `visible` INTEGER NOT NULL, `zan` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "adminAddX",
+            "columnName": "adminAddX",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "adminAddY",
+            "columnName": "adminAddY",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "apkLink",
+            "columnName": "apkLink",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "audit",
+            "columnName": "audit",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "author",
+            "columnName": "author",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "canEdit",
+            "columnName": "canEdit",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "chapterId",
+            "columnName": "chapterId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "chapterName",
+            "columnName": "chapterName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "collect",
+            "columnName": "collect",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "courseId",
+            "columnName": "courseId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "desc",
+            "columnName": "desc",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "descMd",
+            "columnName": "descMd",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "envelopePic",
+            "columnName": "envelopePic",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fresh",
+            "columnName": "fresh",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "host",
+            "columnName": "host",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "link",
+            "columnName": "link",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "niceDate",
+            "columnName": "niceDate",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "niceShareDate",
+            "columnName": "niceShareDate",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "origin",
+            "columnName": "origin",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "prefix",
+            "columnName": "prefix",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "projectLink",
+            "columnName": "projectLink",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "publishTime",
+            "columnName": "publishTime",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "realSuperChapterId",
+            "columnName": "realSuperChapterId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "selfVisible",
+            "columnName": "selfVisible",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "shareDate",
+            "columnName": "shareDate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "shareUser",
+            "columnName": "shareUser",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "superChapterId",
+            "columnName": "superChapterId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "superChapterName",
+            "columnName": "superChapterName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tags",
+            "columnName": "tags",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "userId",
+            "columnName": "userId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "visible",
+            "columnName": "visible",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "zan",
+            "columnName": "zan",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "article_remote_keys_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `prevPage` INTEGER, `nextPage` INTEGER, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "prevPage",
+            "columnName": "prevPage",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "nextPage",
+            "columnName": "nextPage",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3c1869a02b7030cf77ec6370d1a989a4')"
+    ]
+  }
+}

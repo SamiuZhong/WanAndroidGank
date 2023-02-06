@@ -3,17 +3,20 @@ androidGradlePlugin = "7.4.1"
 kotlinVersion = "1.8.0"
 androidxCore = "1.9.0"
 androidxAppcompat = "1.6.0"
+androidxFragmentKtx = "1.5.5"
 androidxConstraintlayout = "2.1.4"
 androidMaterial = "1.8.0"
 daggerHilt = "2.44"
 okhttp3Logging = "4.10.0"
 retrofit2 = "2.9.0"
 roomVersion = "2.5.0"
-pagingVersion="3.1.1"
+pagingVersion = "3.1.1"
+lifecycleVersion = "2.5.1"
 
 [libraries]
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidxCore" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidxAppcompat" }
+androidx-fragment_ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "androidxFragmentKtx" }
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidxConstraintlayout" }
 android-material = { module = "com.google.android.material:material", version.ref = "androidMaterial" }
 dagger-hilt = { module = "com.google.dagger:hilt-android", version.ref = "daggerHilt" }
@@ -26,9 +29,11 @@ room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomVer
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomVersion" }
 room-paging = { module = "androidx.room:room-paging", version.ref = "roomVersion" }
 paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "pagingVersion" }
+lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleVersion" }
+lifecycle-compiler = { module = "androidx.lifecycle:lifecycle-compiler", version.ref = "lifecycleVersion" }
 
 [bundles]
-androidx = ["androidx-core-ktx", "androidx-appcompat", "androidx-constraintlayout"]
+androidx = ["androidx-core-ktx", "androidx-appcompat","androidx-fragment_ktx", "androidx-constraintlayout"]
 room = ["room-runtime", "room-ktx", "room-paging"]
 retrofit = ["okhttp3-logging", "retrofit2-retrofit", "retrofit2-converter-gson"]
 

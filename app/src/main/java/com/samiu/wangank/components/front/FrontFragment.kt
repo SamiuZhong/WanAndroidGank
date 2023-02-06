@@ -2,13 +2,15 @@ package com.samiu.wangank.components.front
 
 import android.graphics.Color
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.samiu.wangank.R
 import com.samiu.wangank.databinding.FragmentTimelineBinding
 import com.samiu.wangank.utils.viewBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 
 /**
  * 首页
@@ -16,12 +18,22 @@ import com.samiu.wangank.utils.viewBinding
  * @author samiu 2023/2/2
  * @email samiuzhong@outlook.com
  */
+@AndroidEntryPoint
 class FrontFragment : Fragment(R.layout.fragment_timeline) {
 
     private val binding by viewBinding(FragmentTimelineBinding::bind)
+    private val viewModel: FrontViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.timelineRoot.setBackgroundColor(Color.BLUE)
+    }
+
+    private fun initAdapter() {
+        lifecycleScope.launchWhenCreated {
+            viewModel.frontArticles.collectLatest {
+
+            }
+        }
     }
 }

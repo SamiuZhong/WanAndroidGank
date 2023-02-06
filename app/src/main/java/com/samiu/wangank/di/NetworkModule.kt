@@ -1,8 +1,11 @@
 package com.samiu.wangank.di
 
 import android.content.Context
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.samiu.wangank.BuildConfig
 import com.samiu.wangank.data.remote.WanApiService
+import com.samiu.wangank.utils.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,21 +26,22 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-    private const val BASE_URL = "https://www.wanandroid.com"
+    @Provides
+    @Singleton
+    fun provideGson(): Gson = GsonBuilder().create()
 
     @Singleton
     @Provides
     fun provideHttpClient(
         context: Context
     ): OkHttpClient {
-        val cacheSize = 25 * 1024 * 1024L // 25 MiB
         val logger = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BASIC
         }
         return OkHttpClient.Builder()
-            .readTimeout(15, TimeUnit.SECONDS)
-            .connectTimeout(15, TimeUnit.SECONDS)
-            .cache(Cache(context.cacheDir, cacheSize))
+            .readTimeout(Constants.Network.TIMEOUT, TimeUnit.SECONDS)
+            .connectTimeout(Constants.Network.TIMEOUT, TimeUnit.SECONDS)
+            .cache(Cache(context.cacheDir, Constants.Network.CACHE_SIZE))
             .apply {
                 if (BuildConfig.DEBUG) {
                     addInterceptor(logger)
@@ -48,11 +52,14 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit(httpClient: OkHttpClient): Retrofit {
+    fun provideRetrofit(
+        httpClient: OkHttpClient,
+        gson: Gson
+    ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(Constants.Network.BASE_URL)
             .client(httpClient)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
     }
 

@@ -4,6 +4,7 @@ import com.samiu.wangank.model.ArticleDTO
 import com.samiu.wangank.model.BannerDTO
 import com.samiu.wangank.model.PageWrapper
 import com.samiu.wangank.model.WanResponse
+import com.samiu.wangank.utils.Constants
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -17,8 +18,8 @@ interface WanApiService {
      * 首页文章列表
      */
     @GET("/article/list/{page}/json")
-    suspend fun getHomeArticles(
-        @Path("page") page: Int
+    suspend fun getFrontArticles(
+        @Path(Constants.Network.PAGE) page: Int
     ): WanResponse<PageWrapper<ArticleDTO>>
 
     /**

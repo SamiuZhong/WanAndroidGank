@@ -59,12 +59,14 @@ kapt {
 dependencies {
     implementation(libs.bundles.androidx)
     implementation(libs.android.material)
+    implementation(libs.paging.runtime)
 
     implementation(libs.dagger.hilt)
     kapt(libs.dagger.hilt.compiler)
     implementation(libs.bundles.room)
     kapt(libs.room.compiler)
-    implementation(libs.paging.runtime)
+    implementation(libs.lifecycle.viewmodel)
+    kapt(libs.lifecycle.compiler)
 
     implementation(libs.bundles.retrofit)
 }
