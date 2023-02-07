@@ -30,16 +30,15 @@ class FrontFragment : Fragment(R.layout.fragment_timeline), ArticleAdapter.Artic
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
-        viewModel.printTest()
     }
 
     private fun initAdapter() {
         mAdapter = ArticleAdapter(this)
         binding.timelineRecycler.adapter = mAdapter
         viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-//            viewModel.frontArticles.collectLatest {
-//                mAdapter.submitData(it)
-//            }
+            viewModel.frontArticles.collectLatest {
+                mAdapter.submitData(it)
+            }
         }
     }
 

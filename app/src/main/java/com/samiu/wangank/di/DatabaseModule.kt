@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.samiu.wangank.data.local.Converters
 import com.samiu.wangank.data.local.WanDatabase
 import com.samiu.wangank.utils.Constants
 import dagger.Module
@@ -24,12 +25,13 @@ object DatabaseModule {
     @Provides
     @Singleton
     fun provideDatabase(
-        @ApplicationContext context: Context
+        @ApplicationContext context: Context,
+        converters: Converters
     ): WanDatabase {
         return Room.databaseBuilder(
             context,
             WanDatabase::class.java,
             Constants.Database.DATABASE_NAME
-        ).build()
+        ).addTypeConverter(converters).build()
     }
 }

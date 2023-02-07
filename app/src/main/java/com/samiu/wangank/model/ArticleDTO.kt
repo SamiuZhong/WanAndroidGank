@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
-import com.samiu.wangank.model.converters.Converters
+import com.samiu.wangank.data.local.Converters
 import com.samiu.wangank.utils.Constants
 
 /**

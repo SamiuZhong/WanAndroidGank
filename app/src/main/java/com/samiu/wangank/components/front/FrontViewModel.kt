@@ -1,6 +1,5 @@
 package com.samiu.wangank.components.front
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
@@ -14,16 +13,8 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class FrontViewModel @Inject constructor (
-//    repository: ArticleRepository
+    repository: ArticleRepository
 ) : ViewModel() {
 
-    init {
-        Log.d("FrontViewModel##", "FrontViewModel init!")
-    }
-
-    fun printTest(){
-        Log.d("FrontViewModel##", "Print test!")
-    }
-
-//    val frontArticles = repository.getFrontArticles().cachedIn(viewModelScope)
+    val frontArticles = repository.getFrontArticles().cachedIn(viewModelScope)
 }

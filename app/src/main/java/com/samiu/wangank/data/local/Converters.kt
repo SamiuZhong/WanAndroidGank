@@ -1,4 +1,4 @@
-package com.samiu.wangank.model.converters
+package com.samiu.wangank.data.local
 
 import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter

@@ -7,6 +7,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 /**
  * @author samiu 2023/2/6
@@ -17,11 +18,13 @@ import dagger.hilt.components.SingletonComponent
 object DaoModule {
 
     @Provides
+    @Singleton
     fun provideArticleDao(
         database: WanDatabase
     ): ArticleDao = database.articleDao()
 
     @Provides
+    @Singleton
     fun provideArticleRemoteKeysDao(
         database: WanDatabase
     ): ArticleRemoteKeysDao = database.articleRemoteKeysDao()

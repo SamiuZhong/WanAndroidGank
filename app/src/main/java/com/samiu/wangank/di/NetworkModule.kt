@@ -9,6 +9,7 @@ import com.samiu.wangank.utils.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Cache
 import okhttp3.OkHttpClient
@@ -30,10 +31,10 @@ object NetworkModule {
     @Singleton
     fun provideGson(): Gson = GsonBuilder().create()
 
-    @Singleton
     @Provides
+    @Singleton
     fun provideHttpClient(
-        context: Context
+        @ApplicationContext context: Context
     ): OkHttpClient {
         val logger = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BASIC
@@ -50,8 +51,8 @@ object NetworkModule {
             .build()
     }
 
-    @Singleton
     @Provides
+    @Singleton
     fun provideRetrofit(
         httpClient: OkHttpClient,
         gson: Gson
@@ -63,8 +64,8 @@ object NetworkModule {
             .build()
     }
 
-    @Singleton
     @Provides
+    @Singleton
     fun provideApiService(retrofit: Retrofit): WanApiService {
         return retrofit.create(WanApiService::class.java)
     }
