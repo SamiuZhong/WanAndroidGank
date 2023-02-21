@@ -1,6 +1,7 @@
 package com.samiu.wangank.model
 
 import androidx.recyclerview.widget.DiffUtil
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
@@ -18,14 +19,15 @@ import com.samiu.wangank.utils.Constants
 @TypeConverters(Converters::class)
 data class ArticleDTO(
 
+    @SerializedName("id")
+    @ColumnInfo(name = "articleId")
+    val articleId: Int = 0,
+
     @SerializedName("adminAdd")
     val adminAddX: Boolean = false,
 
     @SerializedName("isAdminAdd")
     val adminAddY: Boolean = false,
-
-    @PrimaryKey
-    val id: Int = 0,
 
     val apkLink: String = "",
     val audit: Int = 0,
@@ -59,12 +61,16 @@ data class ArticleDTO(
     val userId: Int = 0,
     val visible: Int = 0,
     val zan: Int = 0
-)
+) {
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "orderId")
+    var orderId: Int? = null
+}
 
 object ArticleDiff : DiffUtil.ItemCallback<ArticleDTO>() {
     override fun areItemsTheSame(oldItem: ArticleDTO, newItem: ArticleDTO) =
-        oldItem.id == newItem.id
+        oldItem.articleId == newItem.articleId && oldItem.link == newItem.link
 
     override fun areContentsTheSame(oldItem: ArticleDTO, newItem: ArticleDTO) =
-        oldItem.link == newItem.link
+        oldItem == newItem
 }

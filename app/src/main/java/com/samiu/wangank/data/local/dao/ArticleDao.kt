@@ -15,7 +15,10 @@ import com.samiu.wangank.model.ArticleDTO
 interface ArticleDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(articles: List<ArticleDTO>)
+    suspend fun insertAll(article: List<ArticleDTO>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertArticle(article: ArticleDTO)
 
     @Query("SELECT * FROM article_table")
     fun getAllArticles(): PagingSource<Int, ArticleDTO>

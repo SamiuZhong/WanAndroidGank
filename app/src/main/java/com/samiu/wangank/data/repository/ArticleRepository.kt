@@ -21,18 +21,17 @@ import javax.inject.Singleton
 class ArticleRepository @Inject constructor(
     private val service: WanApiService,
     private val database: WanDatabase,
-    private val articleDao: ArticleDao,
-    private val remoteKeysDao: ArticleRemoteKeysDao
 ) {
 
     /**
      * 获取首页文章列表
      */
-    fun getFrontArticles(): Flow<PagingData<ArticleDTO>> = Pager(
-        config = PagingConfig(pageSize = Constants.Network.PAGER_SIZE),
-        remoteMediator = FrontArticleMediator(
-            service, database, articleDao, remoteKeysDao
-        ),
-        pagingSourceFactory = { articleDao.getAllArticles() }
-    ).flow
+    fun getFrontArticles(): Flow<PagingData<ArticleDTO>> {
+        val pagingSourceFactory = { database.articleDao().getAllArticles() }
+        return Pager(
+            config = PagingConfig(pageSize = Constants.Network.PAGER_SIZE),
+            remoteMediator = FrontArticleMediator(service, database),
+            pagingSourceFactory = pagingSourceFactory
+        ).flow
+    }
 }
