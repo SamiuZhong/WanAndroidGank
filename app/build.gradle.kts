@@ -74,6 +74,7 @@ kapt {
 // library versions are in PROJECT_ROOT/gradle/libs.versions.toml
 dependencies {
     implementation(libs.bundles.androidx)
+    implementation(libs.bundles.navigation)
     implementation(libs.android.material)
     implementation(libs.paging.runtime)
 

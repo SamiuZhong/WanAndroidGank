@@ -3,6 +3,11 @@ package com.samiu.wangank
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationBarView
 import com.samiu.wangank.components.front.FrontFragment
 import com.samiu.wangank.components.project.ProjectFragment
@@ -20,42 +25,18 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val binding by viewBinding(ActivityMainBinding::inflate)
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        initViewPager()
-        binding.bottomNav.setOnItemSelectedListener(onBottomItemSelect)
+        setupNavigation()
     }
 
-    private fun initViewPager() {
-        val fragmentList: List<Fragment> = listOf(
-            FrontFragment(), SquareFragment(), ProjectFragment()
-        )
-        binding.viewPager.run {
-            isUserInputEnabled = false
-            offscreenPageLimit = 1
-            adapter = MainPagerAdapter(fragmentList, this@MainActivity)
-        }
-    }
-
-    private val onBottomItemSelect = NavigationBarView.OnItemSelectedListener {
-        when (it.itemId) {
-            R.id.main_page_0 -> {
-                switchFragment(0)
-            }
-            R.id.main_page_1 -> {
-                switchFragment(1)
-            }
-            R.id.main_page_2 -> {
-                switchFragment(2)
-            }
-        }
-        true
-    }
-
-    private fun switchFragment(position: Int): Boolean {
-        binding.viewPager.setCurrentItem(position, false)
-        return true
+    private fun setupNavigation() {
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_container) as NavHostFragment
+        navController = navHostFragment.navController
+        binding.bottomNav.setupWithNavController(navController)
     }
 }

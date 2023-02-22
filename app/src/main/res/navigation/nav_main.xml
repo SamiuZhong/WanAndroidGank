@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/frontFragment">
+
+    <fragment
+        android:id="@+id/frontFragment"
+        android:name="com.samiu.wangank.components.front.FrontFragment"
+        android:label="FrontFragment" />
+    <fragment
+        android:id="@+id/squareFragment"
+        android:name="com.samiu.wangank.components.square.SquareFragment"
+        android:label="SquareFragment" />
+    <fragment
+        android:id="@+id/projectFragment"
+        android:name="com.samiu.wangank.components.project.ProjectFragment"
+        android:label="ProjectFragment" />
+</navigation>
