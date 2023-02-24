@@ -12,7 +12,8 @@ class Constants {
             const val CACHE_SIZE = 25 * 1024 * 1024L    // 25 MiB
             const val TIMEOUT = 15L
 
-            const val STARTING_PAGE_INDEX = 0
+            const val STARTING_PAGE_INDEX_0 = 0
+            const val STARTING_PAGE_INDEX_1 = 1
             const val DEFAULT_PAGE_SIZE = 20
 
             const val PAGE = "page"

@@ -10,8 +10,6 @@ import com.samiu.wangank.data.remote.ArticleRes
 import com.samiu.wangank.data.remote.WanApiService
 import com.samiu.wangank.model.ArticleDTO
 import com.samiu.wangank.model.ArticleRemoteKeys
-import com.samiu.wangank.model.PageWrapper
-import com.samiu.wangank.model.WanResponse
 import com.samiu.wangank.utils.Constants
 import okio.IOException
 import retrofit2.HttpException
@@ -37,7 +35,7 @@ class FrontArticleMediator(
     override suspend fun load(
         loadType: LoadType, state: PagingState<Int, ArticleDTO>
     ): MediatorResult {
-        val startIndex = Constants.Network.STARTING_PAGE_INDEX
+        val startIndex = Constants.Network.STARTING_PAGE_INDEX_0
         val page = when (loadType) {
             LoadType.REFRESH -> {
                 val remoteKeys = getRemoteKeyClosestToCurrentPosition(state)

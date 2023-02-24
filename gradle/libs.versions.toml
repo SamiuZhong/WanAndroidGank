@@ -13,6 +13,8 @@ roomVersion = "2.5.0"
 pagingVersion = "3.1.1"
 lifecycleVersion = "2.5.1"
 navigationVersion = "2.5.1"
+bannerVersion = "2.2.2"
+coilVersion = "2.2.2"
 
 [libraries]
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidxCore" }
@@ -34,6 +36,8 @@ lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", v
 lifecycle-compiler = { module = "androidx.lifecycle:lifecycle-compiler", version.ref = "lifecycleVersion" }
 navigation-ui = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationVersion" }
 navigation-fragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationVersion" }
+youth-banner = { module = "io.github.youth5201314:banner", version.ref = "bannerVersion" }
+coil-kt = { module = "io.coil-kt:coil", version.ref = "coilVersion" }
 
 [bundles]
 androidx = ["androidx-core-ktx", "androidx-appcompat","androidx-fragment_ktx", "androidx-constraintlayout"]

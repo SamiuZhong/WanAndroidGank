@@ -86,4 +86,6 @@ dependencies {
     kapt(libs.lifecycle.compiler)
 
     implementation(libs.bundles.retrofit)
+    implementation(libs.youth.banner)
+    implementation(libs.coil.kt)
 }

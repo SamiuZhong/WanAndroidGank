@@ -8,7 +8,7 @@ package com.samiu.wangank.model
  */
 data class WanResponse<T>(
     val data: T,
-    val errorCode: Int = 0,
+    val errorCode: Int = -1,
     val errorMsg: String = ""
 )
 

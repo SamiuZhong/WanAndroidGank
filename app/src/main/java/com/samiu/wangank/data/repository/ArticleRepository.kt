@@ -4,6 +4,7 @@ import androidx.paging.*
 import com.samiu.wangank.data.local.WanDatabase
 import com.samiu.wangank.data.paging.ArticleType
 import com.samiu.wangank.data.paging.FrontArticleMediator
+import com.samiu.wangank.data.remote.BannerList
 import com.samiu.wangank.data.remote.WanApiService
 import com.samiu.wangank.model.ArticleDTO
 import com.samiu.wangank.utils.Constants
@@ -20,7 +21,15 @@ import javax.inject.Singleton
 class ArticleRepository @Inject constructor(
     private val service: WanApiService,
     private val database: WanDatabase,
-) {
+) : BaseRepository() {
+
+    /**
+     * 获取banner数据
+     */
+    suspend fun getBanners(): BannerList {
+        val response = safeRequest { service.getBanners() }
+        return response.data
+    }
 
     /**
      * 获取文章列表

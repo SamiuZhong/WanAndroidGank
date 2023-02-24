@@ -1,5 +1,6 @@
 package com.samiu.wangank.ui.adapter
 
+import android.text.Html
 import androidx.recyclerview.widget.RecyclerView
 import com.samiu.wangank.databinding.ItemArticleBinding
 import com.samiu.wangank.model.ArticleDTO
@@ -14,7 +15,7 @@ class ArticleViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(article: ArticleDTO) {
-        binding.articleTitle.text = article.title
+        binding.articleTitle.text = Html.fromHtml(article.title, 0)
         binding.articleTitle.setOnClickListener {
             listener.onItemClick(article)
         }
