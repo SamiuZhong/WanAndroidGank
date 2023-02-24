@@ -16,15 +16,27 @@ interface ArticleRemoteKeysDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(remoteKeys: List<ArticleRemoteKeys>)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertRemoteKeys(remoteKeys: ArticleRemoteKeys)
-
     @Query("SELECT * from article_remote_keys_table WHERE articleId = :articleId")
     suspend fun findRemoteKeyByArticleId(articleId: Int): ArticleRemoteKeys
 
     @Query("DELETE FROM article_remote_keys_table WHERE articleId = :articleId")
     suspend fun deleteRemoteKeyByArticleId(articleId: Int)
 
+    /**
+     * 删除全部数据
+     */
     @Query("DELETE FROM article_remote_keys_table")
     suspend fun clearAll()
+
+    /**
+     * 删除首页数据
+     */
+    @Query("DELETE FROM article_remote_keys_table WHERE chapterName='自助'")
+    suspend fun clearFrontKeys()
+
+    /**
+     * 删除广场数据
+     */
+    @Query("DELETE FROM article_remote_keys_table WHERE chapterName='广场'")
+    suspend fun clearSquareKeys()
 }

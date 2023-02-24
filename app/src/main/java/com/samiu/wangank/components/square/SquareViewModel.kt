@@ -1,4 +1,4 @@
-package com.samiu.wangank.components.front
+package com.samiu.wangank.components.square
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,13 +9,13 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 /**
- * @author samiu 2023/2/6
+ * @author samiu 2023/2/23
  * @email samiuzhong@outlook.com
  */
 @HiltViewModel
-class FrontViewModel @Inject constructor(
+class SquareViewModel @Inject constructor(
     repository: ArticleRepository
 ) : ViewModel() {
 
-    val frontArticles = repository.getArticles(ArticleType.Front).cachedIn(viewModelScope)
+    val squareArticles = repository.getArticles(ArticleType.Square).cachedIn(viewModelScope)
 }

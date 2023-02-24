@@ -13,9 +13,10 @@ class Constants {
             const val TIMEOUT = 15L
 
             const val STARTING_PAGE_INDEX = 0
-            const val PAGER_SIZE = 20
+            const val DEFAULT_PAGE_SIZE = 20
 
             const val PAGE = "page"
+            const val PAGE_SIZE = "page_size"
         }
     }
 
@@ -24,6 +25,12 @@ class Constants {
             const val DATABASE_NAME = "wan_android_db"
             const val ARTICLE_TABLE = "article_table"
             const val ARTICLE_REMOTE_KEYS_TABLE = "article_remote_keys_table"
+        }
+    }
+
+    internal interface Bundle {
+        companion object {
+            const val URL = "url"
         }
     }
 }

@@ -6,15 +6,18 @@ import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import com.samiu.wangank.data.local.WanDatabase
+import com.samiu.wangank.data.remote.ArticleRes
 import com.samiu.wangank.data.remote.WanApiService
 import com.samiu.wangank.model.ArticleDTO
 import com.samiu.wangank.model.ArticleRemoteKeys
+import com.samiu.wangank.model.PageWrapper
+import com.samiu.wangank.model.WanResponse
 import com.samiu.wangank.utils.Constants
 import okio.IOException
 import retrofit2.HttpException
 
 /**
- * 首页文章列表
+ * 文章列表，多接口通用
  * Paging3网络数据，Room本地数据
  *
  * @author samiu 2023/2/6
@@ -24,6 +27,7 @@ import retrofit2.HttpException
 class FrontArticleMediator(
     private val service: WanApiService,
     private val database: WanDatabase,
+    private val type: ArticleType
 ) : RemoteMediator<Int, ArticleDTO>() {
 
     override suspend fun initialize(): InitializeAction {
@@ -42,29 +46,40 @@ class FrontArticleMediator(
             LoadType.PREPEND -> {
                 val remoteKeys = getRemoteKeyForFirstItem(state)
                 val prevKey = remoteKeys?.prevPage
-                if (prevKey == null) {
-                    return MediatorResult.Success(endOfPaginationReached = remoteKeys != null)
-                }
+                    ?: return MediatorResult.Success(endOfPaginationReached = remoteKeys != null)
                 prevKey
             }
             LoadType.APPEND -> {
                 val remoteKeys = getRemoteKeyForLastItem(state)
                 val nextKey = remoteKeys?.nextPage
-                if (nextKey == null) {
-                    return MediatorResult.Success(endOfPaginationReached = remoteKeys != null)
-                }
+                    ?: return MediatorResult.Success(endOfPaginationReached = remoteKeys != null)
                 nextKey
             }
         }
         try {
-            val response = service.getFrontArticles(page)
+            val response: ArticleRes = when (type) {
+                ArticleType.Front -> {
+                    service.getFrontArticles(page, Constants.Network.DEFAULT_PAGE_SIZE)
+                }
+                ArticleType.Square -> {
+                    service.getSquareArticles(page, Constants.Network.DEFAULT_PAGE_SIZE)
+                }
+            }
             val articles = response.data.datas
             val endOfPaginationReached = articles.isEmpty()
 
             database.withTransaction {
                 if (loadType == LoadType.REFRESH) {
-                    database.articleDao().clearAll()
-                    database.articleRemoteKeysDao().clearAll()
+                    when (type) {
+                        ArticleType.Front -> {
+                            database.articleDao().clearFrontArticles()
+                            database.articleRemoteKeysDao().clearFrontKeys()
+                        }
+                        ArticleType.Square -> {
+                            database.articleDao().clearSquareArticles()
+                            database.articleRemoteKeysDao().clearSquareKeys()
+                        }
+                    }
                 }
                 val prevKey = if (page == startIndex) null else page.minus(1)
                 val nextKey = if (endOfPaginationReached) null else page.plus(1)
@@ -72,7 +87,8 @@ class FrontArticleMediator(
                     ArticleRemoteKeys(
                         articleId = article.articleId,
                         prevPage = prevKey,
-                        nextPage = nextKey
+                        nextPage = nextKey,
+                        chapterName = article.chapterName
                     )
                 }
                 database.articleDao().insertAll(articles)

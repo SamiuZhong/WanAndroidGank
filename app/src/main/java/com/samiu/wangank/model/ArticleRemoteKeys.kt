@@ -13,7 +13,8 @@ import com.samiu.wangank.utils.Constants
 data class ArticleRemoteKeys(
     val articleId: Int = 0,
     val prevPage: Int?,
-    val nextPage: Int?
+    val nextPage: Int?,
+    val chapterName: String = ""
 ) {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "orderId")

@@ -2,8 +2,7 @@ package com.samiu.wangank.data.repository
 
 import androidx.paging.*
 import com.samiu.wangank.data.local.WanDatabase
-import com.samiu.wangank.data.local.dao.ArticleDao
-import com.samiu.wangank.data.local.dao.ArticleRemoteKeysDao
+import com.samiu.wangank.data.paging.ArticleType
 import com.samiu.wangank.data.paging.FrontArticleMediator
 import com.samiu.wangank.data.remote.WanApiService
 import com.samiu.wangank.model.ArticleDTO
@@ -24,13 +23,24 @@ class ArticleRepository @Inject constructor(
 ) {
 
     /**
-     * 获取首页文章列表
+     * 获取文章列表
+     *
+     * @param type 区分文章数据的来源
      */
-    fun getFrontArticles(): Flow<PagingData<ArticleDTO>> {
-        val pagingSourceFactory = { database.articleDao().getAllArticles() }
+    fun getArticles(type: ArticleType): Flow<PagingData<ArticleDTO>> {
+        val pagingSourceFactory = {
+            when (type) {
+                ArticleType.Front -> {
+                    database.articleDao().getFrontArticles()
+                }
+                ArticleType.Square -> {
+                    database.articleDao().getSquareArticles()
+                }
+            }
+        }
         return Pager(
-            config = PagingConfig(pageSize = Constants.Network.PAGER_SIZE),
-            remoteMediator = FrontArticleMediator(service, database),
+            config = PagingConfig(pageSize = Constants.Network.DEFAULT_PAGE_SIZE),
+            remoteMediator = FrontArticleMediator(service, database, type),
             pagingSourceFactory = pagingSourceFactory
         ).flow
     }

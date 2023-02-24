@@ -15,5 +15,8 @@ class ArticleViewHolder(
 
     fun bind(article: ArticleDTO) {
         binding.articleTitle.text = article.title
+        binding.articleTitle.setOnClickListener {
+            listener.onItemClick(article)
+        }
     }
 }

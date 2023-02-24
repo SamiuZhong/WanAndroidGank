@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import com.samiu.wangank.R
 import com.samiu.wangank.databinding.FragmentTimelineBinding
 import com.samiu.wangank.model.ArticleDTO
+import com.samiu.wangank.ui.activity.BrowserActivity
 import com.samiu.wangank.ui.adapter.ArticleAdapter
 import com.samiu.wangank.utils.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,6 +44,6 @@ class FrontFragment : Fragment(R.layout.fragment_timeline), ArticleAdapter.Artic
     }
 
     override fun onItemClick(article: ArticleDTO) {
-
+        BrowserActivity.toBrowser(requireContext(), article.link)
     }
 }

@@ -20,9 +20,39 @@ interface ArticleDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertArticle(article: ArticleDTO)
 
+    /**
+     * 所有文章数据
+     */
     @Query("SELECT * FROM article_table")
     fun getAllArticles(): PagingSource<Int, ArticleDTO>
 
+    /**
+     * 首页文章数据
+     */
+    @Query("SELECT * FROM article_table WHERE chapterName='自助'")
+    fun getFrontArticles(): PagingSource<Int, ArticleDTO>
+
+    /**
+     * 广场文章数据
+     */
+    @Query("SELECT * FROM article_table WHERE chapterName='广场'")
+    fun getSquareArticles(): PagingSource<Int, ArticleDTO>
+
+    /**
+     * 删除全部数据
+     */
     @Query("DELETE FROM article_table")
     suspend fun clearAll()
+
+    /**
+     * 删除首页数据
+     */
+    @Query("DELETE FROM article_table WHERE chapterName='自助'")
+    suspend fun clearFrontArticles()
+
+    /**
+     * 删除广场数据
+     */
+    @Query("DELETE FROM article_table WHERE chapterName='广场'")
+    suspend fun clearSquareArticles()
 }
