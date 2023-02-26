@@ -55,32 +55,15 @@ class FrontArticleMediator(
             }
         }
         try {
-            val response: ArticleRes = when (type) {
-                ArticleType.Front -> {
-                    service.getFrontArticles(page, Constants.Network.DEFAULT_PAGE_SIZE)
-                }
-                ArticleType.Square -> {
-                    service.getSquareArticles(page, Constants.Network.DEFAULT_PAGE_SIZE)
-                }
-            }
+            val response = getResponse(page)
             val articles = response.data.datas
             val endOfPaginationReached = articles.isEmpty()
 
+            val prevKey = if (page == startIndex) null else page.minus(1)
+            val nextKey = if (endOfPaginationReached) null else page.plus(1)
+
             database.withTransaction {
-                if (loadType == LoadType.REFRESH) {
-                    when (type) {
-                        ArticleType.Front -> {
-                            database.articleDao().clearFrontArticles()
-                            database.articleRemoteKeysDao().clearFrontKeys()
-                        }
-                        ArticleType.Square -> {
-                            database.articleDao().clearSquareArticles()
-                            database.articleRemoteKeysDao().clearSquareKeys()
-                        }
-                    }
-                }
-                val prevKey = if (page == startIndex) null else page.minus(1)
-                val nextKey = if (endOfPaginationReached) null else page.plus(1)
+                clearTables(loadType)
                 val keys = articles.map { article ->
                     ArticleRemoteKeys(
                         articleId = article.articleId,
@@ -97,6 +80,30 @@ class FrontArticleMediator(
             return MediatorResult.Error(exception)
         } catch (exception: HttpException) {
             return MediatorResult.Error(exception)
+        }
+    }
+
+    private suspend fun getResponse(page: Int): ArticleRes = when (type) {
+        ArticleType.Front -> {
+            service.getFrontArticles(page, Constants.Network.DEFAULT_PAGE_SIZE)
+        }
+        ArticleType.Square -> {
+            service.getSquareArticles(page, Constants.Network.DEFAULT_PAGE_SIZE)
+        }
+    }
+
+    private suspend fun clearTables(loadType: LoadType) {
+        if (loadType == LoadType.REFRESH) {
+            when (type) {
+                ArticleType.Front -> {
+                    database.articleDao().clearFrontArticles()
+                    database.articleRemoteKeysDao().clearFrontKeys()
+                }
+                ArticleType.Square -> {
+                    database.articleDao().clearSquareArticles()
+                    database.articleRemoteKeysDao().clearSquareKeys()
+                }
+            }
         }
     }
 
