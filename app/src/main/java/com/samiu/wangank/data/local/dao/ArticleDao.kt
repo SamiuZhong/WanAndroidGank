@@ -39,6 +39,12 @@ interface ArticleDao {
     fun getSquareArticles(): PagingSource<Int, ArticleDTO>
 
     /**
+     * 根据cid获取文章数据
+     */
+    @Query("SELECT * FROM article_table WHERE chapterId=:cid")
+    fun getArticlesWithCid(cid: Int): PagingSource<Int, ArticleDTO>
+
+    /**
      * 删除全部数据
      */
     @Query("DELETE FROM article_table")
@@ -55,4 +61,10 @@ interface ArticleDao {
      */
     @Query("DELETE FROM article_table WHERE chapterName='广场'")
     suspend fun clearSquareArticles()
+
+    /**
+     * 根据cid删除文章数据
+     */
+    @Query("DELETE FROM article_table WHERE chapterId=:cid")
+    suspend fun clearArticlesWithCid(cid: Int)
 }

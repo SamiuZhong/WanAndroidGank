@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "b7f91f1e36a2a4813f58475aeaa1cde6",
+    "identityHash": "9ef397e3915ae30fee8c530d668475e3",
     "entities": [
       {
         "tableName": "article_table",
@@ -236,14 +236,8 @@
       },
       {
         "tableName": "article_remote_keys_table",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`articleId` INTEGER NOT NULL, `prevPage` INTEGER, `nextPage` INTEGER, `chapterName` TEXT NOT NULL, `orderId` INTEGER PRIMARY KEY AUTOINCREMENT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`prevPage` INTEGER, `nextPage` INTEGER, `articleId` INTEGER NOT NULL, `chapterId` INTEGER NOT NULL, `chapterName` TEXT NOT NULL, `orderId` INTEGER PRIMARY KEY AUTOINCREMENT)",
         "fields": [
-          {
-            "fieldPath": "articleId",
-            "columnName": "articleId",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
           {
             "fieldPath": "prevPage",
             "columnName": "prevPage",
@@ -255,6 +249,18 @@
             "columnName": "nextPage",
             "affinity": "INTEGER",
             "notNull": false
+          },
+          {
+            "fieldPath": "articleId",
+            "columnName": "articleId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "chapterId",
+            "columnName": "chapterId",
+            "affinity": "INTEGER",
+            "notNull": true
           },
           {
             "fieldPath": "chapterName",
@@ -282,7 +288,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b7f91f1e36a2a4813f58475aeaa1cde6')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '9ef397e3915ae30fee8c530d668475e3')"
     ]
   }
 }

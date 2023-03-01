@@ -16,11 +16,11 @@ open class BaseRepository {
     suspend fun <T : Any> safeRequest(
         call: suspend () -> WanResponse<T>
     ): WanResponse<T> {
+        Log.d(TAG, "safeRequest: start")
         val response = call()
         if (response.errorCode != 0) {
             Log.e(
-                TAG,
-                "safeRequest: error code=[${response.errorCode}], msg=[${response.errorMsg}]"
+                TAG, "safeRequest: error code=[${response.errorCode}], msg=[${response.errorMsg}]"
             )
         }
         return response

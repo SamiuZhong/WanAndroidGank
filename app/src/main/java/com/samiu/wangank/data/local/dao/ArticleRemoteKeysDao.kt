@@ -39,4 +39,10 @@ interface ArticleRemoteKeysDao {
      */
     @Query("DELETE FROM article_remote_keys_table WHERE chapterName='广场'")
     suspend fun clearSquareKeys()
+
+    /**
+     * 根据cid删除数据
+     */
+    @Query("DELETE FROM article_remote_keys_table WHERE chapterId=:cid")
+    suspend fun clearKeysWithCid(cid:Int)
 }

@@ -14,6 +14,6 @@
         android:label="SquareFragment" />
     <fragment
         android:id="@+id/projectFragment"
-        android:name="com.samiu.wangank.components.project.ProjectFragment"
+        android:name="com.samiu.wangank.components.project.ProHostFragment"
         android:label="ProjectFragment" />
 </navigation>

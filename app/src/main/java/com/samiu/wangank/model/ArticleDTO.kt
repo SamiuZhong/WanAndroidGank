@@ -10,7 +10,7 @@ import com.samiu.wangank.data.local.Converters
 import com.samiu.wangank.utils.Constants
 
 /**
- * 首页文章列表
+ * 文章列表
  *
  * @author samiu 2023/2/2
  * @email samiuzhong@outlook.com

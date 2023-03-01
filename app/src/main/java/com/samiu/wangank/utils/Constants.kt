@@ -18,6 +18,7 @@ class Constants {
 
             const val PAGE = "page"
             const val PAGE_SIZE = "page_size"
+            const val CID = "cid"
         }
     }
 
@@ -32,6 +33,7 @@ class Constants {
     internal interface Bundle {
         companion object {
             const val URL = "url"
+            const val CID = "cid"
         }
     }
 }

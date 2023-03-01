@@ -11,9 +11,10 @@ import com.samiu.wangank.utils.Constants
  */
 @Entity(tableName = Constants.Database.ARTICLE_REMOTE_KEYS_TABLE)
 data class ArticleRemoteKeys(
-    val articleId: Int = 0,
     val prevPage: Int?,
     val nextPage: Int?,
+    val articleId: Int = 0,
+    val chapterId: Int = 0,
     val chapterName: String = ""
 ) {
     @PrimaryKey(autoGenerate = true)

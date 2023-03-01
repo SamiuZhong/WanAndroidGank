@@ -22,7 +22,7 @@ import retrofit2.HttpException
  * @email samiuzhong@outlook.com
  */
 @OptIn(ExperimentalPagingApi::class)
-class FrontArticleMediator(
+class ArticleMediator(
     private val service: WanApiService,
     private val database: WanDatabase,
     private val type: ArticleType
@@ -66,9 +66,10 @@ class FrontArticleMediator(
                 clearTables(loadType)
                 val keys = articles.map { article ->
                     ArticleRemoteKeys(
-                        articleId = article.articleId,
                         prevPage = prevKey,
                         nextPage = nextKey,
+                        articleId = article.articleId,
+                        chapterId = article.chapterId,
                         chapterName = article.chapterName
                     )
                 }
