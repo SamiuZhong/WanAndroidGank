@@ -62,7 +62,7 @@ interface WanApiService {
     @POST("/article/query/{page}/json")
     suspend fun search(
         @Path(Constants.Network.PAGE) page: Int,
-        @Field(Constants.Network.PAGE_SIZE) pageSize: String,
-        @Field("k") key: String
+        @Field("k") keyword: String,
+        @Field(Constants.Network.PAGE_SIZE) pageSize: Int
     ): ArticleRes
 }

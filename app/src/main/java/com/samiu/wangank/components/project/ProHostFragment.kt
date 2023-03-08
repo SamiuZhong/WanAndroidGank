@@ -1,6 +1,7 @@
 package com.samiu.wangank.components.project
 
 import android.os.Bundle
+import android.text.Html
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -28,9 +29,6 @@ class ProHostFragment : Fragment(R.layout.fragment_pro_host) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        TabLayoutMediator(binding.proTabLayout, binding.proViewPager) { tab, position ->
-            tab.text = position.toString()
-        }
         viewModel.getProTypes()
         observe()
     }
@@ -49,8 +47,8 @@ class ProHostFragment : Fragment(R.layout.fragment_pro_host) {
 
             override fun getItemCount() = types.size
         }
-//        TabLayoutMediator(binding.proTabLayout, binding.proViewPager) { tab, position ->
-//            tab.text = types[position].name
-//        }
+        TabLayoutMediator(binding.proTabLayout, binding.proViewPager) { tab, position ->
+            tab.text = Html.fromHtml(types[position].name, 0)
+        }.attach()
     }
 }

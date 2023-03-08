@@ -5,6 +5,7 @@ import com.samiu.wangank.data.local.WanDatabase
 import com.samiu.wangank.data.paging.ArticleType
 import com.samiu.wangank.data.paging.ArticleMediator
 import com.samiu.wangank.data.paging.ProjectMediator
+import com.samiu.wangank.data.paging.SearchPagingSource
 import com.samiu.wangank.data.remote.BannerList
 import com.samiu.wangank.data.remote.ProTypeList
 import com.samiu.wangank.data.remote.WanApiService
@@ -78,5 +79,13 @@ class ArticleRepository @Inject constructor(
             remoteMediator = ProjectMediator(service, database, cid),
             pagingSourceFactory = pagingSourceFactory
         ).flow
+    }
+
+    fun search(keyword: String): ArticleFlow {
+        return Pager(
+            PagingConfig(pageSize = Constants.Network.DEFAULT_PAGE_SIZE)
+        ) {
+            SearchPagingSource(service, keyword)
+        }.flow
     }
 }

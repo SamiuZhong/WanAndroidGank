@@ -26,7 +26,6 @@ class ProjectMediator(
     private val database: WanDatabase,
     private val cid: Int
 ) : RemoteMediator<Int, ArticleDTO>() {
-
     override suspend fun initialize(): InitializeAction {
         return InitializeAction.LAUNCH_INITIAL_REFRESH
     }

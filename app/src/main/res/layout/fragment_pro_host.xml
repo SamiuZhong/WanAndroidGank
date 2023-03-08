@@ -5,19 +5,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/pro_tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/pro_tab_layout"
-            android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            app:tabIndicatorColor="#ADBE107E"
-            app:tabMode="scrollable"
-            app:tabTextAppearance="@style/TabTextStyle" />
-    </com.google.android.material.appbar.AppBarLayout>
+        android:layout_height="wrap_content"
+        app:tabGravity="center"
+        app:tabMode="scrollable"
+        app:tabTextAppearance="@style/TabLayout.TextAppearance"
+        app:tabTextColor="?colorPrimary" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/pro_view_pager"
