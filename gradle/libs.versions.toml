@@ -1,5 +1,5 @@
 [versions]
-androidGradlePlugin = "7.4.1"
+androidGradlePlugin = "8.0.0"
 kotlinVersion = "1.8.0"
 androidxCore = "1.9.0"
 androidxAppcompat = "1.6.0"
